@@ -1,0 +1,2 @@
+- parse_university_data.js 는 html을 파싱해서 json으로 저장합니다.
+- university_data.html은 실제 https://gdg.community.dev/chapters/ 에서 'university'를 검색하여 crawling 한 데이터입니다.
