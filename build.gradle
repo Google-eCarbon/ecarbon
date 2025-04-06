@@ -38,8 +38,21 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
+	// JSON processing
 	implementation 'com.google.code.gson:gson:2.10.1'
 
+	// MongoDB driver
+	implementation 'org.mongodb:mongodb-driver-core:4.11.0' // MongoDB core driver
+	implementation 'org.mongodb:mongodb-driver-sync:4.11.0' // MongoDB synchronous driver
+
+	// Logback dependencies
+	implementation 'ch.qos.logback:logback-classic:1.2.6'
+	implementation 'ch.qos.logback:logback-core:1.2.6'
+
+	// Jackson library
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.0' // Jackson data-binding library
+
+	implementation 'org.slf4j:slf4j-api:1.7.36'
 }
 
 tasks.named('test') {
