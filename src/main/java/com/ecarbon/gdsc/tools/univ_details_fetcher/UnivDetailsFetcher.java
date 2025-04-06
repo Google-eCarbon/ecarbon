@@ -99,13 +99,11 @@ public class UnivDetailsFetcher {
                 String placeId = obj.get("placeId").getAsString();
                 String urlString = String.format(
                         "https://maps.googleapis.com/maps/api/place/details/json" +
-                                "?fields=" +
-                                "name," +
-                                "formatted_address," +
-                                "geometry,website," +
-                                "place_id," +
-                                "website" +
-                                "&place_id=%s&key=%s", placeId, API_KEY);
+                                "?fields=%s&place_id=%s&key=%s",
+                        "name,formatted_address,geometry,place_id,website",
+                        placeId,
+                        API_KEY
+                );
 
                 URL url = new URL(urlString);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
