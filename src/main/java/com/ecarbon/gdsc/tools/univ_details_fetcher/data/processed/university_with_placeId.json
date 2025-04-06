@@ -1,0 +1,4159 @@
+[ {
+  "title" : "GDG on Campus Vienna University of Technology",
+  "universityName" : "Vienna University of Technology",
+  "country" : "Austria",
+  "fullLocation" : "Vienna University of Technology, Austria",
+  "placeId" : "ChIJ_d7vP2UHbUcRElip0qAzmR4"
+}, {
+  "title" : "GDG on Campus UCAM Catholic University of Murcia",
+  "universityName" : "UCAM Catholic University of Murcia",
+  "country" : "Spain",
+  "fullLocation" : "UCAM Catholic University of Murcia, Spain",
+  "placeId" : "ChIJTbwhTjiAYw0RCeJY86lOj28"
+}, {
+  "title" : "GDG on Campus Al-Hussein Technical University - Amman, Jordan",
+  "universityName" : "Al-Hussein Technical University",
+  "country" : "Jordan",
+  "fullLocation" : "Hussein Technical University, Jordan",
+  "placeId" : "ChIJsXhBJ3-hHBURCJFXMUX3S-A"
+}, {
+  "title" : "GDG on Campus Prince Mohammad Bin Fahd University - Al Khobar, Saudi Arabia",
+  "universityName" : "Prince Mohammad Bin Fahd University",
+  "country" : "Saudi Arabia",
+  "fullLocation" : "Prince Mohammad Bin Fahd University, Women Campus- Al Khobar, Saudi Arabia, Saudi Arabia",
+  "placeId" : "ChIJxRWNE1DZST4RlHg1z7MBLtw"
+}, {
+  "title" : "GDG on Campus University of California, Riverside - Riverside, United States",
+  "universityName" : "University of California, Riverside",
+  "country" : "United States",
+  "fullLocation" : "Riverside, United States",
+  "placeId" : "ChIJs5-qh0au3IARMR1yR98LBRA"
+}, {
+  "title" : "GDG Delta University",
+  "universityName" : "El Mansoura",
+  "country" : "Egypt",
+  "fullLocation" : "El Mansoura, Egypt",
+  "placeId" : "ChIJ62yzt62d9xQRy_v0SKG9DSU"
+}, {
+  "title" : "GDG on Campus University Of California, Davis - Davis, United States",
+  "universityName" : "University Of California, Davis",
+  "country" : "United States",
+  "fullLocation" : "Davis, United States, United States",
+  "placeId" : "ChIJP_qJdH_T6oARNIN-CCS7v-w"
+}, {
+  "title" : "GDG on Campus University of California Santa Cruz - Santa Cruz, United States",
+  "universityName" : "University of California Santa Cruz",
+  "country" : "United States",
+  "fullLocation" : "Santa Cruz, United States",
+  "placeId" : "ChIJT7-M_6JBjoAR1SCDknw7jjo"
+}, {
+  "title" : "GDG on Campus University of California, Los Angeles - Los Angeles, United States",
+  "universityName" : "University of California, Los Angeles",
+  "country" : "United States",
+  "fullLocation" : "Los Angeles, United States",
+  "placeId" : "ChIJZQ9c8IW8woARN0gTXFiTqSU"
+}, {
+  "title" : "GDG on Campus University of California, Merced - Merced, United States",
+  "universityName" : "University of California, Merced",
+  "country" : "United States",
+  "fullLocation" : "Merced, United States, United States",
+  "placeId" : "ChIJ1bmXDKxGkYARFKiII7VWisw"
+}, {
+  "title" : "GDG on Campus University of California, Santa Barbara - Santa Barbara, United States",
+  "universityName" : "University of California, Santa Barbara",
+  "country" : "United States",
+  "fullLocation" : "Santa Barbara, United States",
+  "placeId" : "ChIJN0sx82c_6YARws62XH5rlU4"
+}, {
+  "title" : "GDG on Campus University of Colorado Boulder - Boulder, United States",
+  "universityName" : "University of Colorado Boulder",
+  "country" : "United States",
+  "fullLocation" : "Boulder, United States",
+  "placeId" : "ChIJwR6cajTsa4cR2TH0qKTVKAM"
+}, {
+  "title" : "GDG on Campus University of Dayton - Dayton, United States",
+  "universityName" : "University of Dayton",
+  "country" : "United States",
+  "fullLocation" : "Dayton, United States",
+  "placeId" : "ChIJg62gSx6EQIgR4HfZrMShfvU"
+}, {
+  "title" : "GDG on Campus University of Georgia - Athens, United States",
+  "universityName" : "University of Georgia",
+  "country" : "United States",
+  "fullLocation" : "Athens, United States",
+  "placeId" : "ChIJv6b7OGAT9ogRdO9Au2idhN8"
+}, {
+  "title" : "GDG on Campus University of Guelph - Guelph, Canada",
+  "universityName" : "University of Guelph",
+  "country" : "Canada",
+  "fullLocation" : "Guelph, Canada",
+  "placeId" : "ChIJt6A4HTybK4gRxxNATeWZ648"
+}, {
+  "title" : "GDG on Campus University of Illinois Chicago - Chicago, United States",
+  "universityName" : "University of Illinois Chicago",
+  "country" : "United States",
+  "fullLocation" : "Chicago, United States",
+  "placeId" : "ChIJu8KXH-AsDogR3Nzbopo-A6Y"
+}, {
+  "title" : "GDG on Campus University of Louisiana Monroe - Monroe, United States",
+  "universityName" : "University of Louisiana Monroe",
+  "country" : "United States",
+  "fullLocation" : "Monroe, United States",
+  "placeId" : "ChIJQ3ItlgdGLoYRZjwJ-xxiLws"
+}, {
+  "title" : "GDG on Campus University of Maryland - Baltimore, United States",
+  "universityName" : "University of Maryland",
+  "country" : "United States",
+  "fullLocation" : "Baltimore, United States",
+  "placeId" : "ChIJq6qaPr3Gt4kRmtrkpd2LjtQ"
+}, {
+  "title" : "GDG on Campus University of Maryland - College Park, United States",
+  "universityName" : "University of Maryland",
+  "country" : "United States",
+  "fullLocation" : "College Park, United States, United States",
+  "placeId" : "ChIJq6qaPr3Gt4kRmtrkpd2LjtQ"
+}, {
+  "title" : "GDG on Campus University of Massachusetts - Amherst, United States",
+  "universityName" : "University of Massachusetts",
+  "country" : "United States",
+  "fullLocation" : "Amherst, United States",
+  "placeId" : "ChIJZfjw5HPS5okRBY4UiWBY1qA"
+}, {
+  "title" : "GDG on Campus University of Miami - Coral Gables, United States",
+  "universityName" : "University of Miami",
+  "country" : "United States",
+  "fullLocation" : "Coral Gables, United States, United States",
+  "placeId" : "ChIJfTjGHwK42YgRzjHwQarPwDg"
+}, {
+  "title" : "GDG on Campus University of Michigan - Ann Arbor, United States",
+  "universityName" : "University of Michigan",
+  "country" : "United States",
+  "fullLocation" : "Ann Arbor, United States",
+  "placeId" : "ChIJARfe5ziuPIgR45fpeFFOoVs"
+}, {
+  "title" : "GDG on Campus University of Michigan-Dearborn - Dearborn, United States",
+  "universityName" : "University of Michigan-Dearborn",
+  "country" : "United States",
+  "fullLocation" : "Dearborn, United States",
+  "placeId" : "ChIJTwADdHQ1O4gRWHcjTefsvDc"
+}, {
+  "title" : "GDG on Campus University of Minnesota, Twin Cities - Minneapolis, United States",
+  "universityName" : "University of Minnesota, Twin Cities",
+  "country" : "United States",
+  "fullLocation" : "Minneapolis, United States",
+  "placeId" : "ChIJ_8cK92kts1IReJnfUqEXEuM"
+}, {
+  "title" : "GDG on Campus University of Nevada, Reno - Reno, United States",
+  "universityName" : "University of Nevada, Reno",
+  "country" : "United States",
+  "fullLocation" : "Reno, United States, United States",
+  "placeId" : "ChIJH9FLh9dGmYARGNb-koliheM"
+}, {
+  "title" : "GDG on Campus University of Pennsylvania - Philadelphia, United States",
+  "universityName" : "University of Pennsylvania",
+  "country" : "United States",
+  "fullLocation" : "Philadelphia, United States",
+  "placeId" : "ChIJwcw7f1rGxokRlP7WsqKm6gk"
+}, {
+  "title" : "GDG on Campus University of Regina - Regina, Canada",
+  "universityName" : "University of Regina",
+  "country" : "Canada",
+  "fullLocation" : "Regina, Canada",
+  "placeId" : "ChIJq6ePeZCgHlMRJAyHny_D4Uc"
+}, {
+  "title" : "GDG on Campus University of Rochester - Rochester, United States",
+  "universityName" : "University of Rochester",
+  "country" : "United States",
+  "fullLocation" : "Rochester, United States, United States",
+  "placeId" : "ChIJB6VZD8a01okR1-HdTNDsR2g"
+}, {
+  "title" : "GDG on Campus University of South Florida - Tampa, United States",
+  "universityName" : "University of South Florida",
+  "country" : "United States",
+  "fullLocation" : "Tampa, United States",
+  "placeId" : "ChIJ0__Gw77HwogRapBRXB509LE"
+}, {
+  "title" : "GDG on Campus University of Toronto - Mississauga, Canada",
+  "universityName" : "University of Toronto",
+  "country" : "Canada",
+  "fullLocation" : "Mississauga, Canada",
+  "placeId" : "ChIJm_0x87g0K4gR93ZadrabHY0"
+}, {
+  "title" : "GDG on Campus University of Toronto, Scarborough Campus - Toronto, Canada",
+  "universityName" : "University of Toronto, Scarborough Campus",
+  "country" : "Canada",
+  "fullLocation" : "Toronto, Canada",
+  "placeId" : "ChIJf9Wrt2_a1IkRrHuIaQFuZbs"
+}, {
+  "title" : "GDG on Campus University of Toronto, St. George Campus - Toronto, Canada",
+  "universityName" : "University of Toronto, St. George Campus",
+  "country" : "Canada",
+  "fullLocation" : "Toronto, Canada",
+  "placeId" : "ChIJm_0x87g0K4gR93ZadrabHY0"
+}, {
+  "title" : "GDG on Campus University of Virginia - Charlottesville, United States",
+  "universityName" : "University of Virginia",
+  "country" : "United States",
+  "fullLocation" : "Charlottesville, United States, United States",
+  "placeId" : "ChIJ3cRJt0iGs4kRRliLzMIIUUA"
+}, {
+  "title" : "GDG on Campus University of Washington - Seattle, United States",
+  "universityName" : "University of Washington",
+  "country" : "United States",
+  "fullLocation" : "Seattle, United States",
+  "placeId" : "ChIJ6zWFnZIUkFQRoyu4AXksdGs"
+}, {
+  "title" : "GDG on Campus University of Washington Bothell - Bothell, United States",
+  "universityName" : "University of Washington Bothell",
+  "country" : "United States",
+  "fullLocation" : "Bothell, United States",
+  "placeId" : "ChIJ46EtkWAOkFQR3lAb3sQTyMM"
+}, {
+  "title" : "GDG on Campus University of Waterloo - Waterloo, Canada",
+  "universityName" : "University of Waterloo",
+  "country" : "Canada",
+  "fullLocation" : "Waterloo, Canada",
+  "placeId" : "ChIJ_8ztAq32K4gRF44mljnynd0"
+}, {
+  "title" : "GDG on Campus University of Wisconsin-Madison - Madison, United States",
+  "universityName" : "University of Wisconsin-Madison",
+  "country" : "United States",
+  "fullLocation" : "Madison, United States",
+  "placeId" : "ChIJHUh_CpWsB4gRZDpzkeBl4Mk"
+}, {
+  "title" : "GDG on Campus University of Balamand - Souq El Gharb, Lebanon",
+  "universityName" : "University of Balamand",
+  "country" : "Lebanon",
+  "fullLocation" : "Souq El Gharb, Lebanon, Lebanon",
+  "placeId" : "ChIJ91cG8o76IRURjNIGCSGk11Q"
+}, {
+  "title" : "GDG on Campus University of Batna 2 - Batna, Algeria",
+  "universityName" : "University of Batna 2",
+  "country" : "Algeria",
+  "fullLocation" : "Batna, Algeria, Algeria",
+  "placeId" : "ChIJf2HaMbIF9BIRZaC_s_bKXqE"
+}, {
+  "title" : "GDG on Campus University of Belgrade - Belgrade, Serbia",
+  "universityName" : "University of Belgrade",
+  "country" : "Serbia",
+  "fullLocation" : "Belgrade, Serbia",
+  "placeId" : "ChIJv_ehNbN6WkcROV6HX6xX5Vc"
+}, {
+  "title" : "GDG on Campus University of Bristol - Bristol, United Kingdom",
+  "universityName" : "University of Bristol",
+  "country" : "United Kingdom",
+  "fullLocation" : "Bristol, United Kingdom",
+  "placeId" : "ChIJ-5LS39uNcUgRVm1Lm_hgCy8"
+}, {
+  "title" : "GDG on Campus University of Business and Technology - Jeddah, Saudi Arabia",
+  "universityName" : "University of Business and Technology",
+  "country" : "Saudi Arabia",
+  "fullLocation" : "Jeddah, Saudi Arabia",
+  "placeId" : "ChIJLaS51nJbwokR5MQ-kQ6ITBQ"
+}, {
+  "title" : "GDG on Campus University of Central Asia - Naryn, Kyrgyzstan",
+  "universityName" : "University of Central Asia",
+  "country" : "Kyrgyzstan",
+  "fullLocation" : "Naryn, Kyrgyzstan",
+  "placeId" : "ChIJo6JNSSfInjgRNqL4Wx78no0"
+}, {
+  "title" : "GDG on Campus University of Debrecen - Debrecen, Hungary",
+  "universityName" : "University of Debrecen",
+  "country" : "Hungary",
+  "fullLocation" : "Debrecen, Hungary",
+  "placeId" : "ChIJOyOSmvMNR0cRpYBwOMwyixU"
+}, {
+  "title" : "GDG on Campus University of Girona - Girona, Spain",
+  "universityName" : "University of Girona",
+  "country" : "Spain",
+  "fullLocation" : "Girona, Spain",
+  "placeId" : "ChIJZ9O9xOfmuhIRrxsArCdx55g"
+}, {
+  "title" : "GDG on Campus University of Hassan 1 - National School of Applied Sciences - Berrechid, Morocco",
+  "universityName" : "University of Hassan 1",
+  "country" : "Morocco",
+  "fullLocation" : "Berrechid, Morocco",
+  "placeId" : "ChIJpelbVi6qx4kRceNYY0T-LsA"
+}, {
+  "title" : "GDG on Campus University of Information Technology and Communications - Baghdad, Iraq",
+  "universityName" : "University of Information Technology and Communications",
+  "country" : "Iraq",
+  "fullLocation" : "Baghdad, Iraq",
+  "placeId" : "ChIJ4bToIOF_VxURSWfJne6G5mE"
+}, {
+  "title" : "GDG on Campus University of Kragujevac - Kragujevac, Serbia",
+  "universityName" : "University of Kragujevac",
+  "country" : "Serbia",
+  "fullLocation" : "Kragujevac, Serbia",
+  "placeId" : "ChIJgzgsjishV0cR0isPEcifwYw"
+}, {
+  "title" : "GDG on Campus University of Kufa - Kufa, Iraq",
+  "universityName" : "University of Kufa",
+  "country" : "Iraq",
+  "fullLocation" : "Kufa, Iraq",
+  "placeId" : "ChIJy-ZSj0vXXhURTWSFJa88HRY"
+}, {
+  "title" : "GDG on Campus University of Macedonia - Thessaloniki, Greece",
+  "universityName" : "University of Macedonia",
+  "country" : "Greece",
+  "fullLocation" : "Thessaloniki, Greece",
+  "placeId" : "ChIJ11OVvf44qBQRyWHJxwZC-9o"
+}, {
+  "title" : "GDG on Campus University of Malta - Msida, Malta",
+  "universityName" : "University of Malta",
+  "country" : "Malta",
+  "fullLocation" : "Msida, Malta",
+  "placeId" : "ChIJG4qkik1FDhMRgc-tbD-ZmEM"
+}, {
+  "title" : "GDG on Campus University of Mannheim - Mannheim, Germany",
+  "universityName" : "University of Mannheim",
+  "country" : "Germany",
+  "fullLocation" : "Mannheim, Germany",
+  "placeId" : "ChIJ5eYExiLMl0cRofJToKEOogA"
+}, {
+  "title" : "GDG on Campus University of Porto - Porto, Portugal",
+  "universityName" : "University of Porto",
+  "country" : "Portugal",
+  "fullLocation" : "Porto, Portugal",
+  "placeId" : "ChIJxTgChOJkJA0Rd-wAeHgZcUM"
+}, {
+  "title" : "GDG on Campus University of Primorska - Koper, Slovenia",
+  "universityName" : "University of Primorska",
+  "country" : "Slovenia",
+  "fullLocation" : "Koper, Slovenia",
+  "placeId" : "ChIJBVr-Chppe0cRZ2ixG8hNorA"
+}, {
+  "title" : "GDG on Campus University of Sharjah - Sharjah, United Arab Emirates",
+  "universityName" : "University of Sharjah",
+  "country" : "United Arab Emirates",
+  "fullLocation" : "Sharjah, United Arab Emirates",
+  "placeId" : "ChIJp9ZaY5tfXz4Rq_BfeTuZZ2g"
+}, {
+  "title" : "GDG on Campus University of Southampton - Southampton, UK",
+  "universityName" : "University of Southampton",
+  "country" : "United Kingdom",
+  "fullLocation" : "Southampton, United Kingdom",
+  "placeId" : "ChIJv84Eg_VzdEgRZXMCKnm8ylA"
+}, {
+  "title" : "GDG on Campus University of Strathclyde - Glasgow, UK",
+  "universityName" : "University of Strathclyde",
+  "country" : "United Kingdom",
+  "fullLocation" : "Glasgow, United Kingdom",
+  "placeId" : "ChIJtaRY9h1EiEgRvq3jwDM9FGA"
+}, {
+  "title" : "GDG on Campus University of Valladolid - Valladolid, Spain",
+  "universityName" : "University of Valladolid",
+  "country" : "Spain",
+  "fullLocation" : "Valladolid, Spain",
+  "placeId" : "ChIJQ3voe68SRw0RMsmQOvIw8cg"
+}, {
+  "title" : "GDG on Campus University of Abuja - Abuja, Nigeria",
+  "universityName" : "University of Abuja",
+  "country" : "Nigeria",
+  "fullLocation" : "Abuja, Nigeria",
+  "placeId" : "ChIJUXcHeH57ThAR87R7eAKzU4g"
+}, {
+  "title" : "GDG on Campus University of Benin - Benin, Nigeria",
+  "universityName" : "University of Benin",
+  "country" : "Nigeria",
+  "fullLocation" : "Benin, Nigeria",
+  "placeId" : "ChIJo05swtMtRxARChdvyqDAif8"
+}, {
+  "title" : "GDG on Campus University of Botswana - Gaborone, Botswana",
+  "universityName" : "University of Botswana",
+  "country" : "Botswana",
+  "fullLocation" : "Gaborone, Botswana",
+  "placeId" : "ChIJn0mzkJBbux4RTPbOw5HSc4c"
+}, {
+  "title" : "GDG on Campus University of Buea - Buea, Cameroon",
+  "universityName" : "University of Buea",
+  "country" : "Cameroon",
+  "fullLocation" : "Buea, Cameroon",
+  "placeId" : "ChIJQzTKNpIxYRARd0ST6rDHtr4"
+}, {
+  "title" : "GDG on Campus University of Cape Coast - Cape Coast, Ghana",
+  "universityName" : "University of Cape Coast",
+  "country" : "Ghana",
+  "fullLocation" : "Cape Coast, Ghana",
+  "placeId" : "ChIJaYV5_Nb-3Q8RNobkL6DCMXU"
+}, {
+  "title" : "GDG on Campus University of Cape Town - Cape Town, South Africa",
+  "universityName" : "University of Cape Town",
+  "country" : "South Africa",
+  "fullLocation" : "Cape Town, South Africa",
+  "placeId" : "ChIJAbR4tyJdzB0RTvq1GdzkkF8"
+}, {
+  "title" : "GDG on Campus University of Dar es Salaam - Dar es Salaam, Tanzania",
+  "universityName" : "University of Dar es Salaam",
+  "country" : "Tanzania",
+  "fullLocation" : "Dar Es Salaam, Tanzania",
+  "placeId" : "ChIJhd3WiqBPXBgRiD3LZ7r7Gg8"
+}, {
+  "title" : "GDG on Campus University of Eastern Africa, Baraton - Eldoret, Kenya",
+  "universityName" : "University of Eastern Africa, Baraton",
+  "country" : "Kenya",
+  "fullLocation" : "Baraton, Kenya",
+  "placeId" : "ChIJMz2n3pgQLxgRxwMDSkg4LOQ"
+}, {
+  "title" : "GDG on Campus University of Education, Winneba - Winneba, Ghana",
+  "universityName" : "University of Education, Winneba",
+  "country" : "Ghana",
+  "fullLocation" : "Winneba, Ghana, Ghana",
+  "placeId" : "ChIJn4aDj0w13g8Ryu6z-1SkFmM"
+}, {
+  "title" : "GDG on Campus University of Eldoret - Eldoret, Kenya",
+  "universityName" : "University of Eldoret",
+  "country" : "Kenya",
+  "fullLocation" : "Eldoret, Kenya",
+  "placeId" : "ChIJ6W3_JXcBgRcR3kqZAulT19c"
+}, {
+  "title" : "GDG on Campus University of Embu - Embu, Kenya",
+  "universityName" : "University of Embu",
+  "country" : "Kenya",
+  "fullLocation" : "Embu, Kenya",
+  "placeId" : "ChIJi6ijeHgtJhgRVZB2EFrq_D0"
+}, {
+  "title" : "GDG on Campus University of Eswatini - Kwaluseni, Eswatini",
+  "universityName" : "University of Eswatini",
+  "country" : "Eswatini",
+  "fullLocation" : "Kwaluseni, Eswatini",
+  "placeId" : "ChIJ578AR9RL7x4R4gZKKnSruMU"
+}, {
+  "title" : "GDG on Campus University of Ghana - Accra, Ghana",
+  "universityName" : "University of Ghana",
+  "country" : "Ghana",
+  "fullLocation" : "Accra, Ghana",
+  "placeId" : "ChIJk77qun6c3w8RoMGYdOZXgtc"
+}, {
+  "title" : "GDG on Campus University of Ibadan - Ibadan, Nigeria",
+  "universityName" : "University of Ibadan",
+  "country" : "Nigeria",
+  "fullLocation" : "Ibadan, Nigeria",
+  "placeId" : "ChIJwam6OTLtORARXIe_fxH0nBk"
+}, {
+  "title" : "GDG on Campus University of Ilorin - Ilorin, Nigeria",
+  "universityName" : "University of Ilorin",
+  "country" : "Nigeria",
+  "fullLocation" : "Ilorin, Nigeria",
+  "placeId" : "ChIJL3RbqMJSNhARytZhn68RML8"
+}, {
+  "title" : "GDG on Campus University of Jos - Jos, Nigeria",
+  "universityName" : "University of Jos",
+  "country" : "Nigeria",
+  "fullLocation" : "Jos, Nigeria",
+  "placeId" : "ChIJtb2ListzUxARTcW9dRPI2vo"
+}, {
+  "title" : "GDG on Campus University of Lagos - Lagos, Nigeria",
+  "universityName" : "University of Lagos",
+  "country" : "Nigeria",
+  "fullLocation" : "Lagos, Nigeria",
+  "placeId" : "ChIJdT5NwCSNOxARBOATvqbxR3M"
+}, {
+  "title" : "GDG on Campus University of Mauritius - Réduit, Mauritius",
+  "universityName" : "University of Mauritius",
+  "country" : "Mauritius",
+  "fullLocation" : "Réduit, Mauritius",
+  "placeId" : "ChIJVVVVlehafCERl6LO1KPE9Gw"
+}, {
+  "title" : "GDG on Campus University of Mines and Technology - Tarkwa, Ghana",
+  "universityName" : "University of Mines and Technology",
+  "country" : "Ghana",
+  "fullLocation" : "Tarkwa, Ghana",
+  "placeId" : "ChIJG8ekRA5u3Q8RV_CcCvCPDzc"
+}, {
+  "title" : "GDG on Campus University of Nairobi - Nairobi, Kenya",
+  "universityName" : "University of Nairobi",
+  "country" : "Kenya",
+  "fullLocation" : "Nairobi, Kenya",
+  "placeId" : "ChIJAXyPwa4RLxgRN51NDgXdIr4"
+}, {
+  "title" : "GDG on Campus University of Nigeria - Nsukka, Nigeria",
+  "universityName" : "University of Nigeria",
+  "country" : "Nigeria",
+  "fullLocation" : "Nsukka, Nigeria",
+  "placeId" : "ChIJJZf__t7nRBARfQ5mMIyiuP8"
+}, {
+  "title" : "GDG on Campus University of Port Harcourt - Choba, Nigeria",
+  "universityName" : "University of Port Harcourt",
+  "country" : "Nigeria",
+  "fullLocation" : "Choba, Nigeria",
+  "placeId" : "ChIJM8T4e3_aaRAR3QaWQo7AZWY"
+}, {
+  "title" : "GDG on Campus University of Professional Studies - Accra, Ghana",
+  "universityName" : "University of Professional Studies",
+  "country" : "Ghana",
+  "fullLocation" : "Accra, Ghana",
+  "placeId" : "ChIJGShpNZSc3w8R1hrCiFnmDOk"
+}, {
+  "title" : "GDG on Campus University of Uyo - Uyo, Nigeria",
+  "universityName" : "University of Uyo",
+  "country" : "Nigeria",
+  "fullLocation" : "Uyo, Nigeria",
+  "placeId" : "ChIJV2GsXQhXXRAR4dSdgHK3Phw"
+}, {
+  "title" : "GDG on Campus University of Zimbabwe - Harare, Zimbabwe",
+  "universityName" : "University of Zimbabwe",
+  "country" : "Zimbabwe",
+  "fullLocation" : "Harare, Zimbabwe",
+  "placeId" : "ChIJDwcYMWelMRkRcebZ7od3ELk"
+}, {
+  "title" : "GDG on Campus University College of Engineering - Hyderabad, India",
+  "universityName" : "University College of Engineering",
+  "country" : "India",
+  "fullLocation" : "Hyderabad, India",
+  "placeId" : "ChIJH4dCHtlWUzoRYb6WfMeVOsQ"
+}, {
+  "title" : "GDG on Campus University Institute of Engineering &amp; Technology, Punjab University - Chandigarh, India",
+  "universityName" : "University Institute of Engineering &amp; Technology, Punjab University",
+  "country" : "India",
+  "fullLocation" : "Chandigarh, India",
+  "placeId" : null
+}, {
+  "title" : "GDG on Campus University Institute of Engineering and Technology, Kurukshetra University - Kurukshetra, India",
+  "universityName" : "University Institute of Engineering and Technology, Kurukshetra University",
+  "country" : "India",
+  "fullLocation" : "Kurukshetra, India",
+  "placeId" : "ChIJIw5BybE4DjkRaXvNXZZALv8"
+}, {
+  "title" : "GDG on Campus University School of Automation &amp; Robotics - Delhi, India",
+  "universityName" : "University School of Automation &amp; Robotics",
+  "country" : "India",
+  "fullLocation" : "Delhi, India",
+  "placeId" : "ChIJN9DCaS_7DDkRJS9BrJML49E"
+}, {
+  "title" : "GDG on Campus University School of Information , Communication &amp; Technology - Delhi, India",
+  "universityName" : "University School of Information , Communication &amp; Technology",
+  "country" : "India",
+  "fullLocation" : "Delhi, India",
+  "placeId" : "ChIJ5fdrrq8aDTkRe3wa7eZKNBM"
+}, {
+  "title" : "GDG on Campus University Visvesvaraya College of Engineering - Bangalore, India",
+  "universityName" : "University Visvesvaraya College of Engineering",
+  "country" : "India",
+  "fullLocation" : "Bangalore, India",
+  "placeId" : "ChIJ8Wr8_HIWrjsReRkjyRfFLZw"
+}, {
+  "title" : "GDG on Campus University of Aizu - Fukushima, Japan",
+  "universityName" : "University of Aizu",
+  "country" : "Japan",
+  "fullLocation" : "Fukushima, Japan",
+  "placeId" : "ChIJexdz3sOsil8RKoZCSQxc2xs"
+}, {
+  "title" : "GDG on Campus University of Calcutta - Kolkata, India",
+  "universityName" : "University of Calcutta",
+  "country" : "India",
+  "fullLocation" : "Kolkata, India",
+  "placeId" : "ChIJz187Ka13AjoRPVUBrMYqw1U"
+}, {
+  "title" : "GDG on Campus University of Central Punjab - Lahore, Pakistan",
+  "universityName" : "University of Central Punjab",
+  "country" : "Pakistan",
+  "fullLocation" : "Lahore, Pakistan",
+  "placeId" : "ChIJW4OxMnQBGTkRHIkFWyqZluM"
+}, {
+  "title" : "GDG on Campus University of Education - Lahore, Pakistan",
+  "universityName" : "University of Education",
+  "country" : "Pakistan",
+  "fullLocation" : "Lahore, Pakistan",
+  "placeId" : "ChIJF6-XrkUBGTkR97kqzbUCH20"
+}, {
+  "title" : "GDG on Campus University of Engineering &amp; Management - Jaipur, India",
+  "universityName" : "University of Engineering &amp; Management",
+  "country" : "India",
+  "fullLocation" : "Jaipur, India",
+  "placeId" : "ChIJ_6dZgz2tB4gREgSKKZ9n2P8"
+}, {
+  "title" : "GDG on Campus University of Engineering &amp; Management - Kolkata, India",
+  "universityName" : "University of Engineering &amp; Management",
+  "country" : "India",
+  "fullLocation" : "Kolkata, India",
+  "placeId" : "ChIJ_6dZgz2tB4gREgSKKZ9n2P8"
+}, {
+  "title" : "GDG on Campus University of Engineering and Technology - Peshawar, Pakistan",
+  "universityName" : "University of Engineering and Technology",
+  "country" : "Pakistan",
+  "fullLocation" : "Peshawar, Pakistan",
+  "placeId" : "ChIJwdBuPScbGTkRRAkgok7Iyk0"
+}, {
+  "title" : "GDG on Campus University of Engineering and Technology, Lahore - Lahore, Pakistan",
+  "universityName" : "University of Engineering and Technology, Lahore",
+  "country" : "Pakistan",
+  "fullLocation" : "Lahore, Pakistan",
+  "placeId" : "ChIJFUE54rkfGTkRUIUy2F0gR9k"
+}, {
+  "title" : "GDG on Campus University of Information Technology - Ho Chi Minh City, Vietnam",
+  "universityName" : "University of Information Technology",
+  "country" : "Vietnam",
+  "fullLocation" : "Ho Chi Minh City, Vietnam",
+  "placeId" : "ChIJv9WaflgndTERkTy-yPlm-go"
+}, {
+  "title" : "GDG on Campus University of Karachi - Karachi, Pakistan",
+  "universityName" : "University of Karachi",
+  "country" : "Pakistan",
+  "fullLocation" : "Karachi, Pakistan",
+  "placeId" : "ChIJrxVGC5g4sz4RzRkB_fDkaOk"
+}, {
+  "title" : "GDG on Campus University of Management and Technology - Lahore, Pakistan",
+  "universityName" : "University of Management and Technology",
+  "country" : "Pakistan",
+  "fullLocation" : "Lahore, Pakistan",
+  "placeId" : "ChIJPYpnExTqHjkRbCLILFWNfRM"
+}, {
+  "title" : "GDG on Campus University of Melbourne - Melbourne, Australia",
+  "universityName" : "University of Melbourne",
+  "country" : "Australia",
+  "fullLocation" : "Parkville, Australia",
+  "placeId" : "ChIJSyUHXNRC1moRbf8lt-Jjy-o"
+}, {
+  "title" : "GDG on Campus University of New South Wales - Sydney, Australia",
+  "universityName" : "University of New South Wales",
+  "country" : "Australia",
+  "fullLocation" : "Kesington, Australia",
+  "placeId" : "ChIJp8ECA4uxEmsRoAd6A2l9AR0"
+}, {
+  "title" : "GDG on Campus University of Petroleum and Energy Studies - Dehradun, India",
+  "universityName" : "University of Petroleum and Energy Studies",
+  "country" : "India",
+  "fullLocation" : "Dehradun, India",
+  "placeId" : "ChIJNRd8DYnUCDkRPI4jTDKu0yI"
+}, {
+  "title" : "GDG on Campus University of San Carlos - Cebu, Philippines",
+  "universityName" : "University of San Carlos",
+  "country" : "Philippines",
+  "fullLocation" : "Cebu, Philippines",
+  "placeId" : "ChIJhcRHjPiZqTMRTmjIJd9cFOs"
+}, {
+  "title" : "GDG on Campus University of Science and Technology of Southern Philippines - Cagayan De Oro City, Philippines",
+  "universityName" : "University of Science and Technology of Southern Philippines",
+  "country" : "Philippines",
+  "fullLocation" : "Cagayan De Oro City, Philippines",
+  "placeId" : "ChIJx-haysPy_zIRkUS4ioYFCIg"
+}, {
+  "title" : "GDG on Campus University of St. La Salle - Bacolod, Philippines",
+  "universityName" : "University of St. La Salle",
+  "country" : "Philippines",
+  "fullLocation" : "Bacolod, Philippines",
+  "placeId" : "ChIJCd56LwvRrjMRIuE5ua5ExHM"
+}, {
+  "title" : "GDG on Campus University of Tokyo - Tokyo, Japan",
+  "universityName" : "University of Tokyo",
+  "country" : "Japan",
+  "fullLocation" : "Bunkyo City, Japan",
+  "placeId" : "ChIJo24g-i-MGGARlboTg0kH5DA"
+}, {
+  "title" : "GDG on Campus University of the Immaculate Conception - Davao, Philippines",
+  "universityName" : "University of the Immaculate Conception",
+  "country" : "Philippines",
+  "fullLocation" : "Davao, Philippines",
+  "placeId" : "ChIJH7-_xE9s-TIR1QfOGzRvQkE"
+}, {
+  "title" : "GDG on Campus University of the Philippines Manila - Manila, Philippines",
+  "universityName" : "University of the Philippines Manila",
+  "country" : "Philippines",
+  "fullLocation" : "Manila, Philippines",
+  "placeId" : "ChIJD61MXSjKlzMRdHsdjy4ii04"
+}, {
+  "title" : "GDG on Campus University of the Sunshine Coast - Sunshine Coast, Australia",
+  "universityName" : "University of the Sunshine Coast",
+  "country" : "Australia",
+  "fullLocation" : "Sunshine Coast, Australia, Australia",
+  "placeId" : "ChIJMxuSxqadk2sRXM1il8QhqzQ"
+}, {
+  "title" : "GDG on Campus IE University - Madrid, Spain",
+  "universityName" : "IE University",
+  "country" : "Spain",
+  "fullLocation" : "Madrid, Spain",
+  "placeId" : "ChIJAaxR5MEoQg0RamLtwVbJnaU"
+}, {
+  "title" : "GDG on Campus RV University - Bengaluru, India",
+  "universityName" : "RV University",
+  "country" : "India",
+  "fullLocation" : "Bengaluru, India",
+  "placeId" : "ChIJuaQYbx2trzsRv6DrJBosCMY"
+}, {
+  "title" : "GDG on Campus SR University - Warangal, India",
+  "universityName" : "SR University",
+  "country" : "India",
+  "fullLocation" : "Warangal, India, India",
+  "placeId" : "ChIJTxsW4dRLMzoRi5UYDZrqTX8"
+}, {
+  "title" : "GDG on Campus VinUniversity - Hanoi, Vietnam",
+  "universityName" : "VinUniversity",
+  "country" : "Vietnam",
+  "fullLocation" : "Hanoi, Vietnam",
+  "placeId" : "ChIJxULzCeivNTER2xGkG7aQYhM"
+}, {
+  "title" : "GDG on Campus The University of British Columbia - Vancouver, Canada",
+  "universityName" : "The University of British Columbia",
+  "country" : "Canada",
+  "fullLocation" : "Vancouver, Canada",
+  "placeId" : "ChIJAx7UL8xyhlQR86Iqc-fUncc"
+}, {
+  "title" : "GDG on Campus The University of Oklahoma - Norman, United States",
+  "universityName" : "The University of Oklahoma",
+  "country" : "United States",
+  "fullLocation" : "Norman, United States, United States",
+  "placeId" : "ChIJu1B_5itosocRVB4EKYPPvko"
+}, {
+  "title" : "GDG on Campus The University of Southern Mississippi - Hattiesburg, United States",
+  "universityName" : "The University of Southern Mississippi",
+  "country" : "United States",
+  "fullLocation" : "Hattiesburg, United States",
+  "placeId" : "ChIJ11wV3pfenIgREh-jedFnSLs"
+}, {
+  "title" : "GDG on Campus The University of Texas at Austin - Austin, United States",
+  "universityName" : "The University of Texas at Austin",
+  "country" : "United States",
+  "fullLocation" : "Austin, United States",
+  "placeId" : "ChIJt8-EJZu1RIYR3iFKF0_uMYE"
+}, {
+  "title" : "GDG on Campus The University of Texas at Dallas - Richardson, United States",
+  "universityName" : "The University of Texas at Dallas",
+  "country" : "United States",
+  "fullLocation" : "Richardson, United States",
+  "placeId" : "ChIJpUpeif8hTIYRMROq6TKLCdk"
+}, {
+  "title" : "GDG on Campus The University of Texas at El Paso - El Paso, United States",
+  "universityName" : "The University of Texas at El Paso",
+  "country" : "United States",
+  "fullLocation" : "El Paso, United States",
+  "placeId" : "ChIJ12KA7lpY54YRvOw3ZC-V-tE"
+}, {
+  "title" : "GDG on Campus Koç University - Istanbul, Türkiye",
+  "universityName" : "Koç University",
+  "country" : "Türkiye",
+  "fullLocation" : "Istanbul, Türkiye",
+  "placeId" : "ChIJLx5P-5Pgn0ARUFOEXCiJG7U"
+}, {
+  "title" : "GDG on Campus MEF University - Maslak, Türkiye",
+  "universityName" : "MEF University",
+  "country" : "Türkiye",
+  "fullLocation" : "Maslak, Türkiye",
+  "placeId" : "ChIJsWLFqc-1yhQR1oVuVidjT9k"
+}, {
+  "title" : "GDG on Campus PDP University - Tashkent, Uzbekistan",
+  "universityName" : "PDP University",
+  "country" : "Uzbekistan",
+  "fullLocation" : "Tashkent, Uzbekistan, Uzbekistan",
+  "placeId" : "ChIJFzkx6oNhrjgRDNI013pgWdw"
+}, {
+  "title" : "GDG on Campus TED University - Ankara, Türkiye",
+  "universityName" : "TED University",
+  "country" : "Türkiye",
+  "fullLocation" : "Ankara, Türkiye",
+  "placeId" : "ChIJ9zokzFNO0xQRmND1RZlBqK8"
+}, {
+  "title" : "GDG on Campus The University of Georgia - Tbilisi, Georgia",
+  "universityName" : "The University of Georgia",
+  "country" : "Georgia",
+  "fullLocation" : "Tbilisi, Georgia",
+  "placeId" : "ChIJNRe2btpyREAR9kiCzb_MfLw"
+}, {
+  "title" : "GDG on Campus The University of Manchester - Manchester, United Kingdom",
+  "universityName" : "The University of Manchester",
+  "country" : "United Kingdom",
+  "fullLocation" : "Manchester, United Kingdom",
+  "placeId" : "ChIJIaFhiI6xe0gRPPt-xlAzuXw"
+}, {
+  "title" : "GDG on Campus ICT University - Yaoundé, Cameroon",
+  "universityName" : "ICT University",
+  "country" : "Cameroon",
+  "fullLocation" : "Yaoundé, Cameroon",
+  "placeId" : "ChIJm1-Bh3vIixAR-fB6x0K3zUI"
+}, {
+  "title" : "GDG on Campus KCA University - Nairobi, Kenya",
+  "universityName" : "KCA University",
+  "country" : "Kenya",
+  "fullLocation" : "Nairobi, Kenya",
+  "placeId" : "ChIJY3NEHesXLxgR2h_w3JvSohc"
+}, {
+  "title" : "GDG on Campus Moi University - Eldoret, Kenya",
+  "universityName" : "Moi University",
+  "country" : "Kenya",
+  "fullLocation" : "Eldoret, Kenya",
+  "placeId" : "ChIJJRshS4_1gBcRzkr6by-Hw1E"
+}, {
+  "title" : "GDG on Campus The University of Bamenda - Bambili, Cameroon",
+  "universityName" : "The University of Bamenda",
+  "country" : "Cameroon",
+  "fullLocation" : "Bamenda, Cameroon",
+  "placeId" : "ChIJV3ICaIA_XxARvIFZr-nNzzU"
+}, {
+  "title" : "GDG on Campus Air University - Islamabad, Pakistan",
+  "universityName" : "Air University",
+  "country" : "Pakistan",
+  "fullLocation" : "Islamabad, Pakistan",
+  "placeId" : "ChIJQ4LUZ1m-3zgRfmjEYsWQLMs"
+}, {
+  "title" : "GDG on Campus DAV University - Jalandhar, India",
+  "universityName" : "DAV University",
+  "country" : "India",
+  "fullLocation" : "Jalandhar, India, India",
+  "placeId" : "ChIJxUWE4zRRGjkRkqClslewpoo"
+}, {
+  "title" : "GDG on Campus FPT University - Ho Chi Minh City, Vietnam",
+  "universityName" : "FPT University",
+  "country" : "Vietnam",
+  "fullLocation" : "Ho Chi Minh City, Vietnam",
+  "placeId" : "ChIJGT99DsarNTER9MurtdDX6Ss"
+}, {
+  "title" : "GDG on Campus GLA University - Mathura, India",
+  "universityName" : "GLA University",
+  "country" : "India",
+  "fullLocation" : "Mathura, India",
+  "placeId" : "ChIJOcD_e-RsczkRQWMsqT385Q8"
+}, {
+  "title" : "GDG on Campus IPB University - Bogor, Indonesia",
+  "universityName" : "IPB University",
+  "country" : "Indonesia",
+  "fullLocation" : "Bogor, Indonesia",
+  "placeId" : "ChIJnaSrlLLEaS4ROLx3DwAwNVM"
+}, {
+  "title" : "GDG on Campus JIS University - Kolkata, India",
+  "universityName" : "JIS University",
+  "country" : "India",
+  "fullLocation" : "Kolkata, India",
+  "placeId" : "ChIJg_1uwEac-DkRmV6CziaaojY"
+}, {
+  "title" : "GDG on Campus NED University of Engineering &amp; Technology - Karachi, Pakistan",
+  "universityName" : "NED University of Engineering &amp; Technology",
+  "country" : "Pakistan",
+  "fullLocation" : "Karachi, Pakistan",
+  "placeId" : "ChIJkUxJ1Lg4sz4RDuyotJftZPg"
+}, {
+  "title" : "GDG on Campus SRM University AP - Amaravati, India",
+  "universityName" : "SRM University AP",
+  "country" : "India",
+  "fullLocation" : "Amaravati, India, India",
+  "placeId" : "ChIJs0R9uFPyNToRGbwq82cpHFk"
+}, {
+  "title" : "GDG on Campus The University of Auckland - Auckland, New Zealand",
+  "universityName" : "The University of Auckland",
+  "country" : "New Zealand",
+  "fullLocation" : "Auckland, New Zealand",
+  "placeId" : "ChIJUyLzg-NHDW0RW56KdR_2Sb0"
+}, {
+  "title" : "GDG on Campus The University of Hong Kong  - Hong Kong, Hong Kong",
+  "universityName" : "The University of Hong Kong",
+  "country" : "Hong Kong SAR",
+  "fullLocation" : "Hong Kong, Hong Kong, Hong Kong SAR",
+  "placeId" : "ChIJlzW0J4T_AzQR2MhvzdP1SCw"
+}, {
+  "title" : "GDG on Campus The University of Sydney - Sydney, Australia",
+  "universityName" : "The University of Sydney",
+  "country" : "Australia",
+  "fullLocation" : "Sydney, Australia",
+  "placeId" : "ChIJ2fGeq9SxEmsRwAd6A2l9AR0"
+}, {
+  "title" : "GDG on Campus Pace University - New York, United States",
+  "universityName" : "Pace University",
+  "country" : "United States",
+  "fullLocation" : "New York, United States, United States",
+  "placeId" : "ChIJR7SnMP5YwokRHx_9pfBVCoo"
+}, {
+  "title" : "GDG on Campus Soka University of America - Aliso Viejo, United States",
+  "universityName" : "Soka University of America",
+  "country" : "United States",
+  "fullLocation" : "Aliso Viejo, United States, United States",
+  "placeId" : "ChIJ4-U6f2Dv3IARvWZ8KtpaRow"
+}, {
+  "title" : "GDG on Campus Ajou University in Tashkent - Tashkent, Uzbekistan",
+  "universityName" : "Ajou University in Tashkent",
+  "country" : "Uzbekistan",
+  "fullLocation" : "Tashkent, Uzbekistan",
+  "placeId" : "ChIJwWYqSX5frjgR2U572MwndAc"
+}, {
+  "title" : "GDG on Campus Inha University in Tashkent - Tashkent, Uzbekistan",
+  "universityName" : "Inha University in Tashkent",
+  "country" : "Uzbekistan",
+  "fullLocation" : "Tashkent, Uzbekistan",
+  "placeId" : "ChIJ6dDUjor0rjgRuOdy_O-rcjc"
+}, {
+  "title" : "GDG on Campus Misr University for Science &amp; Technology - 6th of October, Egypt",
+  "universityName" : "Misr University for Science &amp; Technology",
+  "country" : "Egypt",
+  "fullLocation" : "6Th Of October, Egypt",
+  "placeId" : "ChIJOc4oJT5XWBQRGUO923UD6_A"
+}, {
+  "title" : "GDG on Campus Nile University - El Sheikh Zayed, Egypt",
+  "universityName" : "Nile University",
+  "country" : "Egypt",
+  "fullLocation" : "First Al Sheikh Zayed, Egypt",
+  "placeId" : "ChIJP6LLuVRXWBQRhj5_qKAJvN8"
+}, {
+  "title" : "GDG on Campus Suez University - Suez, Egypt",
+  "universityName" : "Suez University",
+  "country" : "Egypt",
+  "fullLocation" : "Suez, Egypt, Egypt",
+  "placeId" : "ChIJqy5gZRsvVhQRQMJXHuDaPlk"
+}, {
+  "title" : "GDG on Campus TOBB University of Economics &amp; Technology - Ankara, Türkiye",
+  "universityName" : "TOBB University of Economics &amp; Technology",
+  "country" : "Türkiye",
+  "fullLocation" : "Ankara, Türkiye",
+  "placeId" : null
+}, {
+  "title" : "GDG on Campus Taif University, Men Campus - Taif, Saudi Arabia",
+  "universityName" : "Taif University, Men Campus",
+  "country" : "Saudi Arabia",
+  "fullLocation" : "Taif, Saudi Arabia",
+  "placeId" : "ChIJaRJiYg0v6hURvNmmxcInDEg"
+}, {
+  "title" : "GDG on Campus Meru University of Science &amp; Technology - Meru, Kenya",
+  "universityName" : "Meru University of Science &amp; Technology",
+  "country" : "Kenya",
+  "fullLocation" : "Meru, Kenya",
+  "placeId" : "ChIJFxVcfZY8iBcRvUfq3_Tb4ZQ"
+}, {
+  "title" : "GDG on Campus Chuo University - Ichigaya Tamachi campus - Tokyo, Japan",
+  "universityName" : "Chuo University",
+  "country" : "Japan",
+  "fullLocation" : "Hachioji, Japan",
+  "placeId" : "ChIJndVYquLiGGARGkmEVqd9GTw"
+}, {
+  "title" : "GDG on Campus City University of Hong Kong - Kowloon Tong, Hong Kong",
+  "universityName" : "City University of Hong Kong",
+  "country" : "Hong Kong SAR",
+  "fullLocation" : "Kowloon Tong, Hong Kong SAR",
+  "placeId" : "ChIJNe_zADQHBDQRWakL-09wYes"
+}, {
+  "title" : "GDG on Campus GIET University - Gunupur, India",
+  "universityName" : "GIET University",
+  "country" : "India",
+  "fullLocation" : "Gunupur, India",
+  "placeId" : "ChIJrVKGj2WWPDoRGfCGhRvLr30"
+}, {
+  "title" : "GDG on Campus IILM University - Greater Noida, India",
+  "universityName" : "IILM University",
+  "country" : "India",
+  "fullLocation" : "Greater Noida, India",
+  "placeId" : "ChIJkXWhFnEfDTkRylFP9o6G8aI"
+}, {
+  "title" : "GDG on Campus Inha University - Incheon, South Korea",
+  "universityName" : "Inha University",
+  "country" : "Korea",
+  "fullLocation" : "Incheon, Korea",
+  "placeId" : "ChIJf_xXMKt5ezURsF6jqwWf4uM"
+}, {
+  "title" : "GDG on Campus RMIT University - Melbourne, Australia",
+  "universityName" : "RMIT University",
+  "country" : "Australia",
+  "fullLocation" : "Melbourne, Australia",
+  "placeId" : "ChIJ-_AvCstC1moRHLPv3M5qbu0"
+}, {
+  "title" : "GDG on Campus SAGE University - Indore, India",
+  "universityName" : "SAGE University",
+  "country" : "India",
+  "fullLocation" : "Indore, India, India",
+  "placeId" : "ChIJn0u6u7NBfDkRRbbCxlkQnJ0"
+}, {
+  "title" : "GDG on Campus Tech University of Korea - Siheung, South Korea",
+  "universityName" : "Tech University of Korea",
+  "country" : "Korea",
+  "fullLocation" : "Siheung, South Korea, Korea",
+  "placeId" : "ChIJX85USQhxezURWcCXvfFtZws"
+}, {
+  "title" : "GDG on Campus Ajman University - Ajman, United Arab Emirates",
+  "universityName" : "Ajman University",
+  "country" : "United Arab Emirates",
+  "fullLocation" : "Ajman, United Arab Emirates, United Arab Emirates",
+  "placeId" : "ChIJVVVVye_39T4RmJoJg0U_tgg"
+}, {
+  "title" : "GDG on Campus Beder University College - Tirana, Albania",
+  "universityName" : "Beder University College",
+  "country" : "Albania",
+  "fullLocation" : "Tirana, Albania, Albania",
+  "placeId" : "ChIJNQgWggwxUBMRNYPcmxCOM_A"
+}, {
+  "title" : "GDG on Campus Benha University - Benha, Egypt",
+  "universityName" : "Benha University",
+  "country" : "Egypt",
+  "fullLocation" : "Benha, Egypt",
+  "placeId" : "ChIJm6N9Y1Df9xQRsxn9tNEE9fw"
+}, {
+  "title" : "GDG on Campus Benha University, Shoubra Faculty of Engineering - Cairo, Egypt",
+  "universityName" : "Benha University, Shoubra Faculty of Engineering",
+  "country" : "Egypt",
+  "fullLocation" : "El Cairo, Egypt",
+  "placeId" : "ChIJwzm1p2UP6IkRYddSoy-FDyw"
+}, {
+  "title" : "GDG on Campus Delta University for Science and Technology - Mansoura, Egypt",
+  "universityName" : "Delta University for Science and Technology",
+  "country" : "Egypt",
+  "fullLocation" : "Mansoura, Egypt",
+  "placeId" : "ChIJo6-f2WJc9xQRoq9F2oRsQpg"
+}, {
+  "title" : "GDG on Campus Doğuş University - Istanbul, Türkiye",
+  "universityName" : "Doğuş University",
+  "country" : "Türkiye",
+  "fullLocation" : "Istanbul, Türkiye",
+  "placeId" : "ChIJwXqdFLHJyhQRbpzurtK4Lmc"
+}, {
+  "title" : "GDG on Campus Düzce University - Düzce, Türkiye",
+  "universityName" : "Düzce University",
+  "country" : "Türkiye",
+  "fullLocation" : "Düzce, Türkiye",
+  "placeId" : "ChIJAQAAABuhnUARze7XNuIRTGs"
+}, {
+  "title" : "GDG on Campus Egypt University of Informatics - Cairo, Egypt",
+  "universityName" : "Egypt University of Informatics",
+  "country" : "Egypt",
+  "fullLocation" : "Cairo, Egypt",
+  "placeId" : "ChIJNbUlCCT1VxQRPYtYAO4Ng0g"
+}, {
+  "title" : "GDG on Campus Epoka University - Tirana, Albania",
+  "universityName" : "Epoka University",
+  "country" : "Albania",
+  "fullLocation" : "Tirana, Albania",
+  "placeId" : "ChIJfSIUjk0sUBMRhmeUqnlowZI"
+}, {
+  "title" : "GDG on Campus Haliç University - Istanbul, Türkiye",
+  "universityName" : "Haliç University",
+  "country" : "Türkiye",
+  "fullLocation" : "Istanbul, Türkiye",
+  "placeId" : "ChIJORzH7vq3yhQRHianp60XtNg"
+}, {
+  "title" : "GDG on Campus Inonu University - Malatya, Türkiye",
+  "universityName" : "Inonu University",
+  "country" : "Türkiye",
+  "fullLocation" : "Malatya, Türkiye",
+  "placeId" : "ChIJe-1-QU84dkARSKNGdkpfE_A"
+}, {
+  "title" : "GDG on Campus Jazan University, Men Campus - Jazan, Saudi Arabia",
+  "universityName" : "Jazan University, Men Campus",
+  "country" : "Saudi Arabia",
+  "fullLocation" : "Jazan, Saudi Arabia",
+  "placeId" : "ChIJPyJxK1wHCBYRM5SsEkvFnVo"
+}, {
+  "title" : "GDG on Campus Jazan University, Women Campus - Jazan, Saudi Arabia",
+  "universityName" : "Jazan University, Women Campus",
+  "country" : "Saudi Arabia",
+  "fullLocation" : "Jazan, Saudi Arabia",
+  "placeId" : "ChIJPyJxK1wHCBYRM5SsEkvFnVo"
+}, {
+  "title" : "GDG on Campus Sudan University of Science &amp; Technology - Khartoum, Sudan",
+  "universityName" : "Sudan University of Science &amp; Technology",
+  "country" : "Sudan",
+  "fullLocation" : "Khartoum, Sudan",
+  "placeId" : "ChIJcyl4A22OjhYRD6QJj3eNv2I"
+}, {
+  "title" : "GDG on Campus Yaşar University - İzmir, Türkiye",
+  "universityName" : "Yaşar University",
+  "country" : "Türkiye",
+  "fullLocation" : "İzmir, Türkiye",
+  "placeId" : "ChIJg0SJuTR9uRQRmWLvl0Kkzgw"
+}, {
+  "title" : "GDG on Campus Zarqa University - Zarqa, Jordan",
+  "universityName" : "Zarqa University",
+  "country" : "Jordan",
+  "fullLocation" : "Zarqa, Jordan",
+  "placeId" : "ChIJmbKnDBhuGxUREPV271EfK74"
+}, {
+  "title" : "GDG on Campus Bowen University - Iwo, Nigeria",
+  "universityName" : "Bowen University",
+  "country" : "Nigeria",
+  "fullLocation" : "Iwo, Nigeria, Nigeria",
+  "placeId" : "ChIJ7bWkyBvbORAREnIUukJGx20"
+}, {
+  "title" : "GDG on Campus Caleb University - Ikorodu, Nigeria",
+  "universityName" : "Caleb University",
+  "country" : "Nigeria",
+  "fullLocation" : "Ikorodu, Nigeria",
+  "placeId" : "ChIJAQAAAE_hOxARacFApNTz2m8"
+}, {
+  "title" : "GDG on Campus Chuka University - Chuka, Kenya",
+  "universityName" : "Chuka University",
+  "country" : "Kenya",
+  "fullLocation" : "Chuka, Kenya",
+  "placeId" : "ChIJtxpbV--5JxgRKrSv_8ETKfo"
+}, {
+  "title" : "GDG on Campus ESTAM University - Cotonou, Benin",
+  "universityName" : "ESTAM University",
+  "country" : "Benin",
+  "fullLocation" : "Segbeya, Benin",
+  "placeId" : "ChIJA6B3FspVIxARr0IqSL2tsoY"
+}, {
+  "title" : "GDG on Campus ISBAT University - Kampala, Uganda",
+  "universityName" : "ISBAT University",
+  "country" : "Uganda",
+  "fullLocation" : "Kampala, Uganda",
+  "placeId" : "ChIJz1ru6L67fRcRLXgMlNDUzK0"
+}, {
+  "title" : "GDG on Campus Kisii University - Kisii, Kenya",
+  "universityName" : "Kisii University",
+  "country" : "Kenya",
+  "fullLocation" : "Kisii, Kenya",
+  "placeId" : "ChIJ8U8WQGg_KxgRcLVG5dLgQIA"
+}, {
+  "title" : "GDG on Campus Amity University - Bengaluru, India",
+  "universityName" : "Amity University",
+  "country" : "India",
+  "fullLocation" : "Bengaluru, India, India",
+  "placeId" : "ChIJG0apgE7kDDkRGo3L1dPILjA"
+}, {
+  "title" : "GDG on Campus Amity University - Chhattisgarh, India",
+  "universityName" : "Amity University",
+  "country" : "India",
+  "fullLocation" : "Chhattisgarh, India",
+  "placeId" : "ChIJG0apgE7kDDkRGo3L1dPILjA"
+}, {
+  "title" : "GDG on Campus Amity University - Gurugram, India",
+  "universityName" : "Amity University",
+  "country" : "India",
+  "fullLocation" : "Gurugram, India",
+  "placeId" : "ChIJG0apgE7kDDkRGo3L1dPILjA"
+}, {
+  "title" : "GDG on Campus Amity University - Mumbai, India",
+  "universityName" : "Amity University",
+  "country" : "India",
+  "fullLocation" : "Mumbai, India",
+  "placeId" : "ChIJG0apgE7kDDkRGo3L1dPILjA"
+}, {
+  "title" : "GDG on Campus Amity University - Noida, India",
+  "universityName" : "Amity University",
+  "country" : "India",
+  "fullLocation" : "Noida, India",
+  "placeId" : "ChIJG0apgE7kDDkRGo3L1dPILjA"
+}, {
+  "title" : "GDG on Campus BINUS University Malang- Malang, Indonesia",
+  "universityName" : "BINUS University Malang- Malang, Indonesia",
+  "country" : "Indonesia",
+  "fullLocation" : "Malang, Indonesia",
+  "placeId" : "ChIJ5VjKu5Yp1i0RTbAm6U_BNEI"
+}, {
+  "title" : "GDG on Campus BINUS University Online - Jakarta, Indonesia",
+  "universityName" : "BINUS University Online",
+  "country" : "Indonesia",
+  "fullLocation" : "Kebon Jeruk, Indonesia",
+  "placeId" : null
+}, {
+  "title" : "GDG on Campus Bicol University - Legazpi City, Philippines",
+  "universityName" : "Bicol University",
+  "country" : "Philippines",
+  "fullLocation" : "Legazpi City, Philippines",
+  "placeId" : "ChIJ_yp__eMDoTMRm9KFD3UKzCo"
+}, {
+  "title" : "GDG on Campus Binus University Bandung - Bandung, Indonesia",
+  "universityName" : "Binus University Bandung",
+  "country" : "Indonesia",
+  "fullLocation" : "Jawa Barat, Indonesia",
+  "placeId" : "ChIJecA45hbmaC4Rhdy1VdluDeU"
+}, {
+  "title" : "GDG on Campus Binus University International - Jakarta, Indonesia",
+  "universityName" : "Binus University International",
+  "country" : "Indonesia",
+  "fullLocation" : "Jakarta, Indonesia",
+  "placeId" : "ChIJA4i9zEfxaS4R6AQCg_jrBHc"
+}, {
+  "title" : "GDG on Campus Chiba University - Chiba, Japan",
+  "universityName" : "Chiba University",
+  "country" : "Japan",
+  "fullLocation" : "Chiba, Japan, Japan",
+  "placeId" : "ChIJ5YrfV4KEImAR-uTBtYD9L_I"
+}, {
+  "title" : "GDG on Campus Habib University - Karachi, Pakistan",
+  "universityName" : "Habib University",
+  "country" : "Pakistan",
+  "fullLocation" : "Karachi, Pakistan",
+  "placeId" : "ChIJnYnR6gY5sz4RFNzV9-aBBjw"
+}, {
+  "title" : "GDG on Campus Hanoi University of Science &amp; Technology - Hanoi, Vietnam",
+  "universityName" : "Hanoi University of Science &amp; Technology",
+  "country" : "Vietnam",
+  "fullLocation" : "Hanoi, Vietnam",
+  "placeId" : "ChIJ5cDyDb-sNTER7aDhmGmmQNc"
+}, {
+  "title" : "GDG on Campus Korea University - Seoul, South Korea",
+  "universityName" : "Korea University",
+  "country" : "Korea",
+  "fullLocation" : "Seoul, Korea",
+  "placeId" : "ChIJd3pwjby8fDURyV1XC6iKAxU"
+}, {
+  "title" : "GDG on Campus Mapúa University - Manila, Philippines",
+  "universityName" : "Mapúa University",
+  "country" : "Philippines",
+  "fullLocation" : "Manila, Philippines",
+  "placeId" : "ChIJWRyxdxjKlzMR-sHK8KAllwI"
+}, {
+  "title" : "GDG on Campus Nirma University - Ahmedabad, India",
+  "universityName" : "Nirma University",
+  "country" : "India",
+  "fullLocation" : "Ahmedabad, India",
+  "placeId" : "ChIJZ1ESRS-DXjkR21vCI8uxbIc"
+}, {
+  "title" : "GDG on Campus Osaka University - Osaka, Japan",
+  "universityName" : "Osaka University",
+  "country" : "Japan",
+  "fullLocation" : "Osaka, Japan",
+  "placeId" : "ChIJU6aW22D7AGAR78nHantxhPU"
+}, {
+  "title" : "GDG on Campus Tokyo University of Agriculture and Technology - Tokyo, Japan",
+  "universityName" : "Tokyo University of Agriculture and Technology",
+  "country" : "Japan",
+  "fullLocation" : "Tokyo, Japan",
+  "placeId" : "ChIJOwAOlFbkGGARNWP4by91HCQ"
+}, {
+  "title" : "GDG on Campus Tsuda University Sendagaya Campus - Tokyo, Japan",
+  "universityName" : "Tsuda University Sendagaya Campus",
+  "country" : "Japan",
+  "fullLocation" : "Tokyo, Japan",
+  "placeId" : "ChIJMes_x7-MGGARwUJXnzhvUvY"
+}, {
+  "title" : "GDG on Campus Algoma University - Brampton, Canada",
+  "universityName" : "Algoma University",
+  "country" : "Canada",
+  "fullLocation" : "Brampton, Canada, Canada",
+  "placeId" : "ChIJQ0ZX-ZYVK4gRrefvm_wSdq0"
+}, {
+  "title" : "GDG on Campus Calvin University - Grand Rapids, United States",
+  "universityName" : "Calvin University",
+  "country" : "United States",
+  "fullLocation" : "Grand Rapids, United States, United States",
+  "placeId" : "ChIJVylN1FtNGIgRgqHyhtrBVp0"
+}, {
+  "title" : "GDG on Campus DePauw University - Greencastle, United States",
+  "universityName" : "DePauw University",
+  "country" : "United States",
+  "fullLocation" : "Greencastle, United States",
+  "placeId" : "ChIJp5coR7LfbIgRmbxAHZy330s"
+}, {
+  "title" : "GDG on Campus McGill University - Montreal, Canada",
+  "universityName" : "McGill University",
+  "country" : "Canada",
+  "fullLocation" : "Montreal, Canada",
+  "placeId" : "ChIJNZYPUUYayUwRdK6kAJLa5N0"
+}, {
+  "title" : "GDG on Campus Purdue University - West Lafayette, United States",
+  "universityName" : "Purdue University",
+  "country" : "United States",
+  "fullLocation" : "West Lafayette, United States",
+  "placeId" : "ChIJBwU-Qjf9EogRjnwai8-yzI4"
+}, {
+  "title" : "GDG on Campus Purdue University Fort Wayne - Fort Wayne, United States",
+  "universityName" : "Purdue University Fort Wayne",
+  "country" : "United States",
+  "fullLocation" : "Fort Wayne, United States, United States",
+  "placeId" : "ChIJiTmal8r8FYgRRz-a0lzruGQ"
+}, {
+  "title" : "GDG on Campus Xavier University of Louisiana - New Orleans, United States",
+  "universityName" : "Xavier University of Louisiana",
+  "country" : "United States",
+  "fullLocation" : "New Orleans, United States",
+  "placeId" : "ChIJv-eBxISlIIYRBw6gWmN6-VM"
+}, {
+  "title" : "GDG on Campus Ankara University - Ankara, Türkiye",
+  "universityName" : "Ankara University",
+  "country" : "Türkiye",
+  "fullLocation" : "Ankara, Türkiye",
+  "placeId" : "ChIJB3sGcN1O0xQR_A3vU0p22LI"
+}, {
+  "title" : "GDG on Campus Assiut University - Assiut, Egypt",
+  "universityName" : "Assiut University",
+  "country" : "Egypt",
+  "fullLocation" : "Assiut, Egypt",
+  "placeId" : "ChIJObVcevsLRRQRisWacpgS1zg"
+}, {
+  "title" : "GDG on Campus Beykoz University - İstanbul, Türkiye",
+  "universityName" : "Beykoz University",
+  "country" : "Türkiye",
+  "fullLocation" : "Istanbul, Türkiye",
+  "placeId" : "ChIJmcQ-MEvKyhQRddpTbH9yKDU"
+}, {
+  "title" : "GDG on Campus Biruni University - Istanbul, Türkiye",
+  "universityName" : "Biruni University",
+  "country" : "Türkiye",
+  "fullLocation" : "Istanbul, Türkiye",
+  "placeId" : "ChIJTXvgrbG7yhQR0lZDtaQuN0E"
+}, {
+  "title" : "GDG on Campus Future University in Egypt - New Cairo, Egypt",
+  "universityName" : "Future University in Egypt",
+  "country" : "Egypt",
+  "fullLocation" : "New Cairo, Egypt",
+  "placeId" : "ChIJ907IPMZAWBQRIOqYWGB_0jk"
+}, {
+  "title" : "GDG on Campus Galala University - Al Galala, Egypt",
+  "universityName" : "Galala University",
+  "country" : "Egypt",
+  "fullLocation" : "Al Galala, Egypt",
+  "placeId" : "ChIJU-_d83__VhQR3KbLk3ylaMA"
+}, {
+  "title" : "GDG on Campus Goethe University - Frankfurt, Germany",
+  "universityName" : "Goethe University",
+  "country" : "Germany",
+  "fullLocation" : "Frankfurt, Germany, Germany",
+  "placeId" : "ChIJ10izLFsJvUcRs2vFqTOSKk8"
+}, {
+  "title" : "GDG on Campus Lublin University of Technology - Lublin, Poland",
+  "universityName" : "Lublin University of Technology",
+  "country" : "Poland",
+  "fullLocation" : "Lublin, Poland, Poland",
+  "placeId" : "ChIJo026KndXIkcRsGYgKsdvVxg"
+}, {
+  "title" : "GDG on Campus Modern University for Technology &amp; Information - Cairo, Egypt",
+  "universityName" : "Modern University for Technology &amp; Information",
+  "country" : "Egypt",
+  "fullLocation" : "Cairo, Egypt",
+  "placeId" : "ChIJXZwyZyM5WBQRKy0wN631ZHc"
+}, {
+  "title" : "GDG on Campus Qassim University, Men Campus - Al-Mulida, Saudi Arabia",
+  "universityName" : "Qassim University, Men Campus",
+  "country" : "Saudi Arabia",
+  "fullLocation" : "Al-Mulida, Saudi Arabia, Saudi Arabia",
+  "placeId" : "ChIJYaYe5aIBghURmT1lwDu_gEI"
+}, {
+  "title" : "GDG on Campus Qassim University, Women Campus - Buraidah, Saudi Arabia",
+  "universityName" : "Qassim University, Women Campus",
+  "country" : "Saudi Arabia",
+  "fullLocation" : "Buraidah, Saudi Arabia, Saudi Arabia",
+  "placeId" : "ChIJYaYe5aIBghURmT1lwDu_gEI"
+}, {
+  "title" : "GDG on Campus Samsun University - Samsun, Türkiye",
+  "universityName" : "Samsun University",
+  "country" : "Türkiye",
+  "fullLocation" : "Samsun, Türkiye",
+  "placeId" : "ChIJG-BSllrfh0ARkckwBeiJsdg"
+}, {
+  "title" : "GDG on Campus Selçuk University - Konya, Türkiye",
+  "universityName" : "Selçuk University",
+  "country" : "Türkiye",
+  "fullLocation" : "Konya, Türkiye",
+  "placeId" : "ChIJl0lkyheN0BQRjCEMoh-A218"
+}, {
+  "title" : "GDG on Campus Taibah University, Women campus - Medina, Saudi Arabia",
+  "universityName" : "Taibah University, Women campus",
+  "country" : "Saudi Arabia",
+  "fullLocation" : "Medina, Saudi Arabia, Saudi Arabia",
+  "placeId" : "ChIJr6i13Py4vRUREHUHof3oQGQ"
+}, {
+  "title" : "GDG on Campus Trakya University - Edirne, Türkiye",
+  "universityName" : "Trakya University",
+  "country" : "Türkiye",
+  "fullLocation" : "Edirne, Türkiye",
+  "placeId" : "ChIJ3WG26bM6sxQR98PolOCtNuw"
+}, {
+  "title" : "GDG on Campus Warsaw University of Technology - Warsaw, Poland",
+  "universityName" : "Warsaw University of Technology",
+  "country" : "Poland",
+  "fullLocation" : "Warsaw, Poland",
+  "placeId" : "ChIJF8u2SOnMHkcR7TrJJ2_WP80"
+}, {
+  "title" : "GDG on Campus Ashesi University - Berekuso, Ghana",
+  "universityName" : "Ashesi University",
+  "country" : "Ghana",
+  "fullLocation" : "Berekuso, Ghana",
+  "placeId" : "ChIJg6XfMXd23w8R3Rq581EPC8M"
+}, {
+  "title" : "GDG on Campus Bayero University Kano - Kano, Nigeria",
+  "universityName" : "Bayero University Kano",
+  "country" : "Nigeria",
+  "fullLocation" : "Kano, Nigeria",
+  "placeId" : "ChIJD27zgyN_rhERkOABEfajADo"
+}, {
+  "title" : "GDG on Campus Kabale University - Kabale, Uganda",
+  "universityName" : "Kabale University",
+  "country" : "Uganda",
+  "fullLocation" : "Kabale, Uganda",
+  "placeId" : "ChIJMyPMkpEN3BkRYzvmwhpYc5Y"
+}, {
+  "title" : "GDG on Campus Maseno University - Kisumu, Kenya",
+  "universityName" : "Maseno University",
+  "country" : "Kenya",
+  "fullLocation" : "Kisumu, Kenya",
+  "placeId" : "ChIJ6Xft7_GpKhgR1goBzFWlyLk"
+}, {
+  "title" : "GDG on Campus Zetech University - Ruiru, Kenya",
+  "universityName" : "Zetech University",
+  "country" : "Kenya",
+  "fullLocation" : "Ruiru, Kenya",
+  "placeId" : "ChIJp2nKRgBHLxgRgnDOvyR0F4c"
+}, {
+  "title" : "GDG on Campus Adamas University - Kolkata, India",
+  "universityName" : "Adamas University",
+  "country" : "India",
+  "fullLocation" : "Kolkata, India",
+  "placeId" : "ChIJr10ucOyY-DkRUINHqG2wQfo"
+}, {
+  "title" : "GDG on Campus Aditya University - Kakinada, India",
+  "universityName" : "Aditya University",
+  "country" : "India",
+  "fullLocation" : "Kakinada, India, India",
+  "placeId" : "ChIJhcONPuKCNzoRrfHR9VeuFpk"
+}, {
+  "title" : "GDG on Campus Andhra University College of Engineering - Visakhapatnam, India",
+  "universityName" : "Andhra University College of Engineering",
+  "country" : "India",
+  "fullLocation" : "Visakhapatnam, India",
+  "placeId" : "ChIJudXK3URDOToRoxCq2zH7RCQ"
+}, {
+  "title" : "GDG on Campus Bahria University, Islamabad Campus - Islamabad, Pakistan",
+  "universityName" : "Bahria University, Islamabad Campus",
+  "country" : "Pakistan",
+  "fullLocation" : "Islamabad, Pakistan",
+  "placeId" : "ChIJjYg3wfi-3zgRpkvRGgP9zMM"
+}, {
+  "title" : "GDG on Campus Bahria University, Lahore Campus - Lahore, Pakistan",
+  "universityName" : "Bahria University, Lahore Campus",
+  "country" : "Pakistan",
+  "fullLocation" : "Lahore, Pakistan",
+  "placeId" : "ChIJP3LSeF0BGTkR7poOPRKIgIM"
+}, {
+  "title" : "GDG on Campus Daejin University - Pocheon, South Korea",
+  "universityName" : "Daejin University",
+  "country" : "Korea",
+  "fullLocation" : "Pocheon, South Korea, Korea",
+  "placeId" : "ChIJD96UXO_QfDURlAHhtZD7m5M"
+}, {
+  "title" : "GDG on Campus Dong-a University - Busan, South Korea",
+  "universityName" : "Dong-a University",
+  "country" : "Korea",
+  "fullLocation" : "Busan, Korea",
+  "placeId" : "ChIJQRTvyaLpaDURSu-zjcBYe4Q"
+}, {
+  "title" : "GDG on Campus Gachon University - Seongnam, South Korea",
+  "universityName" : "Gachon University",
+  "country" : "Korea",
+  "fullLocation" : "Seongnam, South Korea, Korea",
+  "placeId" : "ChIJexLzAaSofDURFc0B4n5O1jk"
+}, {
+  "title" : "GDG on Campus Hankuk University of Foreign Studies - Seoul, South Korea",
+  "universityName" : "Hankuk University of Foreign Studies",
+  "country" : "Korea",
+  "fullLocation" : "Seoul, Korea",
+  "placeId" : "ChIJRVSlfXS7fDURtkLU5oAR16w"
+}, {
+  "title" : "GDG on Campus Hongik University - Seoul, South Korea",
+  "universityName" : "Hongik University",
+  "country" : "Korea",
+  "fullLocation" : "Seoul, Korea",
+  "placeId" : "ChIJ1XF0jLqZfDURLuRDH5IyAM0"
+}, {
+  "title" : "GDG on Campus Jinnah University for Women - Karachi, Pakistan",
+  "universityName" : "Jinnah University for Women",
+  "country" : "Pakistan",
+  "fullLocation" : "Karachi, Pakistan",
+  "placeId" : "ChIJuZIRdZE_sz4RiQkE0xCoRH0"
+}, {
+  "title" : "GDG on Campus Konkuk University - Seoul, South Korea",
+  "universityName" : "Konkuk University",
+  "country" : "Korea",
+  "fullLocation" : "Seoul, Korea",
+  "placeId" : "ChIJhTv7M9ykfDURbQkKXGOzDIk"
+}, {
+  "title" : "GDG on Campus M.B.M. University - Jodhpur, India",
+  "universityName" : "M.B.M. University",
+  "country" : "India",
+  "fullLocation" : "Jodhpur, India",
+  "placeId" : "ChIJ-2lypl6MQTkR0dYWJXNXtZM"
+}, {
+  "title" : "GDG on Campus Mehran University of Engineering &amp; Technology - Jamshoro, Pakistan",
+  "universityName" : "Mehran University of Engineering &amp; Technology",
+  "country" : "Pakistan",
+  "fullLocation" : "Jamshoro, Pakistan",
+  "placeId" : "ChIJG_HNhl55TDkR084x7PbQG-8"
+}, {
+  "title" : "GDG on Campus Monash University - Melbourne, Australia",
+  "universityName" : "Monash University",
+  "country" : "Australia",
+  "fullLocation" : "Clayton, Australia",
+  "placeId" : "ChIJuXNG9stq1moRBHFYmhabrw8"
+}, {
+  "title" : "GDG on Campus Monash University Malaysia - Selangor, Malaysia",
+  "universityName" : "Monash University Malaysia",
+  "country" : "Malaysia",
+  "fullLocation" : "Selangor, Malaysia",
+  "placeId" : "ChIJM2o3ebBOzDERnVuu0RJhItk"
+}, {
+  "title" : "GDG on Campus Panjab University Swami Sarvanand Giri Regional Centre - Hoshiarpur, India",
+  "universityName" : "Panjab University Swami Sarvanand Giri Regional Centre",
+  "country" : "India",
+  "fullLocation" : "Hoshiarpur, India, India",
+  "placeId" : "ChIJh7HXfsfjGjkRF5xXH2KXHn4"
+}, {
+  "title" : "GDG on Campus Sogang University - Seoul, South Korea",
+  "universityName" : "Sogang University",
+  "country" : "Korea",
+  "fullLocation" : "Seoul, South Korea, Korea",
+  "placeId" : "ChIJSSMlyhSZfDURdFkdr9R1WHE"
+}, {
+  "title" : "GDG on Campus Sophia University - Tokyo, Japan",
+  "universityName" : "Sophia University",
+  "country" : "Japan",
+  "fullLocation" : "Tokyo, Japan, Japan",
+  "placeId" : "ChIJe0O3nmKMGGARthkjiLqendU"
+}, {
+  "title" : "GDG on Campus Sunway University - Selangor, Malaysia",
+  "universityName" : "Sunway University",
+  "country" : "Malaysia",
+  "fullLocation" : "Selangor, Malaysia",
+  "placeId" : "ChIJbbSYXY9MzDERlNPCpcziVe0"
+}, {
+  "title" : "GDG on Campus Telkom University - Bandung, Indonesia",
+  "universityName" : "Telkom University",
+  "country" : "Indonesia",
+  "fullLocation" : "Bandung, Indonesia",
+  "placeId" : "ChIJjb938a3paC4RA_r5VoU5NwQ"
+}, {
+  "title" : "GDG on Campus Telkom University - Jakarta, Indonesia",
+  "universityName" : "Telkom University",
+  "country" : "Indonesia",
+  "fullLocation" : "Jakarta, Indonesia",
+  "placeId" : "ChIJjb938a3paC4RA_r5VoU5NwQ"
+}, {
+  "title" : "GDG on Campus Telkom University Purwokerto - Purwokerto, Indonesia",
+  "universityName" : "Telkom University Purwokerto",
+  "country" : "Indonesia",
+  "fullLocation" : "Purwokerto, Indonesia",
+  "placeId" : "ChIJhZifnaReZS4RyQ5wWWELvmI"
+}, {
+  "title" : "GDG on Campus Tezpur University - Tezpur, India",
+  "universityName" : "Tezpur University",
+  "country" : "India",
+  "fullLocation" : "Tezpur, India",
+  "placeId" : "ChIJEUQx_cjrRDcRO2EVVTwOpig"
+}, {
+  "title" : "GDG on Campus Waseda University - Tokyo, Japan",
+  "universityName" : "Waseda University",
+  "country" : "Japan",
+  "fullLocation" : "Shinjuku City, Japan",
+  "placeId" : "ChIJBbhpSBqNGGARqAgI3sUU4hE"
+}, {
+  "title" : "GDG on Campus Xavier University - Ateneo De Cagayan - Cagayan de Oro City, Philippines",
+  "universityName" : "Xavier University",
+  "country" : "Philippines",
+  "fullLocation" : "Cagayan de Oro City, Philippines",
+  "placeId" : "ChIJw1Evx_iyQYgRb8L0BSpntjo"
+}, {
+  "title" : "GDG on Campus Yonsei University Sinchon Campus - Seoul, South Korea",
+  "universityName" : "Yonsei University Sinchon Campus",
+  "country" : "Korea",
+  "fullLocation" : "Seoul, Korea",
+  "placeId" : "ChIJDyg-oY6YfDURjmNa7ENSt7c"
+}, {
+  "title" : "GDG on Campus Indiana University Bloomington - Bloomington, United States",
+  "universityName" : "Indiana University Bloomington",
+  "country" : "United States",
+  "fullLocation" : "Bloomington, United States",
+  "placeId" : "ChIJM62JZ8JmbIgRNtQVs4ugmTQ"
+}, {
+  "title" : "GDG on Campus Minerva University - San Francisco, United States",
+  "universityName" : "Minerva University",
+  "country" : "United States",
+  "fullLocation" : "San Francisco, United States",
+  "placeId" : "ChIJRWOiT5uAhYAR7liY83e5uYA"
+}, {
+  "title" : "GDG on Campus Western University - London, Canada",
+  "universityName" : "Western University",
+  "country" : "Canada",
+  "fullLocation" : "London, Canada",
+  "placeId" : "ChIJ0SvEag7uLogRm3m5qlPzh6o"
+}, {
+  "title" : "GDG on Campus Atatürk University - Erzurum, Türkiye",
+  "universityName" : "Atatürk University",
+  "country" : "Türkiye",
+  "fullLocation" : "Erzurum, Türkiye",
+  "placeId" : "ChIJz99KOeBebkARReVtVyEvFAI"
+}, {
+  "title" : "GDG on Campus Baskent University - Ankara, Türkiye",
+  "universityName" : "Baskent University",
+  "country" : "Türkiye",
+  "fullLocation" : "Ankara, Türkiye",
+  "placeId" : "ChIJS67_ATk50xQRtlEDkz_VdRU"
+}, {
+  "title" : "GDG on Campus Birzeit University - Birzeit, Palestine",
+  "universityName" : "Birzeit University",
+  "country" : "Palestinian Authority",
+  "fullLocation" : "Birzeit, Palestinian Authority",
+  "placeId" : "ChIJ8xM80_UrHRURbs_ii-q0k0I"
+}, {
+  "title" : "GDG on Campus Euromed University of Fes - Fes, Morocco",
+  "universityName" : "Euromed University of Fes",
+  "country" : "Morocco",
+  "fullLocation" : "Fes, Morocco",
+  "placeId" : "ChIJPdTNZwEgoA0RltRAh47vsIk"
+}, {
+  "title" : "GDG on Campus IT Park University - Tashkent, Uzbekistan",
+  "universityName" : "IT Park University",
+  "country" : "Uzbekistan",
+  "fullLocation" : "Tashkent, Uzbekistan",
+  "placeId" : "ChIJSWM8qR71rjgR3Tusl5x5w_A"
+}, {
+  "title" : "GDG on Campus Islamic University of Lebanon - Beirut, Lebanon",
+  "universityName" : "Islamic University of Lebanon",
+  "country" : "Lebanon",
+  "fullLocation" : "Beirut, Lebanon",
+  "placeId" : "ChIJj-Jmd93kHhUR37HdT_vtXT0"
+}, {
+  "title" : "GDG on Campus Istinye University - Istanbul, Türkiye",
+  "universityName" : "Istinye University",
+  "country" : "Türkiye",
+  "fullLocation" : "Istanbul, Türkiye",
+  "placeId" : "ChIJ-32S7Xy3yhQRuf_YtCABA00"
+}, {
+  "title" : "GDG on Campus Karabük University - Karabük, Türkiye",
+  "universityName" : "Karabük University",
+  "country" : "Türkiye",
+  "fullLocation" : "Karabük, Türkiye",
+  "placeId" : "ChIJP5WSRKxUg0ARQ6eSA-1IO6s"
+}, {
+  "title" : "GDG on Campus Kayseri University - Kayseri, Türkiye",
+  "universityName" : "Kayseri University",
+  "country" : "Türkiye",
+  "fullLocation" : "Kayseri, Türkiye",
+  "placeId" : "ChIJV7sN8gYSKxURBl7g8oIhi54"
+}, {
+  "title" : "GDG on Campus Maltepe University - Maltepe, Türkiye",
+  "universityName" : "Maltepe University",
+  "country" : "Türkiye",
+  "fullLocation" : "Maltepe, Türkiye",
+  "placeId" : "ChIJA0YTdQXHyhQR2OPK6FDc7xg"
+}, {
+  "title" : "GDG on Campus Marmara University - İstanbul, Türkiye",
+  "universityName" : "Marmara University",
+  "country" : "Türkiye",
+  "fullLocation" : "Istanbul, Türkiye",
+  "placeId" : "ChIJo8karI3HyhQR3_7B6p0yR70"
+}, {
+  "title" : "GDG on Campus Sabancı University - Istanbul, Türkiye",
+  "universityName" : "Sabancı University",
+  "country" : "Türkiye",
+  "fullLocation" : "Istanbul, Türkiye",
+  "placeId" : "ChIJtXZqMFLYyhQREDZQq73kc3w"
+}, {
+  "title" : "GDG on Campus Wroclaw University of Science and Technology - Wroclaw, Poland",
+  "universityName" : "Wroclaw University of Science and Technology",
+  "country" : "Poland",
+  "fullLocation" : "Wroclaw, Poland, Poland",
+  "placeId" : "ChIJmyg2eCroD0cRD9fIxQQ_-bg"
+}, {
+  "title" : "GDG on Campus Zagazig University - Zagazig, Egypt",
+  "universityName" : "Zagazig University",
+  "country" : "Egypt",
+  "fullLocation" : "Zagazig, Egypt",
+  "placeId" : "ChIJE4r_T1Lw9xQRuDF6kUvyPR0"
+}, {
+  "title" : "GDG on Campus Çankaya University - Ankara, Türkiye",
+  "universityName" : "Çankaya University",
+  "country" : "Türkiye",
+  "fullLocation" : "Ankara, Türkiye",
+  "placeId" : "ChIJU1mED8MX0xQRx-xuTFSVPl8"
+}, {
+  "title" : "GDG on Campus Üsküdar University - Istanbul, Türkiye",
+  "universityName" : "Üsküdar University",
+  "country" : "Türkiye",
+  "fullLocation" : "Istanbul, Türkiye",
+  "placeId" : "ChIJd2vhgIu3yhQRIWKZMGVn64U"
+}, {
+  "title" : "GDG on Campus Babcock University - Ilishan-Remo, Nigeria",
+  "universityName" : "Babcock University",
+  "country" : "Nigeria",
+  "fullLocation" : "Ilishan-Remo, Nigeria",
+  "placeId" : "ChIJw07lORbYOxARUn42yKi0KZE"
+}, {
+  "title" : "GDG on Campus Central University - Accra, Ghana",
+  "universityName" : "Central University",
+  "country" : "Ghana",
+  "fullLocation" : "Accra, Ghana",
+  "placeId" : "ChIJC3pYzneVEjkR-cxNfRjewb0"
+}, {
+  "title" : "GDG on Campus Daystar University - Athi-River, Kenya",
+  "universityName" : "Daystar University",
+  "country" : "Kenya",
+  "fullLocation" : "Aithi River, Kenya",
+  "placeId" : "ChIJd0lueXF2LxgRlZr-XZJOz9s"
+}, {
+  "title" : "GDG on Campus Federal University Dutse - Dutse, Nigeria",
+  "universityName" : "Federal University Dutse",
+  "country" : "Nigeria",
+  "fullLocation" : "Dutse, Nigeria",
+  "placeId" : "ChIJubzWjvnvqxERJIWxwaWTeCY"
+}, {
+  "title" : "GDG on Campus Federal University Oye-Ekiti - Oye-Ekiti, Nigeria",
+  "universityName" : "Federal University Oye-Ekiti",
+  "country" : "Nigeria",
+  "fullLocation" : "Oye-Ekiti, Nigeria",
+  "placeId" : "ChIJX3iw8ooLSBARdeFmcBZ8Y_k"
+}, {
+  "title" : "GDG on Campus Federal University of Agriculture - Abeokuta, Nigeria",
+  "universityName" : "Federal University of Agriculture",
+  "country" : "Nigeria",
+  "fullLocation" : "Abeokuta, Nigeria",
+  "placeId" : "ChIJq9Y7B_JJOhARtluLm5GR0I4"
+}, {
+  "title" : "GDG on Campus Federal University of Petroleum Resources Effurun - Effurun, Nigeria",
+  "universityName" : "Federal University of Petroleum Resources Effurun",
+  "country" : "Nigeria",
+  "fullLocation" : "Effurun, Nigeria, Nigeria",
+  "placeId" : "ChIJOb0TJPauQRARKCfuGfBAi2g"
+}, {
+  "title" : "GDG on Campus Federal University of Technology - Akure, Nigeria",
+  "universityName" : "Federal University of Technology",
+  "country" : "Nigeria",
+  "fullLocation" : "Akure, Nigeria",
+  "placeId" : "ChIJkVfa_AdxTBAR28Y1G4C4cbM"
+}, {
+  "title" : "GDG on Campus Federal University of Technology - Minna, Nigeria",
+  "universityName" : "Federal University of Technology",
+  "country" : "Nigeria",
+  "fullLocation" : "Minna, Nigeria",
+  "placeId" : "ChIJkVfa_AdxTBAR28Y1G4C4cbM"
+}, {
+  "title" : "GDG on Campus Federal University of Technology - Owerri, Nigeria",
+  "universityName" : "Federal University of Technology",
+  "country" : "Nigeria",
+  "fullLocation" : "Owerri, Nigeria",
+  "placeId" : "ChIJkVfa_AdxTBAR28Y1G4C4cbM"
+}, {
+  "title" : "GDG on Campus Kabarak University - Nakuru, Kenya",
+  "universityName" : "Kabarak University",
+  "country" : "Kenya",
+  "fullLocation" : "Nakuru, Kenya",
+  "placeId" : "ChIJ2aa7Z_P2KRgR3s3cRELBYwM"
+}, {
+  "title" : "GDG on Campus Oduduwa University - Ipetumodu, Nigeria",
+  "universityName" : "Oduduwa University",
+  "country" : "Nigeria",
+  "fullLocation" : "Ipetumodu, Nigeria",
+  "placeId" : "ChIJedYe8RM1OBAR9lSZUH953mM"
+}, {
+  "title" : "GDG on Campus Bennett University - Greater Noida, India",
+  "universityName" : "Bennett University",
+  "country" : "India",
+  "fullLocation" : "Greater Noida, India",
+  "placeId" : "ChIJOby23pS_DDkRf1Mrmty-pns"
+}, {
+  "title" : "GDG on Campus COMSATS University - Islamabad, Pakistan",
+  "universityName" : "COMSATS University",
+  "country" : "Pakistan",
+  "fullLocation" : "Islamabad, Pakistan",
+  "placeId" : "ChIJg7nkOOfr3zgRIxyjED0tojM"
+}, {
+  "title" : "GDG on Campus COMSATS University Islamabad, Attock Campus - Attock, Pakistan",
+  "universityName" : "COMSATS University Islamabad, Attock Campus",
+  "country" : "Pakistan",
+  "fullLocation" : "Attock, Pakistan",
+  "placeId" : "ChIJn5OsbmcZ3zgRgCPQXXsWaAs"
+}, {
+  "title" : "GDG on Campus COMSATS University Islamabad, Lahore Campus - Lahore, Pakistan",
+  "universityName" : "COMSATS University Islamabad, Lahore Campus",
+  "country" : "Pakistan",
+  "fullLocation" : "Lahore, Pakistan",
+  "placeId" : "ChIJcV98vND_GDkRlM17hYKbnoc"
+}, {
+  "title" : "GDG on Campus Central University of Haryana - Mahendergarh, India",
+  "universityName" : "Central University of Haryana",
+  "country" : "India",
+  "fullLocation" : "Mahendergarh, India",
+  "placeId" : "ChIJC3pYzneVEjkR-cxNfRjewb0"
+}, {
+  "title" : "GDG on Campus Central University of Jammu - Jammu, India",
+  "universityName" : "Central University of Jammu",
+  "country" : "India",
+  "fullLocation" : "Jammu, India, India",
+  "placeId" : "ChIJlVn7BqucHjkRHbeseMgGNLI"
+}, {
+  "title" : "GDG on Campus Da Nang University of Science and Technology - Da Nang",
+  "universityName" : "Da Nang University of Science and Technology",
+  "country" : "Vietnam",
+  "fullLocation" : "Da Nang, Vietnam",
+  "placeId" : "ChIJRZX_jdYYQjERLCmn8-lhRXE"
+}, {
+  "title" : "GDG on Campus Daejeon University - Daejeon, South Korea",
+  "universityName" : "Daejeon University",
+  "country" : "Korea",
+  "fullLocation" : "Daejeon, Korea",
+  "placeId" : "ChIJA7XVVT9JZTURKnYoYGUQe_U"
+}, {
+  "title" : "GDG on Campus Dongguk University - Seoul, South Korea",
+  "universityName" : "Dongguk University",
+  "country" : "Korea",
+  "fullLocation" : "Seoul, Korea",
+  "placeId" : "ChIJEfiR1AKjfDURtQl2pGL7n4A"
+}, {
+  "title" : "GDG on Campus Duy Tan University - Da Nang, Vietnam",
+  "universityName" : "Duy Tan University",
+  "country" : "Vietnam",
+  "fullLocation" : "Da Nang, Vietnam",
+  "placeId" : "ChIJ5Twa1jgZQjERSrTcuz4P2Ck"
+}, {
+  "title" : "GDG on Campus Gauhati University - Guwahati, India",
+  "universityName" : "Gauhati University",
+  "country" : "India",
+  "fullLocation" : "Guwahati, India",
+  "placeId" : "ChIJZyrxYsdEWjcREXZFAwVqOJU"
+}, {
+  "title" : "GDG on Campus Hoa Sen University - Ho Chi Minh City, Vietnam",
+  "universityName" : "Hoa Sen University",
+  "country" : "Vietnam",
+  "fullLocation" : "Ho Chi Minh City, Vietnam",
+  "placeId" : "ChIJlQjTjiEvdTERlG7vqSqC_9c"
+}, {
+  "title" : "GDG on Campus Kangnam University - Yongin, South Korea",
+  "universityName" : "Kangnam University",
+  "country" : "Korea",
+  "fullLocation" : "Yongin, South Korea, Korea",
+  "placeId" : "ChIJT5MaCgClfDURWwWjpV1ZElU"
+}, {
+  "title" : "GDG on Campus Kookmin University - Seoul, South Korea",
+  "universityName" : "Kookmin University",
+  "country" : "Korea",
+  "fullLocation" : "Seoul, Korea",
+  "placeId" : "ChIJ77_K3R29fDURvJJ7pOnAfN4"
+}, {
+  "title" : "GDG on Campus Manipal University - Jaipur, India",
+  "universityName" : "Manipal University",
+  "country" : "India",
+  "fullLocation" : "Jaipur, India",
+  "placeId" : "ChIJm-5b4FBIbDkRY7hOLUBnjRs"
+}, {
+  "title" : "GDG on Campus Marwadi University - Rajkot, India",
+  "universityName" : "Marwadi University",
+  "country" : "India",
+  "fullLocation" : "Rajkot, India, India",
+  "placeId" : "ChIJd7OcOAevJzoRYk7-iYUEweY"
+}, {
+  "title" : "GDG on Campus Okayama University - Okayama, Japan",
+  "universityName" : "Okayama University",
+  "country" : "Japan",
+  "fullLocation" : "Okayama, Japan, Japan",
+  "placeId" : "ChIJjRHBx24GVDURm53hlzIu4CY"
+}, {
+  "title" : "GDG on Campus Punjabi University - Patiala, India",
+  "universityName" : "Punjabi University",
+  "country" : "India",
+  "fullLocation" : "Patiala, India",
+  "placeId" : "ChIJa9amuwQoEDkRUUQnjmHaKo8"
+}, {
+  "title" : "GDG on Campus Quantum University - Roorkee, India",
+  "universityName" : "Quantum University",
+  "country" : "India",
+  "fullLocation" : "Roorkee, India",
+  "placeId" : "ChIJ29ubR4zIDjkRVAsG5lBVSDA"
+}, {
+  "title" : "GDG on Campus Silicon University - Bhubaneswar, India",
+  "universityName" : "Silicon University",
+  "country" : "India",
+  "fullLocation" : "Bhubaneswar, India",
+  "placeId" : "ChIJc552ZOAIGToRpMeYOi8XiJI"
+}, {
+  "title" : "GDG on Campus Trilogi University - South Jakarta, Indonesia",
+  "universityName" : "Trilogi University",
+  "country" : "Indonesia",
+  "fullLocation" : "South Jakarta, Indonesia",
+  "placeId" : "ChIJCWVlvqXzaS4RQKmdQR72B7Q"
+}, {
+  "title" : "GDG on Campus Yuan Ze University - Taoyuan City, Taiwan",
+  "universityName" : "Yuan Ze University",
+  "country" : "Taiwan",
+  "fullLocation" : "Taoyuan City, Taiwan",
+  "placeId" : "ChIJzT_UkFQfaDQRKzMr5ae1bhg"
+}, {
+  "title" : "GDG on Campus Bucknell University - Lewisburg, United States",
+  "universityName" : "Bucknell University",
+  "country" : "United States",
+  "fullLocation" : "Lewisburg, United States",
+  "placeId" : "ChIJ3U7mfLwTz4kR-em5PjbPbPM"
+}, {
+  "title" : "GDG on Campus Caldwell University - Caldwell, United States",
+  "universityName" : "Caldwell University",
+  "country" : "United States",
+  "fullLocation" : "Caldwell, United States, United States",
+  "placeId" : "ChIJDZ290X6qw4kRJE0Z2igBMfk"
+}, {
+  "title" : "GDG on Campus McMaster University - Hamilton, Canada",
+  "universityName" : "McMaster University",
+  "country" : "Canada",
+  "fullLocation" : "Hamilton, Canada",
+  "placeId" : "ChIJwSr3RKyELIgRHAFDYeoAnjk"
+}, {
+  "title" : "GDG on Campus Memorial University of Newfoundland - St. John's, Canada",
+  "universityName" : "Memorial University of Newfoundland",
+  "country" : "Canada",
+  "fullLocation" : "St. John's, Canada, Canada",
+  "placeId" : "ChIJifur2I6jDEsRQJdRZNoIWms"
+}, {
+  "title" : "GDG on Campus New York University - New York, United States",
+  "universityName" : "New York University",
+  "country" : "United States",
+  "fullLocation" : "New York, United States",
+  "placeId" : "ChIJwZVT9ZpZwokRBfO1cTF0MNo"
+}, {
+  "title" : "GDG on Campus Stanford University - Stanford, United States",
+  "universityName" : "Stanford University",
+  "country" : "United States",
+  "fullLocation" : "Stanford, United States, United States",
+  "placeId" : "ChIJneqLZyq7j4ARf2j8RBrwzSk"
+}, {
+  "title" : "GDG on Campus Al-Azhar University - Cairo, Egypt",
+  "universityName" : "Al-Azhar University",
+  "country" : "Egypt",
+  "fullLocation" : "Cairo, Egypt",
+  "placeId" : "ChIJY3Aec0HxaS4RO4ZXGDzpdlw"
+}, {
+  "title" : "GDG on Campus American University of Beirut - Beirut, Lebanon",
+  "universityName" : "American University of Beirut",
+  "country" : "Lebanon",
+  "fullLocation" : "Beirut, Lebanon",
+  "placeId" : "ChIJfwBZSNQWHxURCJnZSysBiWE"
+}, {
+  "title" : "GDG on Campus American University of Iraq Baghdad - Baghdad, Iraq",
+  "universityName" : "American University of Iraq Baghdad",
+  "country" : "Iraq",
+  "fullLocation" : "Baghdad, Iraq",
+  "placeId" : "ChIJXVlkE-jXWRUR44mKNTII9Ac"
+}, {
+  "title" : "GDG on Campus American University of Sharjah - Sharjah, United Arab Emirates",
+  "universityName" : "American University of Sharjah",
+  "country" : "United Arab Emirates",
+  "fullLocation" : "Sharjah, United Arab Emirates",
+  "placeId" : "ChIJKaD3-4n19T4RkB-VBIddIjQ"
+}, {
+  "title" : "GDG on Campus Coventry University - Cairo, Egypt",
+  "universityName" : "Coventry University",
+  "country" : "Egypt",
+  "fullLocation" : "Cairo, Egypt, Egypt",
+  "placeId" : "ChIJnbX_XrdLd0gRCCeVHpffyi4"
+}, {
+  "title" : "GDG on Campus Istanbul University Cerrahpaşa - Istanbul, Türkiye",
+  "universityName" : "Istanbul University Cerrahpaşa",
+  "country" : "Türkiye",
+  "fullLocation" : "Istanbul, Türkiye",
+  "placeId" : "ChIJsdgdhamhyhQRqkOnLW37IRI"
+}, {
+  "title" : "GDG on Campus Lebanese University - Hadath, Lebanon",
+  "universityName" : "Lebanese University",
+  "country" : "Lebanon",
+  "fullLocation" : "Hadath, Lebanon",
+  "placeId" : "ChIJYVzhHcsZHxURSN11eWHgKCM"
+}, {
+  "title" : "GDG on Campus Menoufia University - Shibin El Kom, Egypt",
+  "universityName" : "Menoufia University",
+  "country" : "Egypt",
+  "fullLocation" : "Shibin El Kom, Egypt",
+  "placeId" : "ChIJRxCpcOvW9xQRCXjz0n44U8M"
+}, {
+  "title" : "GDG on Campus National University Sanaa - Sanaa, Yemen",
+  "universityName" : "National University Sanaa",
+  "country" : "Yemen",
+  "fullLocation" : "Sanaa, Yemen",
+  "placeId" : "ChIJy4HrIZrbAxYRO5FDigM3CDI"
+}, {
+  "title" : "GDG on Campus National University of Mongolia - Ulaanbaatar, Mongolia",
+  "universityName" : "National University of Mongolia",
+  "country" : "Mongolia",
+  "fullLocation" : "Ulaanbaatar, Mongolia",
+  "placeId" : "ChIJDV-ZLkKSll0RJ4x1V2hHDFo"
+}, {
+  "title" : "GDG on Campus National University of Science and Technology Politehnica Bucharest - Bucharest, Romania",
+  "universityName" : "National University of Science and Technology Politehnica Bucharest",
+  "country" : "Romania",
+  "fullLocation" : "Bucharest, Romania",
+  "placeId" : "ChIJQVEtE-oBskARx236lMuu1fU"
+}, {
+  "title" : "GDG on Campus Saarland University - Saarbrucken, Germany",
+  "universityName" : "Saarland University",
+  "country" : "Germany",
+  "fullLocation" : "Saarbrucken, Germany, Germany",
+  "placeId" : "ChIJT87Sql-2lUcRsXGaA05Ed98"
+}, {
+  "title" : "GDG on Campus Yeditepe University - Istanbul, Türkiye",
+  "universityName" : "Yeditepe University",
+  "country" : "Türkiye",
+  "fullLocation" : "Istanbul, Türkiye",
+  "placeId" : "ChIJHVV4ve_FyhQRJcn35slKrC0"
+}, {
+  "title" : "GDG on Campus Al-Qalam University Katsina - Katsina, Nigeria",
+  "universityName" : "Al-Qalam University Katsina",
+  "country" : "Nigeria",
+  "fullLocation" : "Katsina, Nigeria",
+  "placeId" : "ChIJrRdreQMxsBERuq8pzr_0Dno"
+}, {
+  "title" : "GDG on Campus Covenant University - Ota, Nigeria",
+  "universityName" : "Covenant University",
+  "country" : "Nigeria",
+  "fullLocation" : "Ota, Nigeria",
+  "placeId" : "ChIJXT95K8yeOxARkIUeL8MSxu0"
+}, {
+  "title" : "GDG on Campus Kenyatta University - Nairobi, Kenya",
+  "universityName" : "Kenyatta University",
+  "country" : "Kenya",
+  "fullLocation" : "Nairobi, Kenya",
+  "placeId" : "ChIJG593iBw_LxgRihryGH2_Z0w"
+}, {
+  "title" : "GDG on Campus Landmark University - Omu-Aran, Nigeria",
+  "universityName" : "Landmark University",
+  "country" : "Nigeria",
+  "fullLocation" : "Omu-Aran, Nigeria, Nigeria",
+  "placeId" : "ChIJwfpAFUggSBARGxhf7D7dJLM"
+}, {
+  "title" : "GDG on Campus Machakos University - Machakos, Kenya",
+  "universityName" : "Machakos University",
+  "country" : "Kenya",
+  "fullLocation" : "Machakos, Kenya",
+  "placeId" : "ChIJHxYu9CSHLxgRy25N-0IyX68"
+}, {
+  "title" : "GDG on Campus Makerere University - Kampala, Uganda",
+  "universityName" : "Makerere University",
+  "country" : "Uganda",
+  "fullLocation" : "Kampala, Uganda",
+  "placeId" : "ChIJ703liG27fRcRnQgL4fv8xt0"
+}, {
+  "title" : "GDG on Campus Chitkara University - Chandigarh, India",
+  "universityName" : "Chitkara University",
+  "country" : "India",
+  "fullLocation" : "Chandigarh, India",
+  "placeId" : "ChIJ1-KmRCPDDzkRypkX6d5Gs4E"
+}, {
+  "title" : "GDG on Campus Chungang University - Seoul, South Korea",
+  "universityName" : "Chungang University",
+  "country" : "Korea",
+  "fullLocation" : "Seoul, Korea",
+  "placeId" : "ChIJx_SUJ9mhfDUR5Mcn9-Zy7J8"
+}, {
+  "title" : "GDG on Campus Dong-Eui University - Busan, South Korea",
+  "universityName" : "Dong-Eui University",
+  "country" : "Korea",
+  "fullLocation" : "Busan, Korea",
+  "placeId" : "ChIJJ92MZLHraDUR_z5czO4D6CU"
+}, {
+  "title" : "GDG on Campus FET Jain University - Bengaluru, India",
+  "universityName" : "FET Jain University",
+  "country" : "India",
+  "fullLocation" : "Bengaluru, India",
+  "placeId" : "ChIJR09pOadbrjsRdds58JLdS0I"
+}, {
+  "title" : "GDG on Campus Gurugram University - Gurugram, India",
+  "universityName" : "Gurugram University",
+  "country" : "India",
+  "fullLocation" : "Gurugram, India, India",
+  "placeId" : "ChIJCZGISXgiDTkR1VLbhKMt8jY"
+}, {
+  "title" : "GDG on Campus Integral University - Lucknow, India",
+  "universityName" : "Integral University",
+  "country" : "India",
+  "fullLocation" : "Lucknow, India",
+  "placeId" : "ChIJObLZ3Sr_mzkR7DZ5Vb2bGsI"
+}, {
+  "title" : "GDG on Campus KyungHee University - Yongin, South Korea",
+  "universityName" : "KyungHee University",
+  "country" : "Korea",
+  "fullLocation" : "Yongin, South Korea, Korea",
+  "placeId" : "ChIJx2sjEpZNYzURa0MuYAzEy9E"
+}, {
+  "title" : "GDG on Campus La Trobe University - Melbourne, Australia",
+  "universityName" : "La Trobe University",
+  "country" : "Australia",
+  "fullLocation" : "Melbourne, Australia",
+  "placeId" : "ChIJm6Y4iuJF1moRwNoyBXZWBA8"
+}, {
+  "title" : "GDG on Campus Namseoul University - Cheonan, South Korea",
+  "universityName" : "Namseoul University",
+  "country" : "Korea",
+  "fullLocation" : "Cheonan, South Korea, Korea",
+  "placeId" : "ChIJDXWEuZ4vezURQltepMsEmxM"
+}, {
+  "title" : "GDG on Campus National University of Kaohsiung - Kaohsiung City, Taiwan",
+  "universityName" : "National University of Kaohsiung",
+  "country" : "Taiwan",
+  "fullLocation" : "Kaohsiung City, Taiwan",
+  "placeId" : "ChIJO9VRShEPbjQR8lX-r-yB5uY"
+}, {
+  "title" : "GDG on Campus National University of Modern Languages - Islamabad, Pakistan",
+  "universityName" : "National University of Modern Languages",
+  "country" : "Pakistan",
+  "fullLocation" : "Islamabad, Pakistan",
+  "placeId" : "ChIJ7dlugHCV3zgR1FQJ57m-T4k"
+}, {
+  "title" : "GDG on Campus National University of Sciences and Technology - Islamabad, Pakistan",
+  "universityName" : "National University of Sciences and Technology",
+  "country" : "Pakistan",
+  "fullLocation" : "Islamabad, Pakistan",
+  "placeId" : "ChIJs1plRsw-sz4R6BBWSS_8tLM"
+}, {
+  "title" : "GDG on Campus National University of Singapore - Singapore, Singapore",
+  "universityName" : "National University of Singapore",
+  "country" : "Singapore",
+  "fullLocation" : "Singapore, Singapore",
+  "placeId" : "ChIJ2QJCeFYa2jERa434wdYIjUg"
+}, {
+  "title" : "GDG on Campus National University, Baliwag Campus - Baliwag, Philippines",
+  "universityName" : "National University, Baliwag Campus",
+  "country" : "Philippines",
+  "fullLocation" : "Baliwag, Philippines",
+  "placeId" : "ChIJb4Dj93D_ljMRLFC06TNZ5As"
+}, {
+  "title" : "GDG on Campus National University, Manila Campus - Manila, Philippines",
+  "universityName" : "National University, Manila Campus",
+  "country" : "Philippines",
+  "fullLocation" : "Manila, Philippines",
+  "placeId" : "ChIJs86mEfzJlzMRq0AB3togQp0"
+}, {
+  "title" : "GDG on Campus Poornima University - Jaipur, India",
+  "universityName" : "Poornima University",
+  "country" : "India",
+  "fullLocation" : "Jaipur, India",
+  "placeId" : "ChIJSYfWw9XJbTkR_NQh2_DDJ6I"
+}, {
+  "title" : "GDG on Campus Sahmyook University - Seoul, South Korea",
+  "universityName" : "Sahmyook University",
+  "country" : "Korea",
+  "fullLocation" : "Seoul, Korea",
+  "placeId" : "ChIJB67b4dq5fDURaN4F9AJn6Lw"
+}, {
+  "title" : "GDG on Campus Sir Syed University of Engineering &amp; Technology - Karachi, Pakistan",
+  "universityName" : "Sir Syed University of Engineering &amp; Technology",
+  "country" : "Pakistan",
+  "fullLocation" : "Karachi, Pakistan",
+  "placeId" : "ChIJ88PyoDI_sz4R8BdhOP2mwE8"
+}, {
+  "title" : "GDG on Campus Soongsil University - Seoul, South Korea",
+  "universityName" : "Soongsil University",
+  "country" : "Korea",
+  "fullLocation" : "Seoul, Korea",
+  "placeId" : "ChIJ76JZ9tWhfDURww36rnXyEC0"
+}, {
+  "title" : "GDG on Campus Victoria University of Wellington - Wellington, New Zealand",
+  "universityName" : "Victoria University of Wellington",
+  "country" : "New Zealand",
+  "fullLocation" : "Wellington, New Zealand",
+  "placeId" : "ChIJu11XUimwOG0R8BYhYom6860"
+}, {
+  "title" : "GDG on Campus Concordia University - Montreal, Canada",
+  "universityName" : "Concordia University",
+  "country" : "Canada",
+  "fullLocation" : "Montreal, Canada",
+  "placeId" : "ChIJOdZtY2oayUwR8CdYQcbKhZ4"
+}, {
+  "title" : "GDG on Campus Texas A&amp;M University - College Station, United States",
+  "universityName" : "Texas A&amp;M University",
+  "country" : "United States",
+  "fullLocation" : "College Station, United States",
+  "placeId" : "ChIJmaG-jlq-QIYR50eCyn44nww"
+}, {
+  "title" : "GDG on Campus Abu Dhabi University - Abu Dhabi, United Arab Emirates",
+  "universityName" : "Abu Dhabi University",
+  "country" : "United Arab Emirates",
+  "fullLocation" : "Abu Dhabi, United Arab Emirates",
+  "placeId" : "ChIJDVVVRXVHXj4RGf0LjSI-zlw"
+}, {
+  "title" : "GDG on Campus Ain Shams University - Cairo, Egypt",
+  "universityName" : "Ain Shams University",
+  "country" : "Egypt",
+  "fullLocation" : "Cairo, Egypt, Egypt",
+  "placeId" : "ChIJFa9vR6AaWBQRGjJUE6LloWE"
+}, {
+  "title" : "GDG on Campus Al-Iraqia University - Baghdad, Iraq",
+  "universityName" : "Al-Iraqia University",
+  "country" : "Iraq",
+  "fullLocation" : "Baghdad, Iraq",
+  "placeId" : "ChIJESPLTyB5VxURDMTa7sUW75c"
+}, {
+  "title" : "GDG on Campus Arab Open University - El-Shorouk City, Egypt",
+  "universityName" : "Arab Open University",
+  "country" : "Egypt",
+  "fullLocation" : "El-Shorouk City, Egypt",
+  "placeId" : "ChIJ5RCuHGHhLj4RR0ZR9n_AEpI"
+}, {
+  "title" : "GDG on Campus Arab Open University - Riyadh, Saudi Arabia",
+  "universityName" : "Arab Open University",
+  "country" : "Saudi Arabia",
+  "fullLocation" : "Riyadh, Saudi Arabia",
+  "placeId" : "ChIJ5RCuHGHhLj4RR0ZR9n_AEpI"
+}, {
+  "title" : "GDG on Campus Damanhour University - Damanhour, Egypt",
+  "universityName" : "Damanhour University",
+  "country" : "Egypt",
+  "fullLocation" : "Damanhour, Egypt",
+  "placeId" : "ChIJtSaFGZhr9hQR6ZANNiTXuhA"
+}, {
+  "title" : "GDG on Campus Hashemite University - Zarqa, Jordan",
+  "universityName" : "Hashemite University",
+  "country" : "Jordan",
+  "fullLocation" : "Zarqa, Jordan",
+  "placeId" : "ChIJIb5R69FzGxURiGkeSoPK2sQ"
+}, {
+  "title" : "GDG on Campus Hassan II University of Casablanca - Casablanca, Morocco",
+  "universityName" : "Hassan II University of Casablanca",
+  "country" : "Morocco",
+  "fullLocation" : "Casablanca, Morocco",
+  "placeId" : "ChIJ-4JJEYzTpw0RuT4zCfCiL9A"
+}, {
+  "title" : "GDG on Campus Kastamonu University - Kastamonu, Türkiye",
+  "universityName" : "Kastamonu University",
+  "country" : "Türkiye",
+  "fullLocation" : "Kastamonu, Türkiye",
+  "placeId" : "ChIJnShVdhj7hEARcLSvcMqJWzE"
+}, {
+  "title" : "GDG on Campus Lancaster University - Lancaster, United Kingdom",
+  "universityName" : "Lancaster University",
+  "country" : "United Kingdom",
+  "fullLocation" : "Lancaster, United Kingdom",
+  "placeId" : "ChIJg5K35f1ie0gRB0A8tzF0CVk"
+}, {
+  "title" : "GDG on Campus Middlesex University Dubai - Dubai, United Arab Emirates",
+  "universityName" : "Middlesex University Dubai",
+  "country" : "United Arab Emirates",
+  "fullLocation" : "Dubai, United Arab Emirates",
+  "placeId" : "ChIJz3lQaWtrXz4RUShO_Xd8gzk"
+}, {
+  "title" : "GDG on Campus Mongolian University of Science and Technology - Sukhbaatar, Mongolia",
+  "universityName" : "Mongolian University of Science and Technology",
+  "country" : "Mongolia",
+  "fullLocation" : "Sukhbaatar, Mongolia",
+  "placeId" : "ChIJVzVdUUCSll0RzsYCzvz7r8M"
+}, {
+  "title" : "GDG on Campus October 6 University - Giza, Egypt",
+  "universityName" : "October 6 University",
+  "country" : "Egypt",
+  "fullLocation" : "Giza, Egypt, Egypt",
+  "placeId" : "ChIJ53uk1EFXWBQRmYFBIwmTJ_w"
+}, {
+  "title" : "GDG on Campus Phoenicia University - Daoudiye, Lebanon",
+  "universityName" : "Phoenicia University",
+  "country" : "Lebanon",
+  "fullLocation" : "Daoudiye, Lebanon, Lebanon",
+  "placeId" : "ChIJ1zwLwp2MHhUR9iJUuW4IvTg"
+}, {
+  "title" : "GDG on Campus Technical University Berlin - Berlin, Germany",
+  "universityName" : "Technical University Berlin",
+  "country" : "Germany",
+  "fullLocation" : "Berlin, Germany, Germany",
+  "placeId" : "ChIJcQqAORtRqEcRgY1oNi3sCrQ"
+}, {
+  "title" : "GDG on Campus Technical University of Munich - Munich, Germany",
+  "universityName" : "Technical University of Munich",
+  "country" : "Germany",
+  "fullLocation" : "Munich, Germany",
+  "placeId" : "ChIJEYxtM2FynkcRnfFb3ERNoHk"
+}, {
+  "title" : "GDG on Campus Al-Hikmah University - Ilorin, Nigeria",
+  "universityName" : "Al-Hikmah University",
+  "country" : "Nigeria",
+  "fullLocation" : "Kwara, Nigeria",
+  "placeId" : "ChIJq6qqfhZTNhARq4rxZ_vmR7o"
+}, {
+  "title" : "GDG on Campus St Paul's University - Kiambu, Kenya",
+  "universityName" : "St Paul's University",
+  "country" : "Kenya",
+  "fullLocation" : "Kiambu, Kenya",
+  "placeId" : "ChIJvZjnsicRLxgR4bCi17EeZFY"
+}, {
+  "title" : "GDG on Campus Technical University of Mombasa - Mombasa, Kenya",
+  "universityName" : "Technical University of Mombasa",
+  "country" : "Kenya",
+  "fullLocation" : "Mombasa, Kenya",
+  "placeId" : "ChIJLddeD70SQBgRgZMCexiDIBg"
+}, {
+  "title" : "GDG on Campus Arka Jain University - Jamshedpur, India",
+  "universityName" : "Arka Jain University",
+  "country" : "India",
+  "fullLocation" : "Jamshedpur, India",
+  "placeId" : "ChIJf3eWtPHl9TkRXYPtszNgUB0"
+}, {
+  "title" : "GDG on Campus DHA Suffa University - Karachi, Pakistan",
+  "universityName" : "DHA Suffa University",
+  "country" : "Pakistan",
+  "fullLocation" : "Karachi, Pakistan",
+  "placeId" : "ChIJ26hJqTC1TDkRxZZrLkstFO0"
+}, {
+  "title" : "GDG on Campus Dibrugarh University - Dibrugarh, India",
+  "universityName" : "Dibrugarh University",
+  "country" : "India",
+  "fullLocation" : "Dibrugarh, India",
+  "placeId" : "ChIJq6qqqtqiQDcRg2XHIoqXDTw"
+}, {
+  "title" : "GDG on Campus Feng Chia University - Taichung City, Taiwan",
+  "universityName" : "Feng Chia University",
+  "country" : "Taiwan",
+  "fullLocation" : "Taichung City, Taiwan",
+  "placeId" : "ChIJp4qYpyMWaTQRWgPDQWwU3XM"
+}, {
+  "title" : "GDG on Campus Hong Kong University of Science and Technology - Hong Kong, Hong Kong",
+  "universityName" : "Hong Kong University of Science and Technology",
+  "country" : "Hong Kong SAR",
+  "fullLocation" : "Hong Kong, Hong Kong SAR",
+  "placeId" : "ChIJFX6cwWsEBDQRvkH4nI_V7Ss"
+}, {
+  "title" : "GDG on Campus Karnavati University - Gandhinagar, India",
+  "universityName" : "Karnavati University",
+  "country" : "India",
+  "fullLocation" : "Gandhinagar, India",
+  "placeId" : "ChIJr60s8AkpXDkRusJJigf0CMk"
+}, {
+  "title" : "GDG on Campus Kasetsart University - Bangkok, Thailand",
+  "universityName" : "Kasetsart University",
+  "country" : "Thailand",
+  "fullLocation" : "Bangkok, Thailand",
+  "placeId" : "ChIJaecbER6d4jARMYzsas3oMkM"
+}, {
+  "title" : "GDG on Campus Khon Kaen University - Khon Kaen, Thailand",
+  "universityName" : "Khon Kaen University",
+  "country" : "Thailand",
+  "fullLocation" : "Khon Kaen, Thailand",
+  "placeId" : "ChIJ85YcsI6KIjERh98Z5Il7pPY"
+}, {
+  "title" : "GDG on Campus Medi-Caps University - Indore, India",
+  "universityName" : "Medi-Caps University",
+  "country" : "India",
+  "fullLocation" : "Indore, India",
+  "placeId" : "ChIJnRa33Fj5YjkRDw_leCDBd9g"
+}, {
+  "title" : "GDG on Campus Primakara University - Denpasar, Indonesia",
+  "universityName" : "Primakara University",
+  "country" : "United States",
+  "fullLocation" : "Austin, United States",
+  "placeId" : "ChIJn75EuKpB0i0RThBTACbw_ns"
+}, {
+  "title" : "GDG on Campus Rishihood University - Sonipat, India",
+  "universityName" : "Rishihood University",
+  "country" : "India",
+  "fullLocation" : "Sonipat, India, India",
+  "placeId" : "ChIJA-EdReOxDTkRb2SsuvCftPM"
+}, {
+  "title" : "GDG on Campus Sambalpur University Institute of Information Technology - Sambalpur, India",
+  "universityName" : "Sambalpur University Institute of Information Technology",
+  "country" : "India",
+  "fullLocation" : "Sambalpur, India",
+  "placeId" : "ChIJV68JgzY8IToRQUhilZzR1Nw"
+}, {
+  "title" : "GDG on Campus Sangmyung University - Seoul, South Korea",
+  "universityName" : "Sangmyung University",
+  "country" : "Korea",
+  "fullLocation" : "Seoul, Korea",
+  "placeId" : "ChIJ-wEoyBkpezURyO-nNhhnpI0"
+}, {
+  "title" : "GDG on Campus Singapore University of Technology and Design - Singapore, Singapore",
+  "universityName" : "Singapore University of Technology and Design",
+  "country" : "Singapore",
+  "fullLocation" : "Singapore, Singapore",
+  "placeId" : "ChIJy2Dymdg82jERGFUCbbzKvpk"
+}, {
+  "title" : "GDG on Campus Swinburne University of Technology - Melbourne, Australia",
+  "universityName" : "Swinburne University of Technology",
+  "country" : "Australia",
+  "fullLocation" : "Melbourne, Australia",
+  "placeId" : "ChIJr1quazJC1moRafeISb1r6XU"
+}, {
+  "title" : "GDG on Campus VNU HCM - University of Science - Ho Chi Minh City, Vietnam",
+  "universityName" : "VNU HCM",
+  "country" : "Vietnam",
+  "fullLocation" : "Ho Chi Minh City, Vietnam",
+  "placeId" : "ChIJYfkllF8ndTER36F7BXfc9vI"
+}, {
+  "title" : "GDG on Campus Widyatama University - Bandung, Indonesia",
+  "universityName" : "Widyatama University",
+  "country" : "Indonesia",
+  "fullLocation" : "Bandung, Indonesia",
+  "placeId" : "ChIJ71RLur3naC4ROzZ6ZquFAgg"
+}, {
+  "title" : "GDG on Campus Iowa State University of Science and Technology - Ames, United States",
+  "universityName" : "Iowa State University of Science and Technology",
+  "country" : "United States",
+  "fullLocation" : "Ames, United States",
+  "placeId" : "ChIJGVshXgp67ocR6Els7jrt2Nc"
+}, {
+  "title" : "GDG on Campus Texas Tech University - Lubbock, United States",
+  "universityName" : "Texas Tech University",
+  "country" : "United States",
+  "fullLocation" : "Lubbock, United States, United States",
+  "placeId" : "ChIJR8ge8xPEQIYRSXiwt3SzLQU"
+}, {
+  "title" : "GDG on Campus Vanderbilt University - Nashville, United States",
+  "universityName" : "Vanderbilt University",
+  "country" : "United States",
+  "fullLocation" : "Nashville, United States",
+  "placeId" : "ChIJR4DvpqRmZIgR1hU5F1UUUeo"
+}, {
+  "title" : "GDG on Campus Washington University in St. Louis - St. Louis, United States",
+  "universityName" : "Washington University in St. Louis",
+  "country" : "United States",
+  "fullLocation" : "St. Louis, United States",
+  "placeId" : "ChIJzw-cD0a12IcRaXY8GIGU-pQ"
+}, {
+  "title" : "GDG on Campus Al Yamamah University - Riyadh, Saudi Arabia",
+  "universityName" : "Al Yamamah University",
+  "country" : "Saudi Arabia",
+  "fullLocation" : "Riyadh, Saudi Arabia",
+  "placeId" : "ChIJE9PixwDmLj4R609XeYE09R0"
+}, {
+  "title" : "GDG on Campus Bahçeşehir University - Istanbul, Türkiye",
+  "universityName" : "Bahçeşehir University",
+  "country" : "Türkiye",
+  "fullLocation" : "Istanbul, Türkiye",
+  "placeId" : "ChIJFUmm4KW3yhQROnd4En_L314"
+}, {
+  "title" : "GDG on Campus Nazarbayev University - Astana, Kazakhstan",
+  "universityName" : "Nazarbayev University",
+  "country" : "Kazakhstan",
+  "fullLocation" : "Astana, Kazakhstan",
+  "placeId" : "ChIJ33AQZaWFRUIRAG-UL9kj5KA"
+}, {
+  "title" : "GDG on Campus Suez Canal University - Ismailia, Egypt",
+  "universityName" : "Suez Canal University",
+  "country" : "Egypt",
+  "fullLocation" : "Ismailia, Egypt",
+  "placeId" : "ChIJ51YVIH9Z-BQR838zZzgF1ps"
+}, {
+  "title" : "GDG on Campus Multimedia University of Kenya - Nairobi, Kenya",
+  "universityName" : "Multimedia University of Kenya",
+  "country" : "Kenya",
+  "fullLocation" : "Nairobi, Kenya",
+  "placeId" : "ChIJG_4reesRLxgRNWTAFFADKX0"
+}, {
+  "title" : "GDG on Campus Strathmore University - Nairobi, Kenya",
+  "universityName" : "Strathmore University",
+  "country" : "Kenya",
+  "fullLocation" : "Nairobi, Kenya",
+  "placeId" : "ChIJJ0j_ni4RLxgR6siEdFkYqRc"
+}, {
+  "title" : "GDG on Campus Yobe State University - Damaturu, Nigeria",
+  "universityName" : "Yobe State University",
+  "country" : "Nigeria",
+  "fullLocation" : "Damaturu, Nigeria, Nigeria",
+  "placeId" : "ChIJvagxp65TARERp-AqOxtdi3c"
+}, {
+  "title" : "GDG on Campus Chandigarh University - Chandigarh, India",
+  "universityName" : "Chandigarh University",
+  "country" : "India",
+  "fullLocation" : "Chandigarh, India",
+  "placeId" : "ChIJBz7WCxT7DzkRiKkXTTMeWWg"
+}, {
+  "title" : "GDG on Campus Holy Angel University - Angeles, Philippines",
+  "universityName" : "Holy Angel University",
+  "country" : "Philippines",
+  "fullLocation" : "Angeles, Philippines",
+  "placeId" : "ChIJ-aH1wk7yljMRgiKrqqb4Cl4"
+}, {
+  "title" : "GDG on Campus J. C. Bose University of Science and Technology - Faridabad, India",
+  "universityName" : "J. C. Bose University of Science and Technology",
+  "country" : "India",
+  "fullLocation" : "Faridabad, India",
+  "placeId" : "ChIJV_Xp9nHcDDkRF4Xxn-weMOs"
+}, {
+  "title" : "GDG on Campus Multimedia University - Selangor, Malaysia",
+  "universityName" : "Multimedia University",
+  "country" : "Malaysia",
+  "fullLocation" : "Selangor, Malaysia",
+  "placeId" : "ChIJobfTqeS2zTERKREP0YpO99A"
+}, {
+  "title" : "GDG on Campus P P Savani University - Surat, India",
+  "universityName" : "P P Savani University",
+  "country" : "India",
+  "fullLocation" : "Surat, India",
+  "placeId" : "ChIJC4VtRYg84DsRU4vN1XME3DA"
+}, {
+  "title" : "GDG on Campus Presidency University - Bengaluru, India",
+  "universityName" : "Presidency University",
+  "country" : "India",
+  "fullLocation" : "Bengaluru, India, India",
+  "placeId" : "ChIJVTrWSr4hrjsRNtLDcbetCBA"
+}, {
+  "title" : "GDG on Campus Queensland University of Technology - Brisbane, Australia",
+  "universityName" : "Queensland University of Technology",
+  "country" : "Australia",
+  "fullLocation" : "Brisbane, Australia",
+  "placeId" : "ChIJQR1yTBBakWsRcQHwHg3Aua4"
+}, {
+  "title" : "GDG on Campus RamdeoBaba University - Nagpur, India",
+  "universityName" : "RamdeoBaba University",
+  "country" : "India",
+  "fullLocation" : "Nagpur, India",
+  "placeId" : "ChIJ6YzHbADB1DsRCIda5z2grzc"
+}, {
+  "title" : "GDG on Campus Shiv Nadar University Chennai - Chennai, India",
+  "universityName" : "Shiv Nadar University Chennai",
+  "country" : "India",
+  "fullLocation" : "Chennai, India, India",
+  "placeId" : "ChIJ92mK8rNRUjoRrsa4l48HrnY"
+}, {
+  "title" : "GDG on Campus Silver Oak University - Ahmedabad, India",
+  "universityName" : "Silver Oak University",
+  "country" : "India",
+  "fullLocation" : "Ahmedabad, India",
+  "placeId" : "ChIJR5Pz9jqDXjkRCHDq2mWQ2_E"
+}, {
+  "title" : "GDG on Campus Tokyo City University - Tokyo, Japan",
+  "universityName" : "Tokyo City University",
+  "country" : "Japan",
+  "fullLocation" : "Setagaya City, Japan",
+  "placeId" : "ChIJ4SvzswD1GGARw3FAb4cRBrI"
+}, {
+  "title" : "GDG on Campus Alabama A&amp;M University - Huntsville, United States",
+  "universityName" : "Alabama A&amp;M University",
+  "country" : "United States",
+  "fullLocation" : "Huntsville, United States",
+  "placeId" : "ChIJuyDejJkChogREgmu26spDt8"
+}, {
+  "title" : "GDG on Campus Long Island University - Brooklyn, United States",
+  "universityName" : "Long Island University",
+  "country" : "United States",
+  "fullLocation" : "Brooklyn, United States",
+  "placeId" : "ChIJVc91MLNbwokRpGZDtxRpfpY"
+}, {
+  "title" : "GDG on Campus Utah Valley University - Orem, United States",
+  "universityName" : "Utah Valley University",
+  "country" : "United States",
+  "fullLocation" : "Orem, United States",
+  "placeId" : "ChIJxfW57h6bTYcRoYrpE4Q9UmM"
+}, {
+  "title" : "GDG on Campus Wayne State University - Detroit, United States",
+  "universityName" : "Wayne State University",
+  "country" : "United States",
+  "fullLocation" : "Detroit, United States",
+  "placeId" : "ChIJQ9hCnbzSJIgRTl7fSYmWiLY"
+}, {
+  "title" : "GDG on Campus Brandenburg University of Technology Cottbus-Senftenberg - Cottbus, Germany",
+  "universityName" : "Brandenburg University of Technology Cottbus-Senftenberg",
+  "country" : "Germany",
+  "fullLocation" : "Cottbus, Germany, Germany",
+  "placeId" : "ChIJ-0xUifY9CEcROUf9Vjb3OEU"
+}, {
+  "title" : "GDG on Campus Constructor University - Bremen, Germany",
+  "universityName" : "Constructor University",
+  "country" : "Germany",
+  "fullLocation" : "Bremen, Germany",
+  "placeId" : "ChIJZWzA56EssUcR6dQ_bHihP5A"
+}, {
+  "title" : "GDG on Campus Côte d'Azur University - Nice, France",
+  "universityName" : "Côte d'Azur University",
+  "country" : "France",
+  "fullLocation" : "Nice, France",
+  "placeId" : "ChIJ2dc1zVXFzRIR2L2QnpQpYIc"
+}, {
+  "title" : "GDG on Campus De Montfort University Kazakhstan - Almaty, Kazakhstan",
+  "universityName" : "De Montfort University Kazakhstan",
+  "country" : "Kazakhstan",
+  "fullLocation" : "Almaty, Kazakhstan, Kazakhstan",
+  "placeId" : "ChIJT0U-Fe1vgzgRUVUgONkTwf8"
+}, {
+  "title" : "GDG on Campus Dokuz Eylül University - Izmir, Türkiye",
+  "universityName" : "Dokuz Eylül University",
+  "country" : "Türkiye",
+  "fullLocation" : "İzmir, Türkiye",
+  "placeId" : "ChIJwSQk-o5huRQRgRJRJA83fDg"
+}, {
+  "title" : "GDG on Campus Galatasaray University - Istanbul, Türkiye",
+  "universityName" : "Galatasaray University",
+  "country" : "Türkiye",
+  "fullLocation" : "Istanbul, Türkiye",
+  "placeId" : "ChIJkQGbULi3yhQRQCDiiZs25aM"
+}, {
+  "title" : "GDG on Campus Heriot-Watt University Dubai - Dubai, United Arab Emirates",
+  "universityName" : "Heriot-Watt University Dubai",
+  "country" : "United Arab Emirates",
+  "fullLocation" : "Dubai, United Arab Emirates, United Arab Emirates",
+  "placeId" : "ChIJ0_LEeo5jXz4RCz1Q_0KYkew"
+}, {
+  "title" : "GDG on Campus Polytechnic University of Milan",
+  "universityName" : "Polytechnic University of Milan",
+  "country" : "Italy",
+  "fullLocation" : "Milan, Italy",
+  "placeId" : "ChIJt-FZ__zAhkcRUvds7jQpTjs"
+}, {
+  "title" : "GDG on Campus Polytechnic University of Valencia - Valencia, Spain",
+  "universityName" : "Polytechnic University of Valencia",
+  "country" : "Spain",
+  "fullLocation" : "València, Spain",
+  "placeId" : "ChIJd0BgXXxIYA0R9qbF_THfDxU"
+}, {
+  "title" : "GDG on Campus Addis Ababa University - Addis Ababa, Ethiopia",
+  "universityName" : "Addis Ababa University",
+  "country" : "Ethiopia",
+  "fullLocation" : "Addis Ababa, Ethiopia",
+  "placeId" : "ChIJxcxvMgCPSxYRc8dW8ugQkJY"
+}, {
+  "title" : "GDG on Campus All Nations University - Koforidua, Ghana",
+  "universityName" : "All Nations University",
+  "country" : "Ghana",
+  "fullLocation" : "Koforidua, Ghana",
+  "placeId" : "ChIJu2anloE_3w8Rmi5u-Nv0n5g"
+}, {
+  "title" : "GDG on Campus Cross River University of Technology - Calabar, Nigeria",
+  "universityName" : "Cross River University of Technology",
+  "country" : "Nigeria",
+  "fullLocation" : "Calabar, Nigeria",
+  "placeId" : "ChIJ9fMSHii_WxARBDbfSv4BNfE"
+}, {
+  "title" : "GDG on Campus Ekiti State University - Ado Ekiti, Nigeria",
+  "universityName" : "Ekiti State University",
+  "country" : "Nigeria",
+  "fullLocation" : "Ado Ekiti, Nigeria",
+  "placeId" : "ChIJlw-Wj_ziRxARO4BnPlv1cZ0"
+}, {
+  "title" : "GDG on Campus Gombe State University - Gombe, Nigeria",
+  "universityName" : "Gombe State University",
+  "country" : "Nigeria",
+  "fullLocation" : "Gombe, Nigeria, Nigeria",
+  "placeId" : "ChIJZdb3_JDQ_xAR2teAtUSwrNU"
+}, {
+  "title" : "GDG on Campus Kwara State University - Malete, Nigeria",
+  "universityName" : "Kwara State University",
+  "country" : "Nigeria",
+  "fullLocation" : "Malete, Nigeria",
+  "placeId" : "ChIJZ4XvVUVZNhAR1COy1xSUoPU"
+}, {
+  "title" : "GDG on Campus Lagos State University - Ojo, Nigeria",
+  "universityName" : "Lagos State University",
+  "country" : "Nigeria",
+  "fullLocation" : "Alasia, Nigeria",
+  "placeId" : "ChIJsZAFUJaGOxARq22tH-RHe_I"
+}, {
+  "title" : "GDG on Campus Lagos State University of Science and Technology - Ikorodu, Nigeria",
+  "universityName" : "Lagos State University of Science and Technology",
+  "country" : "Nigeria",
+  "fullLocation" : "Ikorodu, Nigeria, Nigeria",
+  "placeId" : "ChIJr3E2_EbpOxARBVaqTJocnLk"
+}, {
+  "title" : "GDG on Campus Maasai Mara University - Narok, Kenya",
+  "universityName" : "Maasai Mara University",
+  "country" : "Kenya",
+  "fullLocation" : "Narok, Kenya",
+  "placeId" : "ChIJQUKFhT0DLBgRjtQTm7kc4tc"
+}, {
+  "title" : "GDG on Campus Mount Kenya University - Thika, Kenya",
+  "universityName" : "Mount Kenya University",
+  "country" : "Kenya",
+  "fullLocation" : "Thika, Kenya",
+  "placeId" : "ChIJFd3SF_VOLxgRFlmvPTgHfY4"
+}, {
+  "title" : "GDG on Campus Polytechnic University of Gitega - Gitega, Burundi",
+  "universityName" : "Polytechnic University of Gitega",
+  "country" : "Burundi",
+  "fullLocation" : "Gitega, Burundi",
+  "placeId" : "ChIJpz3P275FwRkRiDuOOG29ccI"
+}, {
+  "title" : "GDG on Campus Bundelkhand University - Jhansi, India",
+  "universityName" : "Bundelkhand University",
+  "country" : "India",
+  "fullLocation" : "Jhansi, India",
+  "placeId" : "ChIJUQo9IQB3dzkRCt-qerVh_SM"
+}, {
+  "title" : "GDG on Campus De La Salle University - Manila, Philippines",
+  "universityName" : "De La Salle University",
+  "country" : "Philippines",
+  "fullLocation" : "Manila, Philippines",
+  "placeId" : "ChIJm0WG0n7JlzMRKq5-mY0GJ1k"
+}, {
+  "title" : "GDG on Campus Ewha Womans University - Seoul, South Korea",
+  "universityName" : "Ewha Womans University",
+  "country" : "Korea",
+  "fullLocation" : "Seoul, Korea",
+  "placeId" : "ChIJaS2QWYSYfDURDdj5UDhrU_I"
+}, {
+  "title" : "GDG on Campus Malla Reddy University - Hyderabad, India",
+  "universityName" : "Malla Reddy University",
+  "country" : "India",
+  "fullLocation" : "Hyderabad, India",
+  "placeId" : "ChIJI2grZfiPyzsRwwi3tNsTF5g"
+}, {
+  "title" : "GDG on Campus Polytechnic University of the Philippines - Manila, Philippines",
+  "universityName" : "Polytechnic University of the Philippines",
+  "country" : "Philippines",
+  "fullLocation" : "Manila, Philippines",
+  "placeId" : "ChIJ__j284HPlzMRmlV_00JgRmg"
+}, {
+  "title" : "GDG on Campus Sungkonghoe University - Seoul, South Korea",
+  "universityName" : "Sungkonghoe University",
+  "country" : "Korea",
+  "fullLocation" : "Seoul, Korea",
+  "placeId" : "ChIJ4wZO42FiezUR5pG8klFI0Ms"
+}, {
+  "title" : "GDG on Campus George Mason University - Fairfax, United States",
+  "universityName" : "George Mason University",
+  "country" : "United States",
+  "fullLocation" : "Fairfax, United States",
+  "placeId" : "ChIJvX5Ce2BOtokRRHVV5lOmZtc"
+}, {
+  "title" : "GDG on Campus Northeastern University, Boston Campus - Boston, United States",
+  "universityName" : "Northeastern University, Boston Campus",
+  "country" : "United States",
+  "fullLocation" : "Boston, United States",
+  "placeId" : "ChIJ4VzPmRl644kRjLkiZeYAe8k"
+}, {
+  "title" : "GDG on Campus Northeastern University, Oakland - Oakland, United States",
+  "universityName" : "Northeastern University, Oakland",
+  "country" : "United States",
+  "fullLocation" : "Oakland, United States, United States",
+  "placeId" : "ChIJDxNZbRuGj4ARsSLk9eokGIU"
+}, {
+  "title" : "GDG on Campus Northeastern University, Seattle - Seattle, United States",
+  "universityName" : "Northeastern University, Seattle",
+  "country" : "United States",
+  "fullLocation" : "Seattle, United States, United States",
+  "placeId" : "ChIJUwjkeTcVkFQRRYu-9VFCGxk"
+}, {
+  "title" : "GDG on Campus Northeastern University, Silicon Valley - San Jose, United States",
+  "universityName" : "Northeastern University, Silicon Valley",
+  "country" : "United States",
+  "fullLocation" : "San Jose, United States",
+  "placeId" : "ChIJs4PGBfMvjoARovTyDP6XfZM"
+}, {
+  "title" : "GDG on Campus Northeastern University, Toronto - Toronto, Canada",
+  "universityName" : "Northeastern University, Toronto",
+  "country" : "Canada",
+  "fullLocation" : "Toronto, Canada, Canada",
+  "placeId" : "ChIJY4j7DBI1K4gRUuidUWku87U"
+}, {
+  "title" : "GDG on Campus Ontario Tech University - Oshawa, Canada",
+  "universityName" : "Ontario Tech University",
+  "country" : "Canada",
+  "fullLocation" : "Oshawa, Canada",
+  "placeId" : "ChIJf674apob1YkR9RY3WRk6Nyo"
+}, {
+  "title" : "GDG on Campus Oregon State University - Corvallis, United States",
+  "universityName" : "Oregon State University",
+  "country" : "United States",
+  "fullLocation" : "Corvallis, United States, United States",
+  "placeId" : "ChIJQ7tQ6rlAwFQRn7T3Adzx_6Y"
+}, {
+  "title" : "GDG on Campus Simon Fraser University - Burnaby, Canada",
+  "universityName" : "Simon Fraser University",
+  "country" : "Canada",
+  "fullLocation" : "Burnaby, Canada",
+  "placeId" : "ChIJJyJ6hcB5hlQRW7Uwbj9sUAA"
+}, {
+  "title" : "GDG on Campus Truman State University - Kirksville, United States",
+  "universityName" : "Truman State University",
+  "country" : "United States",
+  "fullLocation" : "Kirksville, United States",
+  "placeId" : "ChIJO03yKWIO6IcR1seRho8bN2o"
+}, {
+  "title" : "GDG on Campus Al-Zaytoonah University of Jordan - Amman , Jordan",
+  "universityName" : "Al-Zaytoonah University of Jordan",
+  "country" : "Jordan",
+  "fullLocation" : "Amman , Jordan, Jordan",
+  "placeId" : "ChIJTwSFTwuoHBUR-ZOMfCSXaHc"
+}, {
+  "title" : "GDG on Campus Babes-Bolyai University - Cluj-Napoca, Romania",
+  "universityName" : "Babes-Bolyai University",
+  "country" : "Romania",
+  "fullLocation" : "Cluj-Napoca, Romania, Romania",
+  "placeId" : "ChIJFeS_gYMPSUcRrils5krlHfo"
+}, {
+  "title" : "GDG on Campus Saint Joseph University of Beirut, ESJB - Beirut, Lebanon",
+  "universityName" : "Saint Joseph University of Beirut, ESJB",
+  "country" : "Lebanon",
+  "fullLocation" : "Beirut, Lebanon",
+  "placeId" : "ChIJbRt69-IWHxURSOL07TB0XUQ"
+}, {
+  "title" : "GDG on Campus South Valley University - Qena, Egypt",
+  "universityName" : "South Valley University",
+  "country" : "Egypt",
+  "fullLocation" : "Qena, Egypt",
+  "placeId" : "ChIJ8RgYere3ThQRCPndqajxbcM"
+}, {
+  "title" : "GDG on Campus Ahmadu Bello University - Zaria, Nigeria",
+  "universityName" : "Ahmadu Bello University",
+  "country" : "Nigeria",
+  "fullLocation" : "Zaria, Nigeria",
+  "placeId" : "ChIJrd_OICuEshERsF4T6CpiGM4"
+}, {
+  "title" : "GDG on Campus Ho Technical University - Ho, Ghana",
+  "universityName" : "Ho Technical University",
+  "country" : "Ghana",
+  "fullLocation" : "Ho, Ghana",
+  "placeId" : "ChIJA1TwPQLNIBARonk-61aB2VU"
+}, {
+  "title" : "GDG on Campus Taita Taveta University - Voi, Kenya",
+  "universityName" : "Taita Taveta University",
+  "country" : "Kenya",
+  "fullLocation" : "Voi, Kenya",
+  "placeId" : "ChIJV_-zKmYoORgRfopVldpvD8w"
+}, {
+  "title" : "GDG on Campus Taraba State University - Jalingo, Nigeria",
+  "universityName" : "Taraba State University",
+  "country" : "Nigeria",
+  "fullLocation" : "Jalingo, Nigeria",
+  "placeId" : "ChIJuf___68p-RARbnWaWHIL_Ok"
+}, {
+  "title" : "GDG on Campus The Catholic University of Eastern Africa - Nairobi, Kenya",
+  "universityName" : "The Catholic University of Eastern Africa",
+  "country" : "Kenya",
+  "fullLocation" : "Nairobi, Kenya",
+  "placeId" : "ChIJoQTB4cgFLxgRKE0JzJ3eNW4"
+}, {
+  "title" : "GDG on Campus Asia Pacific University of Technology &amp; Innovation - Kuala Lumpur, Malaysia",
+  "universityName" : "Asia Pacific University of Technology &amp; Innovation",
+  "country" : "Malaysia",
+  "fullLocation" : "Kuala Lumpur, Malaysia",
+  "placeId" : null
+}, {
+  "title" : "GDG on Campus Birla Global University - Bhubaneswar, India",
+  "universityName" : "Birla Global University",
+  "country" : "India",
+  "fullLocation" : "Bhubaneswar, India, India",
+  "placeId" : "ChIJjTq3V40HGToRuzdDJq_wg2g"
+}, {
+  "title" : "GDG on Campus Hitotsubashi University - Tokyo, Japan",
+  "universityName" : "Hitotsubashi University",
+  "country" : "Japan",
+  "fullLocation" : "Tokyo, Japan",
+  "placeId" : "ChIJOaKDjPfjGGARw8NDUv8O0BQ"
+}, {
+  "title" : "GDG on Campus Kyoto Sangyo University - Kyoto, Japan",
+  "universityName" : "Kyoto Sangyo University",
+  "country" : "Japan",
+  "fullLocation" : "Kyoto, Japan, Japan",
+  "placeId" : "ChIJg06Au92nAWARzaCJnp4eOsU"
+}, {
+  "title" : "GDG on Campus Sarala Birla University - Ranchi, India",
+  "universityName" : "Sarala Birla University",
+  "country" : "India",
+  "fullLocation" : "Ranchi, India",
+  "placeId" : "ChIJU7P5-SLj9DkRlK5Ruf5Ae30"
+}, {
+  "title" : "GDG on Campus Sungkyunkwan University - Seoul, South Korea",
+  "universityName" : "Sungkyunkwan University",
+  "country" : "Korea",
+  "fullLocation" : "Seoul, Korea",
+  "placeId" : "ChIJFXO4zdSifDURFGFcAKIgK1s"
+}, {
+  "title" : "GDG on Campus Techno India University - Kolkata, India",
+  "universityName" : "Techno India University",
+  "country" : "India",
+  "fullLocation" : "Kolkata, India",
+  "placeId" : "ChIJtRkumq5w-TkRWbH0aZA7xBY"
+}, {
+  "title" : "GDG on Campus The Catholic University of Korea - Seoul, South Korea",
+  "universityName" : "The Catholic University of Korea",
+  "country" : "Korea",
+  "fullLocation" : "Seoul, Korea",
+  "placeId" : "ChIJc1pqYHChfDURuZzpyOyEAP0"
+}, {
+  "title" : "GDG on Campus The NorthCap University - Gurugram, India",
+  "universityName" : "The NorthCap University",
+  "country" : "India",
+  "fullLocation" : "Gurugram, India",
+  "placeId" : "ChIJ8Q_pmJwZDTkRjnP7U2ynKos"
+}, {
+  "title" : "GDG on Campus Arizona State University - Tempe, United States",
+  "universityName" : "Arizona State University",
+  "country" : "United States",
+  "fullLocation" : "Tempe, United States, United States",
+  "placeId" : "ChIJD1QzO9sIK4cRMzA8R39xbmY"
+}, {
+  "title" : "GDG on Campus Georgia State University - Atlanta, United States",
+  "universityName" : "Georgia State University",
+  "country" : "United States",
+  "fullLocation" : "Atlanta, United States",
+  "placeId" : "ChIJueHvE4YD9YgRl25c4JufwUo"
+}, {
+  "title" : "GDG on Campus Central Asian University - Tashkent, Uzbekistan",
+  "universityName" : "Central Asian University",
+  "country" : "Uzbekistan",
+  "fullLocation" : "Tashkent, Uzbekistan",
+  "placeId" : "ChIJbcHYKgD3rjgRHKgPxetzlqE"
+}, {
+  "title" : "GDG on Campus Eotvos Lorand University - Budapest, Hungary",
+  "universityName" : "Eotvos Lorand University",
+  "country" : "Hungary",
+  "fullLocation" : "Budapest, Hungary, Hungary",
+  "placeId" : "ChIJUZJ83ETcQUcRbYABbT7QWSI"
+}, {
+  "title" : "GDG on Campus Istanbul Okan University - Istanbul, Türkiye",
+  "universityName" : "Istanbul Okan University",
+  "country" : "Türkiye",
+  "fullLocation" : "Istanbul, Türkiye",
+  "placeId" : "ChIJyw8QD7XXyhQRdmp8_D1q_ks"
+}, {
+  "title" : "GDG on Campus OSTİM Teknik University - Ankara, Türkiye",
+  "universityName" : "OSTİM Teknik University",
+  "country" : "Türkiye",
+  "fullLocation" : "Ankara, Türkiye",
+  "placeId" : "ChIJnyZxWahJ0xQRBBdl_U8Gvg4"
+}, {
+  "title" : "GDG on Campus Princess Nora university - Riyadh, Saudi Arabia",
+  "universityName" : "Princess Nora university",
+  "country" : "Saudi Arabia",
+  "fullLocation" : "Riyadh, Saudi Arabia",
+  "placeId" : "ChIJyah-dQKPDhQRK6p3ZUcj4Co"
+}, {
+  "title" : "GDG on Campus Yıldız Teknik University - Istanbul, Türkiye",
+  "universityName" : "Yıldız Teknik University",
+  "country" : "Türkiye",
+  "fullLocation" : "Istanbul, Türkiye",
+  "placeId" : "ChIJS8v5wWu7yhQRX0Codwflp-k"
+}, {
+  "title" : "GDG on Campus Academic City University College - Accra, Ghana",
+  "universityName" : "Academic City University College",
+  "country" : "Ghana",
+  "fullLocation" : "Accra, Ghana",
+  "placeId" : "ChIJc4ujTgCd3w8RjYFLnxqRfGA"
+}, {
+  "title" : "GDG on Campus Aliko Dangote University of Science and Technology - Wudil, Nigeria",
+  "universityName" : "Aliko Dangote University of Science and Technology",
+  "country" : "Nigeria",
+  "fullLocation" : "Wudil, Nigeria, Nigeria",
+  "placeId" : "ChIJkYRUDjwZrBERQEInBXFPM7o"
+}, {
+  "title" : "GDG on Campus Dedan Kimathi University of Technology - Nyeri, Kenya",
+  "universityName" : "Dedan Kimathi University of Technology",
+  "country" : "Kenya",
+  "fullLocation" : "Nyeri, Kenya",
+  "placeId" : "ChIJE_9VSXpnKBgRppZTYena5Ho"
+}, {
+  "title" : "GDG on Campus Jomo Kenyatta University of Agriculture and Technology - Juja, Kenya",
+  "universityName" : "Jomo Kenyatta University of Agriculture and Technology",
+  "country" : "Kenya",
+  "fullLocation" : "Juja, Kenya",
+  "placeId" : "ChIJIZAtbCdGLxgRUjMdB0CO_b4"
+}, {
+  "title" : "GDG on Campus Chulalongkorn University - Bangkok, Thailand",
+  "universityName" : "Chulalongkorn University",
+  "country" : "Thailand",
+  "fullLocation" : "Bangkok, Thailand",
+  "placeId" : "ChIJP2Izriqf4jARkyA8pkMGHkI"
+}, {
+  "title" : "GDG on Campus FAST National University of Computer and Emerging Sciences - Chiniot-Faisalabad, Pakistan",
+  "universityName" : "FAST National University of Computer and Emerging Sciences",
+  "country" : "Pakistan",
+  "fullLocation" : "Chiniot-Faisalabad, Pakistan",
+  "placeId" : "ChIJq6qqqh--3zgR9IhemKKGMyI"
+}, {
+  "title" : "GDG on Campus FAST National University of Computer and Emerging Sciences - Islamabad, Pakistan",
+  "universityName" : "FAST National University of Computer and Emerging Sciences",
+  "country" : "Pakistan",
+  "fullLocation" : "Islamabad, Pakistan",
+  "placeId" : "ChIJq6qqqh--3zgR9IhemKKGMyI"
+}, {
+  "title" : "GDG on Campus FAST National University of Computer and Emerging Sciences - Peshawar, Pakistan",
+  "universityName" : "FAST National University of Computer and Emerging Sciences",
+  "country" : "Pakistan",
+  "fullLocation" : "Peshawar, Pakistan",
+  "placeId" : "ChIJq6qqqh--3zgR9IhemKKGMyI"
+}, {
+  "title" : "GDG on Campus Gautam Buddha University - Greater Noida, India",
+  "universityName" : "Gautam Buddha University",
+  "country" : "India",
+  "fullLocation" : "Greater Noida, India",
+  "placeId" : "ChIJje6rGPnADDkRsFRx3Z8Wcow"
+}, {
+  "title" : "GDG on Campus Jamia Hamdard University - New Delhi, India",
+  "universityName" : "Jamia Hamdard University",
+  "country" : "India",
+  "fullLocation" : "New Delhi, India",
+  "placeId" : "ChIJAQ7zAHLhDDkRTEzcfSSZGqI"
+}, {
+  "title" : "GDG on Campus Kyoto Women's University - Kyoto, Japan",
+  "universityName" : "Kyoto Women's University",
+  "country" : "Japan",
+  "fullLocation" : "Kyoto, Japan",
+  "placeId" : "ChIJp5-5lzIPAWAR1Lwswty2jWw"
+}, {
+  "title" : "GDG on Campus Netaji Subhas University of Technology - Delhi, India",
+  "universityName" : "Netaji Subhas University of Technology",
+  "country" : "India",
+  "fullLocation" : "Delhi, India",
+  "placeId" : "ChIJE1peN90FDTkRB73kq6PaihA"
+}, {
+  "title" : "GDG on Campus Seoul Women's University - Seoul, South Korea",
+  "universityName" : "Seoul Women's University",
+  "country" : "Korea",
+  "fullLocation" : "Seoul, Korea",
+  "placeId" : "ChIJRY4QDYe5fDURp1B0m9gUyxQ"
+}, {
+  "title" : "GDG on Campus Soonchunhyang University - Asan, South Korea",
+  "universityName" : "Soonchunhyang University",
+  "country" : "Korea",
+  "fullLocation" : "Asan, South Korea, Korea",
+  "placeId" : "ChIJMWz2PBPnejURdeGfWnXunPw"
+}, {
+  "title" : "GDG on Campus Technological University of the Philippines - Manila, Philippines",
+  "universityName" : "Technological University of the Philippines",
+  "country" : "Philippines",
+  "fullLocation" : "Manila, Philippines",
+  "placeId" : "ChIJFSAwrCHKlzMR2RBQkQ_K3JI"
+}, {
+  "title" : "GDG on Campus Michigan State University - East Lansing, United States",
+  "universityName" : "Michigan State University",
+  "country" : "United States",
+  "fullLocation" : "East Lansing, United States",
+  "placeId" : "ChIJY42I2lnCIogRPzuqBauYmG4"
+}, {
+  "title" : "GDG on Campus Benha National University - Obour, Egypt",
+  "universityName" : "Benha National University",
+  "country" : "Egypt",
+  "fullLocation" : "Obour, Egypt, Egypt",
+  "placeId" : "ChIJUbtiYg0FWBQRpBjGt4Idol4"
+}, {
+  "title" : "GDG on Campus King Abdulaziz University, Men Campus - Jeddah, Saudi Arabia",
+  "universityName" : "King Abdulaziz University, Men Campus",
+  "country" : "Saudi Arabia",
+  "fullLocation" : "Jeddah, Saudi Arabia",
+  "placeId" : "ChIJ_Z8fZ17NwxURcsMf9i9yZ1k"
+}, {
+  "title" : "GDG on Campus King Abdulaziz University, Women Campus - Jeddah, Saudi Arabia",
+  "universityName" : "King Abdulaziz University, Women Campus",
+  "country" : "Saudi Arabia",
+  "fullLocation" : "Jeddah, Saudi Arabia",
+  "placeId" : "ChIJ_Z8fZ17NwxURcsMf9i9yZ1k"
+}, {
+  "title" : "GDG on Campus New Uzbekistan University - Tashkent, Uzbekistan",
+  "universityName" : "New Uzbekistan University",
+  "country" : "Uzbekistan",
+  "fullLocation" : "Tashkent, Uzbekistan",
+  "placeId" : "ChIJp-3AUBv1rjgRJgeap-Pg9B4"
+}, {
+  "title" : "GDG on Campus Masinde Muliro University of Science and Technology - Webuye, Kenya",
+  "universityName" : "Masinde Muliro University of Science and Technology",
+  "country" : "Kenya",
+  "fullLocation" : "Webuye, Kenya",
+  "placeId" : "ChIJR7fmgSM8gBcRJ_QpDlTqiNc"
+}, {
+  "title" : "GDG on Campus Michael Okpara University of Agriculture - Umudike, Nigeria",
+  "universityName" : "Michael Okpara University of Agriculture",
+  "country" : "Nigeria",
+  "fullLocation" : "Umudike, Nigeria",
+  "placeId" : "ChIJjcosMI3EQhARso2OD6YSzXA"
+}, {
+  "title" : "GDG on Campus Midlands State University - Gweru, Zimbabwe",
+  "universityName" : "Midlands State University",
+  "country" : "Zimbabwe",
+  "fullLocation" : "Gweru, Zimbabwe",
+  "placeId" : "ChIJ5YWhquakMRkRuUptqERlMfY"
+}, {
+  "title" : "GDG on Campus Nnamdi Azikiwe University - Awka, Nigeria",
+  "universityName" : "Nnamdi Azikiwe University",
+  "country" : "Nigeria",
+  "fullLocation" : "Awka, Nigeria",
+  "placeId" : "ChIJfePYuO14QxARM1KCOxDFMp8"
+}, {
+  "title" : "GDG on Campus Olusegun Agagu University of Science &amp; Technology - Okitipupa, Nigeria",
+  "universityName" : "Olusegun Agagu University of Science &amp; Technology",
+  "country" : "Nigeria",
+  "fullLocation" : "Okitipupa, Nigeria",
+  "placeId" : "ChIJ-8uL0gi1OBARqZnbxWX09tE"
+}, {
+  "title" : "GDG on Campus Aligarh Muslim University, India",
+  "universityName" : "Aligarh Muslim University, India",
+  "country" : "India",
+  "fullLocation" : "Aligarh, India",
+  "placeId" : "ChIJUUu8vOWkdDkRmOnQMzdx2to"
+}, {
+  "title" : "GDG on Campus ITM SLS Baroda University - Vadodara, India",
+  "universityName" : "ITM SLS Baroda University",
+  "country" : "India",
+  "fullLocation" : "Vadodara, India",
+  "placeId" : "ChIJA5Yfl5vTXzkRTfNZ_m-CauU"
+}, {
+  "title" : "GDG on Campus King Mongkut’s University of Technology Thonburi - Bangkok, Thailand",
+  "universityName" : "King Mongkut’s University of Technology Thonburi",
+  "country" : "Thailand",
+  "fullLocation" : "Bangkok, Thailand",
+  "placeId" : "ChIJ8Qxru1Gi4jARrSQz8U_pVvY"
+}, {
+  "title" : "GDG on Campus Seoul National University of Science and Technology - Seoul, South Korea",
+  "universityName" : "Seoul National University of Science and Technology",
+  "country" : "Korea",
+  "fullLocation" : "Seoul, Korea",
+  "placeId" : "ChIJNxJkadW7fDURZdyufDHjj3s"
+}, {
+  "title" : "GDG on Campus Taipei Medical University - Taipei, Taiwan",
+  "universityName" : "Taipei Medical University",
+  "country" : "Taiwan",
+  "fullLocation" : "Taipei, Taiwan",
+  "placeId" : "ChIJc0oGx0qqQjQRaPgxjLJI9qw"
+}, {
+  "title" : "GDG on Campus Tennessee State University - Nashville, United States",
+  "universityName" : "Tennessee State University",
+  "country" : "United States",
+  "fullLocation" : "Nashville, United States",
+  "placeId" : "ChIJBaXSmS1hZIgRioiGmTSelVA"
+}, {
+  "title" : "GDG on Campus Wilfrid Laurier University - Waterloo, Canada",
+  "universityName" : "Wilfrid Laurier University",
+  "country" : "Canada",
+  "fullLocation" : "Waterloo, Canada",
+  "placeId" : "ChIJI5ofG_bzK4gRNyU3WUTmJNI"
+}, {
+  "title" : "GDG on Campus Bursa Technical University - Bursa, Türkiye",
+  "universityName" : "Bursa Technical University",
+  "country" : "Türkiye",
+  "fullLocation" : "Bursa, Türkiye",
+  "placeId" : "ChIJp6v42bc-yhQRRzSZEVdAfhI"
+}, {
+  "title" : "GDG on Campus Carnegie Mellon University in Qatar - Doha, Qatar",
+  "universityName" : "Carnegie Mellon University in Qatar",
+  "country" : "Qatar",
+  "fullLocation" : "Doha, Qatar",
+  "placeId" : "ChIJJ9KgCgfcRT4R5nACXcUY_OE"
+}, {
+  "title" : "GDG on Campus Gebze Technical University - Kocaeli, Türkiye",
+  "universityName" : "Gebze Technical University",
+  "country" : "Türkiye",
+  "fullLocation" : "Gebze, Türkiye",
+  "placeId" : "ChIJJ5FIr1beyhQRfwMkDZSI5Cg"
+}, {
+  "title" : "GDG on Campus Princess Sumaya University for Technology - Amman, Jordan",
+  "universityName" : "Princess Sumaya University for Technology",
+  "country" : "Jordan",
+  "fullLocation" : "Amman, Jordan",
+  "placeId" : "ChIJ4VBibqGfHBUR-qMHsrxs5DY"
+}, {
+  "title" : "GDG on Campus Adekunle Ajasin University - Akungba, Nigeria",
+  "universityName" : "Adekunle Ajasin University",
+  "country" : "Nigeria",
+  "fullLocation" : "Akungba, Nigeria",
+  "placeId" : "ChIJA-BXg6g0RhARoBHYulriIaI"
+}, {
+  "title" : "GDG on Campus Akwa Ibom State University - Mkpat-Enin, Nigeria",
+  "universityName" : "Akwa Ibom State University",
+  "country" : "Nigeria",
+  "fullLocation" : "Mkpat-Enin, Nigeria",
+  "placeId" : "ChIJayEmkYoAaBAR-TfiZqtas5M"
+}, {
+  "title" : "GDG on Campus First Technical University - Ibadan, Nigeria",
+  "universityName" : "First Technical University",
+  "country" : "Nigeria",
+  "fullLocation" : "Ibadan, Nigeria",
+  "placeId" : "ChIJjXAGDv2FORARx6CU6jF6EKY"
+}, {
+  "title" : "GDG on Campus Ladoke Akintola University of Technology - Ogbomosho, Nigeria",
+  "universityName" : "Ladoke Akintola University of Technology",
+  "country" : "Nigeria",
+  "fullLocation" : "Ogbomosho, Nigeria",
+  "placeId" : "ChIJjcUYzrENNxARH4oRsbOtwhk"
+}, {
+  "title" : "GDG on Campus Obafemi Awolowo University - Ife, Nigeria",
+  "universityName" : "Obafemi Awolowo University",
+  "country" : "Nigeria",
+  "fullLocation" : "Ife, Nigeria",
+  "placeId" : "ChIJJ2RMJAk3OBAR5whJpGDPC5M"
+}, {
+  "title" : "GDG on Campus Assam Don Bosco University - Guwahati, India",
+  "universityName" : "Assam Don Bosco University",
+  "country" : "India",
+  "fullLocation" : "Guwahati, India",
+  "placeId" : "ChIJ-f____NDWjcRqykoqKMrLRI"
+}, {
+  "title" : "GDG on Campus Assam down town University - Guwahati, India",
+  "universityName" : "Assam down town University",
+  "country" : "India",
+  "fullLocation" : "Guwahati, India",
+  "placeId" : "ChIJAQAAAHT3WjcRFewpD1jKRPo"
+}, {
+  "title" : "GDG on Campus Dayananda Sagar University - Bengaluru, India",
+  "universityName" : "Dayananda Sagar University",
+  "country" : "India",
+  "fullLocation" : "Bengaluru, India, India",
+  "placeId" : "ChIJl7y107EUrjsRG5HnWLrMHiA"
+}, {
+  "title" : "GDG on Campus Dharmsinh Desai University - Nadiad, India",
+  "universityName" : "Dharmsinh Desai University",
+  "country" : "India",
+  "fullLocation" : "Nadiad, India",
+  "placeId" : "ChIJVRMXLN9aXjkR-1c2CM506eE"
+}, {
+  "title" : "GDG on Campus Fu Jen Catholic University - New Taipei City, Taiwan",
+  "universityName" : "Fu Jen Catholic University",
+  "country" : "Taiwan",
+  "fullLocation" : "New Taipei City, Taiwan",
+  "placeId" : "ChIJrx7pi92nQjQRlvh0ZX2mQuM"
+}, {
+  "title" : "GDG on Campus Lahore Garrison University - Lahore, Pakistan",
+  "universityName" : "Lahore Garrison University",
+  "country" : "Pakistan",
+  "fullLocation" : "Lahore, Pakistan",
+  "placeId" : "ChIJ4604Yd0IGTkRwfvhRJBGzKY"
+}, {
+  "title" : "GDG on Campus National Taipei University - New Taipei, Taiwan",
+  "universityName" : "National Taipei University",
+  "country" : "Taiwan",
+  "fullLocation" : "New Taipei, Taiwan",
+  "placeId" : "ChIJ35hVJX2pQjQRqlM_j4506kc"
+}, {
+  "title" : "GDG on Campus National Taipei University of Business - Taipei, Taiwan",
+  "universityName" : "National Taipei University of Business",
+  "country" : "Taiwan",
+  "fullLocation" : "Taipei, Taiwan",
+  "placeId" : "ChIJrYQaoXCpQjQRlyCBKCVf4Fg"
+}, {
+  "title" : "GDG on Campus National Taiwan University - Taipei, Taiwan",
+  "universityName" : "National Taiwan University",
+  "country" : "Taiwan",
+  "fullLocation" : "Taipei, Taiwan",
+  "placeId" : "ChIJqS4y_ompQjQRZn8d7gQEdSE"
+}, {
+  "title" : "GDG on Campus National Taiwan University of Science and Technology - Taipei, Taiwan",
+  "universityName" : "National Taiwan University of Science and Technology",
+  "country" : "Taiwan",
+  "fullLocation" : "Taipei, Taiwan",
+  "placeId" : "ChIJrcDEdiGqQjQRVfQp7kRe25A"
+}, {
+  "title" : "GDG on Campus National Yunlin University of Science and Technology - Douliu City, Taiwan",
+  "universityName" : "National Yunlin University of Science and Technology",
+  "country" : "Taiwan",
+  "fullLocation" : "Douliu City, Taiwan",
+  "placeId" : "ChIJW2F5wATIbjQRvlQ5mFnYGd8"
+}, {
+  "title" : "GDG on Campus Sanjay Ghodawat University - Kolhapur, India",
+  "universityName" : "Sanjay Ghodawat University",
+  "country" : "India",
+  "fullLocation" : "Kolhapur, India, India",
+  "placeId" : "ChIJm6H-fyIDwTsRwY8u9kKNWbo"
+}, {
+  "title" : "GDG on Campus Sister Nivedita University - Kolkata, India",
+  "universityName" : "Sister Nivedita University",
+  "country" : "India",
+  "fullLocation" : "Kolkata, India",
+  "placeId" : "ChIJ6ZYWaDJ1AjoRkY6R27yEhgs"
+}, {
+  "title" : "GDG on Campus Southern Taiwan University of Science and Technology - Tainan City, Taiwan",
+  "universityName" : "Southern Taiwan University of Science and Technology",
+  "country" : "Taiwan",
+  "fullLocation" : "Tainan City, Taiwan",
+  "placeId" : "ChIJpcuVKR93bjQR7_9GHp9E_Ts"
+}, {
+  "title" : "GDG on Campus California State University, East Bay - Hayward, United States",
+  "universityName" : "California State University, East Bay",
+  "country" : "United States",
+  "fullLocation" : "Hayward, United States",
+  "placeId" : "ChIJD8tmKoqTj4ARNCkA6ahSj24"
+}, {
+  "title" : "GDG on Campus California State University, Fresno - Fresno, United States",
+  "universityName" : "California State University, Fresno",
+  "country" : "United States",
+  "fullLocation" : "Fresno, United States",
+  "placeId" : "ChIJ2_9-TgJdlIARZiH9gCKzR4o"
+}, {
+  "title" : "GDG on Campus California State University, Long Beach - Long Beach, United States",
+  "universityName" : "California State University, Long Beach",
+  "country" : "United States",
+  "fullLocation" : "Long Beach, United States",
+  "placeId" : "ChIJQ_aCKdgx3YARqy3HziZ_3B8"
+}, {
+  "title" : "GDG on Campus California State University, Los Angeles - Los Angeles, United States",
+  "universityName" : "California State University, Los Angeles",
+  "country" : "United States",
+  "fullLocation" : "Los Angeles, United States",
+  "placeId" : "ChIJWV2aEZjFwoARXlatgeRcSto"
+}, {
+  "title" : "GDG on Campus California State University, Northridge - Northridge, United States",
+  "universityName" : "California State University, Northridge",
+  "country" : "United States",
+  "fullLocation" : "Northridge, United States, United States",
+  "placeId" : "ChIJj2ayD1SawoARVirZh_OSEPA"
+}, {
+  "title" : "GDG on Campus Egyptian Chinese University - Cairo, Egypt",
+  "universityName" : "Egyptian Chinese University",
+  "country" : "Egypt",
+  "fullLocation" : "Cairo, Egypt",
+  "placeId" : "ChIJc9-csJUVWBQRImuCbHUqQ1I"
+}, {
+  "title" : "GDG on Campus German Jordanian University - Madaba, Jordan",
+  "universityName" : "German Jordanian University",
+  "country" : "Jordan",
+  "fullLocation" : "Madaba, Jordan, Jordan",
+  "placeId" : "ChIJ166qH6SfHBURiJVRUvzvveQ"
+}, {
+  "title" : "GDG on Campus Sivas Cumhuriyet University - Sivas, Türkiye",
+  "universityName" : "Sivas Cumhuriyet University",
+  "country" : "Türkiye",
+  "fullLocation" : "Sivas, Türkiye",
+  "placeId" : "ChIJVSwYMGVTeUARHPekHeL23nM"
+}, {
+  "title" : "GDG on Campus Süleyman Demirel University - Isparta, Türkiye",
+  "universityName" : "Süleyman Demirel University",
+  "country" : "Türkiye",
+  "fullLocation" : "Isparta, Türkiye",
+  "placeId" : "ChIJGax-ydfJxRQRKts5Ahaxsyo"
+}, {
+  "title" : "GDG on Campus Olabisi Onabanjo University - Ago Iwoye, Nigeria",
+  "universityName" : "Olabisi Onabanjo University",
+  "country" : "Nigeria",
+  "fullLocation" : "Ago Iwoye, Nigeria",
+  "placeId" : "ChIJz-s8OxINOxAR7t1tfcIRzlE"
+}, {
+  "title" : "GDG on Campus The Co-operative University of Kenya - Nairobi, Kenya",
+  "universityName" : "The Co-operative University of Kenya",
+  "country" : "Kenya",
+  "fullLocation" : "Nairobi, Kenya",
+  "placeId" : "ChIJDcRjjdQQLxgRJpz07IKeJMk"
+}, {
+  "title" : "GDG on Campus Ateneo De Manila University - Quezon City, Philippines",
+  "universityName" : "Ateneo De Manila University",
+  "country" : "Philippines",
+  "fullLocation" : "Quezon City, Philippines",
+  "placeId" : "ChIJyQTj2X-3lzMRns5sfG1CrWE"
+}, {
+  "title" : "GDG on Campus Chonnam National University - Gwangju, South Korea",
+  "universityName" : "Chonnam National University",
+  "country" : "Korea",
+  "fullLocation" : "Gwangju, South Korea, Korea",
+  "placeId" : "ChIJa1ImVlaMcTURJaJzqe26hX4"
+}, {
+  "title" : "GDG on Campus Ho Chi Minh City University of Technology (VNUHCM) - Ho Chi Minh City",
+  "universityName" : "Ho Chi Minh City University of Technology (VNUHCM)",
+  "country" : "Vietnam",
+  "fullLocation" : "Ho Chi Minh City, Vietnam",
+  "placeId" : "ChIJ-6NhwcMudTERHmnMoUfNd-8"
+}, {
+  "title" : "GDG on Campus Ho Chi Minh City University of Transport - Ho Chi Minh City",
+  "universityName" : "Ho Chi Minh City University of Transport",
+  "country" : "Vietnam",
+  "fullLocation" : "Ho Chi Minh City, Vietnam",
+  "placeId" : "ChIJl4pS8mwfdTERB4UCVNNLIt0"
+}, {
+  "title" : "GDG on Campus Incheon National University - Incheon, South Korea",
+  "universityName" : "Incheon National University",
+  "country" : "Korea",
+  "fullLocation" : "Incheon, South Korea, Korea",
+  "placeId" : "ChIJy9xwuUd2ezUREZpjyUeMW3I"
+}, {
+  "title" : "GDG on Campus Jawaharlal Nehru University - Delhi, India",
+  "universityName" : "Jawaharlal Nehru University",
+  "country" : "India",
+  "fullLocation" : "Delhi, India",
+  "placeId" : "ChIJt4MB6sAdDTkR52Hwx5rR2O8"
+}, {
+  "title" : "GDG on Campus K L Deemed to be University - Vijayawada, India",
+  "universityName" : "K L Deemed to be University",
+  "country" : "India",
+  "fullLocation" : "Vijayawada, India",
+  "placeId" : "ChIJQxnYp6LwNToRuJTfZY_XpYs"
+}, {
+  "title" : "GDG on Campus National Central University - Taoyuan City, Taiwan",
+  "universityName" : "National Central University",
+  "country" : "Taiwan",
+  "fullLocation" : "Taoyuan City, Taiwan",
+  "placeId" : "ChIJy02Q7MEjaDQRVuRcRdQpwc0"
+}, {
+  "title" : "GDG on Campus National Chi Nan University - Puli Township, Taiwan",
+  "universityName" : "National Chi Nan University",
+  "country" : "Taiwan",
+  "fullLocation" : "Puli Township, Taiwan",
+  "placeId" : "ChIJc667hiPYaDQRrr1Wr2xLEPg"
+}, {
+  "title" : "GDG on Campus Pukyong National University - Busan, South Korea",
+  "universityName" : "Pukyong National University",
+  "country" : "Korea",
+  "fullLocation" : "Busan, Korea",
+  "placeId" : "ChIJHZ833WrsaDURsQWExKDNvDI"
+}, {
+  "title" : "GDG on Campus Sungshin Women's University - Seoul, South Korea",
+  "universityName" : "Sungshin Women's University",
+  "country" : "Korea",
+  "fullLocation" : "Seoul, Korea",
+  "placeId" : "ChIJnV6dMLm8fDURBpHO5KzMTiw"
+}, {
+  "title" : "GDG on Campus Al-Balqa' Applied University - Salt, Jordan",
+  "universityName" : "Al-Balqa' Applied University",
+  "country" : "Jordan",
+  "fullLocation" : "Salt, Jordan",
+  "placeId" : "ChIJ5cjVVBa9HBURrxYMcYks8mE"
+}, {
+  "title" : "GDG on Campus Georgian American University - Tbilisi, Georgia",
+  "universityName" : "Georgian American University",
+  "country" : "Georgia",
+  "fullLocation" : "Tbilisi, Georgia",
+  "placeId" : "ChIJdV6f-9RyREARuaayvLm7_3s"
+}, {
+  "title" : "GDG on Campus Çankırı Karatekin University - Çankırı, Türkiye",
+  "universityName" : "Çankırı Karatekin University",
+  "country" : "Türkiye",
+  "fullLocation" : "Çankiri, Türkiye",
+  "placeId" : "ChIJDcfbm4jEg0ARI_mQFSu8yCg"
+}, {
+  "title" : "GDG on Campus Bamidele Olumilua University of Education, Science and Technology - Ikere-Ekiti, Nigeria",
+  "universityName" : "Bamidele Olumilua University of Education, Science and Technology",
+  "country" : "Nigeria",
+  "fullLocation" : "Ikere, Nigeria",
+  "placeId" : "ChIJN_1zatjzRxARxRj5KK_0BFI"
+}, {
+  "title" : "GDG on Campus Ajeenkya DY Patil University - Pune, India",
+  "universityName" : "Ajeenkya DY Patil University",
+  "country" : "India",
+  "fullLocation" : "Pune, India",
+  "placeId" : "ChIJkVCQCB7HwjsRvMFhE5MNylE"
+}, {
+  "title" : "GDG on Campus National Changhua University of Education - Changhua City, Taiwan",
+  "universityName" : "National Changhua University of Education",
+  "country" : "Taiwan",
+  "fullLocation" : "Changhua City, Taiwan",
+  "placeId" : "ChIJu0pqa1Y5aTQRTKa5J1Ym0oU"
+}, {
+  "title" : "GDG on Campus National Chengchi University - Taipei, Taiwan",
+  "universityName" : "National Chengchi University",
+  "country" : "Taiwan",
+  "fullLocation" : "Taipei, Taiwan",
+  "placeId" : "ChIJSS8sRXmqQjQRB_U7jlAHjZ4"
+}, {
+  "title" : "GDG on Campus National Taichung University of Science and Technology - Taichung City, Taiwan",
+  "universityName" : "National Taichung University of Science and Technology",
+  "country" : "Taiwan",
+  "fullLocation" : "Taichung City, Taiwan",
+  "placeId" : "ChIJYeBiz2g9aTQRNmI_J3PdkXA"
+}, {
+  "title" : "GDG on Campus Sookmyung Women's University - Seoul, South Korea",
+  "universityName" : "Sookmyung Women's University",
+  "country" : "Korea",
+  "fullLocation" : "Seoul, Korea",
+  "placeId" : "ChIJxwTLf3KifDURD3MkIxZO9rk"
+}, {
+  "title" : "GDG on Campus Veer Surendra Sai University of Technology - Burla, India",
+  "universityName" : "Veer Surendra Sai University of Technology",
+  "country" : "India",
+  "fullLocation" : "Burla, India",
+  "placeId" : "ChIJLa8o7KQ9IToRxzOMr8lcOrM"
+}, {
+  "title" : "GDG on Campus Yokohama National University - Kanagawa, Japan",
+  "universityName" : "Yokohama National University",
+  "country" : "Japan",
+  "fullLocation" : "Kanagawa, Japan, Japan",
+  "placeId" : "ChIJdxyinmdZGGARbJ6uXaEr1yg"
+}, {
+  "title" : "GDG on Campus Eastern Washington University - Cheney, United States",
+  "universityName" : "Eastern Washington University",
+  "country" : "United States",
+  "fullLocation" : "Cheney, United States, United States",
+  "placeId" : "ChIJ4z_DL6A4nlQRr2cmvozrjLU"
+}, {
+  "title" : "GDG on Campus Southern Methodist University - Dallas, United States",
+  "universityName" : "Southern Methodist University",
+  "country" : "United States",
+  "fullLocation" : "Dallas, United States, United States",
+  "placeId" : "ChIJFU7ARwSfToYRLlSZG7jKX8A"
+}, {
+  "title" : "GDG on Campus Istanbul Technical University - Istanbul, Türkiye",
+  "universityName" : "Istanbul Technical University",
+  "country" : "Türkiye",
+  "fullLocation" : "Istanbul, Türkiye",
+  "placeId" : "ChIJ1-qyJMK1yhQRGRaXhEuYKEo"
+}, {
+  "title" : "GDG on Campus Izmir Katip Çelebi University - Izmir,  Turkey",
+  "universityName" : "Izmir Katip Çelebi University",
+  "country" : "Türkiye",
+  "fullLocation" : "Izmir,  Turkey, Türkiye",
+  "placeId" : "ChIJ8QtOb6bQuxQRFLBFylIo4LQ"
+}, {
+  "title" : "GDG on Campus Manisa Celal Bayar University - Manisa, Türkiye",
+  "universityName" : "Manisa Celal Bayar University",
+  "country" : "Türkiye",
+  "fullLocation" : "Manisa, Türkiye",
+  "placeId" : "ChIJZ_S0WWGEuRQREw8wXephA_g"
+}, {
+  "title" : "GDG on Campus National Technical University of Ukraine “Igor Sikorsky Kyiv Polytechnic Institute” - Kyiv, Ukraine",
+  "universityName" : "National Technical University of Ukraine “Igor Sikorsky Kyiv Polytechnic Institute”",
+  "country" : "Ukraine",
+  "fullLocation" : "Kyiv, Ukraine",
+  "placeId" : "ChIJR4q8uYLO1EAR82shkV1OUUc"
+}, {
+  "title" : "GDG on Campus Takoradi Technical University - Takoradi, Ghana",
+  "universityName" : "Takoradi Technical University",
+  "country" : "Ghana",
+  "fullLocation" : "Takoradi, Ghana",
+  "placeId" : "ChIJvyf6X_R55w8RrfzN61Z3cmI"
+}, {
+  "title" : "GDG on Campus C. V. Raman Global University - Bhubaneswar, India",
+  "universityName" : "C. V. Raman Global University",
+  "country" : "India",
+  "fullLocation" : "Bhubaneswar, India",
+  "placeId" : "ChIJgTysWfqoGToRdHKn-nXEH8g"
+}, {
+  "title" : "GDG on Campus Cebu Technological University - Cebu, Philippines",
+  "universityName" : "Cebu Technological University",
+  "country" : "Philippines",
+  "fullLocation" : "Cebu, Philippines",
+  "placeId" : "ChIJkR8PJOCbqTMRuZu2GjDAJ54"
+}, {
+  "title" : "GDG on Campus Chung Shan Medical University - Taichung, Taiwan",
+  "universityName" : "Chung Shan Medical University",
+  "country" : "Taiwan",
+  "fullLocation" : "Taichung, Taiwan",
+  "placeId" : "ChIJNwE8JUw8aTQR0JV95gXT5UA"
+}, {
+  "title" : "GDG on Campus Kyungpook National University - Daegu, South Korea",
+  "universityName" : "Kyungpook National University",
+  "country" : "Korea",
+  "fullLocation" : "Daegu, Korea",
+  "placeId" : "ChIJvd0DHJ7hZTURPBDX-16nQNw"
+}, {
+  "title" : "GDG on Campus National Kaohsiung University of Science and Technology - Kaohsiung, Taiwan",
+  "universityName" : "National Kaohsiung University of Science and Technology",
+  "country" : "Taiwan",
+  "fullLocation" : "Kaohsiung, Taiwan",
+  "placeId" : "ChIJYfXWVSMObjQRCPdrJRQ7Iks"
+}, {
+  "title" : "GDG on Campus National Tsing Hua University - Hsinchu City, Taiwan",
+  "universityName" : "National Tsing Hua University",
+  "country" : "Taiwan",
+  "fullLocation" : "Hsinchu City, Taiwan",
+  "placeId" : "ChIJB7ZNzXI2aDQREwR22ltdKxE"
+}, {
+  "title" : "GDG on Campus North-Eastern Hill University - Shillong, India",
+  "universityName" : "North-Eastern Hill University",
+  "country" : "India",
+  "fullLocation" : "Shillong, India, India",
+  "placeId" : "ChIJpz2Y6yR_UDcRvjP4iFO5Yh4"
+}, {
+  "title" : "GDG on Campus Tokyo Metropolitan University - Tokyo, Japan",
+  "universityName" : "Tokyo Metropolitan University",
+  "country" : "Japan",
+  "fullLocation" : "Hachioji, Japan",
+  "placeId" : "ChIJ2Zt1ubziGGARluGUS8hw6r0"
+}, {
+  "title" : "GDG on Campus Tunku Abdul Rahman University of Management and Technology - Kuala Lumpur, Malaysia",
+  "universityName" : "Tunku Abdul Rahman University of Management and Technology",
+  "country" : "Malaysia",
+  "fullLocation" : "Kuala Lumpur, Malaysia",
+  "placeId" : "ChIJMaC2v0M4zDERhKvjqmfgxS0"
+}, {
+  "title" : "GDG on Campus Delta Technological University - Quesna, Egypt",
+  "universityName" : "Delta Technological University",
+  "country" : "Egypt",
+  "fullLocation" : "Delta, Egypt",
+  "placeId" : "ChIJ_5L2jM3Z9xQRgkb9ARMbHmA"
+}, {
+  "title" : "GDG on Campus Egyptian E-Learning University - Sohag, Egypt",
+  "universityName" : "Egyptian E-Learning University",
+  "country" : "Egypt",
+  "fullLocation" : "Sohag, Egypt",
+  "placeId" : "ChIJCyJdIRPD9RQRhAHTkvAjoQU"
+}, {
+  "title" : "GDG on Campus Karadeniz Technical University - Trabzon, Türkiye",
+  "universityName" : "Karadeniz Technical University",
+  "country" : "Türkiye",
+  "fullLocation" : "Trabzon, Türkiye",
+  "placeId" : "ChIJ-Z4Y9_U7ZEAR3NJnKIFXNkI"
+}, {
+  "title" : "GDG on Campus South Mediterranean University - Tunis, Tunisia",
+  "universityName" : "South Mediterranean University",
+  "country" : "Tunisia",
+  "fullLocation" : "Tunisia, Tunisia",
+  "placeId" : "ChIJtYUTZq5K_RIRDJel7VfpVfo"
+}, {
+  "title" : "GDG on Campus Ateneo De Zamboanga University - Zamboanga, Philippines",
+  "universityName" : "Ateneo De Zamboanga University",
+  "country" : "Philippines",
+  "fullLocation" : "Zamboanga, Philippines",
+  "placeId" : "ChIJiUUIj_tBUDIRkZdddflMXGY"
+}, {
+  "title" : "GDG on Campus Delhi Technological University - Delhi, India",
+  "universityName" : "Delhi Technological University",
+  "country" : "India",
+  "fullLocation" : "Delhi, India",
+  "placeId" : "ChIJp31PpzgBDTkRXb0jPGitn_A"
+}, {
+  "title" : "GDG on Campus Fatima Jinnah Women University - Rawalpindi, Pakistan",
+  "universityName" : "Fatima Jinnah Women University",
+  "country" : "Pakistan",
+  "fullLocation" : "Rawalpindi, Pakistan",
+  "placeId" : "ChIJIR51iF2T3zgRGOHz_oOjcW0"
+}, {
+  "title" : "GDG on Campus Mohammad Ali Jinnah University - Karachi, Pakistan",
+  "universityName" : "Mohammad Ali Jinnah University",
+  "country" : "Pakistan",
+  "fullLocation" : "Karachi, Pakistan",
+  "placeId" : "ChIJOWPTYJ8-sz4RgaN8CovqZB0"
+}, {
+  "title" : "GDG on Campus National Cheng Kung University - Tainan City, Taiwan",
+  "universityName" : "National Cheng Kung University",
+  "country" : "Taiwan",
+  "fullLocation" : "Tainan City, Taiwan",
+  "placeId" : "ChIJ0yAIKe12bjQRnqEH4osC7uA"
+}, {
+  "title" : "GDG on Campus Toronto Metropolitan University - Toronto, Canada",
+  "universityName" : "Toronto Metropolitan University",
+  "country" : "Canada",
+  "fullLocation" : "Toronto, Canada",
+  "placeId" : "ChIJlRMcQzXL1IkR9NYlkdaL7eg"
+}, {
+  "title" : "GDG on Campus Aydın Adnan Menderes University - Aydin, Türkiye",
+  "universityName" : "Aydın Adnan Menderes University",
+  "country" : "Türkiye",
+  "fullLocation" : "Aydin, Türkiye",
+  "placeId" : "ChIJnRyaU3MruRQRsNFd3Zw-RUI"
+}, {
+  "title" : "GDG on Campus Tekirdağ Namık Kemal University - Tekirdağ, Türkiye",
+  "universityName" : "Tekirdağ Namık Kemal University",
+  "country" : "Türkiye",
+  "fullLocation" : "Tekirdağ, Türkiye",
+  "placeId" : "ChIJv9aFvEXntBQRwHlDQexFafA"
+}, {
+  "title" : "GDG on Campus Beaconhouse National University - Lahore, Pakistan",
+  "universityName" : "Beaconhouse National University",
+  "country" : "Pakistan",
+  "fullLocation" : "Lahore, Pakistan",
+  "placeId" : "ChIJ9_aYllRVGDkRRHGWT2RE-08"
+}, {
+  "title" : "GDG on Campus Chung Yuan Christian University - Taoyuan, Taiwan",
+  "universityName" : "Chung Yuan Christian University",
+  "country" : "Taiwan",
+  "fullLocation" : "Taoyuan, Taiwan",
+  "placeId" : "ChIJIfCgRxQiaDQR_7y4C2XShis"
+}, {
+  "title" : "GDG on Campus Madan Mohan Malaviya University of Technology - Gorakhpur, India",
+  "universityName" : "Madan Mohan Malaviya University of Technology",
+  "country" : "India",
+  "fullLocation" : "Gorakhpur, India",
+  "placeId" : "ChIJaxOq4qNckTkRqTgTIfC9OcA"
+}, {
+  "title" : "GDG on Campus National Chung Hsing University - Taichung, Taiwan",
+  "universityName" : "National Chung Hsing University",
+  "country" : "Taiwan",
+  "fullLocation" : "Taichung, Taiwan",
+  "placeId" : "ChIJ2en_7Pw8aTQROiCtDdz6iuI"
+}, {
+  "title" : "GDG on Campus National Sun Yat-sen University - Kaohsiung City, Taiwan",
+  "universityName" : "National Sun Yat-sen University",
+  "country" : "Taiwan",
+  "fullLocation" : "Kaohsiung, Taiwan",
+  "placeId" : "ChIJdXYFVA8EbjQRCLqM-tdul98"
+}, {
+  "title" : "GDG on Campus The George Washington University - Washington, DC, United States",
+  "universityName" : "The George Washington University",
+  "country" : "United States",
+  "fullLocation" : "Washington, United States",
+  "placeId" : "ChIJpXo8DrG3t4kRCKgn3Bv0e9o"
+}, {
+  "title" : "GDG on Campus Bandırma Onyedi Eylül University - Bandırma, Türkiye",
+  "universityName" : "Bandırma Onyedi Eylül University",
+  "country" : "Türkiye",
+  "fullLocation" : "Bandırma, Türkiye",
+  "placeId" : "ChIJBfiUD6jUtRQRgxxbvGQQkAk"
+}, {
+  "title" : "GDG on Campus Middle East Technical University - Çankaya Ankara, Türkiye",
+  "universityName" : "Middle East Technical University",
+  "country" : "Türkiye",
+  "fullLocation" : "Çankaya Ankara, Türkiye",
+  "placeId" : "ChIJg8DwVEdG0xQRdc9dprmCPBw"
+}, {
+  "title" : "GDG on Campus Middle East Technical University, Northern Cyprus Campus - Guzelyurt, Kalkanlı",
+  "universityName" : "Middle East Technical University, Northern Cyprus Campus",
+  "country" : "Türkiye",
+  "fullLocation" : "Guzelyurt, Türkiye",
+  "placeId" : "ChIJQc-IGN383RQRyNIMLGh9N7k"
+}, {
+  "title" : "GDG on Campus Kampala International University - Kampala, Uganda",
+  "universityName" : "Kampala International University",
+  "country" : "Uganda",
+  "fullLocation" : "Kampala, Uganda",
+  "placeId" : "ChIJlbTlc0e8fRcRHPY1oiHL9ZY"
+}, {
+  "title" : "GDG on Campus Deenbandhu Chhotu Ram University of Science &amp; Technology - Murthal, India",
+  "universityName" : "Deenbandhu Chhotu Ram University of Science &amp; Technology",
+  "country" : "India",
+  "fullLocation" : "Murthal, India",
+  "placeId" : null
+}, {
+  "title" : "GDG on Campus Hong Kong Polytechnic University - Hong Kong, Hong Kong",
+  "universityName" : "Hong Kong Polytechnic University",
+  "country" : "Hong Kong SAR",
+  "fullLocation" : "Hong Kong, Hong Kong SAR",
+  "placeId" : "ChIJtclTjugABDQR2-YYTmWim8s"
+}, {
+  "title" : "GDG on Campus International Islamic University - Islamabad, Pakistan",
+  "universityName" : "International Islamic University",
+  "country" : "Pakistan",
+  "fullLocation" : "Islamabad, Pakistan",
+  "placeId" : "ChIJr5UH98I4zDERo2MRv5eIgA8"
+}, {
+  "title" : "GDG on Campus International Islamic University Malaysia - Selangor, Malaysia",
+  "universityName" : "International Islamic University Malaysia",
+  "country" : "Malaysia",
+  "fullLocation" : "Selangor, Malaysia",
+  "placeId" : "ChIJr5UH98I4zDERo2MRv5eIgA8"
+}, {
+  "title" : "GDG on Campus Nanyang Technological University - Singapore, Singapore",
+  "universityName" : "Nanyang Technological University",
+  "country" : "Singapore",
+  "fullLocation" : "Singapore, Singapore",
+  "placeId" : "ChIJY0QBmQoP2jERGYItxQAIu7g"
+}, {
+  "title" : "GDG on Campus ISLA Gaia: Polytechnic University of Management and Technology - Vila Nova de Gaia, Portugal",
+  "universityName" : "ISLA Gaia: Polytechnic University of Management and Technology",
+  "country" : "Portugal",
+  "fullLocation" : "Polytechnic Institute of Management and Technology, Villa Nova de Gaia, Portugal, Portugal",
+  "placeId" : null
+}, {
+  "title" : "GDG on Campus Abubakar Tafawa Balewa University - Bauchi, Nigeria",
+  "universityName" : "Abubakar Tafawa Balewa University",
+  "country" : "Nigeria",
+  "fullLocation" : "Bauchi, Nigeria",
+  "placeId" : "ChIJXwGX0A3XVBARlYZCvzI-05E"
+}, {
+  "title" : "GDG on Campus Dev Bhoomi Uttarakhand University - Dehradun, India",
+  "universityName" : "Dev Bhoomi Uttarakhand University",
+  "country" : "India",
+  "fullLocation" : "Dehradun, India",
+  "placeId" : "ChIJq5KkMKLVCDkRWZEc_cZQgkE"
+}, {
+  "title" : "GDG on Campus Information Technology University - Lahore, Pakistan",
+  "universityName" : "Information Technology University",
+  "country" : "Pakistan",
+  "fullLocation" : "Lahore, Pakistan",
+  "placeId" : "ChIJ7WdbIycEGTkRfT81FlDswoA"
+}, {
+  "title" : "GDG on Campus National Taiwan Normal University - Taipei, Taiwan",
+  "universityName" : "National Taiwan Normal University",
+  "country" : "Taiwan",
+  "fullLocation" : "Taipei, Taiwan",
+  "placeId" : "ChIJYb4lRIWpQjQRNAav7O-Ymcc"
+}, {
+  "title" : "GDG on Campus Western Mindanao State University - Zamboanga, Philippines",
+  "universityName" : "Western Mindanao State University",
+  "country" : "Philippines",
+  "fullLocation" : "Zamboanga, Philippines",
+  "placeId" : "ChIJb4Eket1BUDIRGshMtl8hr1E"
+}, {
+  "title" : "GDG on Campus Applied Science Private University - Amman, Jordan",
+  "universityName" : "Applied Science Private University",
+  "country" : "Jordan",
+  "fullLocation" : "Amman, Jordan",
+  "placeId" : "ChIJ7_H6QjqeHBURRyJte_2Qunw"
+}, {
+  "title" : "GDG on Campus Bolu Abant Izzet Baysal University - Bolu, Türkiye",
+  "universityName" : "Bolu Abant Izzet Baysal University",
+  "country" : "Türkiye",
+  "fullLocation" : "Bolu, Türkiye",
+  "placeId" : "ChIJKxgViy5AnUARnVV7oDSzAio"
+}, {
+  "title" : "GDG on Campus New Cairo Technological University - New Cairo, Egypt",
+  "universityName" : "New Cairo Technological University",
+  "country" : "Egypt",
+  "fullLocation" : "New Cairo, Egypt, Egypt",
+  "placeId" : "ChIJ7cHr5dgjWBQRHdMEksIRKsU"
+}, {
+  "title" : "GDG on Campus The Egyptian E-Learning University - Assiut, Egypt",
+  "universityName" : "The Egyptian E-Learning University",
+  "country" : "Egypt",
+  "fullLocation" : "Assiut, Egypt",
+  "placeId" : "ChIJby3fV9VGWBQROoJ7dU2bNIs"
+}, {
+  "title" : "GDG on Campus Zonguldak Bülent Ecevit University - Zonguldak, Türkiye",
+  "universityName" : "Zonguldak Bülent Ecevit University",
+  "country" : "Türkiye",
+  "fullLocation" : "Zonguldak, Türkiye",
+  "placeId" : "ChIJp7jSfXl7nEARkOvkrd18pUY"
+}, {
+  "title" : "GDG on Campus Bujumbura International University - Bujumbura, Burundi",
+  "universityName" : "Bujumbura International University",
+  "country" : "Burundi",
+  "fullLocation" : "Bujumbura, Burundi",
+  "placeId" : "ChIJK6u1WFqCwRkRO7Vct5R8ZD0"
+}, {
+  "title" : "GDG on Campus Maulana Abul Kalam Azad University of Technology - Kalyani, India",
+  "universityName" : "Maulana Abul Kalam Azad University of Technology",
+  "country" : "India",
+  "fullLocation" : "Kalyani, India",
+  "placeId" : "ChIJDRqgGMd1AjoR1ZK38Sjus10"
+}, {
+  "title" : "GDG on Campus Pandit Deendayal Energy University - Gandhinagar, India",
+  "universityName" : "Pandit Deendayal Energy University",
+  "country" : "India",
+  "fullLocation" : "Gandhinagar, India",
+  "placeId" : "ChIJM35k_iyAXjkRFU9Iy7UROpg"
+}, {
+  "title" : "GDG on Campus Sindh Madressatul Islam University - Karachi, Pakistan",
+  "universityName" : "Sindh Madressatul Islam University",
+  "country" : "Pakistan",
+  "fullLocation" : "Karachi, Pakistan",
+  "placeId" : "ChIJwasv4AM-sz4RV1riPtspwZY"
+}, {
+  "title" : "GDG on Campus The Australian National University - Canberra, Australia",
+  "universityName" : "The Australian National University",
+  "country" : "Australia",
+  "fullLocation" : "Acton, Australia",
+  "placeId" : "ChIJa1CaCUdNFmsRULAVbzNTu_g"
+}, {
+  "title" : "GDG on Campus VNU HCM - International University - Ho Chi Minh City, Vietnam",
+  "universityName" : "VNU HCM",
+  "country" : "Vietnam",
+  "fullLocation" : "Ho Chi Minh City, Vietnam",
+  "placeId" : "ChIJYfkllF8ndTER36F7BXfc9vI"
+}, {
+  "title" : "GDG on Campus Kazakh-British Technical University - Almaty, Kazakhstan",
+  "universityName" : "Kazakh-British Technical University",
+  "country" : "Kazakhstan",
+  "fullLocation" : "Almaty, Kazakhstan",
+  "placeId" : "ChIJT3GZ_bFvgzgRDxKlyr_KSrE"
+}, {
+  "title" : "GDG on Campus National and Kapodistrian University of Athens - Athens, Greece",
+  "universityName" : "National and Kapodistrian University of Athens",
+  "country" : "Greece",
+  "fullLocation" : "Athens, Greece",
+  "placeId" : "ChIJmQrQiFC9oRQRxid8FFG5Drc"
+}, {
+  "title" : "GDG on Campus Taras Shevchenko National University of Kyiv - Kyiv, Ukraine",
+  "universityName" : "Taras Shevchenko National University of Kyiv",
+  "country" : "Ukraine",
+  "fullLocation" : "Kyiv, Ukraine",
+  "placeId" : "ChIJa2HWx_nO1EARkfwHVhg7Llk"
+}, {
+  "title" : "GDG on Campus The John Paul II Catholic University of Lublin - Lublin, Poland",
+  "universityName" : "The John Paul II Catholic University of Lublin",
+  "country" : "Poland",
+  "fullLocation" : "Lublin, Poland",
+  "placeId" : "ChIJw4m_Y2FXIkcRNDLifnk2T-w"
+}, {
+  "title" : "GDG on Campus Westminster International University - Tashkent, Uzbekistan",
+  "universityName" : "Westminster International University",
+  "country" : "Uzbekistan",
+  "fullLocation" : "Tashkent, Uzbekistan",
+  "placeId" : "ChIJz9GXktWKrjgRlnvteoQCBNo"
+}, {
+  "title" : "GDG on Campus Harcourt Butler Technical University - Kanpur, India",
+  "universityName" : "Harcourt Butler Technical University",
+  "country" : "India",
+  "fullLocation" : "Kanpur, India",
+  "placeId" : "ChIJYZb6i0M4nDkRMxvPOzp5MqY"
+}, {
+  "title" : "GDG on Campus National Kaohsiung Normal University - Kaohsiung City, Taiwan",
+  "universityName" : "National Kaohsiung Normal University",
+  "country" : "Taiwan",
+  "fullLocation" : "Kaohsiung City, Taiwan",
+  "placeId" : "ChIJ9R_Vfr0EbjQRtfbCIeHEQ9M"
+}, {
+  "title" : "GDG on Campus Bharati Vidyapeeth (Deemed University) College of Engineering - Pune, India",
+  "universityName" : "Bharati Vidyapeeth (Deemed University) College of Engineering",
+  "country" : "India",
+  "fullLocation" : "Pune, India",
+  "placeId" : "ChIJkXeFGLnqwjsRae-A5Pd7GFE"
+}, {
+  "title" : "GDG on Campus National Forensic Sciences University - Delhi, India",
+  "universityName" : "National Forensic Sciences University",
+  "country" : "India",
+  "fullLocation" : "Delhi, India",
+  "placeId" : "ChIJXfD26aorXDkR5bQvH3EWlk8"
+}, {
+  "title" : "GDG on Campus National Forensic Sciences University - Gandhinagar, India",
+  "universityName" : "National Forensic Sciences University",
+  "country" : "India",
+  "fullLocation" : "Gandhinagar, India",
+  "placeId" : "ChIJXfD26aorXDkR5bQvH3EWlk8"
+}, {
+  "title" : "GDG on Campus Shaheed Bhagat Singh State University - Firozpur, India",
+  "universityName" : "Shaheed Bhagat Singh State University",
+  "country" : "India",
+  "fullLocation" : "Firozpur, India",
+  "placeId" : "ChIJ5d46m-3oGTkR5kLkKUM19H0"
+}, {
+  "title" : "GDG on Campus Visvesvaraya Technological University - Belgaum, India",
+  "universityName" : "Visvesvaraya Technological University",
+  "country" : "India",
+  "fullLocation" : "Belgaum, India",
+  "placeId" : "ChIJVyqZTjc8rjsRMQS5bRZ1ch4"
+}, {
+  "title" : "GDG on Campus Imam Abdulrahman Bin Faisal University, Men Campus - Dammam, Saudi Arabia",
+  "universityName" : "Imam Abdulrahman Bin Faisal University, Men Campus",
+  "country" : "Saudi Arabia",
+  "fullLocation" : "Dammam, Saudi Arabia",
+  "placeId" : "ChIJr-1hyYXvST4RjMdBKY-5LXs"
+}, {
+  "title" : "GDG on Campus Imam Abdulrahman Bin Faisal University, Women Campus - Damman, Saudi Arabia",
+  "universityName" : "Imam Abdulrahman Bin Faisal University, Women Campus",
+  "country" : "Saudi Arabia",
+  "fullLocation" : "Damman, Saudi Arabia",
+  "placeId" : "ChIJr-1hyYXvST4RjMdBKY-5LXs"
+}, {
+  "title" : "GDG on Campus Chukwuemeka Odumegwu Ojukwu University - Anambra, Nigeria",
+  "universityName" : "Chukwuemeka Odumegwu Ojukwu University",
+  "country" : "Nigeria",
+  "fullLocation" : "Anambra, Nigeria, Nigeria",
+  "placeId" : "ChIJy5LEDf-zQxARY56CptLX-5A"
+}, {
+  "title" : "GDG on Campus Chhatrapati Shivaji Maharaj University - Navi Mumbai, India",
+  "universityName" : "Chhatrapati Shivaji Maharaj University",
+  "country" : "India",
+  "fullLocation" : "Navi Mumbai, India, India",
+  "placeId" : "ChIJ15OGg5PxwDsR-6_dJL4yaHg"
+}, {
+  "title" : "GDG on Campus California Polytechnic State University - San Luis Obispo, United States",
+  "universityName" : "California Polytechnic State University",
+  "country" : "United States",
+  "fullLocation" : "San Luis Obispo, United States, United States",
+  "placeId" : "ChIJUTVMBbTx7IARA5HZKYq0s5g"
+}, {
+  "title" : "GDG on Campus California State Polytechnic University - Pomona, United States",
+  "universityName" : "California State Polytechnic University",
+  "country" : "United States",
+  "fullLocation" : "Pomona, United States",
+  "placeId" : "ChIJYUPc46Uuw4AR6x7JIu3kSpA"
+}, {
+  "title" : "GDG on Campus Libyan International Medical University - Benghazi, Libya",
+  "universityName" : "Libyan International Medical University",
+  "country" : "Libya",
+  "fullLocation" : "Benghazi, Libya",
+  "placeId" : "ChIJJ9Z8nXgcgxMRLYdIhXepIKU"
+}, {
+  "title" : "GDG on Campus Indira Gandhi Delhi Technical University for Women - Delhi, India",
+  "universityName" : "Indira Gandhi Delhi Technical University for Women",
+  "country" : "India",
+  "fullLocation" : "Delhi, India",
+  "placeId" : "ChIJO5yRgwb9DDkR4rnCdBsz_PU"
+}, {
+  "title" : "GDG on Campus National Yang-Ming Chiao Tung University - Hsinchu City, Taiwan",
+  "universityName" : "National Yang-Ming Chiao Tung University",
+  "country" : "Taiwan",
+  "fullLocation" : "Hsinchu, Taiwan",
+  "placeId" : "ChIJF6MYcmCuQjQRV4-Sv3dD514"
+}, {
+  "title" : "GDG on Campus Swarrnim Startup &amp; Innovation University - Gandhinagar, India",
+  "universityName" : "Swarrnim Startup &amp; Innovation University",
+  "country" : "India",
+  "fullLocation" : "Gandhinagar, India",
+  "placeId" : "ChIJma0TrrcoXDkR2tpZVGKBZkM"
+}, {
+  "title" : "GDG on Campus Veer Bahadur Singh Purvanchal University - Jaunpur, India",
+  "universityName" : "Veer Bahadur Singh Purvanchal University",
+  "country" : "India",
+  "fullLocation" : "Jaunpur, India",
+  "placeId" : "ChIJB28ARuw4kDkRVOFmnql7X4g"
+}, {
+  "title" : "GDG on Campus Jawaharlal Nehru Technological University - Hyderabad, India",
+  "universityName" : "Jawaharlal Nehru Technological University",
+  "country" : "India",
+  "fullLocation" : "Hyderabad, India, India",
+  "placeId" : "ChIJAWUhyYaRyzsREsCP_eHykls"
+}, {
+  "title" : "GDG on Campus Symbiosis Skills &amp; Professional University - Pune, India",
+  "universityName" : "Symbiosis Skills &amp; Professional University",
+  "country" : "India",
+  "fullLocation" : "Pune, India",
+  "placeId" : "ChIJ6-FrVACxwjsRzEtHuWHd5wk"
+}, {
+  "title" : "GDG on Campus Turkish Aeronautical Association University - Ankara, Türkiye",
+  "universityName" : "Turkish Aeronautical Association University",
+  "country" : "Türkiye",
+  "fullLocation" : "Ankara, Türkiye",
+  "placeId" : "ChIJv2p0tVc40xQRZ1X-QFU-phA"
+}, {
+  "title" : "GDG on Campus Uganda Technology and Management University - Kampala, Uganda",
+  "universityName" : "Uganda Technology and Management University",
+  "country" : "Uganda",
+  "fullLocation" : "Kampala, Uganda, Uganda",
+  "placeId" : "ChIJ1_pRefu7fRcREVrhgvVNALc"
+}, {
+  "title" : "GDG on Campus Addis Ababa Science and Technology University - Addis Ababa, Ethiopia",
+  "universityName" : "Addis Ababa Science and Technology University",
+  "country" : "Ethiopia",
+  "fullLocation" : "Addis Ababa, Ethiopia",
+  "placeId" : "ChIJPyCS46eCSxYRn4_JrA5EX7A"
+}, {
+  "title" : "GDG on Campus Maharishi Markandeshwar (Deemed to be University) - Mullana, India",
+  "universityName" : "Maharishi Markandeshwar (Deemed to be University)",
+  "country" : "India",
+  "fullLocation" : "Mullana, India",
+  "placeId" : "ChIJM44FaS2tDzkRYicRJdsW0Mc"
+}, {
+  "title" : "GDG on Campus Faculty of Computers &amp; Data Science Alexandria University - Alexandria, Egypt",
+  "universityName" : "Faculty of Computers &amp; Data Science Alexandria University",
+  "country" : "Egypt",
+  "fullLocation" : "Alexandria, Egypt, Egypt",
+  "placeId" : null
+}, {
+  "title" : "GDG on Campus Université de Montréal - Montreal, Canada",
+  "universityName" : "Université de Montréal",
+  "country" : "Canada",
+  "fullLocation" : "Montreal, Canada, Canada",
+  "placeId" : "ChIJOWZPqJoZyUwRMUWvDEYfKE4"
+}, {
+  "title" : "GDG on Campus Université du Québec en Abitibi-Témiscamingue - Québec, Canada",
+  "universityName" : "Université du Québec en Abitibi-Témiscamingue",
+  "country" : "Canada",
+  "fullLocation" : "Québec, Canada, Canada",
+  "placeId" : "ChIJ97rXogkzIU0RO74QkBs1KBI"
+}, {
+  "title" : "GDG on Campus Université Chouaib Doukkali - El Jadida, Morocco",
+  "universityName" : "Université Chouaib Doukkali",
+  "country" : "Morocco",
+  "fullLocation" : "El Jadida, Morocco, Morocco",
+  "placeId" : "ChIJH8P8OQMeqQ0RM5wpvXwh9iM"
+}, {
+  "title" : "GDG on Campus Université des Sciences et de la Technologie d'Oran Mohamed-Boudiaf USTOMB - Oran, Algeria",
+  "universityName" : "Université des Sciences et de la Technologie d'Oran Mohamed-Boudiaf USTOMB",
+  "country" : "Algeria",
+  "fullLocation" : "Oran, Algeria, Algeria",
+  "placeId" : "ChIJVVVVVYxifg0Rf_Uu6bDxf-8"
+}, {
+  "title" : "GDG on Campus Université Catholique de Bukavu - Bukavu, Democratic Republic of the Congo",
+  "universityName" : "Université Catholique de Bukavu",
+  "country" : "Congo (DRC)",
+  "fullLocation" : "Bukavu, Congo (DRC)",
+  "placeId" : "ChIJVVVV1PmZwhkR5fM5ACLgKlY"
+}, {
+  "title" : "GDG on Campus Université de Lomé - Lomé, Togo",
+  "universityName" : "Université de Lomé",
+  "country" : "Togo",
+  "fullLocation" : "Lomé, Togo",
+  "placeId" : "ChIJT0w05HXiIxAR0jR8YOmCT2M"
+}, {
+  "title" : "GDG on Campus Université virtuelle de Côte d'Ivoire - Abidjan, Côte d'Ivoire",
+  "universityName" : "Université virtuelle de Côte d'Ivoire",
+  "country" : "Côte d’Ivoire",
+  "fullLocation" : "Abidjan, Côte d’Ivoire",
+  "placeId" : "ChIJhxHXa9r_xw8RNyAjjKcoEnM"
+}, {
+  "title" : "GDG on Campus Universitas Airlangga - Surabaya, Indonesia",
+  "universityName" : "Universitas Airlangga",
+  "country" : "Indonesia",
+  "fullLocation" : "Surabaya, Indonesia",
+  "placeId" : "ChIJkVJRoyH61y0RJFlz_yIV3z4"
+}, {
+  "title" : "GDG on Campus Universitas Brawijaya - Malang, Indonesia",
+  "universityName" : "Universitas Brawijaya",
+  "country" : "Indonesia",
+  "fullLocation" : "Malang, Indonesia",
+  "placeId" : "ChIJdQliLX-CeC4R1V7uu1l0m_E"
+}, {
+  "title" : "GDG on Campus Universitas Ciputra - Makassar, Indonesia",
+  "universityName" : "Universitas Ciputra",
+  "country" : "Indonesia",
+  "fullLocation" : "Makassar, Indonesia",
+  "placeId" : "ChIJVVVVVeT91y0RRvCR5Rph4tc"
+}, {
+  "title" : "GDG on Campus Universitas Ciputra - Surabaya, Indonesia",
+  "universityName" : "Universitas Ciputra",
+  "country" : "Indonesia",
+  "fullLocation" : "Surabaya, Indonesia",
+  "placeId" : "ChIJVVVVVeT91y0RRvCR5Rph4tc"
+}, {
+  "title" : "GDG on Campus Universitas Dian Nuswantoro - Semarang, Indonesia",
+  "universityName" : "Universitas Dian Nuswantoro",
+  "country" : "Indonesia",
+  "fullLocation" : "Semarang, Indonesia",
+  "placeId" : "ChIJ1ykixU6LcC4RxzaSvGodeQw"
+}, {
+  "title" : "GDG on Campus Universitas Esa Unggul - Jakarta, Indonesia",
+  "universityName" : "Universitas Esa Unggul",
+  "country" : "Indonesia",
+  "fullLocation" : "Jakarta, Indonesia",
+  "placeId" : "ChIJ75O6hk-LaS4ROnEh3pDlWM8"
+}, {
+  "title" : "GDG on Campus Universitas Gadjah Mada - Yogyakarta, Indonesia",
+  "universityName" : "Universitas Gadjah Mada",
+  "country" : "Indonesia",
+  "fullLocation" : "Sleman, Indonesia",
+  "placeId" : "ChIJKZdy1LJZei4R5Pg0z197Taw"
+}, {
+  "title" : "GDG on Campus Universitas Gunadarma - Depok, Indonesia",
+  "universityName" : "Universitas Gunadarma",
+  "country" : "Indonesia",
+  "fullLocation" : "Depok City, Indonesia",
+  "placeId" : "ChIJrUiFtgHtaS4Rfeeywq-jrok"
+}, {
+  "title" : "GDG on Campus Universitas Hasanuddin - Makassar, Indonesia",
+  "universityName" : "Universitas Hasanuddin",
+  "country" : "Indonesia",
+  "fullLocation" : "Makassar, Indonesia",
+  "placeId" : "ChIJPXligFv9vi0Rwqm8DSw08a0"
+}, {
+  "title" : "GDG on Campus Universitas Indonesia - Jakarta, Indonesia",
+  "universityName" : "Universitas Indonesia",
+  "country" : "Indonesia",
+  "fullLocation" : "Jakarta, Indonesia",
+  "placeId" : "ChIJhYtOgBrsaS4RB-p8l-GAv9c"
+}, {
+  "title" : "GDG on Campus Universitas Islam Indonesia - Yogyakarta, Indonesia",
+  "universityName" : "Universitas Islam Indonesia",
+  "country" : "Indonesia",
+  "fullLocation" : "Yogyakarta, Indonesia",
+  "placeId" : "ChIJUfrUDJdeei4RQAy5InHQJ6U"
+}, {
+  "title" : "GDG on Campus Universitas Negeri Jakarta - Jakarta, Indonesia",
+  "universityName" : "Universitas Negeri Jakarta",
+  "country" : "Indonesia",
+  "fullLocation" : "Jakarta, Indonesia",
+  "placeId" : "ChIJEzJAFO30aS4RyAFqDxqpEiQ"
+}, {
+  "title" : "GDG on Campus Universitas Negeri Makassar - Makassar, Indonesia",
+  "universityName" : "Universitas Negeri Makassar",
+  "country" : "Indonesia",
+  "fullLocation" : "Makassar, Indonesia",
+  "placeId" : "ChIJVzwnafTivi0RZnbmQYW8TLU"
+}, {
+  "title" : "GDG on Campus Universitas Negeri Malang - Malang, Indonesia",
+  "universityName" : "Universitas Negeri Malang",
+  "country" : "Indonesia",
+  "fullLocation" : "Malang, Indonesia",
+  "placeId" : "ChIJOYjQvYGCeC4RH4P6v2jyFck"
+}, {
+  "title" : "GDG on Campus Universitas Negeri Surabaya - Surabaya, Indonesia",
+  "universityName" : "Universitas Negeri Surabaya",
+  "country" : "Indonesia",
+  "fullLocation" : "Surabaya, Indonesia",
+  "placeId" : "ChIJg0--gXD71y0RPUvmo74OwKk"
+}, {
+  "title" : "GDG on Campus Universitas Pasundan - Bandung, Indonesia",
+  "universityName" : "Universitas Pasundan",
+  "country" : "Indonesia",
+  "fullLocation" : "Bandung, Indonesia",
+  "placeId" : "ChIJ1-BeuGXoaC4Ril9HLfiKol8"
+}, {
+  "title" : "GDG on Campus Universitas Pembangunan Nasional \"Veteran\" Yogyakarta - Yogyakarta, Indonesia",
+  "universityName" : "Universitas Pembangunan Nasional \"Veteran\" Yogyakarta",
+  "country" : "Indonesia",
+  "fullLocation" : "Yogyakarta, Indonesia",
+  "placeId" : "ChIJzfxyAppZei4RCh2e0wR4ngM"
+}, {
+  "title" : "GDG on Campus Universitas Sriwijaya - Palembang, Indonesia",
+  "universityName" : "Universitas Sriwijaya",
+  "country" : "Indonesia",
+  "fullLocation" : "Palembang, Indonesia",
+  "placeId" : "ChIJLyfMHPS9Oy4ROUaGvuiHxUQ"
+}, {
+  "title" : "GDG on Campus Universitas Sumatera Utara - Medan, Indonesia",
+  "universityName" : "Universitas Sumatera Utara",
+  "country" : "Indonesia",
+  "fullLocation" : "Medan, Indonesia",
+  "placeId" : "ChIJC0XYPuAvMTAR_I4mlcFBSeg"
+}, {
+  "title" : "GDG on Campus Universitas Trunojoyo Madura - Kabupaten Bangkalan, Indonesia",
+  "universityName" : "Universitas Trunojoyo Madura",
+  "country" : "Indonesia",
+  "fullLocation" : "Kabupaten Bangkalan, Indonesia",
+  "placeId" : "ChIJ9b9riN0D2C0RXRkomxPKd5c"
+}, {
+  "title" : "GDG on Campus Universitas Udayana - Badung, Indonesia",
+  "universityName" : "Universitas Udayana",
+  "country" : "Indonesia",
+  "fullLocation" : "Badung, Indonesia",
+  "placeId" : "ChIJ2bpve-xA0i0R1QN3n1aABYc"
+}, {
+  "title" : "GDG on Campus Universiti Malaya - Kuala Lumpur, Malaysia",
+  "universityName" : "Universiti Malaya",
+  "country" : "Malaysia",
+  "fullLocation" : "Kuala Lumpur, Malaysia",
+  "placeId" : "ChIJh3EhJHC0zTERQdZHXcbrhR4"
+}, {
+  "title" : "GDG on Campus Universiti Putra Malaysia - Selangor, Malaysia",
+  "universityName" : "Universiti Putra Malaysia",
+  "country" : "Malaysia",
+  "fullLocation" : "Pahang, Malaysia",
+  "placeId" : "ChIJtwipGH_KzTER9Ivy1ZLviuI"
+}, {
+  "title" : "GDG on Campus Universiti Sains Malaysia - Penang, Malaysia",
+  "universityName" : "Universiti Sains Malaysia",
+  "country" : "Malaysia",
+  "fullLocation" : "Penang, Malaysia",
+  "placeId" : "ChIJU36uNqjBSjARWtn06E_FWoM"
+}, {
+  "title" : "GDG on Campus Universiti Teknologi Malaysia - Johor Bahru, Malaysia",
+  "universityName" : "Universiti Teknologi Malaysia",
+  "country" : "Malaysia",
+  "fullLocation" : "Johor Bahru, Malaysia",
+  "placeId" : "ChIJS0KMpVRx2jER-F9LWHc9E4w"
+}, {
+  "title" : "GDG on Campus European Universities in Egypt - Cairo, Egypt",
+  "universityName" : "European Universities in Egypt",
+  "country" : "Egypt",
+  "fullLocation" : "Cairo, Egypt, Egypt",
+  "placeId" : "ChIJP6JcYRU9WBQRAZJ27ISmLrM"
+}, {
+  "title" : "GDG on Campus Universiapolis - Agadir, Morocco",
+  "universityName" : "Universiapolis",
+  "country" : "Morocco",
+  "fullLocation" : "Agadir, Morocco, Morocco",
+  "placeId" : "ChIJpe6W3jPIsw0RMrwXIHucU1o"
+}, {
+  "title" : "GDG on Campus Erzincan Binali Yıldırım Üniversitesi - Yalnızbağ, Türkiye",
+  "universityName" : "Erzincan Binali Yıldırım Üniversitesi",
+  "country" : "Türkiye",
+  "fullLocation" : "Yalnızbağ, Türkiye",
+  "placeId" : "ChIJU9qlZpUMcEARsDQMjWZtUoY"
+}, {
+  "title" : "GDG on Campus Universal College of Engineering - Mumbai, India",
+  "universityName" : "Universal College of Engineering",
+  "country" : "India",
+  "fullLocation" : "Mumbai, India",
+  "placeId" : "ChIJZfxk1W2l5zsR6-cec2Jv3N4"
+} ]
