@@ -43,6 +43,10 @@ public class Main {
         // 전체 작업 목록 로드 후 진행된 인덱스 이후의 데이터만 선택
         List<PlaceDetails> allTasks = UrlManager.filterValidInstitutions(INPUT_FILE);
         List<PlaceDetails> pendingTasks = allTasks.subList(Math.min(lastProcessedIndex, allTasks.size()), allTasks.size());
+//        List<PlaceDetails> pendingTasks = allTasks.subList(
+//                Math.min(lastProcessedIndex, allTasks.size()),
+//                Math.min(lastProcessedIndex + 20, allTasks.size())
+//        );
         totalTasks = pendingTasks.size();
 
         LinkedBlockingQueue<PlaceDetails> queue = new LinkedBlockingQueue<>(pendingTasks);
