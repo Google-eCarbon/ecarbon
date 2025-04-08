@@ -4,28 +4,36 @@ import { cn } from '@/lib/utils';
 import {
   BarChart3,
   LayoutDashboard,
+  CheckSquare, 
   Settings,
+  LineChart,
 } from 'lucide-react';
 
 const Sidebar = () => {
   const routes = [
     {
-      label: 'Dashboard',
+      label: 'Carbon Footprint',
       icon: LayoutDashboard,
       href: '/',
       color: "text-sky-500"
     },
     {
-      label: 'Analytics',
-      icon: BarChart3,
-      href: '/analytics',
+      label: 'GuideLine Analysis',
+      icon: CheckSquare,
+      href: '/guidelines',
       color: "text-violet-500",
     },
     {
-      label: 'Settings',
-      icon: Settings,
-      href: '/settings',
-      color: "text-pink-700",
+      label: 'Reduced Carbon Report',
+      icon: LineChart,
+      href: '/stats',
+      color: "text-emerald-500",
+    },
+    {
+        label: 'category stats',
+        icon: LineChart,
+        href: '/category-stats',
+        color: "text-amber-700",
     },
   ];
 
