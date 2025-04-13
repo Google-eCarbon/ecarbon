@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 웹 페이지 탄소 배출량 추정 계산식
 */
 @Service
-public class EmissionsCalculator {
+public class CarbonCalculator {
 
     // carbon Intensity (gCO2e/kWh)
     private static final double KOREA_AVERAGE_INTENSITY = 407.0;

@@ -23,7 +23,7 @@ public class CarbonAnalysisService {
     private final ResourceDataRepository resourceDataRepository;
     private final TrafficDataRepository trafficDataRepository;
 
-    private final EmissionsCalculator calculator;
+    private final CarbonCalculator calculator;
 
     public Optional<ViewData> getDataByUrl(String url) {
         log.info("Fetching data for URL: {}", url);

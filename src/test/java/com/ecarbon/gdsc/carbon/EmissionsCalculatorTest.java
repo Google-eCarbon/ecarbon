@@ -1,13 +1,13 @@
 package com.ecarbon.gdsc.carbon;
 
 import com.ecarbon.gdsc.carbon.dto.EmissionRequest;
-import com.ecarbon.gdsc.carbon.service.EmissionsCalculator;
+import com.ecarbon.gdsc.carbon.service.CarbonCalculator;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class EmissionsCalculatorTest {
-    private final EmissionsCalculator calculator = new EmissionsCalculator();
+    private final CarbonCalculator calculator = new CarbonCalculator();
 
     @Test
     void testEstimateEmissionPerPage_basicScenario(){
