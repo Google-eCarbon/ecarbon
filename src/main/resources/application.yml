@@ -2,4 +2,4 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/ #
-      database: gdsc_lighthouseDB
+      database: ecarbon_gdsc
