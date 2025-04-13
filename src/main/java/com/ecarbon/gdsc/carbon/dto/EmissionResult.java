@@ -10,5 +10,4 @@ public class EmissionResult {
     private double datacenter;
     private double network;
     private double userDevice;
-    private double totalEmission;
 }
