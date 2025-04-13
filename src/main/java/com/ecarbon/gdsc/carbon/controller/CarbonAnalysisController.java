@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import java.util.Set;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -21,7 +20,6 @@ public class CarbonAnalysisController {
     private final CarbonAnalysisService service;
     private final MongoTemplate mongoTemplate;
 
-    // 통합 조회
     @GetMapping
     public ResponseEntity<?> getCarbonData(@RequestParam String url) {
         log.info("Received request for URL: {}", url);

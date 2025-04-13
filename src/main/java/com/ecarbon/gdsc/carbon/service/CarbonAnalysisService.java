@@ -54,4 +54,4 @@ public class CarbonAnalysisService {
             throw new RuntimeException("Error fetching data: " + e.getMessage(), e);
         }
     }
-    }
+}

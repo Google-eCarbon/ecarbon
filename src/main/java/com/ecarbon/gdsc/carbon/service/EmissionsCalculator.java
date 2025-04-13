@@ -50,7 +50,7 @@ public class EmissionsCalculator {
                 .build();
     }
 
-    // addjustForGreenHosting()
+    // adjustForGreenHosting()
     private static double adjustForGreenHosting(double datacenterEmission, double greenHostFactor){
         return datacenterEmission * (1 - greenHostFactor);
     }
