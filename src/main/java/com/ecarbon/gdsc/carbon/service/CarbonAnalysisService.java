@@ -1,9 +1,10 @@
 package com.ecarbon.gdsc.carbon.service;
 
-import com.ecarbon.gdsc.carbon.dto.Lighthouse.LighthouseData;
-import com.ecarbon.gdsc.carbon.dto.Lighthouse.OptimizationData;
-import com.ecarbon.gdsc.carbon.dto.Lighthouse.ResourceData;
-import com.ecarbon.gdsc.carbon.dto.Lighthouse.TrafficData;
+import com.ecarbon.gdsc.carbon.dto.EmissionResult;
+import com.ecarbon.gdsc.carbon.dto.ViewData;
+import com.ecarbon.gdsc.carbon.entity.OptimizationData;
+import com.ecarbon.gdsc.carbon.entity.ResourceData;
+import com.ecarbon.gdsc.carbon.entity.TrafficData;
 import com.ecarbon.gdsc.carbon.repository.OptimizationDataRepository;
 import com.ecarbon.gdsc.carbon.repository.ResourceDataRepository;
 import com.ecarbon.gdsc.carbon.repository.TrafficDataRepository;

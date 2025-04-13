@@ -1,6 +1,6 @@
 package com.ecarbon.gdsc.carbon.repository;
 
-import com.ecarbon.gdsc.carbon.dto.Lighthouse.ResourceData;
+import com.ecarbon.gdsc.carbon.entity.ResourceData;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

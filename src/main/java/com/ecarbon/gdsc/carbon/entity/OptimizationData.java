@@ -1,6 +1,7 @@
-package com.ecarbon.gdsc.carbon.dto.Lighthouse;
+package com.ecarbon.gdsc.carbon.entity;
 
 
+import com.ecarbon.gdsc.carbon.dto.Lighthouse.ResourceSummary;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;

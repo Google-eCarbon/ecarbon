@@ -1,17 +1,20 @@
-package com.ecarbon.gdsc.carbon.dto.Lighthouse;
+package com.ecarbon.gdsc.carbon.entity;
 
+import com.ecarbon.gdsc.carbon.dto.Lighthouse.NetworkRequest;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.List;
 
-@Document(collection = "traffic_data")
+@Document(collection = "resource_data")
 @Getter
 @Builder
-public class TrafficData {
+@ToString
+public class ResourceData {
 
     @Id
     private String id;
@@ -20,6 +23,7 @@ public class TrafficData {
 
     private String analyzedAt;
 
-    @Field("resource_summary")
-    private List<ResourceSummary> resourceSummaries;
+    @Field("network_request")
+    private List<NetworkRequest> networkRequests;
+
 }
