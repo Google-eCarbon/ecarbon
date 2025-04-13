@@ -25,15 +25,16 @@ public class EmissionsCalculator {
     private static final double ELECTRICITY_EMBODIED_USER_DEVICE = 0.081;
 
     // calculateOperationEmissions()
-    private static EmissionResult calculateOperationEmissions(double dataTransmissionTraffic){
-        double datacenter = dataTransmissionTraffic * ELECTRICITY_DATA_CENTER_O * KOREA_AVERAGE_INTENSITY;
-        double network = dataTransmissionTraffic * ELECTRICITY_NETWORK_O * KOREA_AVERAGE_INTENSITY;
-        double userDevice = dataTransmissionTraffic * ELECTRICITY_USER_DEVICE * KOREA_AVERAGE_INTENSITY;
+    public static EmissionResult calculateOperationEmissions(double trafficGB){
+        double datacenter = trafficGB * ELECTRICITY_DATA_CENTER_O * KOREA_AVERAGE_INTENSITY;
+        double network = trafficGB * ELECTRICITY_NETWORK_O * KOREA_AVERAGE_INTENSITY;
+        double userDevice = trafficGB * ELECTRICITY_USER_DEVICE * KOREA_AVERAGE_INTENSITY;
 
         return EmissionResult.builder()
                 .datacenter(datacenter)
                 .network(network)
                 .userDevice(userDevice)
+                .totalEmission(Math.round((datacenter + network + userDevice) * 10.0) / 10.0)
                 .build();
     }
 
@@ -77,5 +78,23 @@ public class EmissionsCalculator {
                 * (1 - request.getDataCacheRatio());
 
         return newVisitorEmission + returnVisitorEmission;
+    }
+    
+    public String calculateGrade(double totalSizeKb){
+        if (totalSizeKb <= 272.51) {
+            return "A+";
+        } else if (totalSizeKb <= 531.15) {
+            return "A";
+        } else if (totalSizeKb <= 975.85) {
+            return "B";
+        } else if (totalSizeKb <= 1410.39) {
+            return "C";
+        } else if (totalSizeKb <= 1875.01) {
+            return "D";
+        } else if (totalSizeKb <= 2419.56) {
+            return "E";
+        } else {
+            return "F";
+        }
     }
 }

@@ -23,7 +23,9 @@ public class CarbonAnalysisService {
     private final ResourceDataRepository resourceDataRepository;
     private final TrafficDataRepository trafficDataRepository;
 
-    public Optional<LighthouseData> getDataByUrl(String url) {
+    private final EmissionsCalculator calculator;
+
+    public Optional<ViewData> getDataByUrl(String url) {
         log.info("Fetching data for URL: {}", url);
 
         try {
@@ -37,22 +39,39 @@ public class CarbonAnalysisService {
             log.debug("Resource data present: {}", resourceData.isPresent());
             log.debug("Traffic data present: {}", trafficData.isPresent());
 
-            // 하나라도 데이터가 있으면 결과 반환
-            if (optimizationData.isPresent() || resourceData.isPresent() || trafficData.isPresent()) {
-                LighthouseData lighthouseData = LighthouseData.builder()
-                        .url(url)
-                        .optimizationData(optimizationData.orElse(null))
-                        .resourceData(resourceData.orElse(null))
-                        .trafficData(trafficData.orElse(null))
-                        .build();
-                return Optional.of(lighthouseData);
+            // 최종 결과를 담을 DTO 생성
+            ViewData.ViewDataBuilder viewDataBuilder = ViewData.builder()
+                    .url(url);
+
+            // optimizationData에서 totalByteWeight가 있으면 탄소 배출량 계산
+            if (optimizationData.isPresent()) {
+                long totalByteWeight = optimizationData.get().getTotalByteWeight();
+                double kbWeight = totalByteWeight / 1024.0;
+                double carbonEmission = calculateCarbonEmission(kbWeight);
+                String grade = calculator.calculateGrade(kbWeight);
+
+                viewDataBuilder
+                        .total_byte_weight(totalByteWeight)
+                        .carbonEmission(carbonEmission)
+                        .kbWeight(kbWeight)
+                        .grade(grade);
             }
 
-            log.warn("No data found for URL: {}", url);
-            return Optional.empty();
+            // 하나라도 데이터가 있으면 결과 반환
+            return Optional.of(viewDataBuilder.build());
+
         } catch (Exception e) {
             log.error("Error fetching data for URL: {}", url, e);
             throw new RuntimeException("Error fetching data: " + e.getMessage(), e);
         }
+    }
+
+    private double calculateCarbonEmission(double kbWeight){
+
+        double sizeInGB = kbWeight / (1024.0 * 1024.0);
+
+        EmissionResult emissionResult = calculator.calculateOperationEmissions(sizeInGB);
+
+        return emissionResult.getTotalEmission();
     }
 }
