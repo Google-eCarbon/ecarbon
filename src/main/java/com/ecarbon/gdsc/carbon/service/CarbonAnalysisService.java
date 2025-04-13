@@ -48,7 +48,7 @@ public class CarbonAnalysisService {
                 long totalByteWeight = optimizationData.get().getTotalByteWeight();
                 double kbWeight = totalByteWeight / 1024.0;
                 double carbonEmission = calculateCarbonEmission(kbWeight);
-                String grade = calculator.calculateGrade(kbWeight);
+                String grade = calculateGrade(kbWeight);
 
                 viewDataBuilder
                         .total_byte_weight(totalByteWeight)
@@ -72,6 +72,24 @@ public class CarbonAnalysisService {
 
         EmissionResult emissionResult = calculator.calculateOperationEmissions(sizeInGB);
 
-        return emissionResult.getTotalEmission();
+        return calculator.estimateEmissionPerPage(request);
+    }
+
+    private String calculateGrade(double totalSizeKb){
+        if (totalSizeKb <= 272.51) {
+            return "A+";
+        } else if (totalSizeKb <= 531.15) {
+            return "A";
+        } else if (totalSizeKb <= 975.85) {
+            return "B";
+        } else if (totalSizeKb <= 1410.39) {
+            return "C";
+        } else if (totalSizeKb <= 1875.01) {
+            return "D";
+        } else if (totalSizeKb <= 2419.56) {
+            return "E";
+        } else {
+            return "F";
+        }
     }
 }
