@@ -1,6 +1,6 @@
 package com.ecarbon.gdsc.carbon.service;
 
-import com.ecarbon.gdsc.carbon.dto.EmissionResult;
+import com.ecarbon.gdsc.carbon.dto.EmissionRequest;
 import com.ecarbon.gdsc.carbon.dto.ViewData;
 import com.ecarbon.gdsc.carbon.entity.OptimizationData;
 import com.ecarbon.gdsc.carbon.entity.ResourceData;
@@ -70,7 +70,13 @@ public class CarbonAnalysisService {
 
         double sizeInGB = kbWeight / (1024.0 * 1024.0);
 
-        EmissionResult emissionResult = calculator.calculateOperationEmissions(sizeInGB);
+        EmissionRequest request = EmissionRequest.builder()
+                .dataGb(sizeInGB)
+                .newVisitorRatio(1.0)
+                .returnVisitorRatio(0.0)
+                .dataCacheRatio(0.0)
+                .greenHostFactor(0.0)
+                .build();
 
         return calculator.estimateEmissionPerPage(request);
     }
