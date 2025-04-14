@@ -59,23 +59,31 @@ public class CarbonCalculator {
     // estimateEmissionPerPage()
     public double estimateEmissionPerPage(EmissionRequest request){
 
+        // Calculate operational emissions
         EmissionResult opEmissions = calculateOperationEmissions(request.getDataGb());
+
+        // Calculate embodied emissions
         EmissionResult emEmissions = calculateEmbodiedEmissions(request.getDataGb());
 
+        // Adjust data center emissions for green hosting
         double opDcAdjusted = adjustForGreenHosting(opEmissions.getDatacenter(), request.getGreenHostFactor());
 
+        // Calculate total emissions for all segments
         double totalSegmentEmission = (
                 (opDcAdjusted + emEmissions.getDatacenter())
                 + (opEmissions.getNetwork() + emEmissions.getNetwork())
                 + (opEmissions.getUserDevice() + emEmissions.getUserDevice())
         );
 
+        // Calculate emissions for new visitors
         double newVisitorEmission = totalSegmentEmission * request.getNewVisitorRatio();
 
+        // Calculate emissions for return visitors with caching
         double returnVisitorEmission = totalSegmentEmission
                 * request.getReturnVisitorRatio()
                 * (1 - request.getDataCacheRatio());
 
+        // Return the total emissions
         return newVisitorEmission + returnVisitorEmission;
     }
 }
