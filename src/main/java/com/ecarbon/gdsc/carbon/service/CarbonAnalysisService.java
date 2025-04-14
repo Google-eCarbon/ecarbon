@@ -1,7 +1,7 @@
 package com.ecarbon.gdsc.carbon.service;
 
 import com.ecarbon.gdsc.carbon.dto.EmissionRequest;
-import com.ecarbon.gdsc.carbon.dto.ViewData;
+import com.ecarbon.gdsc.carbon.dto.CarbonAnalysisResponse;
 import com.ecarbon.gdsc.carbon.entity.OptimizationData;
 import com.ecarbon.gdsc.carbon.entity.ResourceData;
 import com.ecarbon.gdsc.carbon.entity.TrafficData;
@@ -25,8 +25,7 @@ public class CarbonAnalysisService {
 
     private final CarbonCalculator calculator;
 
-    public Optional<ViewData> getDataByUrl(String url) {
-        log.info("Fetching data for URL: {}", url);
+    public Optional<CarbonAnalysisResponse> getDataByUrl(String url) {
 
         try {
             // 각 데이터를 개별적으로 조회
@@ -40,7 +39,7 @@ public class CarbonAnalysisService {
             log.debug("Traffic data present: {}", trafficData.isPresent());
 
             // 최종 결과를 담을 DTO 생성
-            ViewData.ViewDataBuilder viewDataBuilder = ViewData.builder()
+            CarbonAnalysisResponse.CarbonAnalysisResponseBuilder carbonAnalysisResponseBuilder = CarbonAnalysisResponse.builder()
                     .url(url);
 
             // optimizationData에서 totalByteWeight가 있으면 탄소 배출량 계산
@@ -50,7 +49,7 @@ public class CarbonAnalysisService {
                 double carbonEmission = calculateCarbonEmission(kbWeight);
                 String grade = calculateGrade(kbWeight);
 
-                viewDataBuilder
+                carbonAnalysisResponseBuilder
                         .total_byte_weight(totalByteWeight)
                         .carbonEmission(carbonEmission)
                         .kbWeight(kbWeight)
@@ -58,7 +57,7 @@ public class CarbonAnalysisService {
             }
 
             // 하나라도 데이터가 있으면 결과 반환
-            return Optional.of(viewDataBuilder.build());
+            return Optional.of(carbonAnalysisResponseBuilder.build());
 
         } catch (Exception e) {
             log.error("Error fetching data for URL: {}", url, e);
