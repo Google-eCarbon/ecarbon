@@ -2,6 +2,9 @@ package com.ecarbon.gdsc.carbon.service;
 
 import com.ecarbon.gdsc.carbon.dto.EmissionRequest;
 import com.ecarbon.gdsc.carbon.dto.CarbonAnalysisResponse;
+import com.ecarbon.gdsc.carbon.dto.Lighthouse.LighthouseData;
+import com.ecarbon.gdsc.carbon.dto.Lighthouse.ResourceSummary;
+import com.ecarbon.gdsc.carbon.dto.ResourcePercentage;
 import com.ecarbon.gdsc.carbon.entity.OptimizationData;
 import com.ecarbon.gdsc.carbon.entity.ResourceData;
 import com.ecarbon.gdsc.carbon.entity.TrafficData;
@@ -12,7 +15,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -28,23 +34,17 @@ public class CarbonAnalysisService {
     public Optional<CarbonAnalysisResponse> getDataByUrl(String url) {
 
         try {
-            // 각 데이터를 개별적으로 조회
-            Optional<OptimizationData> optimizationData = optimizationDataRepository.findByUrl(url);
-            Optional<ResourceData> resourceData = resourceDataRepository.findByUrl(url);
-            Optional<TrafficData> trafficData = trafficDataRepository.findByUrl(url);
-
-            // 데이터 존재 여부 로깅
-            log.debug("Optimization data present: {}", optimizationData.isPresent());
-            log.debug("Resource data present: {}", resourceData.isPresent());
-            log.debug("Traffic data present: {}", trafficData.isPresent());
+            Optional<LighthouseData> data = fetchLighthouseDataFromMongo(url);
 
             // 최종 결과를 담을 DTO 생성
             CarbonAnalysisResponse.CarbonAnalysisResponseBuilder carbonAnalysisResponseBuilder = CarbonAnalysisResponse.builder()
                     .url(url);
 
             // optimizationData에서 totalByteWeight가 있으면 탄소 배출량 계산
-            if (optimizationData.isPresent()) {
-                long totalByteWeight = optimizationData.get().getTotalByteWeight();
+            if (data.get().getOptimizationData() != null) {
+
+                OptimizationData optimizationData = data.get().getOptimizationData();
+                TrafficData trafficData = data.get().getTrafficData();
                 double kbWeight = totalByteWeight / 1024.0;
                 double carbonEmission = calculateCarbonEmission(kbWeight);
                 String grade = calculateGrade(kbWeight);
@@ -63,6 +63,22 @@ public class CarbonAnalysisService {
             log.error("Error fetching data for URL: {}", url, e);
             throw new RuntimeException("Error fetching data: " + e.getMessage(), e);
         }
+    }
+
+    private Optional<LighthouseData> fetchLighthouseDataFromMongo(String url){
+
+        Optional<OptimizationData> optimizationData = optimizationDataRepository.findByUrl(url);
+        Optional<ResourceData> resourceData = resourceDataRepository.findByUrl(url);
+        Optional<TrafficData> trafficData = trafficDataRepository.findByUrl(url);
+
+        LighthouseData lighthouseData = LighthouseData.builder()
+                .url(url)
+                .optimizationData(optimizationData.orElse(null))
+                .resourceData(resourceData.orElse(null))
+                .trafficData(trafficData.orElse(null))
+                .build();
+
+        return Optional.of(lighthouseData);
     }
 
     private double calculateCarbonEmission(double kbWeight){
