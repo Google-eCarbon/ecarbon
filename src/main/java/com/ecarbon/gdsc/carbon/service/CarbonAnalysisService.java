@@ -45,15 +45,17 @@ public class CarbonAnalysisService {
 
                 OptimizationData optimizationData = data.get().getOptimizationData();
                 TrafficData trafficData = data.get().getTrafficData();
+
+                long totalByteWeight = optimizationData.getTotalByteWeight();
                 double kbWeight = totalByteWeight / 1024.0;
-                double carbonEmission = calculateCarbonEmission(kbWeight);
-                String grade = calculateGrade(kbWeight);
+                List<ResourcePercentage> resourcePercentages = calculateResourcePercentages(trafficData);
 
                 carbonAnalysisResponseBuilder
                         .total_byte_weight(totalByteWeight)
-                        .carbonEmission(carbonEmission)
                         .kbWeight(kbWeight)
-                        .grade(grade);
+                        .carbonEmission(calculateCarbonEmission(kbWeight))
+                        .grade(calculateGrade(kbWeight))
+                        .resourcePercentage(resourcePercentages);
             }
 
             // 하나라도 데이터가 있으면 결과 반환
@@ -79,6 +81,29 @@ public class CarbonAnalysisService {
                 .build();
 
         return Optional.of(lighthouseData);
+    }
+
+    private List<ResourcePercentage> calculateResourcePercentages(TrafficData trafficData){
+        List<ResourceSummary> resourceSummaries = trafficData.getResourceSummaries();
+
+        Optional<ResourceSummary> totalSummaryOpt = resourceSummaries.stream()
+                .filter(rs -> "total".equalsIgnoreCase(rs.getResourceType()))
+                .findFirst();
+
+        if (totalSummaryOpt.isEmpty() || totalSummaryOpt.get().getTransferSize() == 0) {
+            return Collections.emptyList();
+        }
+
+        long totalSize = totalSummaryOpt.get().getTransferSize();
+
+        return resourceSummaries.stream()
+                .filter(rs -> !"total".equalsIgnoreCase(rs.getResourceType())) // total은 제외
+                .map(rs -> ResourcePercentage.builder()
+                        .resourceType(rs.getResourceType())
+                        .size(rs.getTransferSize())
+                        .percentage((rs.getTransferSize() * 100.0) / totalSize)
+                        .build())
+                .collect(Collectors.toList());
     }
 
     private double calculateCarbonEmission(double kbWeight){
