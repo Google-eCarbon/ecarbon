@@ -1,11 +1,9 @@
 package com.ecarbon.gdsc.carbon.dto;
 
-import com.ecarbon.gdsc.carbon.entity.OptimizationData;
 import lombok.Builder;
 import lombok.Getter;
 
 import java.util.List;
-import java.util.Optional;
 
 @Builder
 @Getter
@@ -26,6 +24,7 @@ public class CarbonAnalysisResponse {
     // resourceSummaries[]
     private long total_byte_weight;
     private List<ResourcePercentage> resourcePercentage;
+    private CarbonEquivalents carbonEquivalents;
 
 
     // grade    (등급) -> calculateGrade(kb)

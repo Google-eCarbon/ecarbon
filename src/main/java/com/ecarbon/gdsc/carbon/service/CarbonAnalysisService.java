@@ -2,6 +2,7 @@ package com.ecarbon.gdsc.carbon.service;
 
 import com.ecarbon.gdsc.carbon.dto.EmissionRequest;
 import com.ecarbon.gdsc.carbon.dto.CarbonAnalysisResponse;
+import com.ecarbon.gdsc.carbon.dto.CarbonEquivalents;
 import com.ecarbon.gdsc.carbon.dto.Lighthouse.LighthouseData;
 import com.ecarbon.gdsc.carbon.dto.Lighthouse.ResourceSummary;
 import com.ecarbon.gdsc.carbon.dto.ResourcePercentage;
@@ -48,14 +49,18 @@ public class CarbonAnalysisService {
 
                 long totalByteWeight = optimizationData.getTotalByteWeight();
                 double kbWeight = totalByteWeight / 1024.0;
+                double carbonEmission = estimateCarbonEmission(kbWeight);
+
                 List<ResourcePercentage> resourcePercentages = calculateResourcePercentages(trafficData);
+                CarbonEquivalents equivalents = calculateCarbonEquivalents(carbonEmission);
 
                 carbonAnalysisResponseBuilder
                         .total_byte_weight(totalByteWeight)
                         .kbWeight(kbWeight)
-                        .carbonEmission(estimateCarbonEmission(kbWeight))
+                        .carbonEmission(carbonEmission)
                         .grade(calculateGrade(kbWeight))
-                        .resourcePercentage(resourcePercentages);
+                        .resourcePercentage(resourcePercentages)
+                        .carbonEquivalents(equivalents);
             }
 
             // 하나라도 데이터가 있으면 결과 반환
@@ -137,5 +142,17 @@ public class CarbonAnalysisService {
         } else {
             return "F";
         }
+    }
+
+    private CarbonEquivalents calculateCarbonEquivalents(double carbonEmission){
+
+        double factor = carbonEmission / 1000 * 10000  * 12;
+
+        return CarbonEquivalents.builder()
+                .coffeeCups(Math.round(factor / 0.01 * 1))
+                .evKm(Math.round(factor / 0.16 * 2))
+                .phoneCharges(Math.round(factor / 0.02 * 3))
+                .trees(Math.round(factor / 0.02 * 1))
+                .build();
     }
 }
