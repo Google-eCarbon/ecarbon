@@ -24,7 +24,7 @@ public class CarbonAnalysisController {
     public ResponseEntity<?> getCarbonData(@RequestParam String url) {
         log.info("Received request for URL: {}", url);
         try {
-            return service.getDataByUrl(url)
+            return service.analyzeCarbonByUrl(url)
                     .map(data -> {
                         log.info("Data found for URL: {}", url);
                         return ResponseEntity.ok(data);

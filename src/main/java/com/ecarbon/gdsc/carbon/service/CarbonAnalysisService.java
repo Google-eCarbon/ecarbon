@@ -31,10 +31,10 @@ public class CarbonAnalysisService {
 
     private final CarbonCalculator calculator;
 
-    public Optional<CarbonAnalysisResponse> getDataByUrl(String url) {
+    public Optional<CarbonAnalysisResponse> analyzeCarbonByUrl(String url) {
 
         try {
-            Optional<LighthouseData> data = fetchLighthouseDataFromMongo(url);
+            Optional<LighthouseData> data = fetchLighthouseDataByUrl(url);
 
             // 최종 결과를 담을 DTO 생성
             CarbonAnalysisResponse.CarbonAnalysisResponseBuilder carbonAnalysisResponseBuilder = CarbonAnalysisResponse.builder()
@@ -53,7 +53,7 @@ public class CarbonAnalysisService {
                 carbonAnalysisResponseBuilder
                         .total_byte_weight(totalByteWeight)
                         .kbWeight(kbWeight)
-                        .carbonEmission(calculateCarbonEmission(kbWeight))
+                        .carbonEmission(estimateCarbonEmission(kbWeight))
                         .grade(calculateGrade(kbWeight))
                         .resourcePercentage(resourcePercentages);
             }
@@ -67,7 +67,7 @@ public class CarbonAnalysisService {
         }
     }
 
-    private Optional<LighthouseData> fetchLighthouseDataFromMongo(String url){
+    private Optional<LighthouseData> fetchLighthouseDataByUrl(String url){
 
         Optional<OptimizationData> optimizationData = optimizationDataRepository.findByUrl(url);
         Optional<ResourceData> resourceData = resourceDataRepository.findByUrl(url);
@@ -106,7 +106,7 @@ public class CarbonAnalysisService {
                 .collect(Collectors.toList());
     }
 
-    private double calculateCarbonEmission(double kbWeight){
+    private double estimateCarbonEmission(double kbWeight){
 
         double sizeInGB = kbWeight / (1024.0 * 1024.0);
 
