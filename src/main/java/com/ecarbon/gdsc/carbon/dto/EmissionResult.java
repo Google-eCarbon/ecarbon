@@ -6,6 +6,7 @@ import lombok.Getter;
 @Getter
 @Builder
 public class EmissionResult {
+
     private double datacenter;
     private double network;
     private double userDevice;
