@@ -1,4 +1,4 @@
-package com.ecarbon.gdsc.tools.univ_details_fetcher;
+package com.ecarbon.gdsc.tools.univ_details_processor;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

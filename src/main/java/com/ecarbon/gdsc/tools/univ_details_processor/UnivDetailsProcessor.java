@@ -1,4 +1,4 @@
-package com.ecarbon.gdsc.tools.univ_details_fetcher;
+package com.ecarbon.gdsc.tools.univ_details_processor;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @Slf4j
-public class UnivDetailsFetcher {
+public class UnivDetailsProcessor {
 
     private static final String API_KEY = "";
 
