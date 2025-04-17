@@ -52,7 +52,9 @@ public class GlobalStatsService {
                     : "Unknown;";
 
             double emission = measurement.getCarbonEmission();
-            String grade = CarbonGradeUtil.calculateGrade(emission);
+
+            double kbWeight = measurement.getKbWeight();
+            String grade = CarbonGradeUtil.calculateGrade(kbWeight);
 
             topEmissionPlaces.add(TopEmissionPlace.builder()
                     .rank(rank++)
