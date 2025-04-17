@@ -29,6 +29,7 @@ public class GlobalStatsService {
                 .average()
                 .orElse(0.0);
 
+        average = Math.round(average * 100.0) / 100.0;
 
         GlobalStatsResponse response = GlobalStatsResponse.builder()
                 .averageEmissionOfTopPlaces(average)
