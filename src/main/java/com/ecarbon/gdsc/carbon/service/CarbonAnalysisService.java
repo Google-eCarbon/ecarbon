@@ -9,9 +9,12 @@ import com.ecarbon.gdsc.carbon.dto.ResourcePercentage;
 import com.ecarbon.gdsc.carbon.entity.OptimizationData;
 import com.ecarbon.gdsc.carbon.entity.ResourceData;
 import com.ecarbon.gdsc.carbon.entity.TrafficData;
+import com.ecarbon.gdsc.carbon.entity.WeeklyMeasurements;
 import com.ecarbon.gdsc.carbon.repository.OptimizationDataRepository;
 import com.ecarbon.gdsc.carbon.repository.ResourceDataRepository;
 import com.ecarbon.gdsc.carbon.repository.TrafficDataRepository;
+import com.ecarbon.gdsc.carbon.repository.WeeklyMeasurementsRepository;
+import com.ecarbon.gdsc.carbon.util.CarbonGradeUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -26,44 +29,39 @@ import java.util.stream.Collectors;
 @Slf4j
 public class CarbonAnalysisService {
 
-    private final OptimizationDataRepository optimizationDataRepository;
-    private final ResourceDataRepository resourceDataRepository;
-    private final TrafficDataRepository trafficDataRepository;
-
-    private final CarbonCalculator calculator;
+    private final WeeklyMeasurementsRepository weeklyMeasurementsRepository;
 
     public Optional<CarbonAnalysisResponse> analyzeCarbonByUrl(String url) {
 
         try {
-            Optional<LighthouseData> data = fetchLighthouseDataByUrl(url);
+            Optional<WeeklyMeasurements> weeklyDataOpt = weeklyMeasurementsRepository.findTopByUrlOrderByMeasuredAtDesc(url);
 
-            // 최종 결과를 담을 DTO 생성
-            CarbonAnalysisResponse.CarbonAnalysisResponseBuilder carbonAnalysisResponseBuilder = CarbonAnalysisResponse.builder()
-                    .url(url);
+            if (weeklyDataOpt.isEmpty()) {
+                return Optional.empty();
+            }
+            WeeklyMeasurements weeklyData = weeklyDataOpt.get();
 
-            // optimizationData에서 totalByteWeight가 있으면 탄소 배출량 계산
-            if (data.get().getOptimizationData() != null) {
+            CarbonAnalysisResponse.CarbonAnalysisResponseBuilder carbonAnalysisResponseBuilder
+                    = CarbonAnalysisResponse.builder().url(url);
 
-                OptimizationData optimizationData = data.get().getOptimizationData();
-                TrafficData trafficData = data.get().getTrafficData();
-
-                long totalByteWeight = optimizationData.getTotalByteWeight();
-                double kbWeight = totalByteWeight / 1024.0;
-                double carbonEmission = estimateCarbonEmission(kbWeight);
-
-                List<ResourcePercentage> resourcePercentages = calculateResourcePercentages(trafficData);
+            if (weeklyData.getTotalByteWeight() != null) {
+                long totalByteWeight = weeklyData.getTotalByteWeight();
+                double kbWeight = weeklyData.getKbWeight();
+                double carbonEmission = weeklyData.getCarbonEmission();
+                List<ResourcePercentage> resourcePercentages = calculateResourcePercentages(weeklyData.getResourceSummaries());
                 CarbonEquivalents equivalents = calculateCarbonEquivalents(carbonEmission);
+                String grade = CarbonGradeUtil.calculateGrade(totalByteWeight);
 
                 carbonAnalysisResponseBuilder
                         .total_byte_weight(totalByteWeight)
-                        .kbWeight(kbWeight)
-                        .carbonEmission(carbonEmission)
-                        .grade(calculateGrade(kbWeight))
                         .resourcePercentage(resourcePercentages)
-                        .carbonEquivalents(equivalents);
+                        .carbonEquivalents(equivalents)
+                        .carbonEmission(carbonEmission)
+                        .kbWeight(kbWeight)
+                        .grade(grade)
+                        .build();
             }
 
-            // 하나라도 데이터가 있으면 결과 반환
             return Optional.of(carbonAnalysisResponseBuilder.build());
 
         } catch (Exception e) {
@@ -72,24 +70,7 @@ public class CarbonAnalysisService {
         }
     }
 
-    private Optional<LighthouseData> fetchLighthouseDataByUrl(String url){
-
-        Optional<OptimizationData> optimizationData = optimizationDataRepository.findByUrl(url);
-        Optional<ResourceData> resourceData = resourceDataRepository.findByUrl(url);
-        Optional<TrafficData> trafficData = trafficDataRepository.findByUrl(url);
-
-        LighthouseData lighthouseData = LighthouseData.builder()
-                .url(url)
-                .optimizationData(optimizationData.orElse(null))
-                .resourceData(resourceData.orElse(null))
-                .trafficData(trafficData.orElse(null))
-                .build();
-
-        return Optional.of(lighthouseData);
-    }
-
-    private List<ResourcePercentage> calculateResourcePercentages(TrafficData trafficData){
-        List<ResourceSummary> resourceSummaries = trafficData.getResourceSummaries();
+    private List<ResourcePercentage> calculateResourcePercentages(List<ResourceSummary> resourceSummaries){
 
         Optional<ResourceSummary> totalSummaryOpt = resourceSummaries.stream()
                 .filter(rs -> "total".equalsIgnoreCase(rs.getResourceType()))
@@ -111,38 +92,7 @@ public class CarbonAnalysisService {
                 .collect(Collectors.toList());
     }
 
-    private double estimateCarbonEmission(double kbWeight){
 
-        double sizeInGB = kbWeight / (1024.0 * 1024.0);
-
-        EmissionRequest request = EmissionRequest.builder()
-                .dataGb(sizeInGB)
-                .newVisitorRatio(1.0)
-                .returnVisitorRatio(0.0)
-                .dataCacheRatio(0.0)
-                .greenHostFactor(0.0)
-                .build();
-
-        return calculator.estimateEmissionPerPage(request);
-    }
-
-    private String calculateGrade(double totalSizeKb){
-        if (totalSizeKb <= 272.51) {
-            return "A+";
-        } else if (totalSizeKb <= 531.15) {
-            return "A";
-        } else if (totalSizeKb <= 975.85) {
-            return "B";
-        } else if (totalSizeKb <= 1410.39) {
-            return "C";
-        } else if (totalSizeKb <= 1875.01) {
-            return "D";
-        } else if (totalSizeKb <= 2419.56) {
-            return "E";
-        } else {
-            return "F";
-        }
-    }
 
     private CarbonEquivalents calculateCarbonEquivalents(double carbonEmission){
 

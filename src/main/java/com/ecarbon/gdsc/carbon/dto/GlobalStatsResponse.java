@@ -3,17 +3,16 @@ package com.ecarbon.gdsc.carbon.dto;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Builder
 @Getter
 public class GlobalStatsResponse {
 
-    private String target;
-    private LocalDateTime analysisDate;
+//    private String target;
 
-    private List<GreenWebsite> top5GreenWebsites;
-    private List<RegionEmission> regionalAverages;
+    private List<TopEmissionPlace> topEmissionPlaces;
+    private double averageEmissionOfTopPlaces;
+//    private List<RegionEmission> regionalAverages;
 
 }
