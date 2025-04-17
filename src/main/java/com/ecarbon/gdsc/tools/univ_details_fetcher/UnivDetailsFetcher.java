@@ -100,7 +100,7 @@ public class UnivDetailsFetcher {
                 String urlString = String.format(
                         "https://maps.googleapis.com/maps/api/place/details/json" +
                                 "?fields=%s&place_id=%s&key=%s",
-                        "name,formatted_address,geometry,place_id,website",
+                        "name,formatted_address,geometry,place_id,website,address_components",
                         placeId,
                         API_KEY
                 );
