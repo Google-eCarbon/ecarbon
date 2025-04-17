@@ -615,7 +615,7 @@
   "universityName" : "University of Petroleum and Energy Studies",
   "country" : "India",
   "fullLocation" : "Dehradun, India",
-  "placeId" : "ChIJNRd8DYnUCDkRPI4jTDKu0yI"
+  "placeId" : "ChIJB3Q6M4QqCTkRlTeIARmpsT0"
 }, {
   "title" : "GDG on Campus University of San Carlos - Cebu, Philippines",
   "universityName" : "University of San Carlos",
@@ -891,7 +891,7 @@
   "universityName" : "TOBB University of Economics &amp; Technology",
   "country" : "Türkiye",
   "fullLocation" : "Ankara, Türkiye",
-  "placeId" : null
+  "placeId" : "ChIJqzP36bdI0xQR2ONks_PNG98"
 }, {
   "title" : "GDG on Campus Taif University, Men Campus - Taif, Saudi Arabia",
   "universityName" : "Taif University, Men Campus",
@@ -987,13 +987,13 @@
   "universityName" : "Doğuş University",
   "country" : "Türkiye",
   "fullLocation" : "Istanbul, Türkiye",
-  "placeId" : "ChIJwXqdFLHJyhQRbpzurtK4Lmc"
+  "placeId" : "ChIJr2gQO_bHyhQRhO9gjMqmvNI"
 }, {
   "title" : "GDG on Campus Düzce University - Düzce, Türkiye",
   "universityName" : "Düzce University",
   "country" : "Türkiye",
   "fullLocation" : "Düzce, Türkiye",
-  "placeId" : "ChIJAQAAABuhnUARze7XNuIRTGs"
+  "placeId" : "ChIJk4bJYdugnUARbR74ImQaQus"
 }, {
   "title" : "GDG on Campus Egypt University of Informatics - Cairo, Egypt",
   "universityName" : "Egypt University of Informatics",
@@ -1071,7 +1071,7 @@
   "universityName" : "ESTAM University",
   "country" : "Benin",
   "fullLocation" : "Segbeya, Benin",
-  "placeId" : "ChIJA6B3FspVIxARr0IqSL2tsoY"
+  "placeId" : "ChIJ_TCZWL6rPBARBViD8lBPamU"
 }, {
   "title" : "GDG on Campus ISBAT University - Kampala, Uganda",
   "universityName" : "ISBAT University",
@@ -1191,7 +1191,7 @@
   "universityName" : "Tokyo University of Agriculture and Technology",
   "country" : "Japan",
   "fullLocation" : "Tokyo, Japan",
-  "placeId" : "ChIJOwAOlFbkGGARNWP4by91HCQ"
+  "placeId" : "ChIJ_UV2SIPlGGARHfmpnseHQos"
 }, {
   "title" : "GDG on Campus Tsuda University Sendagaya Campus - Tokyo, Japan",
   "universityName" : "Tsuda University Sendagaya Campus",
@@ -1713,7 +1713,7 @@
   "universityName" : "Oduduwa University",
   "country" : "Nigeria",
   "fullLocation" : "Ipetumodu, Nigeria",
-  "placeId" : "ChIJedYe8RM1OBAR9lSZUH953mM"
+  "placeId" : "ChIJ-Tig4kWQOxARs8a2b5YXh2U"
 }, {
   "title" : "GDG on Campus Bennett University - Greater Noida, India",
   "universityName" : "Bennett University",
@@ -1917,7 +1917,7 @@
   "universityName" : "Istanbul University Cerrahpaşa",
   "country" : "Türkiye",
   "fullLocation" : "Istanbul, Türkiye",
-  "placeId" : "ChIJsdgdhamhyhQRqkOnLW37IRI"
+  "placeId" : "ChIJ8-Ac1dK0yhQR8vYoyQIlmsA"
 }, {
   "title" : "GDG on Campus Lebanese University - Hadath, Lebanon",
   "universityName" : "Lebanese University",
@@ -2379,7 +2379,7 @@
   "universityName" : "Bahçeşehir University",
   "country" : "Türkiye",
   "fullLocation" : "Istanbul, Türkiye",
-  "placeId" : "ChIJFUmm4KW3yhQROnd4En_L314"
+  "placeId" : "ChIJY7nDoqK3yhQRGYV7gbnRcXY"
 }, {
   "title" : "GDG on Campus Nazarbayev University - Astana, Kazakhstan",
   "universityName" : "Nazarbayev University",
@@ -2481,7 +2481,7 @@
   "universityName" : "Alabama A&amp;M University",
   "country" : "United States",
   "fullLocation" : "Huntsville, United States",
-  "placeId" : "ChIJuyDejJkChogREgmu26spDt8"
+  "placeId" : "ChIJyaTxdo2ym4gRJSXKvDgn710"
 }, {
   "title" : "GDG on Campus Long Island University - Brooklyn, United States",
   "universityName" : "Long Island University",
@@ -3009,7 +3009,7 @@
   "universityName" : "Midlands State University",
   "country" : "Zimbabwe",
   "fullLocation" : "Gweru, Zimbabwe",
-  "placeId" : "ChIJ5YWhquakMRkRuUptqERlMfY"
+  "placeId" : "ChIJQYMtUPKkMRkRZtgknATL8fw"
 }, {
   "title" : "GDG on Campus Nnamdi Azikiwe University - Awka, Nigeria",
   "universityName" : "Nnamdi Azikiwe University",
@@ -3723,7 +3723,7 @@
   "universityName" : "Zonguldak Bülent Ecevit University",
   "country" : "Türkiye",
   "fullLocation" : "Zonguldak, Türkiye",
-  "placeId" : "ChIJp7jSfXl7nEARkOvkrd18pUY"
+  "placeId" : "ChIJXc8g1Hl7nEAR6HUBfz_NDT0"
 }, {
   "title" : "GDG on Campus Bujumbura International University - Bujumbura, Burundi",
   "universityName" : "Bujumbura International University",
@@ -4017,7 +4017,7 @@
   "universityName" : "Universitas Esa Unggul",
   "country" : "Indonesia",
   "fullLocation" : "Jakarta, Indonesia",
-  "placeId" : "ChIJ75O6hk-LaS4ROnEh3pDlWM8"
+  "placeId" : "ChIJOeXSevr2aS4RFmT1o8ocY_Q"
 }, {
   "title" : "GDG on Campus Universitas Gadjah Mada - Yogyakarta, Indonesia",
   "universityName" : "Universitas Gadjah Mada",
@@ -4149,7 +4149,7 @@
   "universityName" : "Erzincan Binali Yıldırım Üniversitesi",
   "country" : "Türkiye",
   "fullLocation" : "Yalnızbağ, Türkiye",
-  "placeId" : "ChIJU9qlZpUMcEARsDQMjWZtUoY"
+  "placeId" : "ChIJy-BTAsAMcEARBD2JMcpKwPk"
 }, {
   "title" : "GDG on Campus Universal College of Engineering - Mumbai, India",
   "universityName" : "Universal College of Engineering",
