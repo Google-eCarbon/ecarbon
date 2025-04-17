@@ -13,7 +13,7 @@ public class GlobalStatsResponse {
     private String target;
     private LocalDateTime analysisDate;
 
-    private List<GreenWebsite> top5GreenWebsites;
+    private List<CarbonEmissionRank> top5GreenWebsites;
     private List<RegionEmission> regionalAverages;
 
 }

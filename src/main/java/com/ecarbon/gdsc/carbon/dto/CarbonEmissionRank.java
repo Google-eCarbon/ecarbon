@@ -6,7 +6,7 @@ import lombok.Getter;
 
 @Builder
 @Getter
-public class GreenWebsite {
+public class CarbonEmissionRank {
     private int rank;              // 순위
     private String organization;   // 기관명
     private double avgEmission;   // 평균 배출량 (g)
