@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface WeeklyMeasurementsRepository extends MongoRepository<WeeklyMeasurements, String> {
-    Optional<WeeklyMeasurements> findByUrl(String url);
+    Optional<WeeklyMeasurements> findTopByUrlOrderByMeasuredAtDesc(String url); // 최신 데이터 조회
 }

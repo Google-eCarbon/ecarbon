@@ -33,7 +33,7 @@ public class CarbonAnalysisService {
     public Optional<CarbonAnalysisResponse> analyzeCarbonByUrl(String url) {
 
         try {
-            Optional<WeeklyMeasurements> weeklyDataOpt = weeklyMeasurementsRepository.findByUrl(url);
+            Optional<WeeklyMeasurements> weeklyDataOpt = weeklyMeasurementsRepository.findTopByUrlOrderByMeasuredAtDesc(url);
 
             if (weeklyDataOpt.isEmpty()) {
                 return Optional.empty();
