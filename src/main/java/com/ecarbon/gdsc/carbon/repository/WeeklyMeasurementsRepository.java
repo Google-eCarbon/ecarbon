@@ -13,9 +13,9 @@ public interface WeeklyMeasurementsRepository extends MongoRepository<WeeklyMeas
     Optional<WeeklyMeasurements> findTopByUrlOrderByMeasuredAtDesc(String url);
 
     @Aggregation(pipeline = {
-            "{ $match: { 'weekStartDate': ?0 } }",
+            "{ $match: { 'weekStartDate': ?0, 'placeInfo.category': ?1 } }",
             "{ $sort: { 'carbonEmission': 1 } }",
-            "{ $limit: ?1 }"
+            "{ $limit: ?2 }"
     })
-    List<WeeklyMeasurements> findLowestCarbonEmissions(String weekStartDate, int limit);
+    List<WeeklyMeasurements> findLowestCarbonEmissions(String weekStartDate, String category, int limit);
 }
