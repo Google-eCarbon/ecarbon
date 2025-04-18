@@ -3,16 +3,18 @@ package com.ecarbon.gdsc.carbon.service;
 import com.ecarbon.gdsc.carbon.dto.GlobalStatsResponse;
 import com.ecarbon.gdsc.carbon.dto.TopEmissionPlace;
 import com.ecarbon.gdsc.carbon.entity.WeeklyMeasurements;
+import com.ecarbon.gdsc.carbon.enums.PlaceCategory;
 import com.ecarbon.gdsc.carbon.repository.WeeklyMeasurementsRepository;
 import com.ecarbon.gdsc.carbon.util.CarbonGradeUtil;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class GlobalStatsService {
@@ -20,9 +22,9 @@ public class GlobalStatsService {
 
     private static int TopLimit = 5;
 
-    public Optional<GlobalStatsResponse> getGlobalStats(String weekStartDate){
+    public Optional<GlobalStatsResponse> getGlobalStats(String weekStartDate, PlaceCategory placeCategory){
 
-        List<TopEmissionPlace> topEmissionPlaces = getTopEmissionPlaces(weekStartDate, TopLimit);
+        List<TopEmissionPlace> topEmissionPlaces = getTopEmissionPlaces(weekStartDate, placeCategory, TopLimit);
 
         double average = topEmissionPlaces.stream()
                 .mapToDouble(TopEmissionPlace::getCarbonEmission)
@@ -32,6 +34,8 @@ public class GlobalStatsService {
         average = Math.round(average * 100.0) / 100.0;
 
         GlobalStatsResponse response = GlobalStatsResponse.builder()
+                .weekStartDate(weekStartDate)
+                .placeCategory(placeCategory.getValue())
                 .averageEmissionOfTopPlaces(average)
                 .topEmissionPlaces(topEmissionPlaces)
                 .build();
@@ -39,9 +43,11 @@ public class GlobalStatsService {
         return Optional.of(response);
     }
 
-    private List<TopEmissionPlace> getTopEmissionPlaces(String weekStartDate, int limit){
+    private List<TopEmissionPlace> getTopEmissionPlaces(String weekStartDate, PlaceCategory placeCategory, int limit){
 
-        List<WeeklyMeasurements> measurements = weeklyMeasurementsRepository.findLowestCarbonEmissions(weekStartDate, limit);
+        log.info(placeCategory.getValue());
+
+        List<WeeklyMeasurements> measurements = weeklyMeasurementsRepository.findLowestCarbonEmissions(weekStartDate, placeCategory.getValue() ,limit);
         List<TopEmissionPlace> topEmissionPlaces = new ArrayList<>();
 
         int rank = 1;
