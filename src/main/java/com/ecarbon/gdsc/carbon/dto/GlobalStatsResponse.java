@@ -1,19 +1,19 @@
 package com.ecarbon.gdsc.carbon.dto;
 
+import com.ecarbon.gdsc.carbon.enums.PlaceCategory;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Builder
 @Getter
 public class GlobalStatsResponse {
 
-    private String target;
-    private LocalDateTime analysisDate;
+    private String weekStartDate;
+    private String placeCategory;
 
-    private List<GreenWebsite> top5GreenWebsites;
-    private List<RegionEmission> regionalAverages;
+    private List<TopEmissionPlace> topEmissionPlaces;
+    private double averageEmissionOfTopPlaces;
 
 }

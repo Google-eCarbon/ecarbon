@@ -14,6 +14,7 @@ import com.ecarbon.gdsc.carbon.repository.OptimizationDataRepository;
 import com.ecarbon.gdsc.carbon.repository.ResourceDataRepository;
 import com.ecarbon.gdsc.carbon.repository.TrafficDataRepository;
 import com.ecarbon.gdsc.carbon.repository.WeeklyMeasurementsRepository;
+import com.ecarbon.gdsc.carbon.util.CarbonGradeUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -49,7 +50,7 @@ public class CarbonAnalysisService {
                 double carbonEmission = weeklyData.getCarbonEmission();
                 List<ResourcePercentage> resourcePercentages = calculateResourcePercentages(weeklyData.getResourceSummaries());
                 CarbonEquivalents equivalents = calculateCarbonEquivalents(carbonEmission);
-                String grade = calculateGrade(totalByteWeight);
+                String grade = CarbonGradeUtil.calculateGrade(totalByteWeight);
 
                 carbonAnalysisResponseBuilder
                         .total_byte_weight(totalByteWeight)
@@ -91,23 +92,7 @@ public class CarbonAnalysisService {
                 .collect(Collectors.toList());
     }
 
-    private String calculateGrade(double totalSizeKb){
-        if (totalSizeKb <= 272.51) {
-            return "A+";
-        } else if (totalSizeKb <= 531.15) {
-            return "A";
-        } else if (totalSizeKb <= 975.85) {
-            return "B";
-        } else if (totalSizeKb <= 1410.39) {
-            return "C";
-        } else if (totalSizeKb <= 1875.01) {
-            return "D";
-        } else if (totalSizeKb <= 2419.56) {
-            return "E";
-        } else {
-            return "F";
-        }
-    }
+
 
     private CarbonEquivalents calculateCarbonEquivalents(double carbonEmission){
 
