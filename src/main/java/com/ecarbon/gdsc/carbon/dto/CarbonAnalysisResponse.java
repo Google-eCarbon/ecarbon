@@ -36,7 +36,7 @@ public class CarbonAnalysisResponse {
 
     // global_avg_carbon    (세계 평균)     -> round(estimate_emission_per_page(0.002344), 2)
     // korea_avg_carbon     (한국 평균)     -> round(estimate_emission_per_page(0.00456), 2)
-
+    private double globalAvgCarbon;
 
     // korea_diff       (한국 평균과의 차이)            -> round(korea_diff, 2)
     // global_diff      (세계 평균과의 차이)            -> round(global_diff, 2)
