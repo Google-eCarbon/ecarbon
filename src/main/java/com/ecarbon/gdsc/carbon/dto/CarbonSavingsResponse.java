@@ -2,6 +2,7 @@ package com.ecarbon.gdsc.carbon.dto;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
@@ -13,16 +14,14 @@ public class CarbonSavingsResponse {
     // 총 절감량 (g)
     private double totalSavingsInGrams;
 
-    // 4주 평균
-    
-    // 전주 대비 ..% 감소
-
     // 절감량 그래프 (월간 - x좌표는 한주단위)
     private List<WeeklySavingsData> weeklySavingsGraph;
 
     // 이미지 최적화 결과
     private List<ImageOptimizationResult> imageOptimizations;
-    // 최적화 대상 파일 -> 성공 여부 / 원본 파일 / 원본 파일크기 / 변환 파일 / 변환파일 크기
+
+    // 절감 요인 비율
+    private List<ResourceSavings> resourceSavingsData;
 
 
     @Builder
@@ -44,5 +43,19 @@ public class CarbonSavingsResponse {
 
         private String optimizedFileName;
 
+    }
+
+    @Builder
+    @Getter
+    @Setter
+    public static class ResourceSavings {
+
+        private String resourceType;
+
+        private long originalSize;
+        private long optimizedSize;
+
+        private long savingsSize;
+        private double savingsPercentage;
     }
 }
