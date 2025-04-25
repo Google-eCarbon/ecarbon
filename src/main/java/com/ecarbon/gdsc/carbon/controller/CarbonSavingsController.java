@@ -18,7 +18,9 @@ public class CarbonSavingsController {
     @GetMapping
     public ResponseEntity<CarbonSavingsResponse> carbonSavings(){
 
-        return carbonSavingsService.getCarbonSavings()
+        String url = "example.com";
+
+        return carbonSavingsService.getCarbonSavings(url)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.noContent().build());
 
