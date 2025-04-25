@@ -3,6 +3,8 @@ package com.ecarbon.gdsc.carbon.service;
 import com.ecarbon.gdsc.carbon.dto.CarbonSavingsResponse;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -33,6 +35,7 @@ public class CarbonSavingsService {
 
     // TODO: Implement breakdown of carbon savings by element type
 
+
     // TODO: Implement weekly savings graph data
     private List<CarbonSavingsResponse.WeeklySavingsData> getWeeklySavingsGraph(String url){
 
@@ -45,12 +48,14 @@ public class CarbonSavingsService {
 
         Random random = new Random();
         for (String week : weekStarts) {
-
             double savings = 0.5 + (random.nextDouble() * (3.00 - 0.5));
+
+            // 소수점 둘째 자리로 반올림
+            BigDecimal savingsRounded = new BigDecimal(savings).setScale(2, RoundingMode.HALF_UP);
 
             graph.add(CarbonSavingsResponse.WeeklySavingsData.builder()
                     .weekStartDate(week)
-                    .savingsInGrams(savings)
+                    .savingsInGrams(savingsRounded.doubleValue())
                     .build());
         }
 
