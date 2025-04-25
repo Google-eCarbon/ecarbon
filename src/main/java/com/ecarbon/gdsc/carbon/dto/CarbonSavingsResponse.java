@@ -42,7 +42,7 @@ public class CarbonSavingsResponse {
         private long originalSizeBytes;
         private long optimizedSizeBytes;
 
-        private String originalFileUrl;
+        private String optimizedFileName;
 
     }
 }

@@ -15,10 +15,12 @@ public class CarbonSavingsService {
     public Optional<CarbonSavingsResponse> getCarbonSavings(String url){
 
         List<CarbonSavingsResponse.WeeklySavingsData> weeklyGraph = getWeeklySavingsGraph(url);
+        List<CarbonSavingsResponse.ImageOptimizationResult> imageResults = getImageOptimizations();
 
         CarbonSavingsResponse response = CarbonSavingsResponse.builder()
                 .totalSavingsInGrams(getTotalSavingsInGrams())
                 .weeklySavingsGraph(weeklyGraph)
+                .imageOptimizations(imageResults)
                 .build();
 
         return Optional.of(response);
@@ -56,6 +58,24 @@ public class CarbonSavingsService {
     }
 
     // TODO: Implement image optimization result retrieval
+    private List<CarbonSavingsResponse.ImageOptimizationResult> getImageOptimizations(){
+        return List.of(
+                CarbonSavingsResponse.ImageOptimizationResult.builder()
+                        .originalFileName("ex_banner.png")
+                        .success(true)
+                        .originalSizeBytes(320_000)
+                        .optimizedSizeBytes(180_000)
+                        .optimizedFileName("ex_banner.webp")
+                        .build(),
+                CarbonSavingsResponse.ImageOptimizationResult.builder()
+                        .originalFileName("ex_logo.jpg")
+                        .success(true)
+                        .originalSizeBytes(150_000)
+                        .optimizedSizeBytes(0)
+                        .optimizedFileName("ex_logo.webp")
+                        .build()
+        );
+    }
 
     // TODO: Implement user contribution analysis
 
