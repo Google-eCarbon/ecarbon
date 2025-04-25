@@ -17,10 +17,16 @@ public class CarbonSavingsService {
         List<CarbonSavingsResponse.WeeklySavingsData> weeklyGraph = getWeeklySavingsGraph(url);
 
         CarbonSavingsResponse response = CarbonSavingsResponse.builder()
+                .totalSavingsInGrams(getTotalSavingsInGrams())
                 .weeklySavingsGraph(weeklyGraph)
                 .build();
 
         return Optional.of(response);
+    }
+
+    // TODO: Implement total savings in grams
+    private double getTotalSavingsInGrams() {
+        return 12.4;
     }
 
     // TODO: Implement breakdown of carbon savings by element type
