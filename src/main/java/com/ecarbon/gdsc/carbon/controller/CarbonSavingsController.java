@@ -17,6 +17,10 @@ public class CarbonSavingsController {
 
     @GetMapping
     public ResponseEntity<CarbonSavingsResponse> carbonSavings(){
-        return null;
+
+        return carbonSavingsService.getCarbonSavings()
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.noContent().build());
+
     }
 }
