@@ -21,8 +21,10 @@ public class CarbonAnalysisController {
     private final MongoTemplate mongoTemplate;
 
     @GetMapping
-    public ResponseEntity<?> getCarbonData(@RequestParam String url) {
         log.info("Received request for URL: {}", url);
+    public ResponseEntity<CarbonAnalysisResponse> getCarbonData(@RequestParam String url, HttpSession session) {
+
+        session.setAttribute("targetUrl", url);
         try {
             return service.analyzeCarbonByUrl(url)
                     .map(data -> {
