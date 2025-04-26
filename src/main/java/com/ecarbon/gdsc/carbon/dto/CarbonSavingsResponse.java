@@ -10,6 +10,7 @@ import java.util.List;
 @Getter
 public class CarbonSavingsResponse {
     // 절감 사이트 (세션)
+    private String url;
 
     // 총 절감량 (g)
     private double totalSavingsInGrams;

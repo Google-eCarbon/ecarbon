@@ -21,6 +21,7 @@ public class CarbonSavingsService {
         List<CarbonSavingsResponse.ResourceSavings> resourceSavings = getResourceSavings(url);
 
         CarbonSavingsResponse response = CarbonSavingsResponse.builder()
+                .url(url)
                 .totalSavingsInGrams(getTotalSavingsInGrams())
                 .weeklySavingsGraph(weeklyGraph)
                 .imageOptimizations(imageResults)
