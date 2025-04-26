@@ -2,6 +2,7 @@ package com.ecarbon.gdsc.carbon.controller;
 
 import com.ecarbon.gdsc.carbon.dto.CarbonSavingsResponse;
 import com.ecarbon.gdsc.carbon.service.CarbonSavingsService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,9 +17,9 @@ public class CarbonSavingsController {
     private final CarbonSavingsService carbonSavingsService;
 
     @GetMapping
-    public ResponseEntity<CarbonSavingsResponse> carbonSavings(){
+    public ResponseEntity<CarbonSavingsResponse> carbonSavings(HttpSession session){
 
-        String url = "example.com";
+        String url = (String) session.getAttribute("targetUrl");
 
         return carbonSavingsService.getCarbonSavings(url)
                 .map(ResponseEntity::ok)
