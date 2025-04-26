@@ -1,6 +1,6 @@
 package com.ecarbon.gdsc.carbon.dto;
 
-import com.ecarbon.gdsc.carbon.enums.PlaceCategory;
+import com.ecarbon.gdsc.admin.dto.CountryCarbonAvgResponse;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -15,5 +15,7 @@ public class GlobalStatsResponse {
 
     private List<TopEmissionPlace> topEmissionPlaces;
     private double averageEmissionOfTopPlaces;
+
+    private List<CountryCarbonAvgResponse.CountryCarbonAvg> countryCarbonAvgs;
 
 }
