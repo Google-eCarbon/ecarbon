@@ -18,4 +18,10 @@ public interface WeeklyMeasurementsRepository extends MongoRepository<WeeklyMeas
             "{ $limit: ?2 }"
     })
     List<WeeklyMeasurements> findLowestCarbonEmissions(String weekStartDate, String category, int limit);
+
+    @Aggregation(pipeline = {
+            "{ $match: { 'weekStartDate': ?0, 'placeInfo.category': ?1 } }"
+    })
+    List<WeeklyMeasurements> findByWeekStartDateAndCategory(String weekStartDate, String category);
 }
+
