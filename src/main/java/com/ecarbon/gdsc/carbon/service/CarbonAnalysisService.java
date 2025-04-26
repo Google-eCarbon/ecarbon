@@ -30,7 +30,6 @@ import java.util.stream.Collectors;
 public class CarbonAnalysisService {
 
     private final WeeklyMeasurementsRepository weeklyMeasurementsRepository;
-    private final CarbonCalculator calculator;
 
     public Optional<CarbonAnalysisResponse> analyzeCarbonByUrl(String url) {
 
@@ -46,6 +45,9 @@ public class CarbonAnalysisService {
                     = CarbonAnalysisResponse.builder().url(url);
 
             if (weeklyData.getTotalByteWeight() != null) {
+
+                String measuredAt = weeklyData.getMeasuredAt().toString();
+
                 long totalByteWeight = weeklyData.getTotalByteWeight();
                 double kbWeight = weeklyData.getKbWeight();
                 double carbonEmission = weeklyData.getCarbonEmission();
@@ -55,6 +57,7 @@ public class CarbonAnalysisService {
                 String grade = CarbonGradeUtil.calculateGrade(totalByteWeight);
 
                 carbonAnalysisResponseBuilder
+                        .measuredAt(measuredAt)
                         .total_byte_weight(totalByteWeight)
                         .resourcePercentage(resourcePercentages)
                         .carbonEquivalents(equivalents)
