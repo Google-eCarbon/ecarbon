@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Guidelines from "./pages/Guidelines";
 import Stats from "./pages/stats";
 import CategoryStats from "./pages/Categorystats";
+import Home from "./pages/Home";
 
 const queryClient = new QueryClient();
 
@@ -18,10 +19,11 @@ const App = () => {
           <Toaster />
           <Sonner />
           <Routes> 
-            <Route path="/" element={<Index />} />
+            <Route path="/" element={<Home />} />
             <Route path="/guidelines" element={<Guidelines />} />
             <Route path="/stats" element={<Stats />} />
             <Route path="/category-stats" element={<CategoryStats />} />
+            <Route path="/carbon-analysis" element={<Index />} />
             {/* <Route path="*" element={<NotFound />} /> */}
           </Routes>
         </BrowserRouter>
