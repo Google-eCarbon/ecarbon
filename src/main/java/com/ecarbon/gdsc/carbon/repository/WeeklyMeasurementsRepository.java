@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @Repository
 public interface WeeklyMeasurementsRepository extends MongoRepository<WeeklyMeasurements, String> {
+
     Optional<WeeklyMeasurements> findTopByUrlOrderByMeasuredAtDesc(String url);
 
     @Aggregation(pipeline = {
@@ -23,5 +24,13 @@ public interface WeeklyMeasurementsRepository extends MongoRepository<WeeklyMeas
             "{ $match: { 'weekStartDate': ?0, 'placeInfo.category': ?1 } }"
     })
     List<WeeklyMeasurements> findByWeekStartDateAndCategory(String weekStartDate, String category);
+
+    @Aggregation(pipeline = {
+            "{ $match: { 'weekStartDate': ?0, 'placeInfo.category': ?1 } }",
+            "{ $sort: { 'measuredAt': -1 } }",
+            "{ $group: { _id: '$url', doc: { $first: '$$ROOT' } } }",
+            "{ $replaceRoot: { newRoot: '$doc' } }"
+    })
+    List<WeeklyMeasurements> findLatestUniqueByWeekStartDateAndCategory(String weekStartDate, String category);
 }
 
