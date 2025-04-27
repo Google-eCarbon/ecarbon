@@ -14,7 +14,10 @@ public interface WeeklyMeasurementsRepository extends MongoRepository<WeeklyMeas
     Optional<WeeklyMeasurements> findTopByUrlOrderByMeasuredAtDesc(String url);
 
     @Aggregation(pipeline = {
-            "{ $match: { 'weekStartDate': ?0, 'placeInfo.category': ?1 } }",
+            "{ $match: { 'weekStartDate': ?0, 'placeInfo.category': ?1, 'carbonEmission': { $ne: 0.0 } } }",
+            "{ $sort: { 'measuredAt': -1 } }",
+            "{ $group: { _id: '$url', doc: { $first: '$$ROOT' } } }",
+            "{ $replaceRoot: { newRoot: '$doc' } }",
             "{ $sort: { 'carbonEmission': 1 } }",
             "{ $limit: ?2 }"
     })
@@ -26,7 +29,7 @@ public interface WeeklyMeasurementsRepository extends MongoRepository<WeeklyMeas
     List<WeeklyMeasurements> findByWeekStartDateAndCategory(String weekStartDate, String category);
 
     @Aggregation(pipeline = {
-            "{ $match: { 'weekStartDate': ?0, 'placeInfo.category': ?1 } }",
+            "{ $match: { 'weekStartDate': ?0, 'placeInfo.category': ?1, 'carbonEmission': { $ne: 0.0 } } }",
             "{ $sort: { 'measuredAt': -1 } }",
             "{ $group: { _id: '$url', doc: { $first: '$$ROOT' } } }",
             "{ $replaceRoot: { newRoot: '$doc' } }"
