@@ -5,6 +5,8 @@ import os
 load_dotenv()
 
 class Settings(BaseSettings):
+    """애플리케이션 설정"""
+    
     # API 설정
     API_V1_STR: str = "/api/v1"
     PROJECT_NAME: str = "WSG Guidelines Evaluator"
@@ -13,7 +15,11 @@ class Settings(BaseSettings):
     CHROMA_PERSIST_DIRECTORY: str = "chroma_db"
     
     # Gemini API 설정
-    GOOGLE_API_KEY: str = os.getenv("GOOGLE_API_KEY", "")
+    # GOOGLE_API_KEY: str = os.getenv("GOOGLE_API_KEY", "")
+    GOOGLE_API_KEY: str = "AIzaSyAg_2xgVO-Q7Q5tSCW5OZDcVjzXzpLfEPI"
+    
+    # User Agent 설정
+    USER_AGENT: str = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
     
     # Firebase 설정
     FIREBASE_CREDENTIALS_PATH: str = os.getenv("FIREBASE_CREDENTIALS_PATH", "")

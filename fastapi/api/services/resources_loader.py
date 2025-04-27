@@ -1,15 +1,17 @@
+import re
 from typing import List, Dict, Any
+from urllib.parse import urlparse
+import aiohttp
 from bs4 import BeautifulSoup
-import requests
-from urllib.parse import urljoin, urlparse
 import tiktoken
 from api.core.config import settings
 
 class ResourceLoader:
+    """웹사이트 리소스를 로드하고 분석하는 서비스"""
+    
     def __init__(self):
-        """리소스 로더 초기화"""
-        self.tokenizer = tiktoken.get_encoding("cl100k_base")  # GPT 토크나이저 사용
-        self.max_tokens_per_chunk = 512  # 청크당 최대 토큰 수
+        """초기화"""
+        self.encoding = tiktoken.get_encoding("cl100k_base")
     
     def _is_valid_url(self, url: str) -> bool:
         """URL이 유효한지 확인"""
@@ -19,115 +21,94 @@ class ResourceLoader:
         except:
             return False
     
-    def _extract_text_from_element(self, element) -> str:
-        """HTML 요소에서 텍스트 추출"""
-        return ' '.join(element.stripped_strings)
-    
     def _count_tokens(self, text: str) -> int:
-        """텍스트의 토큰 수 계산"""
-        return len(self.tokenizer.encode(text))
-    
-    def _split_text_into_chunks(self, text: str) -> List[str]:
-        """텍스트를 토큰 기반으로 청크로 분할"""
-        tokens = self.tokenizer.encode(text)
-        chunks = []
-        
-        for i in range(0, len(tokens), self.max_tokens_per_chunk):
-            chunk_tokens = tokens[i:i + self.max_tokens_per_chunk]
-            chunk_text = self.tokenizer.decode(chunk_tokens)
-            if chunk_text.strip():  # 빈 청크 제외
-                chunks.append(chunk_text)
-        
-        return chunks
+        """텍스트의 토큰 수를 계산"""
+        return len(self.encoding.encode(text))
     
     def _extract_semantic_chunks(self, soup: BeautifulSoup) -> List[Dict[str, Any]]:
-        """의미 단위로 컨텐츠를 청크로 분할"""
+        """HTML에서 의미 단위로 청크를 추출"""
         chunks = []
         
-        # 주요 컨텐츠 영역 식별
-        main_content = soup.find(['main', 'article']) or soup.find('div', {'role': 'main'})
-        if not main_content:
-            main_content = soup
+        # 스크립트, 스타일 등 불필요한 요소 제거
+        for element in soup.find_all(['script', 'style', 'meta', 'link']):
+            element.decompose()
         
-        # 의미 있는 섹션 추출
-        semantic_elements = main_content.find_all(['section', 'article', 'main', 'div'])
-        
-        for element in semantic_elements:
-            # 최소 텍스트 길이 체크 (너무 작은 섹션 제외)
-            text = self._extract_text_from_element(element)
-            if len(text) < 100:  # 최소 100자 이상
+        # 모든 텍스트 노드를 순회하면서 처리
+        for element in soup.find_all(string=True):
+            if element.parent.name in ['script', 'style', 'meta', 'link']:
                 continue
                 
-            # 토큰 수 체크
+            text = element.strip()
+            # if not text or len(text) < 10:  # 너무 짧은 텍스트는 제외
+            #     continue
+            
             token_count = self._count_tokens(text)
-            if token_count > self.max_tokens_per_chunk:
-                # 토큰 수가 너무 많으면 더 작은 청크로 분할
-                sub_chunks = self._split_text_into_chunks(text)
-                for sub_chunk in sub_chunks:
+            parent_type = element.parent.name if element.parent else 'text'
+            
+            # 토큰 수가 너무 많으면 분할
+            if token_count > 1000:
+                sentences = re.split(r'[.!?]+', text)
+                current_chunk = ""
+                current_tokens = 0
+                
+                for sentence in sentences:
+                    sentence = sentence.strip()
+                    if not sentence:
+                        continue
+                        
+                    sentence_tokens = self._count_tokens(sentence)
+                    
+                    if current_tokens + sentence_tokens > 1000:
+                        if current_chunk:
+                            chunks.append({
+                                'content': current_chunk,
+                                'type': parent_type,
+                                'token_count': current_tokens
+                            })
+                        current_chunk = sentence
+                        current_tokens = sentence_tokens
+                    else:
+                        if current_chunk:
+                            current_chunk += ". "
+                        current_chunk += sentence
+                        current_tokens += sentence_tokens
+                
+                if current_chunk:
                     chunks.append({
-                        'content': sub_chunk,
-                        'type': element.name,
-                        'token_count': self._count_tokens(sub_chunk)
+                        'content': current_chunk,
+                        'type': parent_type,
+                        'token_count': current_tokens
                     })
             else:
                 chunks.append({
                     'content': text,
-                    'type': element.name,
+                    'type': parent_type,
                     'token_count': token_count
                 })
         
         return chunks
     
-    def load_website_content(self, url: str) -> List[Dict[str, Any]]:
+    async def load_website_content(self, url: str) -> List[Dict[str, Any]]:
         """웹사이트 컨텐츠를 로드하고 청크로 분할"""
         if not self._is_valid_url(url):
             raise ValueError(f"유효하지 않은 URL: {url}")
         
         try:
-            response = requests.get(url, headers={'User-Agent': settings.USER_AGENT})
-            response.raise_for_status()
+            async with aiohttp.ClientSession() as session:
+                async with session.get(url, headers={'User-Agent': settings.USER_AGENT}) as response:
+                    response.raise_for_status()
+                    html = await response.text()
             
-            soup = BeautifulSoup(response.text, 'html.parser')
+            soup = BeautifulSoup(html, 'html.parser')
             
             # 불필요한 요소 제거
-            for element in soup.find_all(['script', 'style', 'nav', 'footer']):
+            for element in soup.find_all(['script', 'style', 'nav', 'footer']): 
                 element.decompose()
             
             # 의미 단위로 청크 추출
-            chunks = self._extract_semantic_chunks(soup)
+            return self._extract_semantic_chunks(soup)
             
-            if not chunks:
-                # 의미 단위 추출 실패 시 전체 텍스트를 토큰 기반으로 분할
-                text = self._extract_text_from_element(soup)
-                text_chunks = self._split_text_into_chunks(text)
-                chunks = [{'content': chunk, 'type': 'text', 'token_count': self._count_tokens(chunk)} 
-                         for chunk in text_chunks]
-            
-            return chunks
-            
+        except aiohttp.ClientError as e:
+            raise ValueError(f"웹사이트 로드 실패: {str(e)}")
         except Exception as e:
-            raise Exception(f"웹사이트 컨텐츠 로드 중 오류 발생: {str(e)}")
-    
-    def extract_links(self, url: str) -> List[str]:
-        """웹사이트에서 링크 추출"""
-        if not self._is_valid_url(url):
-            raise ValueError(f"유효하지 않은 URL: {url}")
-        
-        try:
-            response = requests.get(url, headers={'User-Agent': settings.USER_AGENT})
-            response.raise_for_status()
-            
-            soup = BeautifulSoup(response.text, 'html.parser')
-            base_url = response.url
-            
-            links = []
-            for link in soup.find_all('a', href=True):
-                href = link['href']
-                absolute_url = urljoin(base_url, href)
-                if self._is_valid_url(absolute_url):
-                    links.append(absolute_url)
-            
-            return list(set(links))  # 중복 제거
-            
-        except Exception as e:
-            raise Exception(f"링크 추출 중 오류 발생: {str(e)}")
+            raise ValueError(f"컨텐츠 처리 실패: {str(e)}")

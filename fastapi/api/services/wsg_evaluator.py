@@ -4,10 +4,10 @@ from api.services.gemini_client import GeminiClient
 from api.services.resources_loader import ResourceLoader
 import json
 from pathlib import Path
+from datetime import datetime
 
 class WSGEvaluator:
     """WSG 가이드라인 준수 여부를 평가하는 서비스"""
-    
     def __init__(self):
         self.html_parser = HTMLParser()
         self.gemini_client = GeminiClient()
@@ -19,7 +19,9 @@ class WSGEvaluator:
         try:
             guidelines_path = Path(__file__).parent.parent.parent / 'wsg_data' / 'wsg_guidelines.json'
             with open(guidelines_path, 'r', encoding='utf-8') as f:
-                return json.load(f)
+                data = json.load(f)
+                # UX Design 카테고리의 가이드라인만 가져옴
+                return data['category'][1]['guidelines']  # index 1은 'User Experience Design' 카테고리
         except Exception as e:
             raise Exception(f"WSG 가이드라인 로드 중 오류 발생: {str(e)}")
     
@@ -29,25 +31,34 @@ class WSGEvaluator:
     ) -> List[Dict[str, Any]]:
         """
         HTML 구조에 기반하여 관련된 WSG 가이드라인을 필터링합니다.
-        예를 들어, 이미지가 없는 페이지에서는 이미지 관련 가이드라인을 제외합니다.
+        웹사이트의 구조적 특성에 따라 관련된 가이드라인을 선택합니다.
         """
         relevant_guidelines = []
         
         # 이미지 관련 가이드라인
         if structure_data['image_analysis']['total_images'] > 0:
             relevant_guidelines.extend(g for g in self.guidelines 
-                                    if 'image' in g.get('tags', []))
+                                    if any(tag.lower() in ['image', 'assets'] 
+                                          for tag in g.get('tags', [])))
         
         # 폼 관련 가이드라인
         if structure_data['form_analysis']['total_forms'] > 0:
             relevant_guidelines.extend(g for g in self.guidelines 
-                                    if 'form' in g.get('tags', []))
+                                    if 'form' in [tag.lower() for tag in g.get('tags', [])])
         
-        # 기본 접근성 가이드라인은 항상 포함
+        # HTML 구조 관련 가이드라인
+        if structure_data['semantic_structure']:
+            relevant_guidelines.extend(g for g in self.guidelines 
+                                    if any(tag.lower() in ['html', 'semantic'] 
+                                          for tag in g.get('tags', [])))
+        
+        # 기본적으로 포함되어야 하는 가이드라인
+        base_tags = {'performance', 'environmental', 'accessibility', 'usability', 'ui'}
         relevant_guidelines.extend(g for g in self.guidelines 
-                                if 'accessibility' in g.get('tags', []))
+                                if any(tag.lower() in base_tags 
+                                      for tag in g.get('tags', [])))
         
-        # 중복 제거
+        # 중복 제거 (id 기준)
         seen = set()
         return [g for g in relevant_guidelines 
                 if g['id'] not in seen and not seen.add(g['id'])]

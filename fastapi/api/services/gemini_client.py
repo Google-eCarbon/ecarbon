@@ -7,7 +7,7 @@ class GeminiClient:
     """Gemini API를 사용하여 WSG 가이드라인 준수 여부를 분석하는 클라이언트"""
     
     def __init__(self):
-        genai.configure(api_key=settings.GEMINI_API_KEY)
+        genai.configure(api_key=settings.GOOGLE_API_KEY)
         self.model = genai.GenerativeModel('gemini-pro')
         
     def _create_analysis_prompt(

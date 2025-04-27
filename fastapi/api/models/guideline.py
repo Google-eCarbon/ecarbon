@@ -61,7 +61,6 @@ class WSGDocument(BaseModel):
     
     class Config:
         json_schema_extra = {
-            "example": {
                 "title": "Web Sustainability Guidelines",
                 "version": "1.0",
                 "edition": "Editor's Draft",
@@ -75,21 +74,32 @@ class WSGDocument(BaseModel):
                             {
                                 "id": "1",
                                 "url": "https://w3c.github.io/sustainableweb-wsg/#example",
-                                "guideline": "Example Guideline",
-                                "criteria": [
+                                "guideline": "Example Guideline (ex:Set goals based on potential impact considerations)",
+                                "criteria": [ # criteria는 많을 수 있음. 
                                     {
-                                        "title": "Example Criteria",
-                                        "testable": "Machine-testable",
-                                        "description": "Example description"
+                                        "title": "Example Criteria ex:Performance goals",
+                                        "testable": "Machine-testable (ex:[Machine-testable](https://w3c.github.io/sustainableweb-wsg/star.html#WD01-1)",
+                                        "description": "Example description (ex: Explicit goals that impact the environment and performance of the service, for example, HTTP requests, or the amount of DOM elements that need to be rendered are both set and met.)"
+                                    },
+                                    {
+                                    "title": "Performance goals",
+                                    "testable": "[Machine-testable](https://w3c.github.io/sustainableweb-wsg/star.html#WD01-1)",
+                                    "description": "Explicit goals that impact the environment and performance of the service, for example, HTTP requests, or the amount of DOM elements that need to be rendered are both set and met."
+                                    },
+                                    {
+                                    "title": "Accountancy types",
+                                    "testable": "[Machine-testable](https://w3c.github.io/sustainableweb-wsg/star.html#WD01-2)",
+                                    "description": "Because the payload being delivered may not always be equal in terms of energy intensity, operators of websites and applications must ensure that consideration is given for the energy intensity (or unit being evaluated) of each component. For example, non-rendering text is less computational than CSS, which in turn is less process-heavy than JavaScript, which is less resource-heavy than WebGL."
                                     }
                                 ],
-                                "intent": "Example intent",
+                                "intent": "Example intent (ex:Performance is a key part of the sustainability mindset as reductions in loading times can have a considerable impact on energy loads within CPU, GPU, RAM, and hard drive caching (among other variables), as such ensuring a performant product is essential.)",
                                 "impact": "Medium",
                                 "effort": "Low",
                                 "benefits": [
-                                    {
-                                        "Environmental": "Example benefit",
-                                        "Performance": "Example performance benefit"
+                                    { # 무조건 다 포함되어있는것은 아님 (==> nullable)
+                                        "Environmental": "Limiting the number of server requests and the size of the DOM decreases a product or service's environmental impact by reducing CPU and GPU cycles, and RAM usage which benefits energy consumption, reducing the need to recharge devices as frequently.",
+                                        "Performance": "Reducing the hardware utilization as denoted above will also improve performance metrics, as a device will suffer less consumption and thrashing of limited resources.",
+                                        "Conversion": "Search engines consider web performance in their ranking data, as such a faster website may lead to a higher rank and potentially better conversion rates."
                                     }
                                 ],
                                 "GRI": [
@@ -100,10 +110,16 @@ class WSGDocument(BaseModel):
                                         "emissions": "Medium"
                                     }
                                 ],
-                                "tags": ["Performance", "Environmental"]
+                                "example": [
+                                    {
+                                        "code": "!function(e,t){\"use strict\";\"object\"==typeof module&&\"object\"==typeof module.exports?module.exports=e.document?t(e,!0):function(e){if(!e.document)throw new Error(\"jQuery requires a window with a document\");return t(e)}:t(e)}(\"undefined\"!=typeof window?window:this,function(g,e){\"use strict\";var t=[],r=Object.getPrototypeOf,s=t.slice,v=t.flat?function(e){return t.flat.call(e)}:function(e){return t.concat.apply([],e)},u=t.push,i=t.indexOf",
+                                        "content": "A large list of ways to speed up your website within the front-end performance [checklist](https://www.smashingmagazine.com/2021/01/front-end-performance-2021-free-pdf-checklist/)."
+                                    }
+                                ], # tags 는 안에 뭐가 들어있을 지 예상 불가가
+                                "tags": ["Performance", "Environmental","HTML", "CSS", "JavaScript", "Performance"]
                             }
                         ]
                     }
                 ]
             }
-        }
+        # ... (rest of the code) max id is 5
