@@ -1,7 +1,9 @@
 package com.ecarbon.gdsc.carbon.controller;
 
 import com.ecarbon.gdsc.carbon.dto.CarbonAnalysisResponse;
+import com.ecarbon.gdsc.carbon.entity.WeeklyMeasurements;
 import com.ecarbon.gdsc.carbon.service.CarbonAnalysisService;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
+
 @Slf4j
 @RequiredArgsConstructor
 @RestController
@@ -22,17 +26,21 @@ public class CarbonAnalysisController {
     private final CarbonAnalysisService service;
 
     @GetMapping
-    public ResponseEntity<CarbonAnalysisResponse> getCarbonData(@RequestParam String url, HttpSession session) {
+    public ResponseEntity<CarbonAnalysisResponse> getCarbonData(HttpSession session, HttpServletResponse response) {
 
-        session.setAttribute("targetUrl", url);
+        WeeklyMeasurements measurement = (WeeklyMeasurements) session.getAttribute("userMeasurement");
+
+        if (measurement == null) {
+            return ResponseEntity.status(HttpStatus.FOUND)
+                .header("Location", "/").build();
+        }
 
         try {
-            return service.analyzeCarbonByUrl(url)
+            return service.analyzeCarbonByUrl(measurement)
                     .map(ResponseEntity::ok)
                     .orElseGet(() -> ResponseEntity.notFound().build());
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .build();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 }
