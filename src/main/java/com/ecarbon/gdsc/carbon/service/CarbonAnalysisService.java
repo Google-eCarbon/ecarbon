@@ -1,18 +1,10 @@
 package com.ecarbon.gdsc.carbon.service;
 
-import com.ecarbon.gdsc.carbon.dto.EmissionRequest;
 import com.ecarbon.gdsc.carbon.dto.CarbonAnalysisResponse;
 import com.ecarbon.gdsc.carbon.dto.CarbonEquivalents;
-import com.ecarbon.gdsc.carbon.dto.Lighthouse.LighthouseData;
 import com.ecarbon.gdsc.carbon.dto.Lighthouse.ResourceSummary;
 import com.ecarbon.gdsc.carbon.dto.ResourcePercentage;
-import com.ecarbon.gdsc.carbon.entity.OptimizationData;
-import com.ecarbon.gdsc.carbon.entity.ResourceData;
-import com.ecarbon.gdsc.carbon.entity.TrafficData;
 import com.ecarbon.gdsc.carbon.entity.WeeklyMeasurements;
-import com.ecarbon.gdsc.carbon.repository.OptimizationDataRepository;
-import com.ecarbon.gdsc.carbon.repository.ResourceDataRepository;
-import com.ecarbon.gdsc.carbon.repository.TrafficDataRepository;
 import com.ecarbon.gdsc.carbon.repository.WeeklyMeasurementsRepository;
 import com.ecarbon.gdsc.carbon.util.CarbonGradeUtil;
 import lombok.RequiredArgsConstructor;
@@ -31,28 +23,26 @@ public class CarbonAnalysisService {
 
     private final WeeklyMeasurementsRepository weeklyMeasurementsRepository;
 
-    public Optional<CarbonAnalysisResponse> analyzeCarbonByUrl(String url) {
+    public Optional<CarbonAnalysisResponse> analyzeCarbonByUrl(WeeklyMeasurements measurement) {
+
+        log.info(measurement.toString());
+
+        String url = measurement.getUrl();
 
         try {
-            Optional<WeeklyMeasurements> weeklyDataOpt = weeklyMeasurementsRepository.findTopByUrlOrderByMeasuredAtDesc(url);
-
-            if (weeklyDataOpt.isEmpty()) {
-                return Optional.empty();
-            }
-            WeeklyMeasurements weeklyData = weeklyDataOpt.get();
 
             CarbonAnalysisResponse.CarbonAnalysisResponseBuilder carbonAnalysisResponseBuilder
                     = CarbonAnalysisResponse.builder().url(url);
 
-            if (weeklyData.getTotalByteWeight() != null) {
+            if (measurement.getTotalByteWeight() != null) {
 
-                String measuredAt = weeklyData.getMeasuredAt().toString();
+                String measuredAt = measurement.getMeasuredAt().toString();
 
-                long totalByteWeight = weeklyData.getTotalByteWeight();
-                double kbWeight = weeklyData.getKbWeight();
-                double carbonEmission = weeklyData.getCarbonEmission();
+                long totalByteWeight = measurement.getTotalByteWeight();
+                double kbWeight = measurement.getKbWeight();
+                double carbonEmission = measurement.getCarbonEmission();
 
-                List<ResourcePercentage> resourcePercentages = calculateResourcePercentages(weeklyData.getResourceSummaries());
+                List<ResourcePercentage> resourcePercentages = calculateResourcePercentages(measurement.getResourceSummaries());
                 CarbonEquivalents equivalents = calculateCarbonEquivalents(carbonEmission);
                 String grade = CarbonGradeUtil.calculateGrade(totalByteWeight);
 
