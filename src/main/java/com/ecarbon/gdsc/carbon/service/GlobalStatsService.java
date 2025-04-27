@@ -11,10 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -24,11 +21,13 @@ import java.util.stream.Collectors;
 public class GlobalStatsService {
     private final WeeklyMeasurementsRepository weeklyMeasurementsRepository;
 
-    private static int TopLimit = 5;
+    private static final int TOP_LIMIT = 5;
 
     public Optional<GlobalStatsResponse> getGlobalStats(String weekStartDate, PlaceCategory placeCategory){
 
-        List<TopEmissionPlace> topEmissionPlaces = getTopEmissionPlaces(weekStartDate, placeCategory, TopLimit);
+        List<WeeklyMeasurements> uniqueMeasurements  = weeklyMeasurementsRepository.findLatestUniqueByWeekStartDateAndCategory(weekStartDate, placeCategory.getValue());
+
+        List<TopEmissionPlace> topEmissionPlaces = getTopEmissionPlaces(weekStartDate, placeCategory, TOP_LIMIT);
 
         double average = topEmissionPlaces.stream()
                 .mapToDouble(TopEmissionPlace::getCarbonEmission)
@@ -37,7 +36,8 @@ public class GlobalStatsService {
 
         average = Math.round(average * 100.0) / 100.0;
 
-        List<CountryCarbonAvgResponse.CountryCarbonAvg> countryCarbonAvgs = getCountryCarbonAverages(weekStartDate, placeCategory);
+        List<CountryCarbonAvgResponse.CountryCarbonAvg> countryCarbonAvgs = getCountryCarbonAverages(uniqueMeasurements);
+        List<GlobalStatsResponse.EmissionMapMarker> emissionMapMarkers = getEmissionMapMarkers(uniqueMeasurements);
 
         GlobalStatsResponse response = GlobalStatsResponse.builder()
                 .weekStartDate(weekStartDate)
@@ -45,6 +45,7 @@ public class GlobalStatsService {
                 .averageEmissionOfTopPlaces(average)
                 .topEmissionPlaces(topEmissionPlaces)
                 .countryCarbonAvgs(countryCarbonAvgs)
+                .emissionMapMarkers(emissionMapMarkers)
                 .build();
 
         return Optional.of(response);
@@ -80,32 +81,20 @@ public class GlobalStatsService {
         return topEmissionPlaces;
     }
 
-    private List<CountryCarbonAvgResponse.CountryCarbonAvg> getCountryCarbonAverages(String weekStartDate, PlaceCategory placeCategory) {
+    private List<CountryCarbonAvgResponse.CountryCarbonAvg> getCountryCarbonAverages(List<WeeklyMeasurements> uniqueMeasurements) {
 
-        // 1. 필터링된 데이터 가져오기
-        List<WeeklyMeasurements> rawData = weeklyMeasurementsRepository
-                .findByWeekStartDateAndCategory(weekStartDate, placeCategory.getValue());
-
-        // 2. URL 중복 제거
-        Map<String, WeeklyMeasurements> uniqueByUrl = rawData.stream()
-                .collect(Collectors.toMap(
-                        WeeklyMeasurements::getUrl,
-                        Function.identity(),
-                        (existing, replacement) -> existing.getMeasuredAt().isAfter(replacement.getMeasuredAt()) ? existing : replacement
-                ));
-
-        // 3. 국가별 평균 탄소배출량 계산
-        Map<String, Double> countryCarbonAvgMap = uniqueByUrl.values().stream()
+        // 1. 국가별 평균 탄소배출량 계산
+        Map<String, Double> countryCarbonAvgMap = uniqueMeasurements.stream()
                 .filter(data -> data.getPlaceInfo() != null && data.getPlaceInfo().getCountry() != null)
                 .collect(Collectors.groupingBy(
                         data -> data.getPlaceInfo().getCountry(),
                         Collectors.collectingAndThen(
                                 Collectors.averagingDouble(WeeklyMeasurements::getCarbonEmission),
-                                avg -> Math.round(avg * 1000.0) / 1000.0
+                                avg -> Math.round(avg * 1000.0) / 1000.0 // 소수점 3자리 반올림
                         )
                 ));
 
-        // 4. List<CountryCarbonAvg>로 변환
+        // 2. List<CountryCarbonAvg>로 변환
         List<CountryCarbonAvgResponse.CountryCarbonAvg> countryCarbonAverages = countryCarbonAvgMap.entrySet().stream()
                 .map(entry -> CountryCarbonAvgResponse.CountryCarbonAvg.builder()
                         .country(entry.getKey())
@@ -115,4 +104,23 @@ public class GlobalStatsService {
 
         return countryCarbonAverages;
     }
+
+
+    private List<GlobalStatsResponse.EmissionMapMarker> getEmissionMapMarkers(List<WeeklyMeasurements> uniqueMeasurements){
+        if (uniqueMeasurements == null || uniqueMeasurements.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        return uniqueMeasurements.stream()
+                .filter(measurement -> measurement.getPlaceInfo() != null) // placeInfo 없는 데이터 필터링
+                .map(measurement -> GlobalStatsResponse.EmissionMapMarker.builder()
+                        .url(measurement.getUrl())
+                        .placeName(measurement.getPlaceInfo().getName())
+                        .carbonEmission(measurement.getCarbonEmission())
+                        .latitude(measurement.getPlaceInfo().getLatitude())
+                        .longitude(measurement.getPlaceInfo().getLongitude())
+                        .build())
+                .collect(Collectors.toList());
+    }
+
 }
