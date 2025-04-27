@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -7,48 +7,51 @@ import { CalendarIcon, Download, RefreshCw } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
-import { format } from "date-fns";
+import { format, startOfWeek } from "date-fns";
 import { cn } from '@/lib/utils';
 import Layout from '@/components/Layout';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { GoogleMap, LoadScriptNext, Marker, InfoWindow } from '@react-google-maps/api';
 
 const CategoryStats = () => {
   const [selectedCategory, setSelectedCategory] = useState("university");
   const [date, setDate] = useState<Date | undefined>(new Date());
-  
-  // Mock data for universities with location and emissions
-  const universities = [
-    { 
-      name: '부산대학교', 
-      position: { lat: 35.2333, lng: 129.0833 },
-      emissions: 1.2,
-      grade: 'A'
-    },
-    { 
-      name: '전북대학교', 
-      position: { lat: 35.8468, lng: 127.1297 },
-      emissions: 1.4,
-      grade: 'A'
-    },
-    { 
-      name: '서울대학교', 
-      position: { lat: 37.4591, lng: 126.9520 },
-      emissions: 2.1,
-      grade: 'B'
-    },
-    { 
-      name: '연세대학교', 
-      position: { lat: 37.5665, lng: 126.9380 },
-      emissions: 2.9,
-      grade: 'C'
-    },
-    { 
-      name: '경희대학교', 
-      position: { lat: 37.2478, lng: 127.0777 },
-      emissions: 3.2,
-      grade: 'D'
-    },
-  ];
+  const [topPlaces, setTopPlaces] = useState<any[]>([]); // topEmissionPlaces
+  const [countryAverages, setCountryAverages] = useState<any[]>([]); // countryCarbonAvgs
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [lastUpdate, setLastUpdate] = useState<string | null>(null);
+  const [emissionMapMarkers, setEmissionMapMarkers] = useState<any[]>([]); // 지도 마커용
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        let url = '/api/global-stats';
+        const params = new URLSearchParams();
+        if (date) {
+          const monday = startOfWeek(date, { weekStartsOn: 1 });
+          const formattedDate = format(monday, 'yyyy-MM-dd');
+          params.append('weekStartDate', formattedDate);
+        }
+        params.append('placeCategory', selectedCategory.toUpperCase());
+        url += `?${params.toString()}`;
+
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('API 요청 실패');
+        const json = await res.json();
+        setTopPlaces(json.topEmissionPlaces || []);
+        setCountryAverages(json.countryCarbonAvgs || []);
+        setLastUpdate(json.weekStartDate); // weekStartDate 저장
+        setEmissionMapMarkers(json.emissionMapMarkers || []); // 지도 마커 데이터 저장
+      } catch (e: any) {
+        setError(e.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchStats();
+  }, [selectedCategory, date]);
 
   // Map center (South Korea)
   const center = {
@@ -83,6 +86,12 @@ const CategoryStats = () => {
 
   return (
     <Layout>
+      {/* Google Maps 오류 메시지 숨기기용 스타일 */}
+      <style>{`
+        .gm-err-container {
+          display: none !important;
+        }
+      `}</style>
       <div className="space-y-8">
         {/* 상단 – 주제 및 기간 선택 */}
         <Card>
@@ -136,7 +145,9 @@ const CategoryStats = () => {
               <Button variant="outline" size="icon">
                 <RefreshCw className="h-4 w-4" />
               </Button>
-              <span className="text-sm text-muted-foreground ml-2">마지막 업데이트: 2024.04.07</span>
+              <span className="text-sm text-muted-foreground ml-2">
+                측정 일자: {lastUpdate || "로딩 중..."}
+              </span>
             </div>
           </CardContent>
         </Card>
@@ -150,6 +161,8 @@ const CategoryStats = () => {
               <CardDescription>선택된 분야에서 가장 친환경적인 웹사이트 TOP 5</CardDescription>
             </CardHeader>
             <CardContent>
+              {loading && <div>로딩 중...</div>}
+              {error && <div className="text-red-500">{error}</div>}
               <div className="relative overflow-x-auto">
                 <table className="w-full text-left">
                   <thead className="text-xs uppercase bg-gray-50">
@@ -161,29 +174,26 @@ const CategoryStats = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {universities.map((item, index) => (
-                      <tr key={index} className="bg-white border-b">
-                        <td className="px-6 py-4 text-center font-medium">
-                          {index === 0 ? '①' : 
-                           index === 1 ? '②' : 
-                           index === 2 ? '③' : 
-                           index === 3 ? '④' : '⑤'}
-                        </td>
-                        <td className="px-6 py-4">{item.name}</td>
-                        <td className="px-6 py-4">{item.emissions}g</td>
-                        <td className="px-6 py-4">
-                          <span className={`inline-flex items-center justify-center w-6 h-6 rounded-full text-white ${getGradeColor(item.grade)}`}>
-                            {item.grade}
-                          </span>
-                        </td>
-                      </tr>
-                    ))}
+                    {topPlaces.length === 0 ? (
+                      <tr><td colSpan={4}>데이터 없음</td></tr>
+                    ) : (
+                      topPlaces.map((item: any, index: number) => (
+                        <tr key={index} className="bg-white border-b">
+                          <td className="px-6 py-4 text-center font-medium">{item.rank ?? index + 1}</td>
+                          <td className="px-6 py-4">{item.placeName}</td>
+                          <td className="px-6 py-4">{item.carbonEmission?.toFixed(2)}g</td>
+                          <td className="px-6 py-4">
+                            <span className={`inline-flex items-center justify-center w-6 h-6 rounded-full text-white ${getGradeColor(item.grade)}`}>
+                              {item.grade}
+                            </span>
+                          </td>
+                        </tr>
+                      ))
+                    )}
                   </tbody>
                 </table>
               </div>
-              <div className="mt-4 text-sm text-muted-foreground">
-                <p>📉 전체 평균: 2.8g/page</p>
-              </div>
+              {/* 전체 평균 등은 필요시 추가 */}
               <div className="mt-4 flex justify-end">
                 <Button variant="outline" size="sm">
                   <Download className="mr-2 h-4 w-4" />
@@ -201,31 +211,37 @@ const CategoryStats = () => {
             </CardHeader>
             <CardContent>
               <div className="h-[300px]">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart
-                    data={universities.map(item => ({ name: item.name, emissions: item.emissions }))}
-                    margin={{
-                      top: 5,
-                      right: 30,
-                      left: 20,
-                      bottom: 5,
-                    }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis label={{ value: 'g/page', angle: -90, position: 'insideLeft' }} />
-                    <Tooltip formatter={(value) => `${value}g`} />
-                    <Bar dataKey="emissions">
-                      {universities.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={
-                          entry.grade === 'A' ? '#34d399' :
-                          entry.grade === 'B' ? '#fbbf24' :
-                          entry.grade === 'C' ? '#fb923c' : '#f87171'
-                        } />
-                      ))}
-                    </Bar>
-                  </BarChart>
-                </ResponsiveContainer>
+                {topPlaces && topPlaces.length > 0 && (
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart
+                      data={topPlaces.map(item => ({ name: item.placeName, emissions: item.carbonEmission, grade: item.grade }))}
+                      margin={{
+                        top: 5,
+                        right: 30,
+                        left: 20,
+                        bottom: 5,
+                      }}
+                    >
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="name" />
+                      <YAxis />
+                      <Tooltip />
+                      <Bar dataKey="emissions" fill="#4ade80">
+                        {topPlaces.map((entry, idx) => (
+                          <Cell
+                            key={`cell-${idx}`}
+                            fill={
+                              entry.grade === 'A' ? '#34d399' : // 초록색
+                              entry.grade === 'B' ? '#fbbf24' : // 노란색
+                              entry.grade === 'C' ? '#fb923c' : // 주황색
+                              '#f87171' // 빨간색
+                            }
+                          />
+                        ))}
+                      </Bar>
+                    </BarChart>
+                  </ResponsiveContainer>
+                )}
               </div>
             </CardContent>
           </Card>
@@ -236,25 +252,31 @@ const CategoryStats = () => {
           {/* 지역별 평균 배출량 */}
           <Card>
             <CardHeader>
-              <CardTitle>📈 지역별 평균 배출량 비교</CardTitle>
+              <CardTitle>📈 국가별 평균 배출량 비교</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="relative overflow-x-auto">
+              <div className="relative max-h-72 overflow-y-auto overflow-x-auto">
                 <table className="w-full text-left">
                   <thead className="text-xs uppercase bg-gray-50">
                     <tr>
-                      <th className="px-6 py-3">지역</th>
+                      <th className="px-6 py-3">국가</th>
                       <th className="px-6 py-3">평균 배출량</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    {universities.map((item, index) => (
-                      <tr key={index} className="bg-white border-b">
-                        <td className="px-6 py-4">{item.name}</td>
-                        <td className="px-6 py-4">{item.emissions}g/page</td>
-                      </tr>
-                    ))}
-                  </tbody>
+                    <tbody>
+                      {countryAverages.length === 0 ? (
+                        <tr><td colSpan={2}>데이터 없음</td></tr>
+                      ) : (
+                        countryAverages
+                          .sort((a: any, b: any) => b.averageCarbon - a.averageCarbon) // 내림차순 정렬
+                          .map((item: any, index: number) => (
+                            <tr key={index} className="bg-white border-b">
+                              <td className="px-6 py-4">{item.country}</td>
+                              <td className="px-6 py-4">{item.averageCarbon?.toFixed(2)}g/page</td>
+                            </tr>
+                          ))
+                      )}
+                    </tbody>
                 </table>
               </div>
               <div className="mt-4 flex justify-end">
@@ -289,22 +311,34 @@ const CategoryStats = () => {
                 </div>
               </div>
               {/* Google Map */}
-              <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
+              <LoadScriptNext googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
                 <GoogleMap
+                  key={`${selectedCategory}-${date}`} // 상태 변경 시 리렌더링
                   mapContainerStyle={containerStyle}
                   center={center}
                   zoom={7}
+                  options={{
+                    minZoom: 5,
+                    maxZoom: 15,
+                  }}
                 >
-                  {universities.map((university, index) => (
-                    <Marker
-                      key={index}
-                      position={university.position}
-                      icon={getMarkerColor(university.emissions)}
-                      title={`${university.name} (${university.emissions} CO₂)`}
-                    />
+                  {emissionMapMarkers.map((marker, index) => (
+                    marker.latitude && marker.longitude && (
+                      <Marker
+                        key={index}
+                        position={{ lat: marker.latitude, lng: marker.longitude }}
+                        icon={getMarkerColor(marker.carbonEmission)}
+                        title={`${marker.placeName ?? ''} (${marker.carbonEmission ?? ''} CO₂)`}
+                        onClick={() => {
+                          if (marker.url) {
+                            window.open(marker.url, '_blank');
+                          }
+                        }}
+                      />
+                    )
                   ))}
                 </GoogleMap>
-              </LoadScript>
+              </LoadScriptNext>
               <Button variant="secondary" className="mt-4 w-full">
                 💬 개선 제안 보기
               </Button>

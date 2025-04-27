@@ -1,50 +1,68 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip, LineChart, Line, XAxis, YAxis, CartesianGrid, ReferenceLine } from 'recharts';
 import Layout from '@/components/Layout';
 
+const COLORS = ['#34d399', '#10b981', '#059669', '#065f46', '#a7f3d0', '#6ee7b7', '#4ade80', '#16a34a'];
+
 const CarbonStats = () => {
-  // Mock data for the line chart
-  const weeklyData = [
-    { date: '4/1', value: 0.4 },
-    { date: '4/2', value: 0.6 },
-    { date: '4/3', value: 1.2 },
-    { date: '4/4', value: 0.8 },
-    { date: '4/5', value: 0.5 },
-    { date: '4/6', value: 0.3 },
-    { date: '4/7', value: 0.3 },
-  ];
-  
-  // Mock data for pie chart
-  const pieData = [
-    { name: '이미지(WebP)', value: 80 },
-    { name: 'JS 축소', value: 10 },
-    { name: 'CSS 최적화', value: 7 },
-    { name: '기타', value: 3 },
-  ];
-  
-  const COLORS = ['#34d399', '#a7f3d0', '#065f46', '#10b981'];
-  
-  // Average line value
-  const avgValue = weeklyData.reduce((sum, item) => sum + item.value, 0) / weeklyData.length;
-  
-  // Mock data for optimization results
-  const optimizationResults = [
-    { id: 1, originalName: 'image1.png', originalSize: '350KB', convertedName: 'image1.webp', convertedSize: '120KB', savings: '0.4g', status: 'success' },
-    { id: 2, originalName: 'image2.jpg', originalSize: '520KB', convertedName: 'image2.webp', convertedSize: '175KB', savings: '0.6g', status: 'success' },
-    { id: 3, originalName: 'image3.jpg', originalSize: '1.2MB', convertedName: 'image3.webp', convertedSize: '320KB', savings: '1.5g', status: 'success' },
-    { id: 4, originalName: 'image4.png', originalSize: '290KB', convertedName: 'image4.webp', convertedSize: '95KB', savings: '0.3g', status: 'success' },
-  ];
-  
-  // Mock user contributions data
+  // 사용자별 탄소 절감 기여도는 가짜 데이터로 유지
   const userContributions = [
     { id: 1, user: '익명1 (x***)', savings: '6.1g' },
     { id: 2, user: '익명2 (k***s)', savings: '8.2g' },
     { id: 3, user: '익명3 (d***)', savings: '2.3g' },
     { id: 4, user: '익명4 (j***y)', savings: '4.8g' },
   ];
-  
+
+  // 나머지 데이터는 API에서 가져옴
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [data, setData] = useState<any>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const res = await fetch('/api/carbon-savings');
+        if (!res.ok) throw new Error('API 요청 실패');
+        const json = await res.json();
+        setData(json);
+      } catch (e: any) {
+        setError(e.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const totalSavings = data?.totalSavingsInGrams ?? 0;
+  const url = data?.url ?? '';
+
+  const weeklyData = (data?.weeklySavingsGraph ?? [])
+    .map((item: any) => ({
+      date: item.weekStartDate,
+      value: item.savingsInGrams,
+    }))
+    .sort((a: any, b: any) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+  const avgValue = weeklyData.length > 0 ? weeklyData.reduce((sum: number, item: any) => sum + item.value, 0) / weeklyData.length : 0;
+  const pieData = (data?.resourceSavingsData ?? []).map((item: any) => ({
+    name: item.resourceType,
+    value: item.savingsPercentage,
+  }));
+  const optimizationResults = (data?.imageOptimizations ?? []).map((item: any, idx: number) => ({
+    id: idx,
+    originalName: item.originalFileName,
+    originalSize: `${(item.originalSizeBytes / 1024).toFixed(0)}KB`,
+    convertedName: item.optimizedFileName,
+    convertedSize: item.optimizedSizeBytes > 0 ? `${(item.optimizedSizeBytes / 1024).toFixed(0)}KB` : '-',
+    savings: item.optimizedSizeBytes > 0 ? `${((item.originalSizeBytes - item.optimizedSizeBytes) / 1024 / 1024).toFixed(2)}g` : '-',
+    status: item.success ? 'success' : 'fail',
+  }));
+
   return (
     <Layout>
       <div className="space-y-8">
@@ -52,112 +70,97 @@ const CarbonStats = () => {
         <Card className="border-l-4 border-l-eco-green">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-2">
-              <span className="text-eco-green">🌿</span> 탄소 절감 현황 | 사이트: example.com
+              <span className="text-eco-green">🌿</span> 탄소 절감 현황 | 사이트: {url || '로딩 중...'}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-2">
               <div>
-                <h3 className="text-3xl font-bold">✅ 총 절감량: 12.4g</h3>
+                <h3 className="text-3xl font-bold">✅ 총 절감량: {totalSavings}g</h3>
               </div>
-              <div className="flex flex-wrap gap-x-8 gap-y-2 text-muted-foreground">
-                <span>- 지난 7일: 4.1g</span>
-                <span>- 지난 30일: 12.4g</span>
-                <span>- 전주 대비: <span className="text-green-500">▼ 7% 감소</span></span>
-              </div>
+              {loading && <div>로딩 중...</div>}
+              {error && <div className="text-red-500">{error}</div>}
             </div>
           </CardContent>
         </Card>
-        
-        {/* 중단 영역 - 차트들 */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* 절감 요인 비율 - 파이 차트 */}
-          <Card>
-            <CardHeader>
-              <CardTitle>📊 절감 요인 비율</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="h-[300px]">
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart>
-                    <Pie
-                      data={pieData}
-                      cx="50%"
-                      cy="50%"
-                      labelLine={true}
-                      outerRadius={100}
-                      fill="#8884d8"
-                      dataKey="value"
-                      label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
-                    >
-                      {pieData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                      ))}
-                    </Pie>
-                    <Tooltip formatter={(value) => `${value}%`} />
-                    <Legend />
-                  </PieChart>
-                </ResponsiveContainer>
-              </div>
-            </CardContent>
-          </Card>
-          
-          {/* 절감량 추이 그래프 */}
-          <Card>
-            <CardHeader>
-              <CardTitle>📈 절감량 그래프 - 최근 7일</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="h-[300px]">
-                <ResponsiveContainer width="100%" height="100%">
-                  <LineChart
-                    data={weeklyData}
-                    margin={{
-                      top: 5,
-                      right: 30,
-                      left: 20,
-                      bottom: 5,
-                    }}
+
+        {/* 절감량 변화 그래프 */}
+        <Card>
+          <CardHeader>
+            <CardTitle>📈 절감량 추이</CardTitle>
+            <CardDescription>절감량(g) 변화</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="h-64">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={weeklyData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="date" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <ReferenceLine y={avgValue} label="평균" stroke="#4ade80" strokeDasharray="3 3" />
+                  <Line type="monotone" dataKey="value" stroke="#4ade80" strokeWidth={2} activeDot={{ r: 8 }} />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* 리소스별 절감 비율 파이차트 */}
+        <Card>
+          <CardHeader>
+            <CardTitle>🍰 리소스별 절감 비율</CardTitle>
+            <CardDescription>이미지, JS, CSS 등 리소스별 절감 비중</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="h-64">
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={pieData}
+                    dataKey="value"
+                    nameKey="name"
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={80}
+                    labelLine={true}
+                    label={({ name, value }) => `${name}: ${value}%`}
                   >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="date" />
-                    <YAxis />
-                    <Tooltip formatter={(value) => `${value}g`} />
-                    <ReferenceLine y={avgValue} stroke="#059669" strokeDasharray="3 3" label={{ value: '평균', position: 'right' }} />
-                    <Line
-                      type="monotone"
-                      dataKey="value"
-                      stroke="#34d399"
-                      strokeWidth={2}
-                      dot={{ stroke: '#10b981', strokeWidth: 2, r: 4 }}
-                      activeDot={{ r: 6 }}
-                    />
-                  </LineChart>
-                </ResponsiveContainer>
-                <div className="mt-2 text-center text-sm text-muted-foreground">
-                  <p>평균 절감량: 0.6g/day | 최대 피크: 1.2g on 4/3</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-        
+                    {pieData.map((entry: any, index: number) => (
+                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip />
+                  <Legend />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* 하단 영역 - 이미지 변환 내역 */}
         <Card>
           <CardHeader>
             <CardTitle>🖼️ 이미지 최적화 결과</CardTitle>
-            <CardDescription>총 10개 중 8개 변환 성공 (80%)</CardDescription>
+            <CardDescription>
+              {optimizationResults.length > 0
+                ? `총 ${optimizationResults.length}개 중 ${optimizationResults.filter((item: any) => item.status === 'success').length}개 변환 성공 (${Math.round(optimizationResults.filter((item: any) => item.status === 'success').length / optimizationResults.length * 100)}%)`
+                : '데이터 없음'}
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {optimizationResults.map((item) => (
-                <div 
-                  key={item.id} 
+              {optimizationResults.map((item: any) => (
+                <div
+                  key={item.id}
                   className="border rounded-lg p-4 bg-card shadow-sm hover:shadow-md transition-all cursor-pointer"
                 >
                   <div className="flex justify-between items-start mb-2">
-                    <Badge variant="outline" className="bg-green-50">✅ 변환 성공</Badge>
-                    <span className="text-lg font-bold text-green-600">{item.savings}</span>
+                    <Badge variant="outline" className={item.status === 'success' ? 'bg-green-50' : 'bg-red-50'}>
+                      {item.status === 'success' ? '✅ 변환 성공' : '❌ 변환 실패'}
+                    </Badge>
+                    <span className={item.status === 'success' ? 'text-lg font-bold text-green-600' : 'text-lg font-bold text-red-600'}>{item.savings}</span>
                   </div>
                   <div className="space-y-1 text-sm">
                     <p>원본: {item.originalName} ({item.originalSize})</p>
@@ -168,7 +171,7 @@ const CarbonStats = () => {
             </div>
           </CardContent>
         </Card>
-        
+
         {/* 우측 사이드 - 사용자 기여 정보 (모바일에서는 하단에 표시됨) */}
         <Card>
           <CardHeader>
@@ -191,7 +194,6 @@ const CarbonStats = () => {
                 ))}
               </tbody>
             </table>
-            
             <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
               <p className="font-medium flex items-center gap-2">
                 <span>👑</span> 이번 주 최고 기여자: 익명2 (8.2g)
