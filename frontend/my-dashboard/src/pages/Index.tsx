@@ -60,22 +60,7 @@ const CarbonResults = () => {
 
   return (
     <Layout>
-      <form onSubmit={handleSubmit} className="flex gap-2 mb-6">
-        <input
-          className="border rounded px-2 py-1 flex-1"
-          type="text"
-          value={url}
-          onChange={e => setUrl(e.target.value)}
-          placeholder="분석할 사이트 URL 입력"
-        />
-        <button
-          type="submit"
-          className="bg-eco-green text-white px-4 py-1 rounded hover:bg-green-700"
-          disabled={loading}
-        >
-          {loading ? '분석 중...' : '분석'}
-        </button>
-      </form>
+
       {error && <div className="text-red-500 mb-4">{error}</div>}
       {result && (
         <div className="space-y-8">
