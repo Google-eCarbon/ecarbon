@@ -1,114 +1,171 @@
 import re
-from typing import List, Dict, Any
-from urllib.parse import urlparse
+from typing import Dict, List, Any, Set
+from urllib.parse import urljoin, urlparse
 import aiohttp
 from bs4 import BeautifulSoup
-import tiktoken
+import lxml.html
 from api.core.config import settings
+from api.models.site_resource import SiteResource, Resource
 
 class ResourceLoader:
-    """웹사이트 리소스를 로드하고 분석하는 서비스"""
+    """웹사이트 리소스 로더"""
     
     def __init__(self):
         """초기화"""
-        self.encoding = tiktoken.get_encoding("cl100k_base")
-    
+        pass
+        
     def _is_valid_url(self, url: str) -> bool:
-        """URL이 유효한지 확인"""
+        """URL 유효성 검사"""
         try:
             result = urlparse(url)
             return all([result.scheme, result.netloc])
         except:
             return False
-    
-    def _count_tokens(self, text: str) -> int:
-        """텍스트의 토큰 수를 계산"""
-        return len(self.encoding.encode(text))
-    
-    def _extract_semantic_chunks(self, soup: BeautifulSoup) -> List[Dict[str, Any]]:
-        """HTML에서 의미 단위로 청크를 추출"""
-        chunks = []
-        
-        # 스크립트, 스타일 등 불필요한 요소 제거
-        for element in soup.find_all(['script', 'style', 'meta', 'link']):
-            element.decompose()
-        
-        # 모든 텍스트 노드를 순회하면서 처리
-        for element in soup.find_all(string=True):
-            if element.parent.name in ['script', 'style', 'meta', 'link']:
-                continue
-                
-            text = element.strip()
-            # if not text or len(text) < 10:  # 너무 짧은 텍스트는 제외
-            #     continue
             
-            token_count = self._count_tokens(text)
-            parent_type = element.parent.name if element.parent else 'text'
+    def _is_same_origin(self, url1: str, url2: str) -> bool:
+        """두 URL이 같은 출처(origin)인지 확인"""
+        try:
+            p1 = urlparse(url1)
+            p2 = urlparse(url2)
+            return p1.scheme == p2.scheme and p1.netloc == p2.netloc
+        except:
+            return False
             
-            # 토큰 수가 너무 많으면 분할
-            if token_count > 1000:
-                sentences = re.split(r'[.!?]+', text)
-                current_chunk = ""
-                current_tokens = 0
+    def _collect_resource_urls(self, soup: BeautifulSoup, base_url: str) -> Dict[str, Set[str]]:
+        """HTML에서 리소스 URL 수집"""
+        resources = {
+            'css': set(),
+            'js': set(),
+            'image': set()
+        }
+        
+        # CSS 파일
+        for link in soup.find_all('link', rel='stylesheet'):
+            href = link.get('href')
+            if href:
+                resources['css'].add(urljoin(base_url, href))
                 
-                for sentence in sentences:
-                    sentence = sentence.strip()
-                    if not sentence:
-                        continue
-                        
-                    sentence_tokens = self._count_tokens(sentence)
+        # JavaScript 파일
+        for script in soup.find_all('script', src=True):
+            src = script.get('src')
+            if src:
+                resources['js'].add(urljoin(base_url, src))
+                
+        # 이미지 파일
+        for img in soup.find_all('img', src=True):
+            src = img.get('src')
+            if src:
+                resources['image'].add(urljoin(base_url, src))
+                
+        return resources
+        
+    def _calculate_dom_stats(self, dom: BeautifulSoup, site_resource: SiteResource):
+        """DOM 통계 계산"""
+        # 전체 노드 수
+        site_resource.stats.total_nodes = len(dom.find_all())
+        
+        # 최대 깊이 계산
+        def get_depth(node, current_depth=0):
+            if not hasattr(node, 'children'):
+                return current_depth
+            max_child_depth = current_depth
+            for child in node.children:
+                if isinstance(child, str):
+                    continue
+                depth = get_depth(child, current_depth + 1)
+                max_child_depth = max(max_child_depth, depth)
+            return max_child_depth
+            
+        site_resource.stats.max_depth = get_depth(dom)
+        
+        # 주요 요소 수 계산
+        site_resource.stats.images_count = len(dom.find_all('img'))
+        site_resource.stats.forms_count = len(dom.find_all('form'))
+        site_resource.stats.links_count = len(dom.find_all('a'))
+        
+        # 태그 맵 생성
+        for tag in dom.find_all():
+            tag_name = tag.name.lower()
+            site_resource.stats.tag_map[tag_name] = site_resource.stats.tag_map.get(tag_name, 0) + 1
+            
+    async def _fetch_resource(self, session: aiohttp.ClientSession, url: str, type: str) -> Resource:
+        """단일 리소스 다운로드"""
+        resource = Resource(url, type)
+        try:
+            async with session.get(url) as response:
+                response.raise_for_status()
+                resource.headers = dict(response.headers)
+                
+                if type == 'html':
+                    # HTML은 텍스트로 읽고 인코딩 처리
+                    content = await response.read()
+                    charset = response.charset or 'utf-8'
+                    try:
+                        resource.content = content.decode(charset)
+                    except UnicodeDecodeError:
+                        for encoding in ['utf-8', 'euc-kr', 'cp949']:
+                            try:
+                                resource.content = content.decode(encoding)
+                                break
+                            except UnicodeDecodeError:
+                                continue
+                        if not resource.content:
+                            resource.content = content.decode('utf-8', errors='ignore')
+                else:
+                    # 다른 리소스는 바이너리로 읽음
+                    resource.content = await response.read()
                     
-                    if current_tokens + sentence_tokens > 1000:
-                        if current_chunk:
-                            chunks.append({
-                                'content': current_chunk,
-                                'type': parent_type,
-                                'token_count': current_tokens
-                            })
-                        current_chunk = sentence
-                        current_tokens = sentence_tokens
-                    else:
-                        if current_chunk:
-                            current_chunk += ". "
-                        current_chunk += sentence
-                        current_tokens += sentence_tokens
+                resource.size = len(resource.content)
+                return resource
                 
-                if current_chunk:
-                    chunks.append({
-                        'content': current_chunk,
-                        'type': parent_type,
-                        'token_count': current_tokens
-                    })
-            else:
-                chunks.append({
-                    'content': text,
-                    'type': parent_type,
-                    'token_count': token_count
-                })
-        
-        return chunks
-    
-    async def load_website_content(self, url: str) -> List[Dict[str, Any]]:
-        """웹사이트 컨텐츠를 로드하고 청크로 분할"""
+        except Exception as e:
+            print(f"리소스 로드 실패 ({url}): {str(e)}")
+            return resource
+            
+    async def load_website_content(self, url: str) -> SiteResource:
+        """웹사이트의 모든 리소스를 로드하고 분석"""
         if not self._is_valid_url(url):
             raise ValueError(f"유효하지 않은 URL: {url}")
+            
+        site_resource = SiteResource(url)
         
         try:
             async with aiohttp.ClientSession() as session:
-                async with session.get(url, headers={'User-Agent': settings.USER_AGENT}) as response:
-                    response.raise_for_status()
-                    html = await response.text()
-            
-            soup = BeautifulSoup(html, 'html.parser')
-            
-            # 불필요한 요소 제거
-            for element in soup.find_all(['script', 'style', 'nav', 'footer']): 
-                element.decompose()
-            
-            # 의미 단위로 청크 추출
-            return self._extract_semantic_chunks(soup)
-            
+                # 1. 메인 HTML 다운로드
+                main_resource = await self._fetch_resource(session, url, 'html')
+                if not main_resource.content:
+                    raise ValueError("HTML 컨텐츠 로드 실패")
+                    
+                site_resource.raw_html = main_resource.content
+                site_resource.resources[url] = main_resource
+                
+                # 2. DOM 파싱
+                site_resource.dom = BeautifulSoup(main_resource.content, 'lxml')
+                
+                # 3. 추가 리소스 URL 수집
+                resource_urls = self._collect_resource_urls(site_resource.dom, url)
+                
+                # 4. 동일 출처 리소스만 다운로드
+                for type, urls in resource_urls.items():
+                    for res_url in urls:
+                        if self._is_same_origin(url, res_url):
+                            resource = await self._fetch_resource(session, res_url, type)
+                            site_resource.resources[res_url] = resource
+                            
+                # 5. 통계 계산
+                self._calculate_dom_stats(site_resource.dom, site_resource)
+                
+                # 6. 전체 크기 계산
+                for resource in site_resource.resources.values():
+                    if resource.type == 'html':
+                        site_resource.stats.html_size += resource.size
+                    elif resource.type == 'css':
+                        site_resource.stats.css_size += resource.size
+                    elif resource.type == 'js':
+                        site_resource.stats.js_size += resource.size
+                site_resource.stats.total_size = sum(r.size for r in site_resource.resources.values())
+                
+                return site_resource
+                
         except aiohttp.ClientError as e:
             raise ValueError(f"웹사이트 로드 실패: {str(e)}")
-        except Exception as e:
-            raise ValueError(f"컨텐츠 처리 실패: {str(e)}")

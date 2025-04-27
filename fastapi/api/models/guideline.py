@@ -2,6 +2,9 @@ from typing import List, Optional, Dict, Any
 from pydantic import BaseModel, Field, HttpUrl
 from datetime import datetime
 
+'''
+pydantic model
+'''
 class GuidelineCriteria(BaseModel):
     """WSG 가이드라인의 평가 기준"""
     title: str = Field(..., description="평가 기준 제목")
@@ -27,6 +30,7 @@ class GuidelineGRI(BaseModel):
 
 class GuidelineExample(BaseModel):
     """가이드라인 예시"""
+    code: Optional[str] = Field(None, description="예시 코드")
     content: str = Field(..., description="예시 내용")
 
 class Guideline(BaseModel):
@@ -38,10 +42,10 @@ class Guideline(BaseModel):
     intent: str = Field(..., description="가이드라인의 의도")
     impact: str = Field(..., description="영향도 (Low/Medium/High)")
     effort: str = Field(..., description="구현 난이도 (Low/Medium/High)")
-    benefits: List[GuidelineBenefits] = Field(..., description="기대되는 이점들")
-    GRI: List[GuidelineGRI] = Field(..., description="GRI 영향도")
+    benefits: Optional[List[GuidelineBenefits]] = Field(default_factory=list, description="기대되는 이점들")
+    GRI: Optional[List[GuidelineGRI]] = Field(default_factory=list, description="GRI 영향도")
     example: Optional[List[GuidelineExample]] = Field(default_factory=list, description="예시 목록")
-    resources: Optional[Dict[str, HttpUrl]] = Field(default_factory=dict, description="참고 자료")
+    resources: Optional[List[Dict[str, str]]] = Field(default_factory=list, description="참고 자료")
     tags: List[str] = Field(..., description="관련 태그")
 
 class GuidelineCategory(BaseModel):
@@ -49,14 +53,14 @@ class GuidelineCategory(BaseModel):
     id: str = Field(..., description="카테고리 ID")
     name: str = Field(..., description="카테고리 이름")
     shortName: Optional[str] = Field(None, description="카테고리 짧은 이름")
-    guidelines: List[Guideline] = Field(..., description="카테고리에 속한 가이드라인 목록")
+    guidelines: Optional[List[Guideline]] = Field(default_factory=list, description="가이드라인 목록")
 
 class WSGDocument(BaseModel):
     """WSG 문서 전체 구조"""
     title: str = Field(..., description="문서 제목")
     version: str = Field(..., description="문서 버전")
     edition: str = Field(..., description="문서 에디션")
-    lastModified: datetime = Field(..., description="마지막 수정일")
+    lastModified: str = Field(..., description="마지막 수정일")
     category: List[GuidelineCategory] = Field(..., description="카테고리 목록")
     
     class Config:
@@ -112,7 +116,7 @@ class WSGDocument(BaseModel):
                                 ],
                                 "example": [
                                     {
-                                        "code": "!function(e,t){\"use strict\";\"object\"==typeof module&&\"object\"==typeof module.exports?module.exports=e.document?t(e,!0):function(e){if(!e.document)throw new Error(\"jQuery requires a window with a document\");return t(e)}:t(e)}(\"undefined\"!=typeof window?window:this,function(g,e){\"use strict\";var t=[],r=Object.getPrototypeOf,s=t.slice,v=t.flat?function(e){return t.flat.call(e)}:function(e){return t.concat.apply([],e)},u=t.push,i=t.indexOf",
+                                        "code": "!function(e,t){\"use strict\";\"object\"==typeof module&&\"object\"==typeof module.exports?module.exports=e.document?t(e,!0):function(e){if(!e.document)throw new Error(\"jQuery requires a window with a document\");return t(e)}(\"undefined\"!=typeof window?window:this,function(g,e){\"use strict\";var t=[],r=Object.getPrototypeOf,s=t.slice,v=t.flat?function(e){return t.flat.call(e)}:function(e){return t.concat.apply([],e)},u=t.push,i=t.indexOf",
                                         "content": "A large list of ways to speed up your website within the front-end performance [checklist](https://www.smashingmagazine.com/2021/01/front-end-performance-2021-free-pdf-checklist/)."
                                     }
                                 ], # tags 는 안에 뭐가 들어있을 지 예상 불가가

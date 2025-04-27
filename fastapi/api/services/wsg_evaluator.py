@@ -1,67 +1,118 @@
-from typing import Dict, List, Any, Optional
-from api.utils.html_parser import HTMLParser
-from api.services.gemini_client import GeminiClient
+from typing import Dict, List, Any, Set
 from api.services.resources_loader import ResourceLoader
+from api.utils.html_parser import HTMLParser
+from api.models.guideline import WSGDocument
 import json
 from pathlib import Path
 from datetime import datetime
 
 class WSGEvaluator:
-    """WSG 가이드라인 준수 여부를 평가하는 서비스"""
+    """WSG 가이드라인 평가기"""
+    
     def __init__(self):
-        self.html_parser = HTMLParser()
-        self.gemini_client = GeminiClient()
+        """초기화"""
         self.resource_loader = ResourceLoader()
-        self.guidelines = self._load_guidelines()
+        self.html_parser = HTMLParser()
+        
+        # WSG 가이드라인 로드
+        guidelines_path = Path(__file__).parent.parent.parent / 'wsg_data' / 'wsg_guidelines.json'
+        with open(guidelines_path, 'r', encoding='utf-8') as f:
+            self.wsg_document = WSGDocument(**json.load(f))
     
-    def _load_guidelines(self) -> List[Dict[str, Any]]:
-        """WSG 가이드라인 데이터를 로드합니다."""
-        try:
-            guidelines_path = Path(__file__).parent.parent.parent / 'wsg_data' / 'wsg_guidelines.json'
-            with open(guidelines_path, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-                # UX Design 카테고리의 가이드라인만 가져옴
-                return data['category'][1]['guidelines']  # index 1은 'User Experience Design' 카테고리
-        except Exception as e:
-            raise Exception(f"WSG 가이드라인 로드 중 오류 발생: {str(e)}")
+    def _calculate_guideline_weight(self, impact: str, effort: str) -> float:
+        """가이드라인 가중치 계산
+        
+        Args:
+            impact: 영향도 (High/Medium/Low)
+            effort: 노력도 (High/Medium/Low)
+            
+        Returns:
+            float: 계산된 가중치
+        """
+        impact_factor = {'High': 3.0, 'Medium': 2.0, 'Low': 1.0}
+        effort_factor = {'Low': 1.2, 'Medium': 1.0, 'High': 0.8}
+        
+        return impact_factor[impact] * effort_factor[effort]
     
-    def _filter_relevant_guidelines(
-        self,
-        structure_data: Dict[str, Any]
-    ) -> List[Dict[str, Any]]:
+    def _get_relevant_tags(self, structure_data: Dict[str, Any]) -> Set[str]:
+        """HTML 구조에서 관련 태그 추출
+        
+        Args:
+            structure_data: HTML 구조 분석 데이터
+            
+        Returns:
+            Set[str]: 관련 태그 집합
         """
-        HTML 구조에 기반하여 관련된 WSG 가이드라인을 필터링합니다.
-        웹사이트의 구조적 특성에 따라 관련된 가이드라인을 선택합니다.
+        relevant_tags = set()
+        
+        # 1. 기본 태그 기반
+        tag_stats = structure_data['tag_stats']
+        if tag_stats['total_images'] > 0:
+            relevant_tags.update(['Image', 'Assets', 'Performance'])
+        if tag_stats['total_scripts'] > 0:
+            relevant_tags.update(['JavaScript', 'Performance'])
+        if tag_stats['total_styles'] > 0:
+            relevant_tags.update(['CSS', 'Performance'])
+        
+        # 2. 접근성 관련
+        accessibility_stats = structure_data['accessibility_stats']
+        if accessibility_stats['images_with_alt'] < tag_stats['total_images']:
+            relevant_tags.add('Accessibility')
+        if accessibility_stats['inputs_with_label'] < tag_stats['total_forms']:
+            relevant_tags.update(['Accessibility', 'Form'])
+        
+        # 3. 성능 관련
+        performance_stats = structure_data['performance_stats']
+        if performance_stats['external_scripts'] > 0 or performance_stats['external_styles'] > 0:
+            relevant_tags.update(['Performance', 'Environmental'])
+        
+        # 4. 시맨틱 태그 관련
+        semantic_stats = structure_data['semantic_stats']
+        if any(count > 0 for count in semantic_stats.values()):
+            relevant_tags.update(['HTML', 'Accessibility'])
+        
+        # 5. 항상 포함되어야 하는 태그
+        relevant_tags.update(['UI', 'Usability'])
+        
+        return relevant_tags
+    
+    def _filter_relevant_guidelines(self, structure_data: Dict[str, Any]) -> List[Dict[str, Any]]:
+        """태그맵과 구조 데이터를 기반으로 관련 가이드라인 필터링
+        
+        Args:
+            structure_data: HTML 구조 분석 데이터
+            
+        Returns:
+            List[Dict]: 필터링된 가이드라인 목록
         """
+        relevant_tags = self._get_relevant_tags(structure_data)
         relevant_guidelines = []
         
-        # 이미지 관련 가이드라인
-        if structure_data['image_analysis']['total_images'] > 0:
-            relevant_guidelines.extend(g for g in self.guidelines 
-                                    if any(tag.lower() in ['image', 'assets'] 
-                                          for tag in g.get('tags', [])))
+        # 모든 카테고리의 가이드라인을 순회
+        for category in self.wsg_document.category:
+            for guideline in category.guidelines:
+                # 1. 태그 교집합 확인
+                guideline_tags = set(guideline.tags)
+                if not guideline_tags.intersection(relevant_tags):
+                    continue
+                
+                # 2. 가중치 계산
+                weight = self._calculate_guideline_weight(guideline.impact, guideline.effort)
+                
+                # 3. 관련 가이드라인 추가
+                relevant_guidelines.append({
+                    'id': f"{category.id}-{guideline.id}",
+                    'guideline': guideline.guideline,
+                    'impact': guideline.impact,
+                    'effort': guideline.effort,
+                    'weight': weight,
+                    'matching_tags': list(guideline_tags.intersection(relevant_tags))
+                })
         
-        # 폼 관련 가이드라인
-        if structure_data['form_analysis']['total_forms'] > 0:
-            relevant_guidelines.extend(g for g in self.guidelines 
-                                    if 'form' in [tag.lower() for tag in g.get('tags', [])])
+        # 4. 가중치 기준으로 정렬
+        relevant_guidelines.sort(key=lambda x: x['weight'], reverse=True)
         
-        # HTML 구조 관련 가이드라인
-        if structure_data['semantic_structure']:
-            relevant_guidelines.extend(g for g in self.guidelines 
-                                    if any(tag.lower() in ['html', 'semantic'] 
-                                          for tag in g.get('tags', [])))
-        
-        # 기본적으로 포함되어야 하는 가이드라인
-        base_tags = {'performance', 'environmental', 'accessibility', 'usability', 'ui'}
-        relevant_guidelines.extend(g for g in self.guidelines 
-                                if any(tag.lower() in base_tags 
-                                      for tag in g.get('tags', [])))
-        
-        # 중복 제거 (id 기준)
-        seen = set()
-        return [g for g in relevant_guidelines 
-                if g['id'] not in seen and not seen.add(g['id'])]
+        return relevant_guidelines
     
     async def evaluate_url(self, url: str) -> Dict[str, Any]:
         """
@@ -84,18 +135,18 @@ class WSGEvaluator:
             relevant_guidelines = self._filter_relevant_guidelines(structure_data)
             
             # 4. Gemini API를 통한 분석
-            analysis = await self.gemini_client.analyze_wsg_compliance(
-                structure_data=structure_data,
-                url=url,
-                guidelines=relevant_guidelines
-            )
+            # analysis = await self.gemini_client.analyze_wsg_compliance(
+            #     structure_data=structure_data,
+            #     url=url,
+            #     guidelines=relevant_guidelines
+            # )
             
             # 5. 결과 종합
             return {
                 'url': url,
                 'timestamp': datetime.now().isoformat(),
                 'automated_checks': structure_data,
-                'ai_analysis': analysis,
+                # 'ai_analysis': analysis,
                 'relevant_guidelines': [g['id'] for g in relevant_guidelines],
                 'metadata': {
                     'total_guidelines_checked': len(relevant_guidelines),

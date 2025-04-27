@@ -48,11 +48,26 @@ GeminiClient (gemini_client.py)
 
 # 작동 프로세스
 1. 사용자가 웹사이트 URL을 API에 제출
-2. ResourceLoader가 웹사이트 콘텐츠를 수집하고 분석
+2. ResourceLoader가 웹사이트 콘텐츠를 수집하고 분석 (ok) 
 3. VectorDB가 관련된 WSG 가이드라인을 검색
 4. GeminiClient가 각 가이드라인에 대한 준수 여부를 AI로 평가
 5. WSGEvaluator가 모든 결과를 종합하여 최종 평가 리포트 생성
+(
+    1차 룰/통계 필터
+    TagMap·파일 크기·DOM 깊이 등으로 아예 관련 없는 지침 제거.
 
+    2차 임베딩 검색
+    키워드 기반 유사도(코사인 + BM25 hybrid)로 Top-k 지침 후보 선정.
+    → 여기까지만으로 “평가해야 할 지침 목록” recall 을 높이는 역할.
+
+    3차 LLM 판정
+    LLM이 실제 위반 여부·세부 원인·수정안을 반환.
+
+    이 구조라면 임베딩 검색이 의미 있는 이유는
+
+    “HTML 전체를 LLM에 던지지 않고, 관련 가능성이 높은 지침만 골라 LLM 프롬프트 길이·비용을 최소화”
+    하는 게이트웨이 기능을 맡기 때문입니다.
+)
 # 2. 기술스택:
 - FastAPI (웹 프레임워크)
 - ChromaDB 또는 Milvus (Vector Database)
