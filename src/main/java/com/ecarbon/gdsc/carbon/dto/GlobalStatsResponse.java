@@ -18,4 +18,19 @@ public class GlobalStatsResponse {
 
     private List<CountryCarbonAvgResponse.CountryCarbonAvg> countryCarbonAvgs;
 
+    private List<EmissionMapMarker> emissionMapMarkers;
+
+
+    @Builder
+    @Getter
+    public static class EmissionMapMarker{
+        private String placeName;
+
+        private double carbonEmission;
+
+        private double latitude;
+        private double longitude;
+
+        private String url;
+    }
 }
