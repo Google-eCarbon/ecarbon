@@ -3,3 +3,18 @@ spring:
     mongodb:
       uri: mongodb://localhost:27017/ #
       database: ecarbon_gdsc_test
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id:
+            client-secret:
+            scope:
+              - email
+              - profile
+
+app:
+  frontend:
+    url: http://localhost:3000
