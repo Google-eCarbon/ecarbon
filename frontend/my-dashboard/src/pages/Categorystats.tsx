@@ -75,12 +75,14 @@ const CategoryStats = () => {
   // Helper function for grade color
   const getGradeColor = (grade: string) => {
     switch(grade) {
-      case 'A': return 'bg-eco-green';
-      case 'B': return 'bg-eco-yellow';
-      case 'C': return 'bg-eco-orange';
-      case 'D': 
-      case 'F':
-      default: return 'bg-eco-red';
+        case 'A+': return 'bg-eco-green';
+        case 'A': return 'bg-eco-green-dark';
+        case 'B': return 'bg-eco-yellow';
+        case 'C': return 'bg-eco-orange';
+        case 'D': return 'bg-eco-light-red';
+        case 'E': return 'bg-eco-red';
+        case 'F':
+        default: return 'bg-eco-dark-red';
     }
   };
 
@@ -169,7 +171,7 @@ const CategoryStats = () => {
                     <tr>
                       <th className="px-6 py-3">순위</th>
                       <th className="px-6 py-3">기관명</th>
-                      <th className="px-6 py-3">평균 배출량(g/page)</th>
+                      <th className="px-6 py-3">배출량(g/page)</th>
                       <th className="px-6 py-3">등급</th>
                     </tr>
                   </thead>
@@ -231,10 +233,13 @@ const CategoryStats = () => {
                           <Cell
                             key={`cell-${idx}`}
                             fill={
-                              entry.grade === 'A' ? '#34d399' : // 초록색
-                              entry.grade === 'B' ? '#fbbf24' : // 노란색
-                              entry.grade === 'C' ? '#fb923c' : // 주황색
-                              '#f87171' // 빨간색
+                              entry.grade === 'A+' ? '#34d399' : // Dark green
+                              entry.grade === 'A' ? '#059669' :  // Green
+                              entry.grade === 'B' ? '#fbbf24' :  // Yellow
+                              entry.grade === 'C' ? '#fb923c' :  // Orange
+                              entry.grade === 'D' ? '#f97316' :  // Light red
+                              entry.grade === 'E' ? '#ef4444' :  // Red
+                              '#b91c1c'                          // Dark red for F
                             }
                           />
                         ))}
