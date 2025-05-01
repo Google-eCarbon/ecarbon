@@ -19,7 +19,7 @@ public class CarbonSavingsController {
     @GetMapping
     public ResponseEntity<CarbonSavingsResponse> carbonSavings(HttpSession session){
 
-        String url = (String) session.getAttribute("targetUrl");
+        String url = (String) session.getAttribute("userUrl");
 
         return carbonSavingsService.getCarbonSavings(url)
                 .map(ResponseEntity::ok)
