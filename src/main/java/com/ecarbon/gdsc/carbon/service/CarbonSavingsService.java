@@ -1,6 +1,7 @@
 package com.ecarbon.gdsc.carbon.service;
 
 import com.ecarbon.gdsc.carbon.dto.CarbonSavingsResponse;
+import com.ecarbon.gdsc.carbon.util.DateUtil;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -89,10 +90,7 @@ public class CarbonSavingsService {
 
         List<CarbonSavingsResponse.WeeklySavingsData> graph = new ArrayList<>();
 
-        String[] weekStarts = {
-            "2024-04-21", "2024-04-14", "2024-04-07", "2024-03-31",
-            "2024-03-24", "2024-03-17", "2024-03-10", "2024-03-03"
-        };
+        List<String> weekStarts = DateUtil.getPreviousMondays(8);
 
         Random random = new Random();
         for (String week : weekStarts) {

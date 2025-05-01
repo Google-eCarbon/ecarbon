@@ -3,11 +3,11 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import { CalendarIcon, Download, RefreshCw } from 'lucide-react';
+import { CalendarIcon, Download, RefreshCw, ChevronLeft, ChevronRight } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
-import { format, startOfWeek } from "date-fns";
+import { format, startOfWeek, addWeeks } from "date-fns";
 import { cn } from '@/lib/utils';
 import Layout from '@/components/Layout';
 import { GoogleMap, LoadScriptNext, Marker, InfoWindow } from '@react-google-maps/api';
@@ -21,6 +21,9 @@ const CategoryStats = () => {
   const [error, setError] = useState<string | null>(null);
   const [lastUpdate, setLastUpdate] = useState<string | null>(null);
   const [emissionMapMarkers, setEmissionMapMarkers] = useState<any[]>([]); // 지도 마커용
+  const [selectedWeek, setSelectedWeek] = useState<Date>(startOfWeek(new Date(), { weekStartsOn: 1 }));
+  const [visibleWeeks, setVisibleWeeks] = useState<Date[]>([]);
+  const [currentWeekIndex, setCurrentWeekIndex] = useState(0);
 
   useEffect(() => {
     const fetchStats = async () => {
@@ -29,11 +32,11 @@ const CategoryStats = () => {
       try {
         let url = '/api/global-stats';
         const params = new URLSearchParams();
-        if (date) {
-          const monday = startOfWeek(date, { weekStartsOn: 1 });
-          const formattedDate = format(monday, 'yyyy-MM-dd');
-          params.append('weekStartDate', formattedDate);
-        }
+
+        // 선택한 주의 월요일 날짜를 전송
+        const formattedDate = format(selectedWeek, 'yyyy-MM-dd');
+        params.append('weekStartDate', formattedDate);
+
         params.append('placeCategory', selectedCategory.toUpperCase());
         url += `?${params.toString()}`;
 
@@ -51,7 +54,88 @@ const CategoryStats = () => {
       }
     };
     fetchStats();
-  }, [selectedCategory, date]);
+  }, [selectedCategory, selectedWeek]); // date 대신 selectedWeek 사용
+
+  useEffect(() => {
+    // 초기 표시할 주간 목록 설정 (최근 8주)
+    const initialWeeks = generateWeekStartDates(8);
+    setVisibleWeeks(initialWeeks);
+    setSelectedWeek(initialWeeks[0]);
+  }, []);
+
+  // 이전 주로 이동
+  const goToPreviousWeek = () => {
+    if (currentWeekIndex < visibleWeeks.length - 1) {
+      setCurrentWeekIndex(currentWeekIndex + 1);
+      setSelectedWeek(visibleWeeks[currentWeekIndex + 1]);
+    } else {
+      // 더 이전 주를 로드 (필요한 경우)
+      const lastWeek = visibleWeeks[visibleWeeks.length - 1];
+      const newWeek = addWeeks(lastWeek, -1);
+      const updatedWeeks = [...visibleWeeks, newWeek];
+      setVisibleWeeks(updatedWeeks);
+      setCurrentWeekIndex(currentWeekIndex + 1);
+      setSelectedWeek(newWeek);
+    }
+  };
+
+  // 다음 주로 이동
+  const goToNextWeek = () => {
+    if (currentWeekIndex > 0) {
+      setCurrentWeekIndex(currentWeekIndex - 1);
+      setSelectedWeek(visibleWeeks[currentWeekIndex - 1]);
+    }
+  };
+
+  // 현재 선택된 주가 최신 주인지 확인
+  const isLatestWeek = currentWeekIndex === 0;
+
+  // 주간 선택기 렌더링
+  const renderWeekSelector = () => {
+    return (
+      <div className="flex items-center space-x-2">
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={goToPreviousWeek}
+          aria-label="이전 주"
+        >
+          <ChevronLeft className="h-4 w-4" />
+        </Button>
+
+        <div className="px-4 py-2 border rounded-md min-w-[180px] text-center">
+          {formatWeek(selectedWeek)}
+        </div>
+
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={goToNextWeek}
+          disabled={isLatestWeek}
+          aria-label="다음 주"
+        >
+          <ChevronRight className="h-4 w-4" />
+        </Button>
+      </div>
+    );
+  };
+
+  const generateWeekStartDates = (weeksBack: number) => {
+    const dates = [];
+    let current = startOfWeek(new Date(), { weekStartsOn: 1 });
+    for (let i = 0; i < weeksBack; i++) {
+      dates.push(current);
+      current = addWeeks(current, -1);
+    }
+    return dates;
+  };
+
+  const formatWeek = (date: Date) => {
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const weekNumber = Math.ceil(date.getDate() / 7);
+    return `${year}년 ${month}월 ${weekNumber}주`;
+  };
 
   // Map center (South Korea)
   const center = {
@@ -75,12 +159,14 @@ const CategoryStats = () => {
   // Helper function for grade color
   const getGradeColor = (grade: string) => {
     switch(grade) {
-      case 'A': return 'bg-eco-green';
-      case 'B': return 'bg-eco-yellow';
-      case 'C': return 'bg-eco-orange';
-      case 'D': 
-      case 'F':
-      default: return 'bg-eco-red';
+        case 'A+': return 'bg-eco-green';
+        case 'A': return 'bg-eco-green-dark';
+        case 'B': return 'bg-eco-yellow';
+        case 'C': return 'bg-eco-orange';
+        case 'D': return 'bg-eco-light-red';
+        case 'E': return 'bg-eco-red';
+        case 'F':
+        default: return 'bg-eco-dark-red';
     }
   };
 
@@ -101,7 +187,7 @@ const CategoryStats = () => {
                 <CardTitle className="text-2xl">📊 분석 대상</CardTitle>
                 <CardDescription>분석하고자 하는 분야를 선택하세요</CardDescription>
               </div>
-              
+
               <div className="flex flex-col sm:flex-row gap-4">
                 <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-[400px]">
                   <TabsList className="grid grid-cols-4">
@@ -118,30 +204,8 @@ const CategoryStats = () => {
             <div className="flex flex-wrap items-center gap-4">
               <div className="flex flex-col space-y-1">
                 <span className="text-sm text-muted-foreground">분석 기간</span>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <Button
-                      variant={"outline"}
-                      className={cn(
-                        "w-[240px] justify-start text-left font-normal",
-                        !date && "text-muted-foreground"
-                      )}
-                    >
-                      <CalendarIcon className="mr-2 h-4 w-4" />
-                      {date ? format(date, "PPP") : "날짜 선택"}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="start">
-                    <Calendar
-                      mode="single"
-                      selected={date}
-                      onSelect={setDate}
-                      initialFocus
-                    />
-                  </PopoverContent>
-                </Popover>
+                {renderWeekSelector()}
               </div>
-              
               <Button variant="outline" size="icon">
                 <RefreshCw className="h-4 w-4" />
               </Button>
@@ -169,7 +233,7 @@ const CategoryStats = () => {
                     <tr>
                       <th className="px-6 py-3">순위</th>
                       <th className="px-6 py-3">기관명</th>
-                      <th className="px-6 py-3">평균 배출량(g/page)</th>
+                      <th className="px-6 py-3">배출량(g/page)</th>
                       <th className="px-6 py-3">등급</th>
                     </tr>
                   </thead>
@@ -181,7 +245,7 @@ const CategoryStats = () => {
                         <tr key={index} className="bg-white border-b">
                           <td className="px-6 py-4 text-center font-medium">{item.rank ?? index + 1}</td>
                           <td className="px-6 py-4">{item.placeName}</td>
-                          <td className="px-6 py-4">{item.carbonEmission?.toFixed(2)}g</td>
+                          <td className="px-6 py-4">{item.carbonEmission}g</td>
                           <td className="px-6 py-4">
                             <span className={`inline-flex items-center justify-center w-6 h-6 rounded-full text-white ${getGradeColor(item.grade)}`}>
                               {item.grade}
@@ -231,10 +295,13 @@ const CategoryStats = () => {
                           <Cell
                             key={`cell-${idx}`}
                             fill={
-                              entry.grade === 'A' ? '#34d399' : // 초록색
-                              entry.grade === 'B' ? '#fbbf24' : // 노란색
-                              entry.grade === 'C' ? '#fb923c' : // 주황색
-                              '#f87171' // 빨간색
+                              entry.grade === 'A+' ? '#34d399' : // Dark green
+                              entry.grade === 'A' ? '#059669' :  // Green
+                              entry.grade === 'B' ? '#fbbf24' :  // Yellow
+                              entry.grade === 'C' ? '#fb923c' :  // Orange
+                              entry.grade === 'D' ? '#f97316' :  // Light red
+                              entry.grade === 'E' ? '#ef4444' :  // Red
+                              '#b91c1c'                          // Dark red for F
                             }
                           />
                         ))}
