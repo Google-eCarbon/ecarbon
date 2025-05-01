@@ -8,6 +8,7 @@ import {
   Settings,
   LineChart,
 } from 'lucide-react';
+import GoogleLoginButton from './GoogleLoginButton';
 
 const Sidebar = () => {
   const routes = [
@@ -61,6 +62,13 @@ const Sidebar = () => {
               </div>
             </NavLink>
           ))}
+        </div>
+      </div>
+      
+      {/* 로그인 버튼 영역 - 하단에 고정 */}
+      <div className="mt-auto px-3 py-4 border-t border-gray-700">
+        <div className="flex justify-center">
+          <GoogleLoginButton />
         </div>
       </div>
     </div>
