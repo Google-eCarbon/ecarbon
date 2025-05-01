@@ -181,7 +181,7 @@ const CategoryStats = () => {
                         <tr key={index} className="bg-white border-b">
                           <td className="px-6 py-4 text-center font-medium">{item.rank ?? index + 1}</td>
                           <td className="px-6 py-4">{item.placeName}</td>
-                          <td className="px-6 py-4">{item.carbonEmission?.toFixed(2)}g</td>
+                          <td className="px-6 py-4">{item.carbonEmission}g</td>
                           <td className="px-6 py-4">
                             <span className={`inline-flex items-center justify-center w-6 h-6 rounded-full text-white ${getGradeColor(item.grade)}`}>
                               {item.grade}
