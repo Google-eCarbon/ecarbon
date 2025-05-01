@@ -4,7 +4,19 @@ import { Badge } from "@/components/ui/badge";
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip, LineChart, Line, XAxis, YAxis, CartesianGrid, ReferenceLine } from 'recharts';
 import Layout from '@/components/Layout';
 
-const COLORS = ['#34d399', '#10b981', '#059669', '#065f46', '#a7f3d0', '#6ee7b7', '#4ade80', '#16a34a'];
+// 한 계열(emerald/green)로 통일된 색상 팔레트
+const COLORS = [
+  '#34d399', // emerald-400
+  '#10b981', // emerald-500
+  '#059669', // emerald-600
+  '#047857', // emerald-700
+  '#22d3ee', // cyan-400
+  '#2dd4bf', // teal-400
+  '#6ee7b7', // emerald-300
+  '#a7f3d0', // emerald-200
+  '#bbf7d0', // emerald-100
+  '#064e3b', // emerald-900
+];
 
 const CarbonStats = () => {
   // 사용자별 탄소 절감 기여도는 가짜 데이터로 유지
@@ -114,27 +126,41 @@ const CarbonStats = () => {
             <CardDescription>이미지, JS, CSS 등 리소스별 절감 비중</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="h-64">
-              <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
-                  <Pie
-                    data={pieData}
-                    dataKey="value"
-                    nameKey="name"
-                    cx="50%"
-                    cy="50%"
-                    outerRadius={80}
-                    labelLine={true}
-                    label={({ name, value }) => `${name}: ${value}%`}
-                  >
-                    {pieData.map((entry: any, index: number) => (
-                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                    ))}
-                  </Pie>
-                  <Tooltip />
-                  <Legend />
-                </PieChart>
-              </ResponsiveContainer>
+            <div className="flex flex-col items-center gap-6">
+              <div className="h-[600px] w-full max-w-[800px] flex justify-center items-center mx-auto">
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart margin={{ top: 50, right: 150, bottom: 50, left: 150 }}>
+                    <Pie
+                      data={pieData}
+                      dataKey="value"
+                      nameKey="name"
+                      cx="50%"
+                      cy="50%"
+                      outerRadius={170}
+                      fill="#8884d8"
+                      labelLine={true}
+                      label={({ name, value }) => `${name}: ${value.toFixed(1)}%`}
+                    >
+                      {pieData.map((entry: any, index: number) => (
+                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                      ))}
+                    </Pie>
+                    <Tooltip formatter={(value: number) => `${value.toFixed(1)}%`} />
+                  </PieChart>
+                </ResponsiveContainer>
+              </div>
+              {/* 범례를 한 줄로, 색상+요소+비율을 한 번에 표시 */}
+              <div className="flex flex-wrap justify-center gap-3 mt-2">
+                {pieData.map((entry: any, index: number) => (
+                  <span key={entry.name} className="flex items-center gap-1 text-sm px-2 py-1 rounded-full bg-gray-100 border">
+                    <span style={{ display: 'inline-block', width: 16, height: 16, background: COLORS[index % COLORS.length], borderRadius: 4, marginRight: 4 }} />
+                    <span style={{ color: COLORS[index % COLORS.length], fontWeight: 600 }}>
+                      {entry.name}
+                    </span>
+                    <span className="ml-1">({entry.value.toFixed(1)}%)</span>
+                  </span>
+                ))}
+              </div>
             </div>
           </CardContent>
         </Card>
