@@ -1,7 +1,6 @@
 package com.ecarbon.gdsc.auth.controller;
 
-import com.ecarbon.gdsc.auth.dto.LoginResponse;
-import com.ecarbon.gdsc.auth.entity.User;
+import com.ecarbon.gdsc.auth.dto.OAuth2LoginResponse;
 import com.ecarbon.gdsc.auth.principal.CustomOAuth2User;
 import com.ecarbon.gdsc.auth.repository.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
@@ -37,14 +36,14 @@ public class AuthController {
      * 현재 로그인 상태 확인
      */
     @GetMapping("/status")
-    public ResponseEntity<LoginResponse> getLoginStatus(
+    public ResponseEntity<OAuth2LoginResponse> getLoginStatus(
             @AuthenticationPrincipal CustomOAuth2User customOAuth2User,
             HttpServletRequest request) {
         
         String token = (String) request.getSession().getAttribute("JWT_TOKEN");
         
         if (customOAuth2User == null || token == null) {
-            return ResponseEntity.ok(LoginResponse.builder()
+            return ResponseEntity.ok(OAuth2LoginResponse.builder()
                     .isAuthenticated(false)
                     .message("Not authenticated")
                     .build());
@@ -53,7 +52,7 @@ public class AuthController {
         String username = customOAuth2User.getAttribute("sub");
         String email = customOAuth2User.getAttribute("email");
         
-        return ResponseEntity.ok(LoginResponse.builder()
+        return ResponseEntity.ok(OAuth2LoginResponse.builder()
                 .isAuthenticated(true)
                 .token(token)
                 .username(username)
@@ -66,10 +65,10 @@ public class AuthController {
      * 로그아웃
      */
     @PostMapping("/logout")
-    public ResponseEntity<LoginResponse> logout(HttpServletRequest request) {
+    public ResponseEntity<OAuth2LoginResponse> logout(HttpServletRequest request) {
         request.getSession().invalidate();
         
-        return ResponseEntity.ok(LoginResponse.builder()
+        return ResponseEntity.ok(OAuth2LoginResponse.builder()
                 .isAuthenticated(false)
                 .message("Logged out successfully")
                 .build());
