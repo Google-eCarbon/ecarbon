@@ -15,5 +15,5 @@ public class CustomOAuth2User implements OAuth2User {
     private final Map<String, Object> attributes;
     private final Collection<? extends GrantedAuthority> authorities;
     private final String name;
-
+    private final String email;
 }
