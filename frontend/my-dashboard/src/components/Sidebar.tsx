@@ -1,4 +1,3 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import {
@@ -44,6 +43,12 @@ const Sidebar = () => {
         <h2 className="mb-2 px-4 text-lg font-semibold">
           eCarbon
         </h2>
+        
+        {/* 로그인 버튼 영역 - 상단으로 이동 */}
+        <div className="mb-6 px-4">
+          <GoogleLoginButton />
+        </div>
+        
         <div className="space-y-1">
           {routes.map((route) => (
             <NavLink
@@ -62,13 +67,6 @@ const Sidebar = () => {
               </div>
             </NavLink>
           ))}
-        </div>
-      </div>
-      
-      {/* 로그인 버튼 영역 - 하단에 고정 */}
-      <div className="mt-auto px-3 py-4 border-t border-gray-700">
-        <div className="flex justify-center">
-          <GoogleLoginButton />
         </div>
       </div>
     </div>
