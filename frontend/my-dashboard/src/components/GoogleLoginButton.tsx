@@ -1,11 +1,141 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const GOOGLE_LOGIN_URL = '/api/auth/login/google';
+const LOGOUT_URL = '/api/auth/logout';
+const USER_INFO_URL = '/api/user/me';
+
+interface UserInfo {
+  id?: string; // MongoDB ObjectId는 문자열로 처리
+  username?: string;
+  email?: string;
+}
 
 const GoogleLoginButton: React.FC = () => {
+  const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  // 사용자 정보 가져오기
+  const fetchUserInfo = async () => {
+    try {
+      setLoading(true);
+      console.log('사용자 정보 가져오기 시작...');
+      
+      const response = await fetch(USER_INFO_URL, {
+        method: 'GET',
+        credentials: 'include', // 세션 쿠키를 포함하기 위해 필요
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+
+      console.log('사용자 정보 응답 코드:', response.status);
+      
+      if (response.status === 401) {
+        console.log('인증되지 않은 사용자');
+        setUserInfo(null);
+        return;
+      }
+      
+      if (!response.ok) {
+        throw new Error('사용자 정보 가져오기 실패');
+      }
+
+      const data = await response.json();
+      console.log('사용자 정보:', data);
+      
+      setUserInfo(data);
+    } catch (error) {
+      console.error('사용자 정보 가져오기 중 오류 발생:', error);
+      setUserInfo(null);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // 컴포넌트 마운트 시 사용자 정보 가져오기
+  useEffect(() => {
+    fetchUserInfo();
+  }, []);
+
   const handleLogin = () => {
     window.location.href = GOOGLE_LOGIN_URL;
   };
+
+  const handleLogout = async () => {
+    try {
+      console.log('로그아웃 시도...');
+      const response = await fetch(LOGOUT_URL, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+
+      console.log('로그아웃 응답 코드:', response.status);
+      
+      // 로그아웃 성공 여부와 관계없이 사용자 정보 초기화
+      setUserInfo(null);
+      
+      // 로그아웃 후 홈 페이지로 이동 (환영 메시지가 있는 페이지)
+      window.location.href = '/';
+      
+    } catch (error) {
+      console.error('로그아웃 중 오류 발생:', error);
+      // 오류가 발생해도 사용자 정보를 초기화하고 페이지 이동
+      setUserInfo(null);
+      window.location.href = '/';
+    }
+  };
+
+  console.log('현재 사용자 정보:', userInfo);
+
+  if (loading) {
+    return (
+      <button
+        disabled
+        style={{
+          backgroundColor: '#f0f0f0',
+          color: '#888',
+          border: '1px solid #ccc',
+          borderRadius: '4px',
+          padding: '10px 20px',
+          fontWeight: 'bold',
+          fontSize: '16px',
+          cursor: 'not-allowed',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
+        }}
+      >
+        로딩 중...
+      </button>
+    );
+  }
+
+  if (userInfo && userInfo.username) {
+    return (
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <span style={{ fontWeight: 'bold' }}>{userInfo.username}님</span>
+        <button
+          onClick={handleLogout}
+          style={{
+            backgroundColor: '#f44336',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            padding: '8px 12px',
+            fontSize: '14px',
+            cursor: 'pointer',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+          }}
+        >
+          로그아웃
+        </button>
+      </div>
+    );
+  }
 
   return (
     <button
