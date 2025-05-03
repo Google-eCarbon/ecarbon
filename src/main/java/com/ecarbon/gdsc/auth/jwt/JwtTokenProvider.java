@@ -10,6 +10,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.jwt.JwtException;
 import org.springframework.stereotype.Component;
+import org.springframework.web.util.UriUtils;
 
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
@@ -32,27 +33,41 @@ public class JwtTokenProvider {
         this.key = Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
     }
 
-    // 1️⃣ JWT 생성
+    // 1️⃣ JWT 생성 (이메일 정보 포함)
     public String createToken(String username, Collection<? extends GrantedAuthority> authorities) {
+        return createToken(username, null, authorities);
+    }
+    
+    // 1️⃣-2 JWT 생성 (이메일 정보 포함)
+    public String createToken(String username, String email, Collection<? extends GrantedAuthority> authorities) {
+        try {
+            // 1. JWT 클레임 생성
+            Claims claims = Jwts.claims().setSubject(username);
+            
+            // 이메일 정보가 있으면 추가
+            if (email != null && !email.isEmpty()) {
+                claims.put("email", email);
+            }
+            
+            claims.put("roles", authorities.stream()
+                    .map(GrantedAuthority::getAuthority)
+                    .collect(Collectors.toList()));
 
-        // 1. JWT 클레임 생성
-        Claims claims = Jwts.claims().setSubject(username);
-//        claims.put("email", email); // 이메일 추가
-        claims.put("roles", authorities.stream()
-                .map(GrantedAuthority::getAuthority)
-                .collect(Collectors.toList()));
+            // 2. 현재 시간과 만료 시간 설정
+            Date now = new Date();
+            Date validity = new Date(now.getTime() + tokenValidityInMilliseconds);
 
-        // 2. 현재 시간과 만료 시간 설정
-        Date now = new Date();
-        Date validity = new Date(now.getTime() + tokenValidityInMilliseconds);
-
-        // 3. JWT 토큰 생성 및 서명
-        return Jwts.builder()
-                .setClaims(claims)
-                .setIssuedAt(now)
-                .setExpiration(validity)
-                .signWith(key, SignatureAlgorithm.HS256)
-                .compact();
+            // 3. JWT 토큰 생성 및 서명
+            return Jwts.builder()
+                    .setClaims(claims)
+                    .setIssuedAt(now)
+                    .setExpiration(validity)
+                    .signWith(key, SignatureAlgorithm.HS256)
+                    .compact();
+        } catch (Exception e) {
+            log.error("JWT 토큰 생성 중 오류 발생: {}", e.getMessage());
+            throw new RuntimeException("JWT 토큰 생성 실패", e);
+        }
     }
 
     // 2️⃣ JWT에서 사용자 이름(username) 추출
@@ -63,8 +78,26 @@ public class JwtTokenProvider {
                 .parseClaimsJws(token)
                 .getBody();
 
-        log.info("Parsed username from JWT: {}", claims.getSubject()); // 로그 추가
-        return claims.getSubject(); // 'sub' 클레임에서 사용자 이름 추출
+        String username = claims.getSubject();
+        try {
+            log.info("Parsed username from JWT: {}", UriUtils.encode(username, StandardCharsets.UTF_8));
+        } catch (Exception e) {
+            log.info("Parsed username from JWT (로깅 불가)");
+        }
+        return username; // 'sub' 클레임에서 사용자 이름 추출
+    }
+    
+    // 2️⃣-2 JWT에서 이메일 추출
+    public String getEmail(String token) {
+        Claims claims = Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+
+        String email = (String) claims.get("email");
+        log.info("Parsed email from JWT: {}", email);
+        return email;
     }
 
     // 3️⃣ JWT에서 사용자 권한 추출
@@ -95,6 +128,7 @@ public class JwtTokenProvider {
             Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token); // 서명 키 일치
             return true;
         } catch (JwtException | IllegalArgumentException e) {
+            log.error("JWT 토큰 검증 실패: {}", e.getMessage());
             return false;
         }
     }
