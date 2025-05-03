@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -27,6 +28,13 @@ public class SecurityConfig {
 
         http
                 .csrf((csrf) -> csrf.disable())
+
+                // 세션 관리 설정 - 세션 사용 (STATEFUL)
+                .sessionManagement(session -> session
+                        .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+                        .maximumSessions(1) // 동시 세션 제한
+                        .maxSessionsPreventsLogin(false) // 새 로그인 시 이전 세션 만료
+                )
 
                 .authorizeHttpRequests((auth) -> auth
                         .requestMatchers("/", "/user/me", "/api/**", "/login", "/oauth2/**", "/oauth2/redirect", "/css/**", "/js/**", "/images/**").permitAll()
