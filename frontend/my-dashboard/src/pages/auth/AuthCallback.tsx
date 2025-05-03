@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 
@@ -6,20 +6,27 @@ const AuthCallback = () => {
   const [loading, setLoading] = useState(true);
   const location = useLocation();
   const navigate = useNavigate();
+  const toastShownRef = useRef(false); // 토스트 메시지 표시 여부를 추적하는 ref
 
   useEffect(() => {
     const handleAuthCallback = () => {
       try {
+        // 이미 토스트가 표시되었으면 중복 실행 방지
+        if (toastShownRef.current) return;
+
         // URL 쿼리 파라미터에서 인증 성공 여부 확인
         const params = new URLSearchParams(location.search);
         const success = params.get('success') === 'true';
         const error = params.get('error');
 
         if (success) {
-          // 성공 메시지 표시
-          toast.success('로그인 성공!', {
-            description: '환영합니다!',
-          });
+          // 성공 메시지 표시 (한 번만)
+          if (!toastShownRef.current) {
+            toast.success('로그인 성공!', {
+              description: '환영합니다!',
+            });
+            toastShownRef.current = true; // 토스트 표시 완료 표시
+          }
 
           // 로딩 상태 해제
           setLoading(false);
@@ -29,10 +36,13 @@ const AuthCallback = () => {
             navigate('/');
           }, 1000);
         } else {
-          // 오류 메시지 표시
-          toast.error('로그인 처리 중 오류가 발생했습니다.', {
-            description: error || '다시 시도해주세요.',
-          });
+          // 오류 메시지 표시 (한 번만)
+          if (!toastShownRef.current) {
+            toast.error('로그인 처리 중 오류가 발생했습니다.', {
+              description: error || '다시 시도해주세요.',
+            });
+            toastShownRef.current = true; // 토스트 표시 완료 표시
+          }
           
           setLoading(false);
           
@@ -44,9 +54,14 @@ const AuthCallback = () => {
       } catch (error) {
         console.error('인증 처리 중 오류 발생:', error);
         setLoading(false);
-        toast.error('로그인 처리 중 오류가 발생했습니다.', {
-          description: '다시 시도해주세요.',
-        });
+        
+        // 오류 메시지 표시 (한 번만)
+        if (!toastShownRef.current) {
+          toast.error('로그인 처리 중 오류가 발생했습니다.', {
+            description: '다시 시도해주세요.',
+          });
+          toastShownRef.current = true; // 토스트 표시 완료 표시
+        }
         
         // 홈페이지로 리디렉션 (2초 후)
         setTimeout(() => {
