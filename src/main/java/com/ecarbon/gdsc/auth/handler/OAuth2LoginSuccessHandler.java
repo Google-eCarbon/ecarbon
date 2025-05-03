@@ -23,11 +23,13 @@ public class OAuth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
                                         HttpServletResponse response,
                                         Authentication authentication) throws IOException {
 
-        // 로그인 성공한 사용자 정보 가져오기
+        // 1️⃣ 인증된(로그인한) 사용자 정보 가져오기
         CustomOAuth2User oAuth2User = (CustomOAuth2User) authentication.getPrincipal();
+        String username = oAuth2User.getName();
+        String email = oAuth2User.getEmail();
 
-        // JWT 생성
-        String token = jwtProvider.createToken(oAuth2User.getName(), oAuth2User.getAuthorities());
+        // 2️⃣ JWT 생성 (이메일 정보 포함)
+        String token = jwtProvider.createToken(username, email, oAuth2User.getAuthorities());
 
         // 토큰 정보 콘솔에 출력 (디버깅 용도)
         log.info("인증 토큰 생성: " + token);
