@@ -47,9 +47,9 @@ public class UserController {
         
         User user = userOptional.get();
         
-        // 사용자 프로필 응답 생성
+        // 사용자 프로필 응답 생성 - MongoDB ObjectId를 문자열로 유지
         UserProfileResponse response = UserProfileResponse.builder()
-                .id(user.getId() != null ? Long.parseLong(user.getId()) : null)
+                .id(user.getId()) // Long.parseLong 제거하고 문자열 그대로 사용
                 .username(user.getName())
                 .email(user.getEmail())
                 .build();
