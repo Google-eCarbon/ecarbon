@@ -4,16 +4,19 @@ package com.ecarbon.gdsc.carbon.entity;
 import com.ecarbon.gdsc.carbon.dto.Lighthouse.NetworkRequest;
 import com.ecarbon.gdsc.carbon.dto.Lighthouse.ResourceSummary;
 import com.ecarbon.gdsc.carbon.dto.PlaceInfo;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.ToString;
+import com.google.cloud.Timestamp;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @ToString
 @Getter
 @Document(collection = "weekly_measurements")
@@ -25,7 +28,7 @@ public class WeeklyMeasurements {
 
     private String measurementType;
 
-    private LocalDateTime measuredAt;
+    private String measuredAt;
     private String weekStartDate;
 
     private PlaceInfo placeInfo;
@@ -45,4 +48,8 @@ public class WeeklyMeasurements {
 
     private double kbWeight;
     private double carbonEmission;
+
+    public LocalDateTime getMeasuredAtAsDateTime() {
+        return LocalDateTime.parse(measuredAt, DateTimeFormatter.ISO_DATE_TIME);
+    }
 }
