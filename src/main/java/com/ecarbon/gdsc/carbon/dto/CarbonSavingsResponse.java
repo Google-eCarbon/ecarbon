@@ -1,13 +1,13 @@
 package com.ecarbon.gdsc.carbon.dto;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
 @Builder
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class CarbonSavingsResponse {
     // 절감 사이트 (세션)
     private String url;

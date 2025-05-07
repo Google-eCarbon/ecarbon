@@ -1,10 +1,14 @@
 package com.ecarbon.gdsc.carbon.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class CarbonEquivalents {
     private long coffeeCups;    // 커피 잔 수
     private long evKm;          // 전기차 주행 거리 (km)
