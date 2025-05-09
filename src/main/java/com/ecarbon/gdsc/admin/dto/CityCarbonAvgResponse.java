@@ -1,6 +1,5 @@
 package com.ecarbon.gdsc.admin.dto;
 
-
 import lombok.Builder;
 import lombok.Getter;
 
@@ -10,9 +9,6 @@ import java.util.List;
 @Builder
 public class CityCarbonAvgResponse {
     private List<CityCarbonAvg> cityCarbonAverages;
-
-
-
 
     @Getter
     @Builder

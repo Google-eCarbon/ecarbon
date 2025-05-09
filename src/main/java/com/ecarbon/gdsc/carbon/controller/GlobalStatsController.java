@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.ExecutionException;
 
-
 @Slf4j
 @RestController
 @RequiredArgsConstructor

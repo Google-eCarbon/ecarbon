@@ -10,8 +10,6 @@ import java.util.List;
 public class CountryCarbonAvgResponse {
     private List<CountryCarbonAvg> countryCarbonAvgs;
 
-
-
     @Getter
     @Builder
     public static class CountryCarbonAvg {

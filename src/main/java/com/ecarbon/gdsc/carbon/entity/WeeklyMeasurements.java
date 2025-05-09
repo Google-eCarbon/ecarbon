@@ -1,14 +1,11 @@
 package com.ecarbon.gdsc.carbon.entity;
 
-
 import com.ecarbon.gdsc.carbon.dto.Lighthouse.NetworkRequest;
 import com.ecarbon.gdsc.carbon.dto.Lighthouse.ResourceSummary;
 import com.ecarbon.gdsc.carbon.dto.PlaceInfo;
-import com.google.cloud.Timestamp;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
