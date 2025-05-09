@@ -5,6 +5,7 @@ import com.ecarbon.gdsc.carbon.dto.GlobalStatsResponse;
 import com.ecarbon.gdsc.carbon.dto.TopEmissionPlace;
 import com.ecarbon.gdsc.carbon.entity.WeeklyMeasurements;
 import com.ecarbon.gdsc.carbon.enums.PlaceCategory;
+import com.ecarbon.gdsc.carbon.repository.FirebaseWeeklyMeasurementRepository;
 import com.ecarbon.gdsc.carbon.repository.WeeklyMeasurementsRepository;
 import com.ecarbon.gdsc.carbon.util.CarbonGradeUtil;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.concurrent.ExecutionException;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -20,12 +22,13 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class GlobalStatsService {
     private final WeeklyMeasurementsRepository weeklyMeasurementsRepository;
+    private final FirebaseWeeklyMeasurementRepository firebaseWeeklyMeasurementRepository;
 
     private static final int TOP_LIMIT = 5;
 
-    public Optional<GlobalStatsResponse> getGlobalStats(String weekStartDate, PlaceCategory placeCategory){
+    public Optional<GlobalStatsResponse> getGlobalStats(String weekStartDate, PlaceCategory placeCategory) throws ExecutionException, InterruptedException {
 
-        List<WeeklyMeasurements> uniqueMeasurements  = weeklyMeasurementsRepository.findLatestUniqueByWeekStartDateAndCategory(weekStartDate, placeCategory.getValue());
+        List<WeeklyMeasurements> uniqueMeasurements  = firebaseWeeklyMeasurementRepository.findLatestUniqueByWeekStartDateAndCategory(weekStartDate, placeCategory.getValue());
 
         List<TopEmissionPlace> topEmissionPlaces = getTopEmissionPlaces(weekStartDate, placeCategory, TOP_LIMIT);
 

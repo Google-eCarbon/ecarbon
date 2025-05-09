@@ -1,12 +1,12 @@
 package com.ecarbon.gdsc.carbon.dto.Lighthouse;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @Builder
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class ResourceSummary {
 
     private String resourceType;

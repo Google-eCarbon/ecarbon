@@ -1,12 +1,12 @@
 package com.ecarbon.gdsc.carbon.dto;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 @Builder
 @Getter
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class PlaceInfo {
     private String name;
     private String category;
