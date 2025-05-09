@@ -18,6 +18,64 @@ public class FirebaseWeeklyMeasurementRepository {
 
     private static final String COLLECTION_NAME = "weekly_measurements";
 
+    /**
+     * 특정 url에 해당하는 모든 데이터를 Firestore에서 조회 (인덱스 필요 없음)
+     * @param url
+     * @return List<WeeklyMeasurements>
+     * @throws ExecutionException
+     * @throws InterruptedException
+     */
+    public List<WeeklyMeasurements> findAllByUrl(String url)
+            throws ExecutionException, InterruptedException {
+
+        Firestore db = FirestoreClient.getFirestore();
+
+        // 단일 필드 필터링만 사용하여 인덱스 필요 없게 함
+        Query query = db.collection(COLLECTION_NAME)
+                .whereEqualTo("url", url);
+
+        ApiFuture<QuerySnapshot> future = query.get();
+        List<QueryDocumentSnapshot> docs = future.get().getDocuments();
+
+        return docs.stream()
+                .map(doc -> doc.toObject(WeeklyMeasurements.class))
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * 특정 url에 해당하는 데이터 중 가장 최근(measuredAt 기준) 데이터를 Firestore에서 조회
+     * @param url
+     * @return Optional<WeeklyMeasurements>
+     * @throws ExecutionException
+     * @throws InterruptedException
+     */
+    public List<WeeklyMeasurements> findTopByUrlOrderByMeasuredAtDesc(String url)
+            throws ExecutionException, InterruptedException {
+
+        Firestore db = FirestoreClient.getFirestore();
+
+        Query query = db.collection(COLLECTION_NAME)
+                .whereEqualTo("url", url)
+                .orderBy("measuredAt", Query.Direction.DESCENDING)
+                .limit(1);
+
+        ApiFuture<QuerySnapshot> future = query.get();
+        List<QueryDocumentSnapshot> docs = future.get().getDocuments();
+
+        return docs.stream()
+                .map(doc -> doc.toObject(WeeklyMeasurements.class))
+                .collect(Collectors.toList());
+    }
+
+
+    /**
+     * 주어진 weekStartDate와 category에 해당하는 데이터를 Firestore에서 조회
+     * @param weekStartDate
+     * @param category
+     * @return List<WeeklyMeasurements>
+     * @throws ExecutionException
+     * @throws InterruptedException
+     */
     public List<WeeklyMeasurements> findByWeekStartDateAndCategory(String weekStartDate, String category)
             throws ExecutionException, InterruptedException {
 
@@ -35,6 +93,13 @@ public class FirebaseWeeklyMeasurementRepository {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * 특정 url에 해당하는 데이터 중 가장 최근(measuredAt 기준) 데이터를 Firestore에서 조회
+     * @param url
+     * @return WeeklyMeasurements
+     * @throws ExecutionException
+     * @throws InterruptedException
+     */
     public WeeklyMeasurements findLatestByUrl(String url)
             throws ExecutionException, InterruptedException {
 
@@ -52,6 +117,15 @@ public class FirebaseWeeklyMeasurementRepository {
         return docs.get(0).toObject(WeeklyMeasurements.class);
     }
 
+    /**
+     * 주어진 weekStartDate와 category에 해당하는 데이터 중, carbonEmission이 0이 아닌 데이터를 조회
+     * 조회된 데이터를 measuredAt 기준으로 정렬한 후, url을 기준으로 중복을 제거하여 가장 최근 데이터만 유지
+     * @param weekStartDate
+     * @param category
+     * @return List<WeeklyMeasurements>
+     * @throws ExecutionException
+     * @throws InterruptedException
+     */
     public List<WeeklyMeasurements> findLatestUniqueByWeekStartDateAndCategory(String weekStartDate, String category)
             throws ExecutionException, InterruptedException {
 
