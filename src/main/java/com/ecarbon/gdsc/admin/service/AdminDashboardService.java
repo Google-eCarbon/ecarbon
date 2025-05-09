@@ -31,7 +31,8 @@ public class AdminDashboardService {
                 .collect(Collectors.toMap(
                         WeeklyMeasurements::getUrl,
                         Function.identity(),
-                        (existing, replacement) -> existing.getMeasuredAt().isAfter(replacement.getMeasuredAt()) ? existing : replacement
+                        (existing, replacement) ->
+                                existing.getMeasuredAtAsDateTime().isAfter(replacement.getMeasuredAtAsDateTime()) ? existing : replacement
                 ));
 
         // 3. 도시별 평균 탄소배출량 계산
@@ -67,7 +68,8 @@ public class AdminDashboardService {
                 .collect(Collectors.toMap(
                         WeeklyMeasurements::getUrl,
                         Function.identity(),
-                        (existing, replacement) -> existing.getMeasuredAt().isAfter(replacement.getMeasuredAt()) ? existing : replacement
+                        (existing, replacement) ->
+                                existing.getMeasuredAtAsDateTime().isAfter(replacement.getMeasuredAtAsDateTime()) ? existing : replacement
                 ));
 
         // 3. 국가별 평균 탄소배출량 계산
