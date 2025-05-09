@@ -14,7 +14,7 @@ const Sidebar = () => {
     {
       label: 'Carbon Footprint',
       icon: LayoutDashboard,
-      href: '/',
+      href: '/carbon-analysis',
       color: "text-sky-500"
     },
     {
