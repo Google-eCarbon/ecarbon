@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.ExecutionException;
+
 
 @Slf4j
 @RestController
@@ -24,7 +26,7 @@ public class GlobalStatsController {
     @GetMapping
     public ResponseEntity<GlobalStatsResponse> getGlobalStats(
             @RequestParam(required = false) String weekStartDate,
-            @RequestParam(defaultValue = "UNIVERSITY") PlaceCategory placeCategory) {
+            @RequestParam(defaultValue = "UNIVERSITY") PlaceCategory placeCategory) throws ExecutionException, InterruptedException {
 
         if (weekStartDate == null || weekStartDate.isBlank()) {
             weekStartDate = DateUtil.getWeeksMonday();
