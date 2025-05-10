@@ -1,7 +1,10 @@
 package com.ecarbon.gdsc.carbon.service;
 
 import com.ecarbon.gdsc.carbon.dto.CarbonSavingsResponse;
+import com.ecarbon.gdsc.carbon.entity.ReductionLogs;
+import com.ecarbon.gdsc.carbon.repository.FirebaseReductionLogsRepository;
 import com.ecarbon.gdsc.carbon.util.DateUtil;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -10,12 +13,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
+import java.util.concurrent.ExecutionException;
 
 @Service
+@RequiredArgsConstructor
 public class CarbonSavingsService {
 
+    private final FirebaseReductionLogsRepository firebaseReductionLogsRepository;
+
     // TODO: Build response
-    public Optional<CarbonSavingsResponse> getCarbonSavings(String url){
+    public Optional<CarbonSavingsResponse> getCarbonSavings(String url) throws ExecutionException, InterruptedException {
+
+        ReductionLogs reductionLog = firebaseReductionLogsRepository.findByDomain(url);
 
         List<CarbonSavingsResponse.WeeklySavingsData> weeklyGraph = getWeeklySavingsGraph(url);
         List<CarbonSavingsResponse.ImageOptimizationResult> imageResults = getImageOptimizations();
@@ -23,7 +32,7 @@ public class CarbonSavingsService {
 
         CarbonSavingsResponse response = CarbonSavingsResponse.builder()
                 .url(url)
-                .totalSavingsInGrams(getTotalSavingsInGrams())
+                .totalSavingsInGrams(getTotalSavingsInGrams(reductionLog.getReduction_bytes()))
                 .weeklySavingsGraph(weeklyGraph)
                 .imageOptimizations(imageResults)
                 .resourceSavingsData(resourceSavings)
@@ -33,10 +42,9 @@ public class CarbonSavingsService {
     }
 
     // TODO: Implement total savings in grams
-    private double getTotalSavingsInGrams() {
-        return 12.4;
+    private double getTotalSavingsInGrams(Long carbonEmissionByte) {
+        return 1;
     }
-
 
     // TODO: Implement breakdown of carbon savings by element type
     private List<CarbonSavingsResponse.ResourceSavings> getResourceSavings(String url) {
@@ -83,8 +91,6 @@ public class CarbonSavingsService {
         return resourceSavingsList;
     }
 
-
-
     // TODO: Implement weekly savings graph data
     private List<CarbonSavingsResponse.WeeklySavingsData> getWeeklySavingsGraph(String url){
 
@@ -129,5 +135,4 @@ public class CarbonSavingsService {
     }
 
     // TODO: Implement user contribution analysis
-
 }
