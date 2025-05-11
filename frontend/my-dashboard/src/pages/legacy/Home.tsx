@@ -128,49 +128,42 @@ const Home: React.FC = () => {
 
   return (
     <Layout>
-      <div className="max-w-4xl mx-auto pt-24 pb-12 px-4 text-white">
-        <h1 className="text-4xl font-bold text-center mb-10">웹사이트 탄소 배출량 측정</h1>
-        
-        <Card className="bg-white/10 p-8 rounded-xl">
-          <p className="text-center text-lg mb-8 max-w-2xl mx-auto">
-            웹사이트 URL을 입력하면 해당 페이지의 탄소 배출량을 측정합니다. 
-            친환경적인 웹을 만들기 위한 첫 걸음을 시작하세요.
-          </p>
-          
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="flex max-w-2xl mx-auto">
+      <div className="flex flex-col items-center justify-center min-h-[80vh] py-10">
+        <Card className="max-w-xl w-full shadow-xl border-emerald-400 border-2">
+          <CardHeader>
+            <CardTitle className="text-3xl font-bold text-emerald-600">eCarbon 대시보드에 오신 것을 환영합니다!</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="mt-2 text-lg text-gray-700">
+              분석할 웹사이트의 URL을 입력하세요.<br />
+              친환경적인 웹 개발을 위한 인사이트를 얻어보세요.
+            </p>
+            {isAuthenticated && (
+              <div className="mt-4 mb-2 p-2 bg-green-50 text-green-700 rounded">
+                로그인 되었습니다. 분석할 URL을 입력해주세요.
+              </div>
+            )}
+            <form className="mt-6 flex gap-2" onSubmit={handleSubmit}>
               <input
-                type="url"
-                className="flex-1 rounded-r-none bg-white/10 border-white/30 text-white px-3 py-2"
+                type="text"
+                className="flex-1 border rounded px-3 py-2 text-lg"
                 placeholder="https://example.com"
                 value={url}
                 onChange={e => setUrl(e.target.value)}
                 required
               />
-              <Button 
-                type="submit" 
-                disabled={isLoading}
-                className="rounded-l-none bg-white text-green-700 hover:bg-white/90 hover:text-green-800"
-              >
-                {isLoading ? '측정 중...' : '측정하기'}
+              <Button type="submit" variant="default" disabled={isLoading}>
+                {isLoading ? '처리 중...' : '분석하기'}
               </Button>
-            </div>
-            
+            </form>
             {error && (
-              <p className="text-red-400 text-center mt-4">{error}</p>
-            )}
-            
-            {isLoading && (
-              <div className="flex flex-col items-center mt-8">
-                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white mb-4"></div>
-                <p className="text-white text-center">
-                  웹사이트를 분석하고 있습니다...
-                </p>
+              <div className="mt-4 p-2 bg-red-50 text-red-600 rounded">
+                {error}
               </div>
             )}
-          </form>
+          </CardContent>
         </Card>
-        <div className="mt-10 text-center text-gray-400 text-sm">
+        <div className="mt-10 text-gray-400 text-sm">
           &copy; {new Date().getFullYear()} eCarbon. All rights reserved.
         </div>
       </div>
