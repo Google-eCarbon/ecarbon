@@ -1,0 +1,62 @@
+[
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "1",
+    "guideline": "Display any variables that have a negative impact on your project",
+    "criteria": [
+      {
+        "title": "External variables",
+        "description": "Any negative external variables affecting a product or service are displayed in a publicly available resource, identifying where your product's sustainable impact can be diminished (systemic design)."
+      }
+    ]
+  },
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "2",
+    "guideline": "Understand visitor requirements or constraints, resolving barriers to access",
+    "criteria": [
+      {
+        "title": "Identify and define",
+        "description": "Primary and secondary target visitors are identified, and their needs are defined through quantitative or qualitative research, testing, or analytics, ensuring your visitors and affected communities remain a close part of the research and testing process."
+      }
+    ]
+  },
+  {
+    "categoryId": "3",
+    "categoryName": "Web Development",
+    "guidelineId": "5",
+    "guideline": "Redundancy and duplication in code should be avoided",
+    "criteria": [
+      {
+        "title": "Code review",
+        "description": "Regular code reviews are conducted to identify and remove redundant or duplicate code."
+      }
+    ]
+  },
+  {
+    "categoryId": "3",
+    "categoryName": "Web Development",
+    "guidelineId": "8",
+    "guideline": "Render blocking should be resolved",
+    "criteria": [
+      {
+        "title": "Performance optimization",
+        "description": "Critical rendering path is optimized to minimize render blocking resources."
+      }
+    ]
+  },
+  {
+    "categoryId": "4",
+    "categoryName": "Hosting, Infrastructure And Systems",
+    "guidelineId": "1",
+    "guideline": "Choose a sustainable hosting provider",
+    "criteria": [
+      {
+        "title": "Green hosting",
+        "description": "The hosting provider uses renewable energy and has strong environmental commitments."
+      }
+    ]
+  }
+]
