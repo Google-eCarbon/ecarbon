@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class LighthouseData {
     private String url;
-    private OptimizationData optimizationData;
-    private ResourceData resourceData;
-    private TrafficData trafficData;
+//    private OptimizationData optimizationData;
+//    private ResourceData resourceData;
+//    private TrafficData trafficData;
 }
