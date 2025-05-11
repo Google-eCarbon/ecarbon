@@ -1,164 +1,183 @@
-from typing import Dict, List, Any, Set
-from api.services.resources_loader import ResourceLoader
-from api.utils.html_parser import HTMLParser
-from api.models.guideline import WSGDocument
-import json
-from pathlib import Path
+from typing import Dict, Any, List
+from config.firebase_config import initialize_firebase
 from datetime import datetime
+from vector_db import VectorDBService
+from gemini_client import GeminiClient
+from resources_loader import ResourceLoader
+from html_parser import HTMLParser
+from html_chunker import HTMLChunker
+from dataclasses import dataclass
+@dataclass
+class EvaluationResult:
+    guideline_id: str
+    score: float
+    violations: List[Dict[str, str]]
+    timestamp: datetime = None
+    
+    def __post_init__(self):
+        if self.timestamp is None:
+            self.timestamp = datetime.now()
 
 class WSGEvaluator:
-    """WSG 가이드라인 평가기"""
-    
     def __init__(self):
-        """초기화"""
+        """WSG 평가기를 초기화합니다."""
+        self.vector_db = VectorDBService()
+        self.vector_db.load_guidelines()
+        self.gemini_client = GeminiClient()
         self.resource_loader = ResourceLoader()
         self.html_parser = HTMLParser()
+        self.html_chunker = HTMLChunker()
+        self.db = initialize_firebase()
         
-        # WSG 가이드라인 로드
-        guidelines_path = Path(__file__).parent.parent.parent / 'wsg_data' / 'wsg_guidelines.json'
-        with open(guidelines_path, 'r', encoding='utf-8') as f:
-            self.wsg_document = WSGDocument(**json.load(f))
-    
-    def _calculate_guideline_weight(self, impact: str, effort: str) -> float:
-        """가이드라인 가중치 계산
-        
-        Args:
-            impact: 영향도 (High/Medium/Low)
-            effort: 노력도 (High/Medium/Low)
+    def evaluate_code(self, code: str, guideline: str, model_name='gemini-1.5-flash') -> EvaluationResult:
+        """코드와 가이드라인을 평가"""
+        try:
+            # GeminiClient 인스턴스의 evaluate_code 메서드 호출
+            response = self.gemini_client.evaluate_code(code, guideline, model_name)
             
-        Returns:
-            float: 계산된 가중치
-        """
-        impact_factor = {'High': 3.0, 'Medium': 2.0, 'Low': 1.0}
-        effort_factor = {'Low': 1.2, 'Medium': 1.0, 'High': 0.8}
-        
-        return impact_factor[impact] * effort_factor[effort]
-    
-    def _get_relevant_tags(self, structure_data: Dict[str, Any]) -> Set[str]:
-        """HTML 구조에서 관련 태그 추출
-        
-        Args:
-            structure_data: HTML 구조 분석 데이터
-            
-        Returns:
-            Set[str]: 관련 태그 집합
-        """
-        relevant_tags = set()
-        
-        # 1. 기본 태그 기반
-        tag_stats = structure_data['tag_stats']
-        if tag_stats['total_images'] > 0:
-            relevant_tags.update(['Image', 'Assets', 'Performance'])
-        if tag_stats['total_scripts'] > 0:
-            relevant_tags.update(['JavaScript', 'Performance'])
-        if tag_stats['total_styles'] > 0:
-            relevant_tags.update(['CSS', 'Performance'])
-        
-        # 2. 접근성 관련
-        accessibility_stats = structure_data['accessibility_stats']
-        if accessibility_stats['images_with_alt'] < tag_stats['total_images']:
-            relevant_tags.add('Accessibility')
-        if accessibility_stats['inputs_with_label'] < tag_stats['total_forms']:
-            relevant_tags.update(['Accessibility', 'Form'])
-        
-        # 3. 성능 관련
-        performance_stats = structure_data['performance_stats']
-        if performance_stats['external_scripts'] > 0 or performance_stats['external_styles'] > 0:
-            relevant_tags.update(['Performance', 'Environmental'])
-        
-        # 4. 시맨틱 태그 관련
-        semantic_stats = structure_data['semantic_stats']
-        if any(count > 0 for count in semantic_stats.values()):
-            relevant_tags.update(['HTML', 'Accessibility'])
-        
-        # 5. 항상 포함되어야 하는 태그
-        relevant_tags.update(['UI', 'Usability'])
-        
-        return relevant_tags
-    
-    def _filter_relevant_guidelines(self, structure_data: Dict[str, Any]) -> List[Dict[str, Any]]:
-        """태그맵과 구조 데이터를 기반으로 관련 가이드라인 필터링
-        
-        Args:
-            structure_data: HTML 구조 분석 데이터
-            
-        Returns:
-            List[Dict]: 필터링된 가이드라인 목록
-        """
-        relevant_tags = self._get_relevant_tags(structure_data)
-        relevant_guidelines = []
-        
-        # 모든 카테고리의 가이드라인을 순회
-        for category in self.wsg_document.category:
-            for guideline in category.guidelines:
-                # 1. 태그 교집합 확인
-                guideline_tags = set(guideline.tags)
-                if not guideline_tags.intersection(relevant_tags):
-                    continue
-                
-                # 2. 가중치 계산
-                weight = self._calculate_guideline_weight(guideline.impact, guideline.effort)
-                
-                # 3. 관련 가이드라인 추가
-                relevant_guidelines.append({
-                    'id': f"{category.id}-{guideline.id}",
-                    'guideline': guideline.guideline,
-                    'impact': guideline.impact,
-                    'effort': guideline.effort,
-                    'weight': weight,
-                    'matching_tags': list(guideline_tags.intersection(relevant_tags))
+            # 응답 처리
+            violations = []
+            if hasattr(response, 'violation') and response.violation == 'Yes':
+                violations.append({
+                    'location': response.relevant_code,
+                    'description': response.explanation,
+                    'suggestion': response.corrected_code
                 })
+                
+            # 평가 결과 생성
+            return EvaluationResult(
+                guideline_id="test",  # 실제 구현에서는 적절한 ID 사용
+                score=0.0 if violations else 1.0,
+                violations=violations
+            )
         
-        # 4. 가중치 기준으로 정렬
-        relevant_guidelines.sort(key=lambda x: x['weight'], reverse=True)
-        
-        return relevant_guidelines
-    
-    async def evaluate_url(self, url: str) -> Dict[str, Any]:
-        """
-        주어진 URL의 웹사이트를 WSG 가이드라인에 따라 평가합니다.
-        
-        Args:
-            url: 평가할 웹사이트의 URL
-            
-        Returns:
-            평가 결과를 포함한 딕셔너리
-        """
+        except Exception as e:
+            print(f"Error evaluating code: {str(e)}")
+            # 오류 발생 시 빈 결과 반환
+            return EvaluationResult(
+                guideline_id="error",
+                score=0.0,
+                violations=[{
+                    'location': 'unknown',
+                    'description': f"Error: {str(e)}",
+                    'suggestion': 'Check the code and try again'
+                }]
+            )
+
+    async def evaluate_website(self, url: str) -> Dict[str, Any]:
+        """웹사이트를 WSG 가이드라인에 따라 평가합니다."""
         try:
             # 1. 웹사이트 리소스 로드
-            content = await self.resource_loader.load_website_content(url)
+            site_resource = await self.resource_loader.load_website_content(url)
             
             # 2. HTML 구조 분석
-            structure_data = self.html_parser.extract_page_structure(content)
+            structure_data = self.html_parser.extract_page_structure(site_resource.raw_html)
             
-            # 3. 관련 가이드라인 필터링
-            relevant_guidelines = self._filter_relevant_guidelines(structure_data)
+            # 3. HTML 청킹
+            chunks = self.html_chunker.chunk_html(site_resource.raw_html)
             
-            # 4. Gemini API를 통한 분석
-            # analysis = await self.gemini_client.analyze_wsg_compliance(
-            #     structure_data=structure_data,
-            #     url=url,
-            #     guidelines=relevant_guidelines
-            # )
+            # 4. 벡터 DB에 웹사이트 콘텐츠 저장
+            self.vector_db.add_website_content(url, site_resource.raw_html, chunks)
             
-            # 5. 결과 종합
-            return {
-                'url': url,
-                'timestamp': datetime.now().isoformat(),
-                'automated_checks': structure_data,
-                # 'ai_analysis': analysis,
-                'relevant_guidelines': [g['id'] for g in relevant_guidelines],
-                'metadata': {
-                    'total_guidelines_checked': len(relevant_guidelines),
-                    'automated_metrics_version': '1.0',
-                    'ai_model': 'gemini-pro'
+            # 5. 관련 가이드라인 필터링
+            relevant_guidelines = self.vector_db.find_relevant_guidelines(
+                url=url,
+                tag_map=site_resource.stats.tag_map,
+                top_k=10
+            )
+            
+            # 6. 가이드라인 평가
+            evaluations = []
+            total_score = 0
+            max_score = 0
+            
+            for guideline in relevant_guidelines:
+                # 각 가이드라인에 대한 평가 수행
+                violations = await self.gemini_client.evaluate_guideline(
+                    guideline_id=guideline['guideline_id'],
+                    html_content=site_resource.raw_html,
+                    chunks=chunks
+                )
+                
+                # 위반 사항이 없으면 만점
+                score = 1.0 if not violations else 0.5 / len(violations)
+                weighted_score = score * guideline['weight']
+                
+                total_score += weighted_score
+                max_score += guideline['weight']
+                
+                evaluations.append({
+                    'guideline_id': guideline['guideline_id'],
+                    'impact': guideline['impact'],
+                    'effort': guideline['effort'],
+                    'violations': violations,
+                    'score': score,
+                    'weighted_score': weighted_score
+                })
+            
+            # 7. 최종 점수 계산
+            compliance_score = (total_score / max_score * 100) if max_score > 0 else 0
+            
+            # 8. 리소스 통계 변환
+            resource_stats = {
+                'total_size_kb': site_resource.stats.total_size // 1024,
+                'html_size_kb': site_resource.stats.html_size // 1024,
+                'css_size_kb': site_resource.stats.css_size // 1024,
+                'js_size_kb': site_resource.stats.js_size // 1024,
+                'image_size_kb': site_resource.stats.images_size // 1024,
+                'total_requests': len(site_resource.resources)
+            }
+            
+            # 9. 구조 통계 변환
+            structure_stats = {
+                'total_nodes': site_resource.stats.total_nodes,
+                'max_depth': site_resource.stats.max_depth,
+                'tag_distribution': site_resource.stats.tag_map,
+                'accessibility': {
+                    'images_with_alt': structure_data.get('images_with_alt', 0),
+                    'form_labels': structure_data.get('form_labels', 0),
+                    'aria_attributes': structure_data.get('aria_attributes', 0)
+                },
+                'performance': {
+                    'external_resources': structure_data.get('external_resources', 0),
+                    'inline_styles': structure_data.get('inline_styles', 0),
+                    'inline_scripts': structure_data.get('inline_scripts', 0)
                 }
             }
             
-        except Exception as e:
-            return {
+            # 결과를 Firestore에 저장
+            result = {
                 'url': url,
-                'timestamp': datetime.now().isoformat(),
-                'error': str(e),
-                'status': 'failed'
+                'compliance_score': compliance_score,
+                'resource_stats': resource_stats,
+                'structure_stats': structure_stats,
+                'evaluations': evaluations,
+                'created_at': datetime.now()
             }
+            
+            # Firestore에 저장
+            doc_ref = self.db.collection('website_evaluations').document()
+            doc_ref.set(result)
+            
+            # document ID를 결과에 추가
+            result['evaluation_id'] = doc_ref.id
+            return result
+            
+        except Exception as e:
+            raise Exception(f"웹사이트 평가 중 오류 발생: {str(e)}")
+
+    def _filter_relevant_guidelines(self, structure_data: Dict[str, Any]) -> List[Dict[str, Any]]:
+        """구조 데이터를 기반으로 관련 가이드라인을 필터링합니다."""
+        try:
+            # 태그맵 추출
+            tag_map = structure_data.get('tag_distribution', {})
+            
+            # 가이드라인 검색
+            return self.vector_db.find_relevant_guidelines(
+                url="",  # 실제 URL은 필요하지 않음
+                tag_map=tag_map,
+                top_k=10
+            )
+            
+        except Exception as e:
+            raise Exception(f"가이드라인 필터링 중 오류 발생: {str(e)}")

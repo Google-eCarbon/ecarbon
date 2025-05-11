@@ -22,7 +22,7 @@ WSGEvaluator(wsg_evaluator.py)
 1. ResourceLoader로 콘텐츠 수집
 2. VectorDB를 사용해 WSG 가이드랑니 검색 
 3. GeminiClient 를 통해 각 가이드라인에 대한 준수 여부를 평가
-4. 쵲오 결과를 종합하여 리포트 생성
+4. 최종 결과를 종합하여 리포트 생성
 
 VectorDB (vector_db.py)
 1. ChromaDB를 사용한 벡터 데이터베이스 서비스
@@ -48,10 +48,10 @@ GeminiClient (gemini_client.py)
 
 # 작동 프로세스
 1. 사용자가 웹사이트 URL을 API에 제출
-2. ResourceLoader가 웹사이트 콘텐츠를 수집하고 분석 (ok) 
-3. VectorDB가 관련된 WSG 가이드라인을 검색
-4. GeminiClient가 각 가이드라인에 대한 준수 여부를 AI로 평가
-5. WSGEvaluator가 모든 결과를 종합하여 최종 평가 리포트 생성
+2. ResourceLoader가 웹사이트 콘텐츠를 수집하고 분석 (ok)  
+3. VectorDB가 관련된 WSG 가이드라인을 검색 
+4. GeminiClient가 각 가이드라인에 대한 준수 여부를 AI로 평가 
+5. WSGEvaluator가 모든 결과를 종합하여 최종 평가 리포트 생성 
 (
     1차 룰/통계 필터
     TagMap·파일 크기·DOM 깊이 등으로 아예 관련 없는 지침 제거.
@@ -68,6 +68,7 @@ GeminiClient (gemini_client.py)
     “HTML 전체를 LLM에 던지지 않고, 관련 가능성이 높은 지침만 골라 LLM 프롬프트 길이·비용을 최소화”
     하는 게이트웨이 기능을 맡기 때문입니다.
 )
+
 # 2. 기술스택:
 - FastAPI (웹 프레임워크)
 - ChromaDB 또는 Milvus (Vector Database)

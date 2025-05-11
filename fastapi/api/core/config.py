@@ -1,6 +1,7 @@
 from pydantic_settings import BaseSettings
 from dotenv import load_dotenv
 import os
+from pathlib import Path
 
 load_dotenv()
 
@@ -13,10 +14,11 @@ class Settings(BaseSettings):
     
     # Vector DB 설정
     CHROMA_PERSIST_DIRECTORY: str = "chroma_db"
+    VECTOR_DB_PATH: str = str(Path(__file__).parent.parent.parent / "data" / "vector_db")
     
     # Gemini API 설정
     # GOOGLE_API_KEY: str = os.getenv("GOOGLE_API_KEY", "")
-    GOOGLE_API_KEY: str = "AIzaSyAg_2xgVO-Q7Q5tSCW5OZDcVjzXzpLfEPI"
+    GOOGLE_API_KEY: str = "AIzaSyDBfptxKS2F2IuCZ2C8htra-c0bw1R5vog"
     
     # User Agent 설정
     USER_AGENT: str = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"

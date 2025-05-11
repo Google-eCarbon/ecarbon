@@ -1,113 +1,174 @@
-from typing import Dict, List, Any, Optional
 import chromadb
 from chromadb.config import Settings
-from api.core.config import settings
-from api.utils.json_parser import load_wsg_guidelines, extract_guidelines_for_embedding
+from chromadb.utils import embedding_functions
+from pathlib import Path
+import shutil
+import time
+from typing import Dict, Any, List
+from json_parser import load_wsg_guidelines, extract_guidelines_for_embedding
 
 class VectorDBService:
     def __init__(self):
-        """ChromaDB 클라이언트와 컬렉션을 초기화합니다."""
-        self.client = chromadb.Client(Settings(
-            chroma_db_impl="duckdb+parquet",
-            persist_directory=settings.VECTOR_DB_PATH
-        ))
+        """Vector DB 서비스를 초기화합니다."""
+        self.persist_dir = Path(__file__).parent.parent.parent / "data" / "vector_db"
         
-        # WSG 가이드라인 컬렉션
-        self.guidelines_collection = self.client.get_or_create_collection(
-            name="wsg_guidelines",
-            metadata={"description": "WSG 가이드라인 및 평가 기준"}
+        # DB 디렉토리 초기화 (최대 3번 시도)
+        for _ in range(3):
+            try:
+                if self.persist_dir.exists():
+                    shutil.rmtree(str(self.persist_dir))
+                break
+            except PermissionError:
+                time.sleep(1)  # 1초 대기
+        
+        self.persist_dir.mkdir(parents=True, exist_ok=True)
+        
+        # 클라이언트 초기화 (allow_reset=True로 설정)
+        settings = Settings(
+            allow_reset=True,
+            anonymized_telemetry=False
         )
         
-        # 웹사이트 컨텐츠 컬렉션
-        self.website_collection = self.client.get_or_create_collection(
-            name="website_content",
-            metadata={"description": "분석된 웹사이트 컨텐츠"}
+        self.client = chromadb.PersistentClient(
+            path=str(self.persist_dir),
+            settings=settings
         )
-    
-    def load_guidelines(self) -> None:
-        """WSG 가이드라인을 로드하고 Vector DB에 저장합니다."""
+        
+        # 임베딩 함수 초기화
+        self.collection = None
+        self.embedding_function = embedding_functions.DefaultEmbeddingFunction()
+        
+        # DB 초기화
+        self.client.reset()
+
+    def load_guidelines(self):
+        """가이드라인을 로드하고 Vector DB에 저장합니다."""
         try:
-            # 기존 데이터 삭제
-            self.guidelines_collection.delete(where={"source": "wsg"})
+            # 새 컬렉션 생성
+            self.collection = self.client.create_collection(
+                name="wsg_guidelines",
+                metadata={"description": "Web Sustainability Guidelines"},
+                embedding_function=self.embedding_function
+            )
             
             # 가이드라인 로드
             wsg_doc = load_wsg_guidelines()
-            guidelines_map = extract_guidelines_for_embedding(wsg_doc)
+            guidelines = extract_guidelines_for_embedding(wsg_doc)
             
-            # Vector DB에 저장
-            self.guidelines_collection.add(
-                ids=list(guidelines_map.keys()),
-                documents=list(guidelines_map.values()),
-                metadatas=[{"source": "wsg"} for _ in guidelines_map]
-            )
+            # 데이터 추가
+            documents = []
+            metadatas = []
+            ids = []
+            
+            # 가이드라인이 리스트인지 딕셔너리인지 확인
+            if isinstance(guidelines, dict):
+                # 딕셔너리인 경우 items() 메서드 사용
+                guideline_items = guidelines.items()
+            elif isinstance(guidelines, list):
+                # 리스트인 경우 각 항목에 인덱스를 ID로 사용
+                guideline_items = [(str(i), item) for i, item in enumerate(guidelines)]
+            else:
+                raise Exception(f"Unexpected guidelines type: {type(guidelines)}")
+                
+            for guideline_id, guideline in guideline_items:
+                documents.append(guideline['text'])
+                
+                # 가이드라인 메타데이터 구성 - 실제 데이터 구조에 맞게 수정
+                metadata = {
+                    'full_id': guideline.get('full_id', ''),
+                    'category_id': guideline.get('category_id', ''),
+                    'category_name': guideline.get('category_name', ''),
+                    'guideline_id': guideline.get('guideline_id', ''),
+                    'title': guideline.get('title', '')
+                }
+                
+                # 옵션널 필드 추가
+                if 'url' in guideline:
+                    metadata['url'] = guideline['url']
+                if 'criteria' in guideline:
+                    metadata['criteria'] = guideline['criteria']
+                
+                metadatas.append(metadata)
+                ids.append(guideline_id)
+            
+            if documents:  # 데이터가 있는 경우에만 추가
+                self.collection.add(
+                    documents=documents,
+                    metadatas=metadatas,
+                    ids=ids
+                )
+        
         except Exception as e:
             raise Exception(f"가이드라인 로드 중 오류 발생: {str(e)}")
     
-    def add_website_content(self, url: str, content_chunks: List[str]) -> None:
-        """웹사이트 컨텐츠를 Vector DB에 저장합니다."""
+    def find_relevant_guidelines(self, url: str, tag_map: Dict[str, int], top_k: int = 5) -> List[Dict[str, Any]]:
+        """태그맵을 기반으로 관련 가이드라인을 검색합니다."""
         try:
-            # URL에 해당하는 기존 데이터 삭제
-            self.website_collection.delete(where={"url": url})
+            # 태그맵을 문자열로 변환
+            tag_query = " ".join([f"{tag} ({count})" for tag, count in tag_map.items()])
             
-            # 각 청크에 대한 고유 ID 생성
-            chunk_ids = [f"{url}_{i}" for i in range(len(content_chunks))]
-            
-            # Vector DB에 저장
-            self.website_collection.add(
-                ids=chunk_ids,
-                documents=content_chunks,
-                metadatas=[{"url": url, "chunk_index": i} for i in range(len(content_chunks))]
-            )
-        except Exception as e:
-            raise Exception(f"웹사이트 컨텐츠 저장 중 오류 발생: {str(e)}")
-    
-    def find_similar_guidelines(
-        self, 
-        content: str, 
-        n_results: int = 5,
-        threshold: float = 0.5
-    ) -> List[Dict[str, Any]]:
-        """
-        주어진 컨텐츠와 가장 유사한 가이드라인을 찾습니다.
-        
-        Args:
-            content: 유사도를 검색할 텍스트
-            n_results: 반환할 최대 결과 수
-            threshold: 최소 유사도 임계값 (0-1)
-            
-        Returns:
-            유사한 가이드라인 목록 (ID, 거리, 메타데이터 포함)
-        """
-        try:
-            results = self.guidelines_collection.query(
-                query_texts=[content],
-                n_results=n_results,
-                where={"source": "wsg"}
+            # 검색 실행
+            results = self.collection.query(
+                query_texts=[tag_query],
+                n_results=top_k,
+                include=['metadatas', 'distances']
             )
             
-            # 결과 포맷팅
-            similar_guidelines = []
+            # 결과 변환
+            guidelines = []
             for i in range(len(results['ids'][0])):
-                # 거리를 유사도 점수로 변환 (1 - 거리)
-                similarity = 1 - results['distances'][0][i]
-                if similarity >= threshold:
-                    similar_guidelines.append({
-                        'id': results['ids'][0][i],
-                        'similarity': similarity,
-                        'metadata': results['metadatas'][0][i]
-                    })
+                guideline_id = results['ids'][0][i]
+                metadata = results['metadatas'][0][i]
+                distance = results['distances'][0][i]
+                
+                # 가중치 계산 (거리가 작을수록 유사도가 높음)
+                weight = 1.0 / (1.0 + distance)
+                
+                guidelines.append({
+                    'guideline_id': guideline_id,
+                    'impact': metadata['impact'],
+                    'effort': metadata['effort'],
+                    'tags': metadata['tags'].split(','),  # 문자열을 리스트로 변환
+                    'weight': weight
+                })
             
-            return similar_guidelines
+            return guidelines
             
         except Exception as e:
             raise Exception(f"가이드라인 검색 중 오류 발생: {str(e)}")
-    
-    def get_website_content(self, url: str) -> List[str]:
-        """특정 URL의 저장된 컨텐츠를 조회합니다."""
+
+    def add_website_content(self, url: str, content: str, chunks: List[Dict[str, Any]]):
+        """웹사이트 콘텐츠를 Vector DB에 추가합니다."""
         try:
-            results = self.website_collection.get(
-                where={"url": url}
+            collection_name = f"website_{url.replace('/', '_').replace(':', '_')}"
+            
+            # 새 컬렉션 생성
+            collection = self.client.create_collection(
+                name=collection_name,
+                metadata={"url": url},
+                embedding_function=self.embedding_function
             )
-            return results['documents']
+            
+            # 청크 데이터 추가
+            documents = []
+            metadatas = []
+            ids = []
+            
+            for i, chunk in enumerate(chunks):
+                documents.append(chunk['text'])
+                metadatas.append({
+                    'tag': chunk['tag'],
+                    'tokens': chunk['tokens'],
+                    'attributes': str(chunk['attributes'])  # 딕셔너리를 문자열로 변환
+                })
+                ids.append(f"chunk_{i}")
+            
+            if documents:  # 데이터가 있는 경우에만 추가
+                collection.add(
+                    documents=documents,
+                    metadatas=metadatas,
+                    ids=ids
+                )
+            
         except Exception as e:
-            raise Exception(f"웹사이트 컨텐츠 조회 중 오류 발생: {str(e)}")
+            raise Exception(f"웹사이트 콘텐츠 추가 중 오류 발생: {str(e)}")

@@ -85,6 +85,7 @@ async def get_evaluation_status(request_id: str):
     )
 
 async def _run_evaluation(request_id: str, url: str, options: Optional[Dict[str, Any]] = None):
+    
     """백그라운드에서 WSG 평가를 실행합니다."""
     try:
         evaluator = WSGEvaluator()
@@ -100,3 +101,4 @@ async def _run_evaluation(request_id: str, url: str, options: Optional[Dict[str,
             "status": "failed",
             "error": str(e)
         })
+
