@@ -91,6 +91,6 @@
   }
 
   body {
-    @apply bg-black text-white;
+    @apply bg-[#5c9560] text-white;
   }
 }
