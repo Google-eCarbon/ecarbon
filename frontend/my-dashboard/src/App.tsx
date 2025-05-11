@@ -1,3 +1,4 @@
+import "./App.css";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -29,20 +30,16 @@ const App = () => {
           <Toaster />
           <Sonner />
           <Header />
-          <Routes> 
-            {/* <Route path="/" element={<Home />} /> */}
-            <Route path="/guidelines" element={<Guidelines />} />
-            <Route path="/stats" element={<Stats />} />
-            <Route path="/category-stats" element={<CategoryStats />} />
-            <Route path="/carbon-analysis" element={<Index />} />
-
-            <Route path="/" element={<GlobeHome />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/ranking" element={<Ranking />} />
-            <Route path="/user" element={<UserPage />} />
-            <Route path="/measure" element={<Home />} />
-            <Route path="/auth/callback" element={<AuthCallback />} />
-          </Routes>
+          <main className="flex-1">
+            <Routes> 
+              <Route path="/" element={<GlobeHome />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/ranking" element={<Ranking />} />
+              <Route path="/user" element={<UserPage />} />
+              <Route path="/measure" element={<Measure />} />
+              <Route path="/auth/callback" element={<AuthCallback />} />
+            </Routes>
+          </main>
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
