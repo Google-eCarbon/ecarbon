@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Card } from "@/components/ui/card";
+import { format } from "date-fns";
 import {
   Table,
   TableBody,
@@ -35,14 +36,15 @@ const Ranking: React.FC = () => {
         if (!res.ok) {
           if (res.status === 204) {
             setRankings([]);
+            setLastUpdate(null);
             return;
           }
           throw new Error('랭킹 데이터를 불러오는데 실패했습니다');
         }
         
         const data = await res.json();
-        setRankings(data || []);
-        setLastUpdate(new Date().toISOString());
+        setRankings(data.topEmissionPlaces || []);
+        setLastUpdate(data.updatedAt);
       } catch (e: any) {
         setError(e.message);
       } finally {
@@ -147,7 +149,7 @@ const Ranking: React.FC = () => {
       {lastUpdate && (
         <Card className="bg-white/10 p-4 mb-8 text-center">
           <p className="text-sm text-gray-400">
-            마지막 업데이트: {new Date(lastUpdate).toLocaleDateString('ko-KR')}
+            마지막 업데이트: {format(new Date(lastUpdate), 'yyyy-MM-dd')}
           </p>
         </Card>
       )}

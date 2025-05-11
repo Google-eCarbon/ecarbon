@@ -1,5 +1,6 @@
 package com.ecarbon.gdsc.carbon.controller;
 
+import com.ecarbon.gdsc.carbon.dto.RankingResponse;
 import com.ecarbon.gdsc.carbon.dto.TopEmissionPlace;
 import com.ecarbon.gdsc.carbon.entity.WeeklyMeasurements;
 import com.ecarbon.gdsc.carbon.enums.PlaceCategory;
@@ -22,29 +23,30 @@ import java.util.List;
 @RequestMapping("/api/ranking")
 public class RankingController {
 
-    private final RankingUtil rankingUtil; // 의존성 주입
+    private final RankingUtil rankingUtil;
 
     @GetMapping
-    public ResponseEntity<List<TopEmissionPlace>> getRanking(
+    public ResponseEntity<RankingResponse> getRanking(
             HttpSession session,
             @RequestParam(required = false) String weekStartDate,
             @RequestParam(defaultValue = "UNIVERSITY") PlaceCategory placeCategory) {
-
-        WeeklyMeasurements measurement = (WeeklyMeasurements) session.getAttribute("userMeasurement");
 
         if (weekStartDate == null || weekStartDate.isBlank()) {
             weekStartDate = DateUtil.getWeeksMonday();
         }
 
-        log.info("전체 통계 조회 요청: weekStartDate={}, placeType={}", weekStartDate, placeCategory);
-
-        List<TopEmissionPlace> topEmissionPlaces = rankingUtil.getTopEmissionPlaces(weekStartDate, placeCategory, 10); // limit 값 예시
+        List<TopEmissionPlace> topEmissionPlaces = rankingUtil.getTopEmissionPlaces(weekStartDate, placeCategory, 10);
 
         if (topEmissionPlaces.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
 
-        return ResponseEntity.ok(topEmissionPlaces);
+        RankingResponse response = RankingResponse.builder()
+                .updatedAt(weekStartDate)
+                .topEmissionPlaces(topEmissionPlaces)
+                .build();
+
+        return ResponseEntity.ok(response);
     }
 }
 
