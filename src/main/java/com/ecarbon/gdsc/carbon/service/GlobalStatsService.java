@@ -63,8 +63,13 @@ public class GlobalStatsService {
         int rank = 1;
 
         for(WeeklyMeasurements measurement : measurements){
+
             String placeName = measurement.getPlaceInfo() != null
                     ? measurement.getPlaceInfo().getName()
+                    : "Unknown;";
+
+            String country = measurement.getPlaceInfo() != null
+                    ? measurement.getPlaceInfo().getCountry()
                     : "Unknown;";
 
             double emission = measurement.getCarbonEmission();
@@ -75,6 +80,7 @@ public class GlobalStatsService {
             topEmissionPlaces.add(TopEmissionPlace.builder()
                     .rank(rank++)
                     .placeName(placeName)
+                    .country(country)
                     .carbonEmission(emission)
                     .grade(grade)
                     .build());

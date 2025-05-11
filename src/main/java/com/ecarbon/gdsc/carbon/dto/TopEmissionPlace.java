@@ -12,7 +12,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class TopEmissionPlace {
     private int rank;
+    private String url;
     private String placeName;
+    private String country;
     private double carbonEmission;
     private String grade;
 }
