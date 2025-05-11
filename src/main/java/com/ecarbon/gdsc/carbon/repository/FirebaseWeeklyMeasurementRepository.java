@@ -44,6 +44,7 @@ public class FirebaseWeeklyMeasurementRepository {
 
     /**
      * 특정 url에 해당하는 데이터 중 가장 최근(measuredAt 기준) 데이터를 Firestore에서 조회
+     * Firestore 인덱스 필요: (url ASC, measuredAt DESC) 또는 (url DESC, measuredAt DESC)
      * @param url
      * @return Optional<WeeklyMeasurements>
      * @throws ExecutionException
@@ -70,6 +71,7 @@ public class FirebaseWeeklyMeasurementRepository {
 
     /**
      * 주어진 weekStartDate와 category에 해당하는 데이터를 Firestore에서 조회
+     * Firestore 인덱스 필요: (weekStartDate ASC, placeInfo.category ASC) 또는 조합에 따라 다름
      * @param weekStartDate
      * @param category
      * @return List<WeeklyMeasurements>
@@ -95,6 +97,7 @@ public class FirebaseWeeklyMeasurementRepository {
 
     /**
      * 특정 url에 해당하는 데이터 중 가장 최근(measuredAt 기준) 데이터를 Firestore에서 조회
+     * Firestore 인덱스 필요: (url ASC, measuredAt DESC) 또는 (url DESC, measuredAt DESC)
      * @param url
      * @return WeeklyMeasurements
      * @throws ExecutionException
@@ -140,10 +143,9 @@ public class FirebaseWeeklyMeasurementRepository {
         ApiFuture<QuerySnapshot> future = query.get();
         List<QueryDocumentSnapshot> documents = future.get().getDocuments();
 
-        // 2. 문서 객체로 매핑
+        // 2. 문서 객체로 매핑 및 정렬 (carbonEmission 필터는 Firestore에서 이미 수행됨)
         List<WeeklyMeasurements> all = documents.stream()
                 .map(doc -> doc.toObject(WeeklyMeasurements.class))
-                .filter(wm -> wm.getCarbonEmission() != 0.0)
                 .sorted(Comparator.comparing(WeeklyMeasurements::getMeasuredAt).reversed())
                 .collect(Collectors.toList());
 
