@@ -1,8 +1,19 @@
-import React, { useState } from 'react';
-import { Card } from "@/components/ui/card";
+import React, { useState, useEffect } from 'react';
+import guidelineData from '../data/parsed_wsg_guidelines.json';
+import { useLocation } from 'react-router-dom';
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/hooks/use-toast"; 
+import './Measure.css';
+import mockCaptureImage from '@/data/img_captured12.png';
+
+interface CarbonEquivalents {
+  coffeeCups: number;
+  evKm: number;
+  phoneCharges: number;
+  trees: number;
+}
 
 interface MeasurementResult {
   url: string;
@@ -10,13 +21,32 @@ interface MeasurementResult {
   co2Grams: number;
   cleanerThan: number;
   tips: string[];
+  carbonEquivalents: CarbonEquivalents;
 }
 
 const Measure: React.FC = () => {
+  const location = useLocation();
   const [url, setUrl] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState<MeasurementResult | null>(null);
+  const [captureImage, setCaptureImage] = useState<string | null>(null);
+  const [captureLoading, setCaptureLoading] = useState(false);
+  const [captureError, setCaptureError] = useState<string | null>(null);
   const { toast } = useToast();
+
+  useEffect(() => {
+    const state = location.state as { url?: string; result?: MeasurementResult } | null;
+    if (state?.url) {
+      setUrl(state.url);
+      if (state.result) {
+        setResult(state.result);
+        toast({
+          title: "측정 완료",
+          description: `탄소 점수: ${state.result.carbonScore}점`
+        });
+      }
+    }
+  }, [location.state, toast]);
 
   const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUrl(e.target.value);
@@ -27,6 +57,18 @@ const Measure: React.FC = () => {
     setIsLoading(true);
     
     try {
+      setCaptureLoading(true);
+      setCaptureError(null);
+      setCaptureImage(mockCaptureImage);
+      try {
+        // Mock 이미지 사용
+      } catch (error: any) {
+        console.error('캡처 중 오류:', error);
+        setCaptureError(error?.message || '알 수 없는 오류가 발생했습니다.');
+      } finally {
+        setCaptureLoading(false);
+      }
+
       // 웹사이트 탄소 배출량 측정 시뮬레이션
       await new Promise(resolve => setTimeout(resolve, 2000));
       
@@ -38,14 +80,16 @@ const Measure: React.FC = () => {
         carbonScore,
         co2Grams,
         cleanerThan: Math.floor(Math.random() * 91) + 10,
-        tips: [
-          "이미지 최적화로 페이지 크기 줄이기",
-          "서버 위치를 사용자에게 가깝게 설정",
-          "화면 크기에 맞게 이미지 제공",
-          "불필요한 JavaScript 제거",
-          "지속 가능한 호스팅 서비스 사용"
-        ]
+        tips: [],
+        carbonEquivalents: {
+          coffeeCups: Math.floor(Math.random() * 1000) + 100,
+          evKm: Math.floor(Math.random() * 1000) + 100,
+          phoneCharges: Math.floor(Math.random() * 1000) + 100,
+          trees: Math.floor(Math.random() * 100) + 10
+        }
       });
+      
+
 
       toast({
         title: "측정 완료",
@@ -71,45 +115,47 @@ const Measure: React.FC = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto pt-24 pb-12 px-4 text-white">
+    <div className="measure-container">
       <h1 className="text-4xl font-bold text-center mb-10">웹사이트 탄소 배출량 측정</h1>
       
       {!result ? (
-        <Card className="bg-white/10 p-8 rounded-xl">
-          <p className="text-center text-lg mb-8 max-w-2xl mx-auto">
-            웹사이트 URL을 입력하면 해당 페이지의 탄소 배출량을 측정합니다. 
-            친환경적인 웹을 만들기 위한 첫 걸음을 시작하세요.
-          </p>
-          
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="flex max-w-2xl mx-auto">
+        <div className="carbon-form-container">
+          <form onSubmit={handleSubmit} className="space-y-8">
+            <div className="space-y-2">
+              <h2 className="text-2xl font-semibold">웹사이트 URL 입력</h2>
+              <p className="text-white/70">
+                측정하고자 하는 웹사이트의 URL을 입력해주세요.
+              </p>
+            </div>
+
+            <div className="flex space-x-2">
               <Input
                 type="url"
-                placeholder="https://greenee.co.kr"
                 value={url}
                 onChange={handleUrlChange}
+                placeholder="https://greenee.co.kr"
+                className="flex-1 bg-white/10 border-white/20 text-white placeholder:text-white/50"
                 required
-                className="rounded-r-none bg-white/10 border-white/30 text-white"
               />
-              <Button 
-                type="submit" 
+              <Button
+                type="submit"
                 disabled={isLoading}
-                className="rounded-l-none bg-white text-green-700 hover:bg-white/90 hover:text-green-800"
+                className="bg-white text-green-700 hover:bg-white/90"
               >
-                {isLoading ? '측정 중...' : '측정하기'}
+                측정하기
               </Button>
             </div>
-            
+
             {isLoading && (
-              <div className="flex flex-col items-center mt-8">
+              <div className="flex flex-col items-center justify-center space-y-4 mt-8">
                 <div className="w-10 h-10 border-4 border-white/30 border-t-white rounded-full animate-spin mb-4" />
                 <p>측정 중입니다. 잠시만 기다려 주세요...</p>
               </div>
             )}
           </form>
-        </Card>
+        </div>
       ) : (
-        <Card className="bg-white/10 p-8 rounded-xl">
+        <div className="result-container bg-white/10 p-8 rounded-xl">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-2xl font-semibold">{result.url} 측정 결과</h2>
             <Button
@@ -120,49 +166,90 @@ const Measure: React.FC = () => {
               다시 측정하기
             </Button>
           </div>
-          
-          <div className="grid grid-cols-3 gap-8 mb-12 md:grid-cols-1">
-            <Card className="bg-white/10 p-6 text-center">
-              <div className="relative w-32 h-32 mx-auto mb-4">
-                <div className="absolute inset-0 rounded-full border-4 border-white/30" />
-                <div 
-                  className="absolute inset-0 rounded-full border-4 border-white"
-                  style={{
-                    clipPath: `polygon(50% 50%, 50% 0, ${50 + 50 * Math.cos(result.carbonScore / 100 * 2 * Math.PI)}% ${50 - 50 * Math.sin(result.carbonScore / 100 * 2 * Math.PI)}%, 50% 0)`
-                  }}
-                />
-                <div className="absolute inset-0 flex items-center justify-center text-3xl font-bold">
-                  {result.carbonScore}
+
+          <div className="result-score-container">
+            <div className="carbon-score">
+              <div className="score-info">
+                <div className="score-circle">
+                  <span>
+                    {result.carbonScore >= 90 ? 'A+' :
+                     result.carbonScore >= 80 ? 'A' :
+                     result.carbonScore >= 70 ? 'B' :
+                     result.carbonScore >= 60 ? 'C' :
+                     result.carbonScore >= 50 ? 'D' : 'F'}
+                  </span>
+                </div>
+                <div className="score-details">
+                  <p className="score-rank">해당 웹사이트는 상위 {result.cleanerThan}% 입니다.</p>
+                  <p className="score-emissions">{result.co2Grams} CO₂/page gram</p>
                 </div>
               </div>
-              <p className="text-lg">탄소 점수</p>
-            </Card>
-            
-            <Card className="bg-white/10 p-6 text-center">
-              <h3 className="text-3xl font-bold mb-2">{result.co2Grams}g</h3>
-              <p className="text-lg">CO₂ 배출량</p>
-            </Card>
-            
-            <Card className="bg-white/10 p-6 text-center">
-              <h3 className="text-3xl font-bold mb-2">{result.cleanerThan}%</h3>
-              <p className="text-lg">다른 웹사이트보다 깨끗함</p>
-            </Card>
+            </div>
           </div>
           
-          <Card className="bg-white/10 p-6 mb-8">
-            <h3 className="text-xl font-semibold mb-4">개선 방안</h3>
-            <ul className="space-y-2">
-              {result.tips.map((tip, index) => (
-                <li key={index} className="flex items-center">
-                  <span className="w-6 h-6 rounded-full bg-green-600 flex items-center justify-center mr-3 flex-shrink-0">
-                    {index + 1}
+          <div className="carbon-equivalents">
+            <h3 style={{ fontWeight: 'bold', marginTop: '2rem' }}>연간 탄소 배출량 환산</h3>
+            <p className="subtitle">월 10,000명 방문 기준</p>
+            
+            <div className="metrics-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginTop: '1rem' }}>
+              <div className="metric-card" style={{ padding: '1rem', background: 'white', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
+                <p style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>☕</p>
+                <p style={{ fontWeight: 'medium' }}>커피 {result.carbonEquivalents?.coffeeCups?.toLocaleString() ?? '-'}잔</p>
+              </div>
+              
+              <div className="metric-card" style={{ padding: '1rem', background: 'white', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
+                <p style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🚗</p>
+                <p style={{ fontWeight: 'medium' }}>전기차 {result.carbonEquivalents?.evKm?.toLocaleString() ?? '-'}km</p>
+              </div>
+              
+              <div className="metric-card" style={{ padding: '1rem', background: 'white', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
+                <p style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>📱</p>
+                <p style={{ fontWeight: 'medium' }}>휴대폰 {result.carbonEquivalents?.phoneCharges?.toLocaleString() ?? '-'}회 충전</p>
+              </div>
+              
+              <div className="metric-card" style={{ padding: '1rem', background: 'white', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
+                <p style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🌲</p>
+                <p style={{ fontWeight: 'medium' }}>나무 {result.carbonEquivalents?.trees?.toLocaleString() ?? '-'}그루</p>
+              </div>
+            </div>
+            
+            <p style={{ marginTop: '1rem', textAlign: 'center', fontSize: '0.875rem', color: '#666' }}>
+              ※ 하루 10,000명 방문 기준, 1년 동안 절감할 수 있는 탄소량입니다.
+            </p>
+          </div>
+
+          <div className="guidelines-checklist mt-8">
+            <h3 className="text-2xl font-semibold mb-6">지속 가능한 웹 가이드라인</h3>
+            
+            <div className="guidelines-table">
+              <div className="table-header">
+                <span>카테고리</span>
+                <span>가이드라인</span>
+                <span>준수여부</span>
+                <span>중요도</span>
+                <span></span>
+              </div>
+              
+              {guidelineData.slice(0, 10).map((item, index) => (
+                <div key={index} className={`table-row ${index >= 5 ? 'blurred' : ''}`}>
+                  <span className="category">{item.categoryName}</span>
+                  <span className="guideline">{item.guideline}</span>
+                  <span className="compliance">
+                    <span className={`compliance-icon ${Math.random() > 0.5 ? 'pass' : 'fail'}`}>
+                      {Math.random() > 0.5 ? '✔' : '✖'}
+                    </span>
                   </span>
-                  {tip}
-                </li>
+                  <span className="importance">
+                    {Array(3).fill(0).map((_, i) => (
+                      <span key={i} className={`importance-dot ${i < Math.floor(Math.random() * 3 + 1) ? 'active' : ''}`}>⬤</span>
+                    ))}
+                  </span>
+                  <button className="view-more-btn">더보기</button>
+                </div>
               ))}
-            </ul>
-          </Card>
-          
+            </div>
+          </div>
+
           <div className="text-center">
             <p className="mb-4">이 결과를 공유하고 웹사이트를 개선하세요!</p>
             <div className="flex justify-center gap-4">
@@ -186,7 +273,30 @@ const Measure: React.FC = () => {
               </Button>
             </div>
           </div>
-        </Card>
+
+          <div className="capture-result mt-8">
+            <h3 className="text-2xl font-semibold mb-4">웹사이트 이미지 분석 결과</h3>
+            {captureLoading && (
+              <div className="loading-indicator flex items-center justify-center">
+                <div className="w-10 h-10 border-4 border-white/30 border-t-white rounded-full animate-spin mr-3" />
+                <p>이미지 캡처 중...</p>
+              </div>
+            )}
+            {captureError && (
+              <div className="error-message text-red-500 p-4 rounded bg-red-100/10">
+                캡처 오류: {captureError}
+              </div>
+            )}
+            {captureImage && (
+              <div className="capture-image-container bg-white/10 p-4 rounded-lg">
+                <img src={captureImage} alt="캡처된 웹사이트" className="w-full max-w-3xl mx-auto rounded-lg shadow-lg" />
+                <p className="capture-description mt-4 text-center text-sm text-white/80">
+                  붉은색 테두리로 표시된 부분이 이미지 요소입니다.
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
       )}
     </div>
   );
