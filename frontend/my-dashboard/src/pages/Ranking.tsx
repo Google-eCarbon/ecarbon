@@ -12,8 +12,19 @@ interface RankingItem {
   grade: string;
 }
 
+type RankingType = 'overall' | 'sustainability';
+
+interface RankingState {
+  overall: RankingItem[];
+  sustainability: RankingItem[];
+}
+
 const Ranking: React.FC = () => {
-  const [rankings, setRankings] = useState<RankingItem[]>([]);
+  const [rankings, setRankings] = useState<RankingState>({
+    overall: [],
+    sustainability: []
+  });
+  const [rankingType, setRankingType] = useState<RankingType>('overall');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [lastUpdate, setLastUpdate] = useState<string | null>(null);
@@ -35,7 +46,11 @@ const Ranking: React.FC = () => {
         }
         
         const data = await res.json();
-        setRankings(data.topEmissionPlaces || []);
+        // 백엔드에서 받은 데이터를 overall 카테고리에 할당
+        setRankings({
+          overall: data.topEmissionPlaces || [],
+          sustainability: [] // 현재 백엔드에서 지원하지 않음
+        });
         setLastUpdate(data.updatedAt);
       } catch (e: any) {
         setError(e.message);
@@ -58,12 +73,19 @@ const Ranking: React.FC = () => {
 
   const getGradeColor = (grade: string): string => {
     switch (grade) {
-      case 'A': return 'text-green-400';
-      case 'B': return 'text-green-500';
+      case 'A+': return 'text-green-400';
+      case 'A': return 'text-green-500';
+      case 'B': return 'text-blue-500';
       case 'C': return 'text-yellow-500';
       case 'D': return 'text-orange-500';
-      default: return 'text-red-500';
+      case 'E': return 'text-red-400';
+      case 'F': return 'text-red-500';
+      default: return 'text-gray-500';
     }
+  };
+
+  const handleFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setRankingType(e.target.value as RankingType);
   };
 
   const renderRankingTable = () => {
@@ -83,7 +105,7 @@ const Ranking: React.FC = () => {
       );
     }
 
-    if (rankings.length === 0) {
+    if (!rankings[rankingType] || rankings[rankingType].length === 0) {
       return (
         <div className="no-data">
           <p>데이터가 없습니다.</p>
@@ -104,28 +126,18 @@ const Ranking: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {rankings.map((item) => (
+            {rankings[rankingType].map((item) => (
               <tr key={item.rank}>
                 <td>
-                  {getMedalEmoji(item.rank)} {item.rank}
+                  <span className="rank-number">
+                    {getMedalEmoji(item.rank)}
+                    {item.rank}
+                  </span>
                 </td>
-                <td>
-                  <a 
-                    href={item.url} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="company-link"
-                  >
-                    {item.placeName}
-                  </a>
-                </td>
+                <td>{item.placeName}</td>
                 <td>{item.country}</td>
-                <td className="text-right">
-                  {item.carbonEmission.toFixed(3)} g
-                </td>
-                <td className={getGradeColor(item.grade)}>
-                  {item.grade}
-                </td>
+                <td>{item.carbonEmission.toFixed(2)}</td>
+                <td className={getGradeColor(item.grade)}>{item.grade}</td>
               </tr>
             ))}
           </tbody>
@@ -136,7 +148,19 @@ const Ranking: React.FC = () => {
 
   return (
     <div className="ranking-container">
-      <h1>친환경 기관 순위</h1>
+      <h1>친환경 기업 순위</h1>
+      
+      <div className="filter-container">
+        <select value={rankingType} onChange={handleFilterChange}>
+          <option value="overall">종합 순위</option>
+          <option value="sustainability">Sustainability</option>
+        </select>
+      </div>
+
+      <div className="ranking-description">
+        {rankingType === 'overall' && <p>모든 환경 지표를 종합한 기업별 순위입니다.</p>}
+        {rankingType === 'sustainability' && <p>지속가능성 및 환경 보호 활동을 기준으로 한 순위입니다.</p>}
+      </div>
       
       {lastUpdate && (
         <div className="last-update">
@@ -144,27 +168,7 @@ const Ranking: React.FC = () => {
         </div>
       )}
       
-      <div className="ranking-table-wrapper">
-        {renderRankingTable()}
-      </div>
-      
-      <div className="ranking-info">
-        <h3>평가 기준</h3>
-        <p>
-          Greenee의 친환경 기관 평가는 탄소 배출량을 기준으로 산출됩니다.
-          모든 평가는 검증된 데이터를 기반으로 공정하게 이루어집니다.
-        </p>
-        <div className="grade-criteria">
-          <h4>등급 기준</h4>
-          <ul>
-            <li className="grade-a">A등급: 우수한 탄소 배출 관리</li>
-            <li className="grade-b">B등급: 양호한 탄소 배출 관리</li>
-            <li className="grade-c">C등급: 보통수준의 탄소 배출 관리</li>
-            <li className="grade-d">D등급: 개선이 필요한 탄소 배출 관리</li>
-            <li className="grade-f">F등급: 시급한 개선이 필요한 탄소 배출 관리</li>
-          </ul>
-        </div>
-      </div>
+      {renderRankingTable()}
     </div>
   );
 };
