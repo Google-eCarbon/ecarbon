@@ -1,29 +1,47 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
+
 import '../styles/GlobeHome.css';
 
 // 세계 지도 토폴로지 데이터 URL
 const geoUrl = "https://unpkg.com/world-atlas@2.0.2/countries-110m.json";
-
 interface MousePosition {
   x: number;
   y: number;
 }
 
-interface City {
-  id: string;
+interface EmissionMapMarker {
   placeName: string;
-  country: string;
   carbonEmission: number;
-  grade: string;
+  latitude: number;
+  longitude: number;
+  url: string;
+}
+
+interface GlobeHomeResponse {
+  emissionMapMarkers: EmissionMapMarker[];
+  error?: string;
+}
+
+interface MarkerData {
+  name: string;
+  carbonEmission: number;
   coordinates: [number, number];
+  url: string;
+}
+
+interface TooltipData {
+  content: string;
+  position: { x: number; y: number };
 }
 
 const GlobeHome: React.FC = () => {
   const navigate = useNavigate();
   const [rotation, setRotation] = useState<[number, number, number]>([0, 0, 0]);
-  const [cities, setCities] = useState<City[]>([]);
+  const [cities, setCities] = useState<MarkerData[]>([]);
+  const [error, setError] = useState<string>('');
+  const [tooltip, setTooltip] = useState<TooltipData | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [url, setUrl] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -31,28 +49,51 @@ const GlobeHome: React.FC = () => {
   const globeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const fetchCities = async () => {
+    const fetchMapMarkers = async () => {
       try {
-        const response = await fetch('/api/ranking', {
-          credentials: 'include'
-        });
+        setError('');
+        // Get current week's start date in YYYY-MM-DD format
+        const today = new Date();
+        const dayOfWeek = today.getDay();
+        const diff = today.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1);
+        const weekStart = new Date(today.setDate(diff));
+        const weekStartDate = weekStart.toISOString().split('T')[0];
+
+        console.log('Fetching data for week starting:', weekStartDate);
+
+        const response = await fetch(`http://localhost:8080/?weekStartDate=${weekStartDate}&placeCategory=UNIVERSITY`);
+
         if (response.ok) {
-          const data = await response.json();
-          setCities(data.topEmissionPlaces.map((place: any) => ({
-            id: place.id,
-            placeName: place.placeName,
-            country: place.country,
-            carbonEmission: place.carbonEmission,
-            grade: place.grade,
-            coordinates: [place.longitude || 0, place.latitude || 0]
-          })));
+          const data: GlobeHomeResponse = await response.json();
+          if (data.error) {
+            setError(data.error);
+            setCities([]);
+          } else {
+            // Transform the data to match the expected format
+            const transformedCities = data.emissionMapMarkers.map(marker => ({
+              name: marker.placeName,
+              carbonEmission: marker.carbonEmission,
+              coordinates: [marker.longitude, marker.latitude] as [number, number],
+              url: marker.url
+            }));
+            console.log('Received markers:', transformedCities);
+            setCities(transformedCities);
+          }
+        } else if (response.status === 204) {
+          console.log('No data available for the specified week');
+          setCities([]);
+        } else {
+          const errorData = await response.json();
+          setError(errorData.error || 'Failed to fetch map markers');
+          console.error('Failed to fetch map markers:', response.statusText);
         }
       } catch (error) {
-        console.error('도시 데이터 로딩 실패:', error);
+        setError('Error connecting to the server');
+        console.error('Error fetching map markers:', error);
       }
     };
 
-    fetchCities();
+    fetchMapMarkers();
   }, []);
 
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -84,36 +125,45 @@ const GlobeHome: React.FC = () => {
 
     setIsLoading(true);
     try {
-      // 웹사이트 탄소 배출량 측정 시뮬레이션
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      const carbonScore = Math.floor(Math.random() * 91) + 10;
-      const co2Grams = Number((Math.random() * 5).toFixed(2));
-      const cleanerThan = Math.floor(Math.random() * 91) + 10;
+      // 1. URL 제출하여 분석 시작
+      const startResponse = await fetch('/api/start-analysis', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `url=${encodeURIComponent(url)}`
+      });
 
-      const measurementResult = {
-        url,
-        carbonScore,
-        co2Grams,
-        cleanerThan,
-        tips: [
-          "이미지 최적화로 페이지 크기 줄이기",
-          "서버 위치를 사용자에게 가깝게 설정",
-          "화면 크기에 맞게 이미지 제공",
-          "불필요한 JavaScript 제거",
-          "지속 가능한 호스팅 서비스 사용"
-        ]
-      };
+      if (!startResponse.ok) {
+        throw new Error('성능 측정을 시작하는데 실패했습니다');
+      }
 
-      // 측정 결과와 함께 Measure 페이지로 리디렉션
+      // 2. 분석 결과 가져오기
+      const analysisResponse = await fetch('/api/carbon-analysis', {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (!analysisResponse.ok) {
+        throw new Error('분석 결과를 가져오는데 실패했습니다');
+      }
+
+      const result = await analysisResponse.json();
+
+      // 3. 측정 결과와 함께 Measure 페이지로 리디렉션
       navigate('/measure', { 
         state: { 
           url,
-          result: measurementResult
+          result
         } 
       });
     } catch (error) {
       console.error('측정 실패:', error);
+      // 에러 발생 시에도 Measure 페이지로 이동하여 재시도할 수 있도록 함
       navigate('/measure', { state: { url } });
     } finally {
       setIsLoading(false);
@@ -125,14 +175,12 @@ const GlobeHome: React.FC = () => {
       <h1>Greenee 웹사이트의 지속가능성을 평가하세요</h1>
       <div className="home-content">
         <div className="split-container">
-          <div 
-            className="globe-container"
-            ref={globeRef}
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseUp}
-          >
+          {error && (
+            <div className="error-message" style={{ color: 'red', marginBottom: '10px', textAlign: 'center' }}>
+              {error}
+            </div>
+          )}
+          <div ref={globeRef} className="globe-container" onMouseDown={handleMouseDown} onMouseMove={handleMouseMove} onMouseUp={handleMouseUp} onMouseLeave={handleMouseUp}>
             <ComposableMap
               projection="geoOrthographic"
               projectionConfig={{
@@ -167,14 +215,36 @@ const GlobeHome: React.FC = () => {
                   ))
                 }
               </Geographies>
-              {cities.map((city) => (
-                <Marker key={city.id} coordinates={city.coordinates}>
-                  <circle
-                    r={4}
-                    fill={city.grade === 'A' ? '#34d399' : city.grade === 'B' ? '#10b981' : '#ef4444'}
-                  />
-                </Marker>
-              ))}
+              {cities
+                .filter((city) => {
+                  const [longitude] = city.coordinates;
+                  const [rotateX] = rotation;
+                  const relativeLongitude = (longitude + rotateX + 180) % 360 - 180;
+                  return Math.abs(relativeLongitude) <= 90; // 앞면(±90도 이내)의 마커만 표시
+                })
+                .map((city, index) => (
+                  <Marker key={index} coordinates={city.coordinates}>
+                    <g 
+                      style={{ cursor: 'pointer' }}
+                      onClick={() => window.open(city.url, '_blank')}
+                      onMouseEnter={(e: React.MouseEvent) => {
+                        const rect = (e.target as SVGElement).getBoundingClientRect();
+                        setTooltip({
+                          content: `${city.name}\n탄소 배출량: ${city.carbonEmission.toFixed(2)}g CO2\n${city.url}`,
+                          position: { x: rect.left, y: rect.top - 10 }
+                        });
+                      }}
+                      onMouseLeave={() => setTooltip(null)}
+                    >
+                      <circle 
+                        r={4} 
+                        fill={city.carbonEmission < 2 ? '#34d399' : city.carbonEmission < 3 ? '#10b981' : '#ef4444'}
+                        stroke="#fff"
+                        strokeWidth={1}
+                      />
+                    </g>
+                  </Marker>
+                ))}
             </ComposableMap>
           </div>
           <div className="measure-section">
@@ -207,6 +277,26 @@ const GlobeHome: React.FC = () => {
           </div>
         </div>
       </div>
+      {tooltip && (
+        <div 
+          style={{
+            position: 'fixed',
+            left: `${tooltip.position.x}px`,
+            top: `${tooltip.position.y}px`,
+            transform: 'translateY(-100%)',
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+            color: 'white',
+            padding: '8px 12px',
+            borderRadius: '4px',
+            fontSize: '14px',
+            pointerEvents: 'none',
+            zIndex: 1000,
+            whiteSpace: 'pre-line'
+          }}
+        >
+          {tooltip.content}
+        </div>
+      )}
     </div>
   );
 };
