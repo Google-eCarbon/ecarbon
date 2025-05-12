@@ -1,6 +1,7 @@
 package com.ecarbon.gdsc.carbon.service;
 
 import com.ecarbon.gdsc.admin.dto.CountryCarbonAvgResponse;
+import com.ecarbon.gdsc.carbon.dto.EmissionMapMarker;
 import com.ecarbon.gdsc.carbon.dto.GlobalStatsResponse;
 import com.ecarbon.gdsc.carbon.dto.TopEmissionPlace;
 import com.ecarbon.gdsc.carbon.entity.WeeklyMeasurements;
@@ -39,7 +40,7 @@ public class GlobalStatsService {
         average = Math.round(average * 100.0) / 100.0;
 
         List<CountryCarbonAvgResponse.CountryCarbonAvg> countryCarbonAvgs = getCountryCarbonAverages(uniqueMeasurements);
-        List<GlobalStatsResponse.EmissionMapMarker> emissionMapMarkers = getEmissionMapMarkers(uniqueMeasurements);
+        List<EmissionMapMarker> emissionMapMarkers = getEmissionMapMarkers(uniqueMeasurements);
 
         GlobalStatsResponse response = GlobalStatsResponse.builder()
                 .weekStartDate(weekStartDate)
@@ -114,14 +115,15 @@ public class GlobalStatsService {
     }
 
 
-    private List<GlobalStatsResponse.EmissionMapMarker> getEmissionMapMarkers(List<WeeklyMeasurements> uniqueMeasurements){
+    private List<EmissionMapMarker> getEmissionMapMarkers(List<WeeklyMeasurements> uniqueMeasurements){
+        
         if (uniqueMeasurements == null || uniqueMeasurements.isEmpty()) {
             return Collections.emptyList();
         }
 
         return uniqueMeasurements.stream()
                 .filter(measurement -> measurement.getPlaceInfo() != null) // placeInfo 없는 데이터 필터링
-                .map(measurement -> GlobalStatsResponse.EmissionMapMarker.builder()
+                .map(measurement -> EmissionMapMarker.builder()
                         .url(measurement.getUrl())
                         .placeName(measurement.getPlaceInfo().getName())
                         .carbonEmission(measurement.getCarbonEmission())
