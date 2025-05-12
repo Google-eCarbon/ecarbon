@@ -1,8 +1,10 @@
 package com.ecarbon.gdsc.auth.handler;
 
 import com.ecarbon.gdsc.auth.dto.OAuth2LoginResponse;
+import com.ecarbon.gdsc.auth.entity.User;
 import com.ecarbon.gdsc.auth.jwt.JwtTokenProvider;
 import com.ecarbon.gdsc.auth.principal.CustomOAuth2User;
+import com.ecarbon.gdsc.auth.repository.FirebaseUserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -23,6 +25,7 @@ import java.nio.charset.StandardCharsets;
 @RequiredArgsConstructor
 public class OAuth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
     private final JwtTokenProvider jwtProvider;
+    private final FirebaseUserRepository userRepository;
     private static final String JWT_SESSION_KEY = "jwt_token";
     
     @Value("${app.frontend.url:http://localhost:3030}")
@@ -38,10 +41,22 @@ public class OAuth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
         String username = oAuth2User.getName();
         String email = oAuth2User.getEmail();
 
-        // 2️⃣ JWT 생성 (이메일 정보 포함)
+        // 2️⃣ 사용자 정보를 Firebase에 저장
+        try {
+            User user = User.builder()
+                    .email(email)
+                    .name(username)
+                    .build();
+            userRepository.save(user);
+            log.info("사용자 정보를 Firebase에 저장했습니다: {}", email);
+        } catch (Exception e) {
+            log.error("Firebase에 사용자 정보 저장 중 오류 발생: {}", e.getMessage());
+        }
+
+        // 3️⃣ JWT 생성 (이메일 정보 포함)
         String token = jwtProvider.createToken(username, email, oAuth2User.getAuthorities());
 
-        // 3️⃣ JWT를 세션에 저장
+        // 4️⃣ JWT를 세션에 저장
         HttpSession session = request.getSession(true); // 세션이 없으면 새로 생성
         session.setAttribute(JWT_SESSION_KEY, token);
         log.info("JWT 토큰을 세션에 저장했습니다. 세션 ID: {}", session.getId());
