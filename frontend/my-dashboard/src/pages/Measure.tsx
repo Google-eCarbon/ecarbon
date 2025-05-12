@@ -15,13 +15,22 @@ interface CarbonEquivalents {
   trees: number;
 }
 
+interface ResourcePercentage {
+  resourceType: string;
+  size: number;
+  percentage: number;
+}
+
 interface MeasurementResult {
+  measuredAt: string;
   url: string;
-  carbonScore: number;
-  co2Grams: number;
-  cleanerThan: number;
-  tips: string[];
+  total_byte_weight: number;
+  resourcePercentage: ResourcePercentage[];
   carbonEquivalents: CarbonEquivalents;
+  carbonEmission: number;
+  kbWeight: number;
+  grade: string;
+  globalAvgCarbon: number;
 }
 
 const Measure: React.FC = () => {
@@ -42,7 +51,7 @@ const Measure: React.FC = () => {
         setResult(state.result);
         toast({
           title: "측정 완료",
-          description: `탄소 점수: ${state.result.carbonScore}점`
+          description: `탄소 등급: ${state.result.grade}`
         });
       }
     }
@@ -54,48 +63,56 @@ const Measure: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
+    if (!url) return;
     
+    setIsLoading(true);
     try {
       setCaptureLoading(true);
       setCaptureError(null);
       setCaptureImage(mockCaptureImage);
-      try {
-        // Mock 이미지 사용
-      } catch (error: any) {
-        console.error('캡처 중 오류:', error);
-        setCaptureError(error?.message || '알 수 없는 오류가 발생했습니다.');
-      } finally {
-        setCaptureLoading(false);
+      
+      // 1. URL 제출
+      const startResponse = await fetch('/api/start-analysis', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `url=${encodeURIComponent(url)}`
+      });
+
+      if (!startResponse.ok) {
+        throw new Error('성능 측정을 시작하는데 실패했습니다');
       }
 
-      // 웹사이트 탄소 배출량 측정 시뮬레이션
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      const carbonScore = Math.floor(Math.random() * 91) + 10;
-      const co2Grams = Number((Math.random() * 5).toFixed(2));
-      
-      setResult({
-        url,
-        carbonScore,
-        co2Grams,
-        cleanerThan: Math.floor(Math.random() * 91) + 10,
-        tips: [],
-        carbonEquivalents: {
-          coffeeCups: Math.floor(Math.random() * 1000) + 100,
-          evKm: Math.floor(Math.random() * 1000) + 100,
-          phoneCharges: Math.floor(Math.random() * 1000) + 100,
-          trees: Math.floor(Math.random() * 100) + 10
+      // 2. 분석 결과 가져오기
+      const analysisResponse = await fetch('/api/carbon-analysis', {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json'
         }
       });
-      
 
+      if (!analysisResponse.ok) {
+        if (analysisResponse.status === 302) {
+          window.location.href = '/';
+          return;
+        }
+        throw new Error('분석 결과를 가져오는데 실패했습니다');
+      }
+
+      const data = await analysisResponse.json();
+      setResult(data);
+      setCaptureLoading(false);
 
       toast({
         title: "측정 완료",
-        description: "웹사이트의 탄소 배출량 측정이 완료되었습니다.",
+        description: `탄소 등급: ${data.grade}`,
       });
     } catch (error) {
+      setCaptureLoading(false);
+      setCaptureError('이미지 캡처 실패');
       toast({
         variant: "destructive",
         title: "오류 발생",
@@ -171,25 +188,20 @@ const Measure: React.FC = () => {
             <div className="carbon-score">
               <div className="score-info">
                 <div className="score-circle">
-                  <span>
-                    {result.carbonScore >= 90 ? 'A+' :
-                     result.carbonScore >= 80 ? 'A' :
-                     result.carbonScore >= 70 ? 'B' :
-                     result.carbonScore >= 60 ? 'C' :
-                     result.carbonScore >= 50 ? 'D' : 'F'}
-                  </span>
+                  <span>{result.grade}</span>
                 </div>
                 <div className="score-details">
-                  <p className="score-rank">해당 웹사이트는 상위 {result.cleanerThan}% 입니다.</p>
-                  <p className="score-emissions">{result.co2Grams} CO₂/page gram</p>
+                  <p className="score-emissions">{result.carbonEmission.toFixed(2)} CO₂/page gram</p>
+                  <p className="score-size">총 {(result.kbWeight / 1024).toFixed(2)} MB</p>
+                  <p className="score-comparison">전역 평균 ({result.globalAvgCarbon}g) 대비 {((result.carbonEmission - result.globalAvgCarbon) / result.globalAvgCarbon * 100).toFixed(1)}%</p>
                 </div>
               </div>
             </div>
           </div>
-          
-          <div className="carbon-equivalents">
-            <h3 style={{ fontWeight: 'bold', marginTop: '2rem' }}>연간 탄소 배출량 환산</h3>
-            <p className="subtitle">월 10,000명 방문 기준</p>
+
+          <div className="carbon-equivalents mt-8">
+            <h3 className="text-xl font-semibold mb-2">탄소 배출량 환산</h3>
+            <p className="text-sm opacity-70 mb-4">이 페이지의 탄소 배출량은 다음과 같습니다</p>
             
             <div className="metrics-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginTop: '1rem' }}>
               <div className="metric-card" style={{ padding: '1rem', background: 'white', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
