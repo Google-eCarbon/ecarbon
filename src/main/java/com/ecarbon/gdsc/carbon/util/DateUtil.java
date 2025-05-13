@@ -29,4 +29,8 @@ public class DateUtil {
 
         return mondays;
     }
+
+    public static String extractDate(String timestamp) {
+        return timestamp != null && timestamp.length() >= 10 ? timestamp.substring(0, 10) : "unknown";
+    }
 }
