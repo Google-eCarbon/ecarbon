@@ -2,7 +2,7 @@
 
 - fast api run
 ```python
-uvicorn api.main:app --reload
+uvicorn app.main:app --reload
 ```
 
 - run on background

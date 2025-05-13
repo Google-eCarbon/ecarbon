@@ -1,14 +1,12 @@
+from langchain.output_parsers import StructuredOutputParser
 from pydantic import BaseModel, Field
 from langchain.output_parsers import StructuredOutputParser
 from langchain.prompts import ChatPromptTemplate
-from langchain_openai import ChatOpenAI
-from langchain_groq import ChatGroq
-from langchain_anthropic import ChatAnthropic
-from langchain.chains import LLMChain
-import sqlite3
-import os
 import json
 from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_openai import OpenAIEmbeddings
+from langchain_community.vectorstores import Chroma
+from app.services.database import DatabaseManager
 
 class EvaluationResult(BaseModel):
     relevant_code: str = Field(description="The code snippet from the input that is relevant to the guideline")
@@ -16,7 +14,7 @@ class EvaluationResult(BaseModel):
     explanation: str = Field(description="Detailed explanation of why the code violates or complies with the guideline")
     corrected_code: str = Field(description="If there's a violation, provide the corrected code. If no violation, write 'Not applicable'")
 
-def create_chain(model_name, use_groq=False, use_claude=False, use_openai=False, use_google=False):
+def create_chain(model_name, use_google=False):
     """LLM 체인 생성"""
     # 파서 구성
     parser = StructuredOutputParser.from_response_schemas([
@@ -90,7 +88,7 @@ Your response (in strict JSON format):"""
 
 def evaluate_code(code: str, guideline: str, model_name, use_groq=False, use_claude=False, use_openai=False, use_google=False) -> EvaluationResult:
     """코드와 가이드라인을 평가"""
-    chain, parser = create_chain(model_name, use_groq, use_claude, use_openai, use_google)
+    chain, parser = create_chain(model_name, use_google)
     response = chain.invoke({
         "code": code,
         "guideline": guideline
@@ -109,14 +107,14 @@ def evaluate_code(code: str, guideline: str, model_name, use_groq=False, use_cla
             content = content[:-3]
         content = content.strip()
         
-        print("\n=== LLM 응답 디버깅 ===")
-        print("정제된 응답:")
-        print(content)
-        print("\n응답 문자 분석:")
-        for i, char in enumerate(content):
-            if char in ['"', "'", "}", "{", ","]:
-                print(f"위치 {i}: '{char}'")
-        print("=" * 30)
+        # print("\n=== LLM 응답 디버깅 ===")
+        # print("정제된 응답:")
+        # print(content)
+        # print("\n응답 문자 분석:")
+        # for i, char in enumerate(content):
+        #     if char in ['"', "'", "}", "{", ","]:
+        #         print(f"위치 {i}: '{char}'")
+        # print("=" * 30)
         
         # JSON 파싱 시도
         try:
@@ -149,4 +147,31 @@ def evaluate_code(code: str, guideline: str, model_name, use_groq=False, use_cla
     except Exception as e:
         print(f"파싱 오류: {str(e)}")
         print(f"LLM 응답: {content}")
+        raise
+
+async def evaluate_with_llm(
+    test_result_id: str,
+    html_content: str,
+    guideline_content: str,
+    test_file_title: str,
+    guideline_id: str
+):
+    """LLM을 사용하여 HTML 컨텐츠를 평가합니다."""
+    db = DatabaseManager()
+    
+    try:
+        # LLM 평가 수행
+        evaluation_result = evaluate_code(html_content, guideline_content, model_name='gemini-1.5-pro', use_google=True)
+        
+        # Firestore에 결과 저장
+        db.save_evaluation_result(
+            test_result_id=test_result_id,
+            guideline_id=guideline_id,
+            test_file_title=test_file_title,
+            result=evaluation_result
+        )
+        print(f"평가 결과 저장 완료: {guideline_id}")
+        
+    except Exception as e:
+        print(f"Error in evaluate_with_llm: {str(e)}")
         raise
