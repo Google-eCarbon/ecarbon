@@ -1,0 +1,205 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #004225;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10%; /* 좌우 패딩을 퍼센트로 변경 */
+    background-color: #004225;
+    /* border-bottom: 0.5px solid #ffffff; */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0; /* 로고 크기 유지 */
+}
+
+.logo-container img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.company-name {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+/* 모바일 메뉴 토글 버튼 */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+nav {
+    display: flex;
+    margin-right: 35%;
+    gap: 30px; /* 메뉴 간격 조정 */
+    transition: all 0.3s ease;
+}
+
+nav a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 8px 0;
+    position: relative;
+    white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
+}
+
+nav a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #ffffff;
+    transition: width 0.3s ease;
+}
+
+nav a:hover {
+    color: #ffffff;
+}
+
+nav a:hover:after {
+    width: 100%;
+}
+
+.login-btn, .signup-btn {
+    background-color: #1A4D2E;
+    color: white;
+    border: 1px solid white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover, .signup-btn:hover {
+    background-color: #4a7a4e;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 10px; /* 버튼 사이 간격을 10px로 설정 */
+    flex-shrink: 0; /* 버튼 크기 유지 */
+}
+
+.content {
+    margin-top: 80px;
+    padding: 20px;
+}
+
+/* 태블릿 크기에 대한 스타일 */
+@media (max-width: 1024px) {
+    header {
+        padding: 15px 3%;
+    }
+    
+    nav {
+        gap: 20px; /* 메뉴 간격 줄이기 */
+    }
+    
+    .company-name {
+        font-size: 1.5rem;
+    }
+}
+
+/* 모바일 크기에 대한 스타일 */
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+    }
+    
+    .menu-toggle {
+        display: flex;
+    }
+    
+    nav {
+        position: absolute;
+        flex-direction: column;
+        background-color: #5c9560;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        padding: 80px 20px 20px;
+        gap: 15px;
+        transition: right 0.3s ease;
+        z-index: 1000;
+    }
+    
+    nav.active {
+        right: 0;
+    }
+    
+    .auth-buttons {
+        gap: 5px;
+    }
+    
+    .login-btn, .signup-btn {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+}
+
+/* 아주 작은 화면에 대한 스타일 */
+@media (max-width: 480px) {
+    .company-name {
+        font-size: 1.2rem;
+    }
+    
+    .auth-buttons {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .login-btn, .signup-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}
