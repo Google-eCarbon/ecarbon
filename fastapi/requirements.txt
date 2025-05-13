@@ -1,0 +1,24 @@
+# FastAPI 관련
+fastapi==0.115.9
+uvicorn==0.34.2
+pydantic==2.11.4
+
+# LangChain 관련
+langchain-core>=0.3.56
+langchain==0.1.0
+langchain-openai==0.0.5
+langchain-community==0.0.13
+langchain-google-genai==0.0.5
+
+# 벡터 DB 관련
+chromadb==1.0.7
+
+# Google AI 관련
+google-generativeai==0.3.1
+
+# 웹 스크래핑 관련
+beautifulsoup4==4.13.4
+requests==2.32.3
+
+# 기타 유틸리티
+python-dotenv==1.1.0
