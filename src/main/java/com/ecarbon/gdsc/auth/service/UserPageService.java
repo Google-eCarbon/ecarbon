@@ -1,9 +1,11 @@
 package com.ecarbon.gdsc.auth.service;
 
 import com.ecarbon.gdsc.auth.dto.UserPageResponse;
+import com.ecarbon.gdsc.carbon.dto.EmissionRequest;
 import com.ecarbon.gdsc.carbon.dto.ReductionLog;
 import com.ecarbon.gdsc.carbon.entity.ReductionLogs;
 import com.ecarbon.gdsc.carbon.repository.FirebaseReductionLogsRepository;
+import com.ecarbon.gdsc.carbon.service.CarbonCalculator;
 import com.ecarbon.gdsc.carbon.util.DateUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,18 +33,23 @@ public class UserPageService {
 
             long totalReductionBytes = calculateTotalReductionBytes(logsList);
             long totalContributionSize = calculateTotalContributionSize(logsList);
+
+            double totalReductionGrams = estimateCarbonEmission(totalReductionBytes);
+
             List<UserPageResponse.DateReductionBytes> reductionBytesGraph = calculateDailyReductionBytes(logsList);
             List<UserPageResponse.DateReductionCount> reductionCountGraph = calculateDailyReductionCounts(logsList);
 
-            log.info("총 절감 바이트: {}, 총 절감 건수: {}", totalReductionBytes, totalContributionSize);
+            log.info("총 절감 바이트: {}, 총 절감 건수: {}, 총 절감량: {}", totalReductionBytes, totalContributionSize, totalReductionGrams);
 
 
             return UserPageResponse.builder()
                     .total_reduction_bytes(totalReductionBytes)
                     .total_reduction_count(totalContributionSize)
+                    .total_reduction_grams(totalReductionGrams)
                     .reduction_bytes_graph(reductionBytesGraph)
                     .reduction_count_graph(reductionCountGraph)
                     .build();
+
         } catch (ExecutionException | InterruptedException e) {
             log.error("사용자 페이지 데이터 조회 중 오류 발생 - email: {}", email, e);
 
@@ -87,7 +94,8 @@ public class UserPageService {
                 .sorted(Map.Entry.comparingByKey())
                 .map(e -> UserPageResponse.DateReductionBytes.builder()
                         .date(e.getKey())
-                        .reductionByte(e.getValue())
+                        .reduction_bytes(e.getValue())
+                        .reduction_grams(estimateCarbonEmission(e.getValue()))
                         .build())
                 .collect(Collectors.toList());
     }
@@ -111,5 +119,22 @@ public class UserPageService {
                         .count(e.getValue())
                         .build())
                 .collect(Collectors.toList());
+    }
+
+    private double estimateCarbonEmission(double byteWeight) {
+
+        double sizeInKB = byteWeight / 1024.0;
+        double sizeInGB = sizeInKB / (1024.0 * 1024.0);
+
+        EmissionRequest request = EmissionRequest.builder()
+                .dataGb(sizeInGB)
+                .newVisitorRatio(1.0)
+                .returnVisitorRatio(0.0)
+                .dataCacheRatio(0.0)
+                .greenHostFactor(0.0)
+                .build();
+
+        double emission = CarbonCalculator.estimateEmissionPerPage(request);
+        return Math.floor(emission * 1000) / 1000.0;
     }
 }
