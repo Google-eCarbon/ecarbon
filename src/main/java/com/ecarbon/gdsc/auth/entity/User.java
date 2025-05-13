@@ -24,10 +24,6 @@ public class User {
 
     private int level;
 
-    private Long total_reduction_bytes;
-
-    private Long total_reduction_count;
-
     private List<WeeklyMeasurements> user_measurement_logs;
 
 }
