@@ -61,22 +61,13 @@ public class OAuth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
         session.setAttribute(JWT_SESSION_KEY, token);
         log.info("JWT 토큰을 세션에 저장했습니다. 세션 ID: {}", session.getId());
 
-        // 4️⃣ 디버깅을 위한 로그 출력 (ASCII 범위를 벗어나는 문자가 있을 수 있으므로 주의)
+        // 4️⃣ 디버깅을 위한 로그 출력
         log.info("인증 토큰 생성 완료");
         log.info("사용자 정보: {}", UriUtils.encode(username, StandardCharsets.UTF_8));
         log.info("이메일 정보: {}", email);
         log.info("권한 정보: {}", oAuth2User.getAuthorities());
 
-        // 5️⃣ 응답 데이터 구성
-        OAuth2LoginResponse loginResponse = OAuth2LoginResponse.builder()
-                .token(token)
-                .username(username)
-                .email(email)
-                .isAuthenticated(true)
-                .message("OAuth2 Login Successful")
-                .build();
-
-        // 6️⃣ 백엔드 인증 콜백 엔드포인트로 리디렉션 (URL 파라미터 인코딩)
+        // 5️⃣ 백엔드 인증 콜백 엔드포인트로 리디렉션
         String encodedUsername = UriUtils.encode(username, StandardCharsets.UTF_8);
         String encodedEmail = UriUtils.encode(email, StandardCharsets.UTF_8);
         
