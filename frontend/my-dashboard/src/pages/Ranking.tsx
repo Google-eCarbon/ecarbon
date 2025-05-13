@@ -91,15 +91,15 @@ const Ranking: React.FC = () => {
   const renderRankingTable = () => {
     if (loading) {
       return (
-        <div className="flex justify-center items-center p-8">
-          <RefreshCw className="animate-spin h-8 w-8" />
+        <div className="loading">
+          <RefreshCw className="animate-spin" />
         </div>
       );
     }
 
     if (error) {
       return (
-        <div className="text-center p-8 text-red-400">
+        <div className="error-message">
           <p>{error}</p>
         </div>
       );
@@ -137,7 +137,7 @@ const Ranking: React.FC = () => {
                 <td>{item.placeName}</td>
                 <td>{item.country}</td>
                 <td>{item.carbonEmission.toFixed(2)}</td>
-                <td className={getGradeColor(item.grade)}>{item.grade}</td>
+                <td className={`grade ${item.grade.toLowerCase().replace('+', '-plus')}`}>{item.grade}</td>
               </tr>
             ))}
           </tbody>
@@ -150,13 +150,6 @@ const Ranking: React.FC = () => {
     <div className="ranking-container">
       <h1>친환경 기업 순위</h1>
       
-      <div className="filter-container">
-        <select value={rankingType} onChange={handleFilterChange}>
-          <option value="overall">종합 순위</option>
-          <option value="sustainability">Sustainability</option>
-        </select>
-      </div>
-
       <div className="ranking-description">
         {rankingType === 'overall' && <p>모든 환경 지표를 종합한 기업별 순위입니다.</p>}
         {rankingType === 'sustainability' && <p>지속가능성 및 환경 보호 활동을 기준으로 한 순위입니다.</p>}
@@ -169,6 +162,18 @@ const Ranking: React.FC = () => {
       )}
       
       {renderRankingTable()}
+      
+      <div className="ranking-info">
+        <h3>평가 기준</h3>
+        <p>
+          Greenee의 친환경 기업 평가는 에너지 사용, 물 사용, 폐기물 관리, 탄소 배출량 등 
+          다양한 환경 지표를 분석하여 산출됩니다. 모든 평가는 검증된 데이터를 기반으로 
+          공정하게 이루어집니다.
+        </p>
+        <p>
+          더 자세한 평가 방법론은 <a href="#">여기</a>에서 확인하실 수 있습니다.
+        </p>
+      </div>
     </div>
   );
 };
