@@ -1,0 +1,101 @@
+.home-container {
+  padding: 2rem;
+  text-align: center;
+}
+
+.home-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.split-container {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-left: -10rem;
+}
+
+.globe-container {
+  flex: 1.5;
+  min-width: 1000px;
+  max-width: 1000px;
+  cursor: grab;
+  padding: 2rem;
+}
+
+.globe-container:active {
+  cursor: grabbing;
+}
+
+.measure-section {
+  flex: 1;
+  padding: 3rem;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  text-align: left;
+  min-width: 500px;
+  margin-top: 50rem;
+}
+
+.carbon-form-container {
+  padding: 1rem;
+}
+
+.measure-description {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.url-input-container {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.url-input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.url-form {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 800px;
+}
+
+.url-input {
+  flex: 1;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  outline: none;
+  width: 100%;
+  min-width: 500px;
+}
+
+.url-input:focus {
+  border-color: #4a7c4d;
+}
+
+.measure-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #4a7c4d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  white-space: nowrap;
+}
+
+.measure-btn:hover {
+  background-color: #5cad60;
+}
