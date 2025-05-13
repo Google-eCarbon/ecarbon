@@ -24,6 +24,37 @@ public class CarbonCalculator {
     private static final double ELECTRICITY_EMBODIED_NETWORK = 0.013;
     private static final double ELECTRICITY_EMBODIED_USER_DEVICE = 0.081;
 
+    // estimateEmissionPerPage()
+    public static double estimateEmissionPerPage(EmissionRequest request){
+
+        // Calculate operational emissions
+        EmissionResult opEmissions = calculateOperationEmissions(request.getDataGb());
+
+        // Calculate embodied emissions
+        EmissionResult emEmissions = calculateEmbodiedEmissions(request.getDataGb());
+
+        // Adjust data center emissions for green hosting
+        double opDcAdjusted = adjustForGreenHosting(opEmissions.getDatacenter(), request.getGreenHostFactor());
+
+        // Calculate total emissions for all segments
+        double totalSegmentEmission = (
+                (opDcAdjusted + emEmissions.getDatacenter())
+                        + (opEmissions.getNetwork() + emEmissions.getNetwork())
+                        + (opEmissions.getUserDevice() + emEmissions.getUserDevice())
+        );
+
+        // Calculate emissions for new visitors
+        double newVisitorEmission = totalSegmentEmission * request.getNewVisitorRatio();
+
+        // Calculate emissions for return visitors with caching
+        double returnVisitorEmission = totalSegmentEmission
+                * request.getReturnVisitorRatio()
+                * (1 - request.getDataCacheRatio());
+
+        // Return the total emissions
+        return newVisitorEmission + returnVisitorEmission;
+    }
+
     // calculateOperationEmissions()
     private static EmissionResult calculateOperationEmissions(double trafficGB){
         double datacenter = trafficGB * ELECTRICITY_DATA_CENTER_O * KOREA_AVERAGE_INTENSITY;
@@ -55,35 +86,4 @@ public class CarbonCalculator {
         return datacenterEmission * (1 - greenHostFactor);
     }
 
-
-    // estimateEmissionPerPage()
-    public double estimateEmissionPerPage(EmissionRequest request){
-
-        // Calculate operational emissions
-        EmissionResult opEmissions = calculateOperationEmissions(request.getDataGb());
-
-        // Calculate embodied emissions
-        EmissionResult emEmissions = calculateEmbodiedEmissions(request.getDataGb());
-
-        // Adjust data center emissions for green hosting
-        double opDcAdjusted = adjustForGreenHosting(opEmissions.getDatacenter(), request.getGreenHostFactor());
-
-        // Calculate total emissions for all segments
-        double totalSegmentEmission = (
-                (opDcAdjusted + emEmissions.getDatacenter())
-                + (opEmissions.getNetwork() + emEmissions.getNetwork())
-                + (opEmissions.getUserDevice() + emEmissions.getUserDevice())
-        );
-
-        // Calculate emissions for new visitors
-        double newVisitorEmission = totalSegmentEmission * request.getNewVisitorRatio();
-
-        // Calculate emissions for return visitors with caching
-        double returnVisitorEmission = totalSegmentEmission
-                * request.getReturnVisitorRatio()
-                * (1 - request.getDataCacheRatio());
-
-        // Return the total emissions
-        return newVisitorEmission + returnVisitorEmission;
-    }
 }

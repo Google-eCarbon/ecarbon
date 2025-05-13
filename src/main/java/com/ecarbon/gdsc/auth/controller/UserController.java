@@ -1,9 +1,11 @@
 package com.ecarbon.gdsc.auth.controller;
 
+import com.ecarbon.gdsc.auth.dto.UserPageResponse;
 import com.ecarbon.gdsc.auth.dto.UserProfileResponse;
 import com.ecarbon.gdsc.auth.entity.User;
 import com.ecarbon.gdsc.auth.principal.CustomOAuth2User;
 import com.ecarbon.gdsc.auth.repository.UserRepository;
+import com.ecarbon.gdsc.auth.service.UserPageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -22,6 +24,7 @@ import java.util.Optional;
 public class UserController {
 
     private final UserRepository userRepository;
+    private final UserPageService userPageService;
 
     @GetMapping("/me")
     public ResponseEntity<UserProfileResponse> getCurrentUser(
@@ -56,6 +59,24 @@ public class UserController {
                 .email(user.getEmail())
                 .build();
 
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/page")
+    public ResponseEntity<UserPageResponse> getUserPage(
+            @AuthenticationPrincipal CustomOAuth2User customOAuth2User) {
+
+        if (customOAuth2User == null) {
+            log.warn("인증되지 않은 사용자가 프로필 정보를 요청했습니다.");
+            return ResponseEntity.status(HttpStatus.FOUND)
+                    .header("Location", "/")
+                    .build();
+        }
+
+        String email = customOAuth2User.getEmail();
+        log.info("사용자 페이지 데이터 요청: {}", email);
+
+        UserPageResponse response = userPageService.getUserPage(email);
         return ResponseEntity.ok(response);
     }
 }

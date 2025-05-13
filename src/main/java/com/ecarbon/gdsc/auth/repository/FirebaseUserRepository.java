@@ -29,8 +29,8 @@ public class FirebaseUserRepository {
             // 새 사용자인 경우 초기값 설정
             user.setId(email);  // 이메일을 ID로 설정
             user.setLevel(1);
-            user.setTotal_reduction_bytes(0L);
-            user.setTotal_reduction_count(0L);
+//            user.setTotal_reduction_bytes(0L);
+//            user.setTotal_reduction_count(0L);
             user.setUser_measurement_logs(new ArrayList<>());
             
             // Firestore에 저장

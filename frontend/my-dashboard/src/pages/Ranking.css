@@ -86,11 +86,13 @@
 }
 
 /* 등급별 스타일 */
-.grade-a { color: #4CAF50; }
-.grade-b { color: #8BC34A; }
-.grade-c { color: #FFC107; }
-.grade-d { color: #FF9800; }
-.grade-f { color: #F44336; }
+.grade.a-plus { color: #4CAF50; }
+.grade.a { color: #4CAF50; }
+.grade.b { color: #8BC34A; }
+.grade.c { color: #FFC107; }
+.grade.d { color: #FF9800; }
+.grade.e { color: #FF5722; }
+.grade.f { color: #F44336; }
 
 /* 마지막 업데이트 스타일 */
 .last-update {
@@ -143,33 +145,44 @@
   color: currentColor;
 }
 
-/* 순위에 따른 색상 표시 */
-.ranking-table tr:nth-child(1) td:first-child {
-  position: relative;
+/* 순위 번호 스타일 */
+.rank-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 
-.ranking-table tr:nth-child(1) td:first-child::after {
-  content: "🥇";
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
+/* 로딩 및 오류 메시지 스타일 */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
 }
 
-.ranking-table tr:nth-child(2) td:first-child::after {
-  content: "🥈";
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
+.loading svg {
+  width: 40px;
+  height: 40px;
+  color: white;
 }
 
-.ranking-table tr:nth-child(3) td:first-child::after {
-  content: "🥉";
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
+.error-message {
+  text-align: center;
+  padding: 30px;
+  color: #F44336;
+  background-color: rgba(244, 67, 54, 0.1);
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.no-data {
+  text-align: center;
+  padding: 40px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  margin: 20px 0;
+  font-size: 1.1rem;
 }
 
 /* 반응형 디자인 */
