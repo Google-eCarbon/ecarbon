@@ -1,11 +1,9 @@
 package com.ecarbon.gdsc.carbon.entity;
 
 import com.ecarbon.gdsc.carbon.dto.ReductionLog;
-import com.google.cloud.firestore.annotation.DocumentId;
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Date;
 import java.util.List;
 
 @Builder
@@ -17,8 +15,9 @@ import java.util.List;
 @Document(collection = "reduction_logs")
 public class ReductionLogs {
 
-    @DocumentId
-    private String id;
+    private String documentId;
+    
+    private String id; // email
 
     private String domain;
 
@@ -32,7 +31,7 @@ public class ReductionLogs {
 
     private boolean success;
 
-    private Date timestamp;
+    private String timestamp;
 
     private String webp_path;
 
