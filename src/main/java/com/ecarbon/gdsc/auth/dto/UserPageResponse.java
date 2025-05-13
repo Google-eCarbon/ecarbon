@@ -13,11 +13,11 @@ import java.util.List;
 public class UserPageResponse {
 
     private List<DateReductionBytes> reduction_bytes_graph;
-
     private List<DateReductionCount> reduction_count_graph;
 
     private long total_reduction_bytes;
     private long total_reduction_count;
+    private double total_reduction_grams;
 
     @Getter
     @Builder
@@ -32,6 +32,7 @@ public class UserPageResponse {
     @AllArgsConstructor
     public static class DateReductionBytes {
         private String date;
-        private long reductionByte;
+        private long reduction_bytes;
+        private double reduction_grams;
     }
 }
