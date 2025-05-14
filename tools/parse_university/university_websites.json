@@ -1,0 +1,2512 @@
+{
+  "universities": [
+    {
+      "name": "Vienna University of Technology",
+      "website": "https://www.tuwien.at/"
+    },
+    {
+      "name": "UCAM Universidad Católica San Antonio de Murcia",
+      "website": "https://www.ucam.edu/"
+    },
+    {
+      "name": "AlHussein Technical University",
+      "website": "https://www.htu.edu.jo/"
+    },
+    {
+      "name": "Prince Mohammad Bin Fahd University",
+      "website": "http://www.pmu.edu.sa/"
+    },
+    {
+      "name": "University of California, Riverside",
+      "website": "http://www.ucr.edu/"
+    },
+    {
+      "name": "University of California, Davis",
+      "website": "https://www.ucdavis.edu/"
+    },
+    {
+      "name": "University of California, Santa Cruz",
+      "website": "http://ucsc.edu/"
+    },
+    {
+      "name": "University of California, Los Angeles",
+      "website": "http://www.ucla.edu/"
+    },
+    {
+      "name": "University of California Merced",
+      "website": "http://www.ucmerced.edu/?utm_source=google&utm_campaign=GoogleLocalListing&utm_medium=organic"
+    },
+    {
+      "name": "University of California, Santa Barbara",
+      "website": "http://www.ucsb.edu/"
+    },
+    {
+      "name": "University of Colorado Boulder",
+      "website": "http://www.colorado.edu/"
+    },
+    {
+      "name": "University of Dayton",
+      "website": "http://www.udayton.edu/"
+    },
+    {
+      "name": "University of Georgia",
+      "website": "https://www.uga.edu/"
+    },
+    {
+      "name": "University of Guelph",
+      "website": "https://www.uoguelph.ca/"
+    },
+    {
+      "name": "University of Illinois Chicago",
+      "website": "http://www.uic.edu/"
+    },
+    {
+      "name": "University of Louisiana Monroe",
+      "website": "http://www.ulm.edu/"
+    },
+    {
+      "name": "University of Maryland",
+      "website": "https://www.umd.edu/"
+    },
+    {
+      "name": "University of Maryland",
+      "website": "https://www.umd.edu/"
+    },
+    {
+      "name": "University of Massachusetts Amherst",
+      "website": "https://www.umass.edu/"
+    },
+    {
+      "name": "University of Miami",
+      "website": "http://www.miami.edu/"
+    },
+    {
+      "name": "University of Michigan",
+      "website": "https://umich.edu/"
+    },
+    {
+      "name": "University of Michigan-Dearborn",
+      "website": "http://umdearborn.edu/"
+    },
+    {
+      "name": "University of Minnesota",
+      "website": "https://twin-cities.umn.edu/"
+    },
+    {
+      "name": "University of Nevada, Reno",
+      "website": "https://www.unr.edu/?utm_source=google&utm_medium=organic&utm_campaign=knowledge-panel"
+    },
+    {
+      "name": "University of Pennsylvania",
+      "website": "https://www.upenn.edu/"
+    },
+    {
+      "name": "University of Regina",
+      "website": "https://www.uregina.ca/"
+    },
+    {
+      "name": "University of Rochester",
+      "website": "http://www.rochester.edu/"
+    },
+    {
+      "name": "University of South Florida",
+      "website": "https://www.usf.edu/"
+    },
+    {
+      "name": "University of Toronto",
+      "website": "https://www.utoronto.ca/"
+    },
+    {
+      "name": "University of Toronto Scarborough",
+      "website": "http://www.utsc.utoronto.ca/"
+    },
+    {
+      "name": "University of Toronto",
+      "website": "https://www.utoronto.ca/"
+    },
+    {
+      "name": "University of Virginia",
+      "website": "https://www.virginia.edu/"
+    },
+    {
+      "name": "University of Washington",
+      "website": "http://www.washington.edu/"
+    },
+    {
+      "name": "University of Washington Bothell",
+      "website": "http://www.uwb.edu/"
+    },
+    {
+      "name": "University of Waterloo",
+      "website": "https://uwaterloo.ca/"
+    },
+    {
+      "name": "University of Wisconsin–Madison",
+      "website": "https://www.wisc.edu/"
+    },
+    {
+      "name": "University of Balamand - UOB, Koura Campus",
+      "website": "http://www.balamand.edu.lb/"
+    },
+    {
+      "name": "Batna 2 University",
+      "website": "http://www.univ-batna2.dz/"
+    },
+    {
+      "name": "University of Belgrade",
+      "website": "https://www.bg.ac.rs/"
+    },
+    {
+      "name": "University of Bristol",
+      "website": "https://www.bristol.ac.uk/"
+    },
+    {
+      "name": "University of Central Asia Bishkek",
+      "website": "http://www.ucentralasia.org/"
+    },
+    {
+      "name": "University of Debrecen",
+      "website": "http://www.unideb.hu/"
+    },
+    {
+      "name": "University of Girona",
+      "website": "https://www.udg.edu/"
+    },
+    {
+      "name": "University of Delaware",
+      "website": "https://www.udel.edu/?utm_source=google&utm_medium=business_profile"
+    },
+    {
+      "name": "College of Engineering - University of Information Technology and Communications",
+      "website": "https://uoitc.edu.iq/engineering/"
+    },
+    {
+      "name": "University of Kragujevac Rectorate",
+      "website": "https://kg.ac.rs/"
+    },
+    {
+      "name": "University of Kufa",
+      "website": "https://uokufa.edu.iq/"
+    },
+    {
+      "name": "University of Macedonia",
+      "website": "http://www.uom.gr/"
+    },
+    {
+      "name": "L-Università ta' Malta",
+      "website": "https://www.um.edu.mt/"
+    },
+    {
+      "name": "University of Mannheim",
+      "website": "http://www.uni-mannheim.de/"
+    },
+    {
+      "name": "University of Porto",
+      "website": "http://www.up.pt/"
+    },
+    {
+      "name": "Univerza na Primorskem / University of Primorska",
+      "website": "https://www.upr.si/"
+    },
+    {
+      "name": "University of Sharjah",
+      "website": "https://www.sharjah.ac.ae/"
+    },
+    {
+      "name": "University of Southampton Highfield Campus",
+      "website": "https://www.southampton.ac.uk/student-life/campuses/highfield"
+    },
+    {
+      "name": "University of Strathclyde",
+      "website": "https://www.strath.ac.uk/"
+    },
+    {
+      "name": "Valladolid University",
+      "website": "http://www.uva.es/"
+    },
+    {
+      "name": "University Of Benin (Main Campus)",
+      "website": "https://www.uniben.edu/"
+    },
+    {
+      "name": "University of Botswana",
+      "website": "http://www.ub.bw/"
+    },
+    {
+      "name": "Central Administration University of Buea",
+      "website": "http://www.ubuea.cm/"
+    },
+    {
+      "name": "University Of Cape Coast",
+      "website": "https://ucc.edu.gh/"
+    },
+    {
+      "name": "University of Cape Town",
+      "website": "https://www.uct.ac.za/"
+    },
+    {
+      "name": "University Of Eastern Africa Baraton-Nairobi Campus",
+      "website": "http://www.ueab.ac.ke/"
+    },
+    {
+      "name": "University of Embu",
+      "website": "https://www.embuni.ac.ke/"
+    },
+    {
+      "name": "Faculty of Science and Engineering (UNESWA)",
+      "website": "http://www.scieng.uneswa.ac.sz/"
+    },
+    {
+      "name": "University of Ghana",
+      "website": "https://www.ug.edu.gh/"
+    },
+    {
+      "name": "University of Ilorin",
+      "website": "https://www.unilorin.edu.ng/"
+    },
+    {
+      "name": "University Of Jos, Main Campus",
+      "website": "http://www.unijos.edu.ng/"
+    },
+    {
+      "name": "University of Lagos",
+      "website": "https://unilag.edu.ng/"
+    },
+    {
+      "name": "University of Mauritius",
+      "website": "http://www.uom.ac.mu/"
+    },
+    {
+      "name": "University of Mines and Technology",
+      "website": "https://www.umat.edu.gh/"
+    },
+    {
+      "name": "University of Nairobi",
+      "website": "https://www.uonbi.ac.ke/"
+    },
+    {
+      "name": "University of Nigeria, UNN Nsukka",
+      "website": "http://www.unn.edu.ng/"
+    },
+    {
+      "name": "University of Port Harcourt",
+      "website": "http://www.uniport.edu.ng/"
+    },
+    {
+      "name": "University of Professional Studies, Accra (UPSA)",
+      "website": "https://upsa.edu.gh/"
+    },
+    {
+      "name": "University Of Uyo",
+      "website": "https://uniuyo.edu.ng/"
+    },
+    {
+      "name": "University of Zimbabwe",
+      "website": "http://www.uz.ac.zw/"
+    },
+    {
+      "name": "University College of Engineering Villupuram",
+      "website": "https://www.aucev.edu.in/"
+    },
+    {
+      "name": "University Institute of Engineering and Technology, Kurukshetra University",
+      "website": "http://www.uietkuk.ac.in/"
+    },
+    {
+      "name": "University School of Automation and Robotics (USAR)",
+      "website": "https://sites.google.com/view/ggsipuedc/home?authuser=0"
+    },
+    {
+      "name": "University School of Information, Communication and Technology",
+      "website": "http://www.ipu.ac.in/usict/"
+    },
+    {
+      "name": "UVCE",
+      "website": "https://uvce.ac.in/"
+    },
+    {
+      "name": "The University of Aizu",
+      "website": "http://www.u-aizu.ac.jp/"
+    },
+    {
+      "name": "University of Calcutta",
+      "website": "http://www.caluniv.ac.in/"
+    },
+    {
+      "name": "University of Central Punjab",
+      "website": "http://www.ucp.edu.pk/"
+    },
+    {
+      "name": "University of Education",
+      "website": "https://ue.edu.pk/"
+    },
+    {
+      "name": "University of Wisconsin-Madison Engineering Hall",
+      "website": "https://engineering.wisc.edu/"
+    },
+    {
+      "name": "University of Wisconsin-Madison Engineering Hall",
+      "website": "https://engineering.wisc.edu/"
+    },
+    {
+      "name": "University of Engineering and Technology (UET), Lahore",
+      "website": "http://www.uet.edu.pk/"
+    },
+    {
+      "name": "University of Engineering & Technology New Campus",
+      "website": "https://newcampus.uet.edu.pk/"
+    },
+    {
+      "name": "University of Information Technology - VNUHCM",
+      "website": "https://www.uit.edu.vn/"
+    },
+    {
+      "name": "University of Karachi",
+      "website": "https://www.uok.edu.pk/"
+    },
+    {
+      "name": "University of Management and Technology, Sialkot Campus",
+      "website": "http://skt.umt.edu.pk/"
+    },
+    {
+      "name": "The University of Melbourne",
+      "website": "http://www.unimelb.edu.au/"
+    },
+    {
+      "name": "UNSW Sydney",
+      "website": "https://www.unsw.edu.au/"
+    },
+    {
+      "name": "UPES",
+      "website": "https://www.upes.ac.in/"
+    },
+    {
+      "name": "University of San Carlos Main - Downtown Campus",
+      "website": "https://www.facebook.com/uscjpiaofficialpage"
+    },
+    {
+      "name": "University of Science and Technology of Southern Philippines - CDO Campus",
+      "website": "https://www.ustp.edu.ph/"
+    },
+    {
+      "name": "University of St. La Salle",
+      "website": "http://www.usls.edu.ph/"
+    },
+    {
+      "name": "The University of Tokyo",
+      "website": "https://www.u-tokyo.ac.jp/ja/index.html"
+    },
+    {
+      "name": "UniSC University of the Sunshine Coast",
+      "website": "http://www.usc.edu.au/"
+    },
+    {
+      "name": "IE University - IE Tower",
+      "website": "http://www.ie.edu/university?utm_medium=social&utm_source=gmb&utm_campaign=ieteam_feed_camp_en_ww_lead_comm_prod_allu_alle_allpw_allp&utm_term=ieteam"
+    },
+    {
+      "name": "RV University",
+      "website": "https://rvu.edu.in/"
+    },
+    {
+      "name": "SR University",
+      "website": "https://sru.edu.in/"
+    },
+    {
+      "name": "VinUniversity",
+      "website": "https://vinuni.edu.vn/"
+    },
+    {
+      "name": "The University of British Columbia",
+      "website": "https://www.ubc.ca/"
+    },
+    {
+      "name": "The University of Oklahoma",
+      "website": "http://www.ou.edu/"
+    },
+    {
+      "name": "The University of Southern Mississippi",
+      "website": "https://www.usm.edu/"
+    },
+    {
+      "name": "The University of Texas at Austin",
+      "website": "http://www.utexas.edu/"
+    },
+    {
+      "name": "The University of Texas at Dallas",
+      "website": "https://www.utdallas.edu/"
+    },
+    {
+      "name": "University of Texas at El Paso",
+      "website": "http://www.utep.edu/"
+    },
+    {
+      "name": "Koc University",
+      "website": "http://www.ku.edu.tr/"
+    },
+    {
+      "name": "MEF Üniversitesi",
+      "website": "https://www.mef.edu.tr/"
+    },
+    {
+      "name": "PDP University",
+      "website": "https://university.pdp.uz/"
+    },
+    {
+      "name": "TED University",
+      "website": "https://www.tedu.edu.tr/"
+    },
+    {
+      "name": "The University of Georgia (UG)",
+      "website": "http://ug.edu.ge/"
+    },
+    {
+      "name": "The University of Manchester",
+      "website": "https://www.manchester.ac.uk/"
+    },
+    {
+      "name": "ICT University",
+      "website": "https://ictuniversity.edu.cm/"
+    },
+    {
+      "name": "KCA University",
+      "website": "https://www.kcau.ac.ke/"
+    },
+    {
+      "name": "The University of Bamenda, Amphi 340",
+      "website": "http://www.uniba.cm/"
+    },
+    {
+      "name": "Air University Islamabad",
+      "website": "http://www.au.edu.pk/"
+    },
+    {
+      "name": "DAV University",
+      "website": "http://www.davuniversity.org/"
+    },
+    {
+      "name": "FPT University",
+      "website": "https://daihoc.fpt.edu.vn/"
+    },
+    {
+      "name": "GLA University",
+      "website": "https://www.gla.ac.in/"
+    },
+    {
+      "name": "IPB University",
+      "website": "http://ipb.ac.id/"
+    },
+    {
+      "name": "JIS UNIVERSITY",
+      "website": "http://www.jisuniversity.ac.in/"
+    },
+    {
+      "name": "NED University of Engineering and Technology",
+      "website": "http://www.neduet.edu.pk/"
+    },
+    {
+      "name": "SRM University AP",
+      "website": "http://srmap.edu.in/"
+    },
+    {
+      "name": "The University of Auckland",
+      "website": "https://www.auckland.ac.nz/en.html"
+    },
+    {
+      "name": "The University of Hong Kong (HKU)",
+      "website": "https://www.hku.hk/"
+    },
+    {
+      "name": "The University of Sydney",
+      "website": "https://www.sydney.edu.au/"
+    },
+    {
+      "name": "Pace University",
+      "website": "https://www.pace.edu/"
+    },
+    {
+      "name": "Soka University of America",
+      "website": "https://www.soka.edu/"
+    },
+    {
+      "name": "AJOU University Tashkent",
+      "website": "http://ajou.uz/"
+    },
+    {
+      "name": "Inha University in Tashkent",
+      "website": "http://www.inha.uz/"
+    },
+    {
+      "name": "Misr University for Science & Technology",
+      "website": "https://must.edu.eg/"
+    },
+    {
+      "name": "Nile University",
+      "website": "http://www.nu.edu.eg/"
+    },
+    {
+      "name": "Suez University",
+      "website": "https://suezuni.edu.eg/"
+    },
+    {
+      "name": "Taif University",
+      "website": "https://www.tu.edu.sa/"
+    },
+    {
+      "name": "Meru University of Science and Technology",
+      "website": "https://www.must.ac.ke/"
+    },
+    {
+      "name": "Chuo University Tama Campus",
+      "website": "https://www.chuo-u.ac.jp/"
+    },
+    {
+      "name": "City University of Hong Kong (CityU)",
+      "website": "https://www.cityu.edu.hk/"
+    },
+    {
+      "name": "GIET University",
+      "website": "https://www.giet.edu/"
+    },
+    {
+      "name": "IILM University, Gurugram",
+      "website": "https://iilm.edu.in/?utm_source=google&utm_medium=organic&utm_campaign=gmb_listing"
+    },
+    {
+      "name": "Inha University, Yonghyeon Campus",
+      "website": "https://www.inha.ac.kr/"
+    },
+    {
+      "name": "RMIT University",
+      "website": "http://www.rmit.edu.au/"
+    },
+    {
+      "name": "SAGE University Bhopal Admin Block",
+      "website": "https://sageuniversity.edu.in/"
+    },
+    {
+      "name": "Tech University of Korea",
+      "website": "http://www.tukorea.ac.kr/"
+    },
+    {
+      "name": "Ajman University",
+      "website": "https://www.ajman.ac.ae/en?utm_source=gbp&utm_medium=organic&utm_campaign=ajman_university_gbp"
+    },
+    {
+      "name": "Kolegji Universitar Bedër",
+      "website": "http://www.beder.edu.al/"
+    },
+    {
+      "name": "Benha University",
+      "website": "http://www.bu.edu.eg/en/index.htm"
+    },
+    {
+      "name": "University of Bridgeport School of Engineering",
+      "website": "https://www.bridgeport.edu/academics/schools-colleges/school-engineering"
+    },
+    {
+      "name": "Delta University for Science and Technology",
+      "website": "https://new.deltauniv.edu.eg/en/home/index"
+    },
+    {
+      "name": "Doğuş Üniversitesi Çengelköy Yerleşkesi",
+      "website": "http://www.dogus.edu.tr/"
+    },
+    {
+      "name": "Düzce Üniversitesi Araştırma Ve Uygulama Merkezi",
+      "website": "http://hastane.duzce.edu.tr/"
+    },
+    {
+      "name": "جامعة مصر للمعلوماتية - EUI Egypt University of Informatics",
+      "website": "https://eui.edu.eg/"
+    },
+    {
+      "name": "Epoka University",
+      "website": "http://www.epoka.edu.al"
+    },
+    {
+      "name": "Inonu Universitesi",
+      "website": "https://www.inonu.edu.tr/"
+    },
+    {
+      "name": "Jazan University",
+      "website": "https://www.jazanu.edu.sa/ar"
+    },
+    {
+      "name": "Jazan University",
+      "website": "https://www.jazanu.edu.sa/ar"
+    },
+    {
+      "name": "Yaşar University",
+      "website": "https://www.yasar.edu.tr/"
+    },
+    {
+      "name": "Zarqa University",
+      "website": "https://zu.edu.jo/"
+    },
+    {
+      "name": "Caleb University",
+      "website": "https://calebuniversity.edu.ng/"
+    },
+    {
+      "name": "Chuka University",
+      "website": "http://www.chuka.ac.ke/"
+    },
+    {
+      "name": "ESTAM University, Tunde Motors, Cotonou.",
+      "website": "http://www.estam-university.edu.bj/"
+    },
+    {
+      "name": "ISBAT University Kampala",
+      "website": "https://isbatuniversity.ac.ug/"
+    },
+    {
+      "name": "Amity University Noida",
+      "website": "https://www.amity.edu/"
+    },
+    {
+      "name": "Amity University Noida",
+      "website": "https://www.amity.edu/"
+    },
+    {
+      "name": "Amity University Noida",
+      "website": "https://www.amity.edu/"
+    },
+    {
+      "name": "Amity University Noida",
+      "website": "https://www.amity.edu/"
+    },
+    {
+      "name": "Amity University Noida",
+      "website": "https://www.amity.edu/"
+    },
+    {
+      "name": "BINUS @Malang",
+      "website": "https://binus.ac.id/malang/"
+    },
+    {
+      "name": "Bicol University, West (Main Campus)",
+      "website": "http://bicol-u.edu.ph/"
+    },
+    {
+      "name": "BINUS @Bandung - Paskal Campus",
+      "website": "https://binus.ac.id/bandung/"
+    },
+    {
+      "name": "BINUS Business School (BBS)",
+      "website": "https://bbs.binus.ac.id/"
+    },
+    {
+      "name": "Nishi-Chiba Campus,Chiba University",
+      "website": "https://www.chiba-u.ac.jp/index.html"
+    },
+    {
+      "name": "Habib University",
+      "website": "http://www.habib.edu.pk/"
+    },
+    {
+      "name": "Korea University, Seoul Campus",
+      "website": "https://www.korea.ac.kr/"
+    },
+    {
+      "name": "Mapúa University",
+      "website": "https://www.mapua.edu.ph/"
+    },
+    {
+      "name": "Nirma University",
+      "website": "https://nirmauni.ac.in/"
+    },
+    {
+      "name": "Osaka University",
+      "website": "https://www.osaka-u.ac.jp/ja"
+    },
+    {
+      "name": "Tokyo University of Agriculture and Technology",
+      "website": "https://www.tuat.ac.jp/"
+    },
+    {
+      "name": "Tsuda University Sendagaya Campus",
+      "website": "http://www.tsuda.ac.jp/"
+    },
+    {
+      "name": "Algoma University",
+      "website": "https://www.algomau.ca/academics/offsite-programming/algoma-at-brampton/"
+    },
+    {
+      "name": "Calvin University",
+      "website": "https://calvin.edu/"
+    },
+    {
+      "name": "DePauw University",
+      "website": "http://www.depauw.edu/"
+    },
+    {
+      "name": "McGill University",
+      "website": "https://www.mcgill.ca/"
+    },
+    {
+      "name": "Purdue University",
+      "website": "https://www.purdue.edu/"
+    },
+    {
+      "name": "Purdue University Fort Wayne",
+      "website": "https://www.pfw.edu/"
+    },
+    {
+      "name": "Xavier University of Louisiana",
+      "website": "http://www.xula.edu/"
+    },
+    {
+      "name": "Ankara University",
+      "website": "http://www.ankara.edu.tr/"
+    },
+    {
+      "name": "Assiut University",
+      "website": "http://www.aun.edu.eg/"
+    },
+    {
+      "name": "Beykoz University",
+      "website": "https://www.beykoz.edu.tr/"
+    },
+    {
+      "name": "Biruni University",
+      "website": "https://www.biruni.edu.tr/"
+    },
+    {
+      "name": "Future University in Egypt",
+      "website": "https://www.fue.edu.eg/"
+    },
+    {
+      "name": "Galala University",
+      "website": "http://gu.edu.eg/ar"
+    },
+    {
+      "name": "Goethe University Frankfurt",
+      "website": "https://www.uni-frankfurt.de/de?locale=de"
+    },
+    {
+      "name": "Lublin University Of Technology",
+      "website": "https://pollub.pl/"
+    },
+    {
+      "name": "Modern Academy",
+      "website": "http://cs.modern-academy.edu.eg/"
+    },
+    {
+      "name": "Qassim University",
+      "website": "http://qu.edu.sa/"
+    },
+    {
+      "name": "Qassim University",
+      "website": "http://qu.edu.sa/"
+    },
+    {
+      "name": "Samsun Üniversitesi",
+      "website": "https://samsun.edu.tr/"
+    },
+    {
+      "name": "Selçuk University",
+      "website": "https://www.selcuk.edu.tr/"
+    },
+    {
+      "name": "Taibah University",
+      "website": "https://www.taibahu.edu.sa/Pages/EN/Home.aspx"
+    },
+    {
+      "name": "Trakya University",
+      "website": "http://www.trakya.edu.tr/"
+    },
+    {
+      "name": "Warsaw University of Technology",
+      "website": "https://www.pw.edu.pl/"
+    },
+    {
+      "name": "Ashesi University",
+      "website": "http://www.ashesi.edu.gh/"
+    },
+    {
+      "name": "Bayero University Kano (BUK) New Site",
+      "website": "http://buk.edu.ng/"
+    },
+    {
+      "name": "Kabale University",
+      "website": "https://www.kab.ac.ug/"
+    },
+    {
+      "name": "Maseno University-Kisumu Campus",
+      "website": "http://www.maseno.ac.ke/"
+    },
+    {
+      "name": "Adamas University",
+      "website": "https://adamasuniversity.ac.in/"
+    },
+    {
+      "name": "Aditya University",
+      "website": "https://www.adityauniversity.in/"
+    },
+    {
+      "name": "Andhra University College of Engineering",
+      "website": "http://andhrauniversity.edu.in/"
+    },
+    {
+      "name": "Bahria University - Islamabad Campus",
+      "website": "https://www.bahria.edu.pk/buic/"
+    },
+    {
+      "name": "Bahria University Lahore Campus",
+      "website": "https://www.bahria.edu.pk/bulc/"
+    },
+    {
+      "name": "Daejin University",
+      "website": "http://www.daejin.ac.kr/"
+    },
+    {
+      "name": "Dong-a University Bumin Campus",
+      "website": "https://www.donga.ac.kr/"
+    },
+    {
+      "name": "Gachon University, Global Campus",
+      "website": "https://www.gachon.ac.kr/kor/index.do"
+    },
+    {
+      "name": "Hankuk University of Foreign Studies - Seoul Campus",
+      "website": "http://www.hufs.ac.kr/"
+    },
+    {
+      "name": "Jinnah University For Women",
+      "website": "http://juw.edu.pk/"
+    },
+    {
+      "name": "Konkuk University",
+      "website": "http://www.konkuk.ac.kr/"
+    },
+    {
+      "name": "M.B.M. University",
+      "website": "http://www.mbm.ac.in/"
+    },
+    {
+      "name": "Mehran University of Engineering and Technology",
+      "website": "https://www.muet.edu.pk/"
+    },
+    {
+      "name": "Monash University Clayton Campus",
+      "website": "http://monash.edu/"
+    },
+    {
+      "name": "Monash University Malaysia",
+      "website": "http://www.monash.edu.my/"
+    },
+    {
+      "name": "Panjab University Swami Sarvanand Giri Regional Centre",
+      "website": "http://www.ssgpurc.puchd.ac.in/"
+    },
+    {
+      "name": "Sogang University",
+      "website": "https://www.sogang.ac.kr/ko/home"
+    },
+    {
+      "name": "Sophia University Yotsuya Campus",
+      "website": "http://www.sophia.ac.jp/"
+    },
+    {
+      "name": "Sunway University",
+      "website": "https://sunwayuniversity.edu.my/"
+    },
+    {
+      "name": "Telkom University",
+      "website": "https://telkomuniversity.ac.id/"
+    },
+    {
+      "name": "Telkom University",
+      "website": "https://telkomuniversity.ac.id/"
+    },
+    {
+      "name": "Telkom Institute of Technology Purwokerto",
+      "website": "https://purwokerto.telkomuniversity.ac.id/"
+    },
+    {
+      "name": "Tezpur University",
+      "website": "http://www.tezu.ernet.in/"
+    },
+    {
+      "name": "Waseda University",
+      "website": "https://www.waseda.jp/top/"
+    },
+    {
+      "name": "Xavier University",
+      "website": "https://www.xavier.edu/"
+    },
+    {
+      "name": "Yonsei University, Sinchon Campus",
+      "website": "http://www.yonsei.ac.kr/"
+    },
+    {
+      "name": "Indiana University Bloomington",
+      "website": "https://www.indiana.edu/"
+    },
+    {
+      "name": "Minerva University",
+      "website": "http://minerva.edu/"
+    },
+    {
+      "name": "Western University",
+      "website": "http://www.uwo.ca/"
+    },
+    {
+      "name": "Ataturk University",
+      "website": "http://atauni.edu.tr/"
+    },
+    {
+      "name": "Başkent University",
+      "website": "http://www.baskent.edu.tr/"
+    },
+    {
+      "name": "Birzeit University",
+      "website": "https://www.birzeit.edu/"
+    },
+    {
+      "name": "Université Euro-Méditerranéenne de Fès UEMF",
+      "website": "http://www.ueuromed.org/"
+    },
+    {
+      "name": "IT Park University",
+      "website": "https://itpu.uz/en/"
+    },
+    {
+      "name": "Islamic University of Lebanon ,Wardaniyeh",
+      "website": "http://iul.edu.lb/"
+    },
+    {
+      "name": "Istinye University (FLED Hall)",
+      "website": "https://yabancidiller.istinye.edu.tr/tr"
+    },
+    {
+      "name": "Karabük University",
+      "website": "http://www.karabuk.edu.tr/"
+    },
+    {
+      "name": "Maltepe University Hospital",
+      "website": "https://maltepehastanesi.com.tr/"
+    },
+    {
+      "name": "Marmara University Goztepe Campus",
+      "website": "https://www.marmara.edu.tr/"
+    },
+    {
+      "name": "Sabancı University",
+      "website": "https://www.sabanciuniv.edu/"
+    },
+    {
+      "name": "Wrocław University of Science and Technology",
+      "website": "https://pwr.edu.pl/"
+    },
+    {
+      "name": "Zagazig University",
+      "website": "https://www.zu.edu.eg/"
+    },
+    {
+      "name": "Çankaya University",
+      "website": "http://www.cankaya.edu.tr/"
+    },
+    {
+      "name": "Üsküdar University",
+      "website": "https://www.uskudar.edu.tr/"
+    },
+    {
+      "name": "Babcock University Ilishan Remo",
+      "website": "http://www.babcock.edu.ng/"
+    },
+    {
+      "name": "Central University of Haryana",
+      "website": "http://www.cuh.ac.in/"
+    },
+    {
+      "name": "Daystar University",
+      "website": "https://www.daystar.ac.ke/"
+    },
+    {
+      "name": "Federal University Oye-Ekiti",
+      "website": "https://www.fuoye.edu.ng/"
+    },
+    {
+      "name": "FEDERAL UNIVERSITY OF AGRICULTURE ABEOKUTA",
+      "website": "http://www.funaab.edu.ng/"
+    },
+    {
+      "name": "Federal University Of Petroleum Resources Effurun, Warri.",
+      "website": "https://fupre.edu.ng/"
+    },
+    {
+      "name": "Federal University Of Technology, Minna",
+      "website": "https://futminna.edu.ng/"
+    },
+    {
+      "name": "Federal University Of Technology, Minna",
+      "website": "https://futminna.edu.ng/"
+    },
+    {
+      "name": "Federal University Of Technology, Minna",
+      "website": "https://futminna.edu.ng/"
+    },
+    {
+      "name": "Kabarak University",
+      "website": "http://www.kabarak.ac.ke/"
+    },
+    {
+      "name": "Bennett University",
+      "website": "https://www.bennett.edu.in/"
+    },
+    {
+      "name": "Comsats University Islamabad, Attock Campus",
+      "website": "https://attock.comsats.edu.pk/"
+    },
+    {
+      "name": "COMSATS University",
+      "website": "https://lahore.comsats.edu.pk/"
+    },
+    {
+      "name": "Central University of Haryana",
+      "website": "http://www.cuh.ac.in/"
+    },
+    {
+      "name": "Central University Of Jammu",
+      "website": "http://www.cujammu.ac.in/"
+    },
+    {
+      "name": "Da Nang University of Science and Technology",
+      "website": "http://www.dut.udn.vn/"
+    },
+    {
+      "name": "Dongguk University - Seoul Campus",
+      "website": "https://www.dongguk.edu/main"
+    },
+    {
+      "name": "Duy Tan University, South Hoa Khanh",
+      "website": "http://duytan.edu.vn/"
+    },
+    {
+      "name": "Gauhati University",
+      "website": "https://gauhati.ac.in/"
+    },
+    {
+      "name": "Hoa Sen University",
+      "website": "https://www.hoasen.edu.vn/"
+    },
+    {
+      "name": "Kookmin University",
+      "website": "http://www.kookmin.ac.kr/"
+    },
+    {
+      "name": "Manipal University Jaipur",
+      "website": "https://jaipur.manipal.edu/"
+    },
+    {
+      "name": "Marwadi University (Engineering, MBA, Law, Science, Architecture & Physiotherapy)",
+      "website": "https://www.marwadiuniversity.ac.in/?utm_source=google&utm_medium=organic&utm_campaign=GMB"
+    },
+    {
+      "name": "Okayama University Tsushima Campus",
+      "website": "https://www.okayama-u.ac.jp/index.html"
+    },
+    {
+      "name": "Punjabi University, Patiala",
+      "website": "http://www.punjabiuniversity.ac.in/"
+    },
+    {
+      "name": "Quantum University",
+      "website": "http://quantumuniversity.edu.in/"
+    },
+    {
+      "name": "Silicon University",
+      "website": "http://www.silicon.ac.in/"
+    },
+    {
+      "name": "Yuan Ze University",
+      "website": "https://www.yzu.edu.tw/"
+    },
+    {
+      "name": "Bucknell University",
+      "website": "https://www.bucknell.edu/"
+    },
+    {
+      "name": "Caldwell University",
+      "website": "https://www.caldwell.edu/?utm_source=google&utm_medium=organic&utm_campaign=gmb"
+    },
+    {
+      "name": "McMaster University",
+      "website": "https://www.mcmaster.ca/"
+    },
+    {
+      "name": "Memorial University of Newfoundland",
+      "website": "https://www.mun.ca/"
+    },
+    {
+      "name": "New York University",
+      "website": "https://www.nyu.edu/"
+    },
+    {
+      "name": "Stanford University",
+      "website": "http://www.stanford.edu/"
+    },
+    {
+      "name": "University of Al Azhar Indonesia",
+      "website": "http://uai.ac.id/"
+    },
+    {
+      "name": "American University of Beirut",
+      "website": "http://www.aub.edu.lb/"
+    },
+    {
+      "name": "The American University of Iraq - Baghdad",
+      "website": "https://auib.edu.iq/"
+    },
+    {
+      "name": "American University of Sharjah",
+      "website": "https://www.aus.edu/"
+    },
+    {
+      "name": "Coventry University",
+      "website": "https://www.coventry.ac.uk/?utm_source=gbp&utm_medium=organic"
+    },
+    {
+      "name": "İstanbul Üniversitesi-Cerrahpaşa",
+      "website": "https://www.iuc.edu.tr/"
+    },
+    {
+      "name": "Lebanese University - Hadat Campus",
+      "website": "http://www.ul.edu.lb/"
+    },
+    {
+      "name": "Menoufiya University",
+      "website": "http://mu.menofia.edu.eg/"
+    },
+    {
+      "name": "National University of Mongolia",
+      "website": "http://www.num.edu.mn/"
+    },
+    {
+      "name": "National University of Science and Technology POLITEHNICA Bucharest",
+      "website": "https://www.upb.ro/"
+    },
+    {
+      "name": "Saarland University",
+      "website": "https://www.uni-saarland.de/start.html"
+    },
+    {
+      "name": "Yeditepe Üniversitesi",
+      "website": "https://yeditepe.edu.tr/"
+    },
+    {
+      "name": "Covenant University",
+      "website": "https://covenantuniversity.edu.ng/"
+    },
+    {
+      "name": "Kenyatta University Teaching, Referral and Research Hospital.",
+      "website": "http://www.kutrrh.go.ke/"
+    },
+    {
+      "name": "Landmark University",
+      "website": "http://lmu.edu.ng/"
+    },
+    {
+      "name": "Machakos University",
+      "website": "https://www.mksu.ac.ke/"
+    },
+    {
+      "name": "Makerere University",
+      "website": "http://mak.ac.ug/"
+    },
+    {
+      "name": "Chitkara University",
+      "website": "https://www.chitkara.edu.in/"
+    },
+    {
+      "name": "Chung-Ang University, Seoul Campus",
+      "website": "https://www.cau.ac.kr/index.do"
+    },
+    {
+      "name": "Dong-eui University, Gaya Campus",
+      "website": "http://www.deu.ac.kr/"
+    },
+    {
+      "name": "JAIN (Deemed-to-be-University), Faculty of Engineering and Technology (FET)",
+      "website": "https://set.jainuniversity.ac.in/"
+    },
+    {
+      "name": "Gurugram University",
+      "website": "http://www.gurugramuniversity.ac.in/"
+    },
+    {
+      "name": "Integral University",
+      "website": "https://www.iul.ac.in/"
+    },
+    {
+      "name": "Kyung Hee University, Seoul Campus",
+      "website": "https://www.khu.ac.kr/"
+    },
+    {
+      "name": "La Trobe University",
+      "website": "https://www.latrobe.edu.au/"
+    },
+    {
+      "name": "Namseoul University (NSU)",
+      "website": "http://www.nsu.ac.kr/"
+    },
+    {
+      "name": "National University of Kaohsiung",
+      "website": "http://www.nuk.edu.tw/"
+    },
+    {
+      "name": "National University Of Modern Languages (NUML)",
+      "website": "http://www.numl.edu.pk/"
+    },
+    {
+      "name": "National University of Sciences and Technology, Karachi Campus",
+      "website": "http://www.nust.edu.pk/"
+    },
+    {
+      "name": "National University of Singapore",
+      "website": "http://www.nus.edu.sg/"
+    },
+    {
+      "name": "National University-Manila",
+      "website": "https://national-u.edu.ph/"
+    },
+    {
+      "name": "Poornima University",
+      "website": "https://www.poornima.edu.in/"
+    },
+    {
+      "name": "Sahmyook University",
+      "website": "http://www.syu.ac.kr/"
+    },
+    {
+      "name": "Sir Syed University of Engineering and Technology",
+      "website": "https://www.ssuet.edu.pk/"
+    },
+    {
+      "name": "Soongsil University",
+      "website": "https://ssu.ac.kr/"
+    },
+    {
+      "name": "Victoria University of Wellington",
+      "website": "https://www.wgtn.ac.nz/"
+    },
+    {
+      "name": "Concordia University",
+      "website": "https://www.concordia.ca/"
+    },
+    {
+      "name": "University of Houston",
+      "website": "https://uh.edu/"
+    },
+    {
+      "name": "Abu Dhabi University",
+      "website": "http://www.adu.ac.ae/"
+    },
+    {
+      "name": "Ain Shams University",
+      "website": "http://www.asu.edu.eg/"
+    },
+    {
+      "name": "Al-Iraqia University",
+      "website": "http://aliraqia.edu.iq/"
+    },
+    {
+      "name": "Arab Open University",
+      "website": "https://www.arabou.edu.sa/Pages/default.aspx"
+    },
+    {
+      "name": "Arab Open University",
+      "website": "https://www.arabou.edu.sa/Pages/default.aspx"
+    },
+    {
+      "name": "Damanhour University",
+      "website": "http://damanhour.edu.eg/"
+    },
+    {
+      "name": "The Hashemite University",
+      "website": "http://www.hu.edu.jo/"
+    },
+    {
+      "name": "Université Hassan II de Casablanca",
+      "website": "http://www.univh2c.ma/"
+    },
+    {
+      "name": "Kastamonu University",
+      "website": "https://www.kastamonu.edu.tr/"
+    },
+    {
+      "name": "Lancaster University",
+      "website": "https://www.lancaster.ac.uk/"
+    },
+    {
+      "name": "Middlesex University Dubai - Main Campus",
+      "website": "https://www.mdx.ac.ae/"
+    },
+    {
+      "name": "Mongolian University of Science and Technology",
+      "website": "http://www.must.edu.mn/"
+    },
+    {
+      "name": "October 6 University",
+      "website": "https://eamtar-o6u.rf.gd/"
+    },
+    {
+      "name": "Phoenicia University",
+      "website": "http://www.pu.edu.lb/"
+    },
+    {
+      "name": "Technical University Berlin",
+      "website": "https://www.tu.berlin/"
+    },
+    {
+      "name": "Technical University of Munich",
+      "website": "https://www.tum.de/"
+    },
+    {
+      "name": "Al-Hikmah University, Ilorin, Nigeria.",
+      "website": "http://www.alhikmahuniversity.edu.ng/"
+    },
+    {
+      "name": "St. Paul's University - Nairobi Campus",
+      "website": "http://www.spu.ac.ke/"
+    },
+    {
+      "name": "Technical University of Mombasa",
+      "website": "https://www.tum.ac.ke/"
+    },
+    {
+      "name": "ARKA JAIN University",
+      "website": "http://www.arkajainuniversity.ac.in/"
+    },
+    {
+      "name": "Dibrugarh University",
+      "website": "http://www.dibru.ac.in/"
+    },
+    {
+      "name": "Feng Chia University",
+      "website": "http://www.fcu.edu.tw/"
+    },
+    {
+      "name": "Hong Kong University of Science and Technology (HKUST)",
+      "website": "https://hkust.edu.hk/"
+    },
+    {
+      "name": "Karnavati University",
+      "website": "https://karnavatiuniversity.edu.in/?utm_source=googlemybusiness&utm_medium=organic&utm_campaign=Google%20My%20Business"
+    },
+    {
+      "name": "Kasetsart University",
+      "website": "https://www.ku.ac.th/"
+    },
+    {
+      "name": "Khon Kaen University",
+      "website": "https://kku.ac.th/"
+    },
+    {
+      "name": "Medicaps University",
+      "website": "https://admissions.medicaps.ac.in/"
+    },
+    {
+      "name": "Primakara University",
+      "website": "http://www.primakara.ac.id/"
+    },
+    {
+      "name": "Rishihood University",
+      "website": "http://rishihood.edu.in/"
+    },
+    {
+      "name": "Sambalpur University Institute of Information Technology (SUIIT), Burla",
+      "website": "https://suiit.ac.in/"
+    },
+    {
+      "name": "Sangmyung University - Seoul Campus",
+      "website": "https://www.smu.ac.kr/ko/index.do"
+    },
+    {
+      "name": "Singapore University of Technology and Design (SUTD)",
+      "website": "https://www.sutd.edu.sg/"
+    },
+    {
+      "name": "Swinburne University of Technology",
+      "website": "http://www.swinburne.edu.au/"
+    },
+    {
+      "name": "VNUHCM Central Library",
+      "website": "http://www.vnulib.edu.vn/"
+    },
+    {
+      "name": "Widyatama University Graduate",
+      "website": "https://sps.widyatama.ac.id/sekolah-pasca-sarjana/"
+    },
+    {
+      "name": "Iowa State University",
+      "website": "https://www.iastate.edu/"
+    },
+    {
+      "name": "Texas Tech University",
+      "website": "https://www.ttu.edu/"
+    },
+    {
+      "name": "Vanderbilt University",
+      "website": "https://www.vanderbilt.edu/"
+    },
+    {
+      "name": "Washington University in St. Louis",
+      "website": "https://wustl.edu/"
+    },
+    {
+      "name": "Al-Yamamah University",
+      "website": "http://www.yu.edu.sa/"
+    },
+    {
+      "name": "Bahçeşehir University North Campus",
+      "website": "http://www.bau.edu.tr/"
+    },
+    {
+      "name": "Nazarbayev University",
+      "website": "https://nu.edu.kz/"
+    },
+    {
+      "name": "Multimedia University of Kenya",
+      "website": "https://www.mmu.ac.ke/"
+    },
+    {
+      "name": "Strathmore University",
+      "website": "https://www.strathmore.edu/"
+    },
+    {
+      "name": "Yobe state University, Damaturu",
+      "website": "http://ysu.edu.ng/"
+    },
+    {
+      "name": "Chandigarh University",
+      "website": "https://www.cuchd.in/"
+    },
+    {
+      "name": "Holy Angel University",
+      "website": "http://www.hau.edu.ph/"
+    },
+    {
+      "name": "J.C. Bose University of Science and Technology, YMCA (Formerly YMCA UST)",
+      "website": "https://ymca.ccsd.in/"
+    },
+    {
+      "name": "Multimedia University - MMU Cyberjaya",
+      "website": "https://www.mmu.edu.my/"
+    },
+    {
+      "name": "P P Savani University",
+      "website": "http://www.ppsu.ac.in/"
+    },
+    {
+      "name": "Presidency University",
+      "website": "https://presidencyuniversity.in/"
+    },
+    {
+      "name": "QUT Gardens Point Campus",
+      "website": "https://www.qut.edu.au/"
+    },
+    {
+      "name": "Ramdeobaba University (RBU)",
+      "website": "http://www.rbunagpur.in/"
+    },
+    {
+      "name": "Shiv Nadar University",
+      "website": "https://www.snuchennai.edu.in/"
+    },
+    {
+      "name": "Silver Oak University",
+      "website": "https://silveroakuni.ac.in/"
+    },
+    {
+      "name": "Tokyo City University - Setagaya Campus",
+      "website": "https://www.tcu.ac.jp/campuslife/introduction/setagayacampus/"
+    },
+    {
+      "name": "The University of Alabama",
+      "website": "http://www.ua.edu/"
+    },
+    {
+      "name": "Long Island University Brooklyn",
+      "website": "http://www.liu.edu/Brooklyn"
+    },
+    {
+      "name": "Utah Valley University",
+      "website": "http://www.uvu.edu/"
+    },
+    {
+      "name": "Wayne State University",
+      "website": "http://wayne.edu/"
+    },
+    {
+      "name": "Brandenburg University of Technology Cottbus–Senftenberg",
+      "website": "http://www.b-tu.de/"
+    },
+    {
+      "name": "Constructor University",
+      "website": "http://constructor.university/"
+    },
+    {
+      "name": "Côte d'Azur University",
+      "website": "http://www.univ-cotedazur.fr/"
+    },
+    {
+      "name": "Де Монфорт Қазақстан Университеті",
+      "website": "http://dmuk.edu.kz/"
+    },
+    {
+      "name": "Dokuz Eylul University",
+      "website": "https://www.deu.edu.tr/"
+    },
+    {
+      "name": "Galatasaray University",
+      "website": "https://gsu.edu.tr/"
+    },
+    {
+      "name": "Heriot-Watt University",
+      "website": "http://www.hw.ac.uk/dubai.htm"
+    },
+    {
+      "name": "Politecnico di Milano - Campus Bovisa La Masa",
+      "website": "http://www.polimi.it/"
+    },
+    {
+      "name": "Valencia Polytechnic University",
+      "website": "http://www.upv.es/"
+    },
+    {
+      "name": "All Nations University (Main Campus)",
+      "website": "http://www.anuc.edu.gh/"
+    },
+    {
+      "name": "Gombe State University, Gombe",
+      "website": "https://gsu.edu.ng/"
+    },
+    {
+      "name": "Kwara State University, Malete",
+      "website": "https://kwasu.edu.ng/"
+    },
+    {
+      "name": "Lagos State University",
+      "website": "https://lasu.edu.ng/"
+    },
+    {
+      "name": "Lagos State University of science and technology",
+      "website": "http://www.lasustech.edu.ng/"
+    },
+    {
+      "name": "Maasai Mara University",
+      "website": "http://www.mmarau.ac.ke/"
+    },
+    {
+      "name": "Mount Kenya University",
+      "website": "http://mku.ac.ke/"
+    },
+    {
+      "name": "Bundelkhand University, Jhansi",
+      "website": "https://www.bujhansi.ac.in/"
+    },
+    {
+      "name": "De La Salle University Manila",
+      "website": "https://www.dlsu.edu.ph/"
+    },
+    {
+      "name": "Ewha Womans University",
+      "website": "http://www.ewha.ac.kr/"
+    },
+    {
+      "name": "Malla Reddy University",
+      "website": "https://mallareddyuniversity.ac.in/"
+    },
+    {
+      "name": "George Mason University",
+      "website": "http://www.gmu.edu/"
+    },
+    {
+      "name": "Northeastern University",
+      "website": "http://www.northeastern.edu/"
+    },
+    {
+      "name": "Northeastern University in Oakland",
+      "website": "https://oakland.northeastern.edu/"
+    },
+    {
+      "name": "Northeastern University Seattle",
+      "website": "https://seattle.northeastern.edu/"
+    },
+    {
+      "name": "Northeastern University in Silicon Valley",
+      "website": "https://siliconvalley.northeastern.edu/"
+    },
+    {
+      "name": "Northeastern University, Toronto Campus",
+      "website": "http://toronto.northeastern.edu/"
+    },
+    {
+      "name": "Ontario Tech University",
+      "website": "https://ontariotechu.ca/"
+    },
+    {
+      "name": "Oregon State University",
+      "website": "http://oregonstate.edu/"
+    },
+    {
+      "name": "Simon Fraser University",
+      "website": "http://www.sfu.ca/"
+    },
+    {
+      "name": "Truman State University",
+      "website": "http://www.truman.edu/"
+    },
+    {
+      "name": "جامعة الزيتونة الاردنية",
+      "website": "http://www.zuj.edu.jo/"
+    },
+    {
+      "name": "Babes-Bolyai University, Faculty of Psychology and Educational Sciences",
+      "website": "http://psiedu.ubbcluj.ro/"
+    },
+    {
+      "name": "South Valley University",
+      "website": "https://www.svu.edu.eg/ar/"
+    },
+    {
+      "name": "Ahmadu Bello University",
+      "website": "https://abu.edu.ng/contact-us/"
+    },
+    {
+      "name": "TAITA TAVETA UNIVERSITY (TTU) KENYA",
+      "website": "https://www.ttu.ac.ke/"
+    },
+    {
+      "name": "Taraba State University",
+      "website": "http://www.tsuniversity.edu.ng/"
+    },
+    {
+      "name": "Birla Global University",
+      "website": "https://www.bgu.ac.in/"
+    },
+    {
+      "name": "Hitotsubashi University",
+      "website": "https://www.hit-u.ac.jp/index.html"
+    },
+    {
+      "name": "Kyoto Sangyo University",
+      "website": "https://www.kyoto-su.ac.jp/"
+    },
+    {
+      "name": "Sarala Birla University",
+      "website": "https://sbu.ac.in/"
+    },
+    {
+      "name": "Sungkyunkwan University (Humanities & Social Sciences Campus)",
+      "website": "https://www.skku.edu/skku/index.do"
+    },
+    {
+      "name": "Techno India University",
+      "website": "http://www.technoindiaeducation.com/"
+    },
+    {
+      "name": "The Catholic University of Korea, Seoul St. Mary's Hospital",
+      "website": "http://www.cmcseoul.or.kr/"
+    },
+    {
+      "name": "The NorthCap University",
+      "website": "https://www.ncuindia.edu/"
+    },
+    {
+      "name": "Arizona State University Tempe Campus",
+      "website": "https://asu.edu/"
+    },
+    {
+      "name": "Georgia State University",
+      "website": "https://www.gsu.edu/"
+    },
+    {
+      "name": "Central Asian University in Tashkent - CAU",
+      "website": "http://centralasian.uz/"
+    },
+    {
+      "name": "Eötvös Loránd University",
+      "website": "https://www.elte.hu/"
+    },
+    {
+      "name": "Istanbul Okan University",
+      "website": "http://www.okan.edu.tr/"
+    },
+    {
+      "name": "Ostim Teknik Üniversitesi",
+      "website": "https://www.ostimteknik.edu.tr/"
+    },
+    {
+      "name": "Princess Nourah Bint Abdulrahman University -",
+      "website": "http://pnu.edu.sa/"
+    },
+    {
+      "name": "Yıldız Technical University",
+      "website": "https://www.yildiz.edu.tr/"
+    },
+    {
+      "name": "Aliko Dangote University of Science and Technology",
+      "website": "http://www.kustwudil.edu.ng/"
+    },
+    {
+      "name": "Jomo Kenyatta University Of Agriculture And Technology",
+      "website": "http://www.jkuat.ac.ke/"
+    },
+    {
+      "name": "Chulalongkorn University",
+      "website": "https://www.chula.ac.th/"
+    },
+    {
+      "name": "FAST NUCES, Islamabad Campus",
+      "website": "http://www.nu.edu.pk/"
+    },
+    {
+      "name": "FAST NUCES, Islamabad Campus",
+      "website": "http://www.nu.edu.pk/"
+    },
+    {
+      "name": "FAST NUCES, Islamabad Campus",
+      "website": "http://www.nu.edu.pk/"
+    },
+    {
+      "name": "Gautam Buddha University",
+      "website": "http://www.gbu.ac.in/"
+    },
+    {
+      "name": "Jamia Hamdard University",
+      "website": "http://jamiahamdard.edu/"
+    },
+    {
+      "name": "Kyoto Women's University",
+      "website": "http://www.kyoto-wu.ac.jp/"
+    },
+    {
+      "name": "Netaji Subhas University of Technology",
+      "website": "http://nsut.ac.in/"
+    },
+    {
+      "name": "Seoul Women's University (SWU)",
+      "website": "http://www.swu.ac.kr/"
+    },
+    {
+      "name": "Soonchunhyang University",
+      "website": "https://sch.ac.kr/"
+    },
+    {
+      "name": "Technological University of the Philippines (TUP) - Manila",
+      "website": "http://www.tup.edu.ph/"
+    },
+    {
+      "name": "Michigan State University",
+      "website": "https://msu.edu/"
+    },
+    {
+      "name": "King Abdulaziz University",
+      "website": "https://csc.kau.edu.sa/Default-140073-EN"
+    },
+    {
+      "name": "King Abdulaziz University",
+      "website": "https://csc.kau.edu.sa/Default-140073-EN"
+    },
+    {
+      "name": "New Uzbekistan University",
+      "website": "https://newuu.uz/"
+    },
+    {
+      "name": "Masinde Muliro University of Science and Technology",
+      "website": "http://www.mmust.ac.ke/"
+    },
+    {
+      "name": "Michael Okpara University of Agriculture, Umudike",
+      "website": "https://mouau.edu.ng/"
+    },
+    {
+      "name": "Nnamdi Azikiwe University",
+      "website": "https://unizik.edu.ng/"
+    },
+    {
+      "name": "Olusegun Agagu University of Science and Technology, Okitipupa, Ondo State, Nigeria",
+      "website": "https://oaustech.edu.ng/"
+    },
+    {
+      "name": "Aligarh Muslim University",
+      "website": "http://www.amu.ac.in/"
+    },
+    {
+      "name": "ITM SLS Baroda University",
+      "website": "https://itmbu.ac.in/"
+    },
+    {
+      "name": "King Mongkut’s University of Technology Thonburi",
+      "website": "http://www.kmutt.ac.th/"
+    },
+    {
+      "name": "Seoul National University of Science and Technology",
+      "website": "https://www.seoultech.ac.kr/index.jsp"
+    },
+    {
+      "name": "Taipei Medical University",
+      "website": "https://www.tmu.edu.tw/"
+    },
+    {
+      "name": "Tennessee State University",
+      "website": "http://www.tnstate.edu/"
+    },
+    {
+      "name": "Wilfrid Laurier University Waterloo Campus",
+      "website": "https://wlu.ca/"
+    },
+    {
+      "name": "Bursa Technical University",
+      "website": "http://www.btu.edu.tr/"
+    },
+    {
+      "name": "Carnegie Mellon University in Qatar",
+      "website": "http://qatar.cmu.edu/"
+    },
+    {
+      "name": "Gebze Technical University",
+      "website": "http://www.gtu.edu.tr/"
+    },
+    {
+      "name": "Princess Sumaya University for Technology",
+      "website": "http://www.psut.edu.jo/"
+    },
+    {
+      "name": "Adekunle Ajasin University",
+      "website": "https://aaua.edu.ng/"
+    },
+    {
+      "name": "Akwa Ibom State University -obio Akpa Campus",
+      "website": "http://aksu.edu.ng/"
+    },
+    {
+      "name": "First Technical University, Ibadan",
+      "website": "https://tech-u.edu.ng/"
+    },
+    {
+      "name": "Ladoke Akintola University Of Technology Ogbomoso Senate Building",
+      "website": "http://www.lautech.edu.ng/"
+    },
+    {
+      "name": "Obafemi Awolowo University",
+      "website": "http://oauife.edu.ng/"
+    },
+    {
+      "name": "Assam Don Bosco University, Azara Guwahati",
+      "website": "http://dbuglobal.com/"
+    },
+    {
+      "name": "Dayananda Sagar University",
+      "website": "https://www.dsu.edu.in/"
+    },
+    {
+      "name": "Dharmsinh Desai University",
+      "website": "http://www.ddu.ac.in/"
+    },
+    {
+      "name": "Fu Jen Catholic University",
+      "website": "http://www.fju.edu.tw/"
+    },
+    {
+      "name": "Lahore Garrison University.",
+      "website": "https://lgu.edu.pk/"
+    },
+    {
+      "name": "National Taiwan University",
+      "website": "https://www.ntu.edu.tw/"
+    },
+    {
+      "name": "National Yunlin University of Science and Technology",
+      "website": "https://www.yuntech.edu.tw/"
+    },
+    {
+      "name": "Sanjay Ghodawat University",
+      "website": "http://www.sanjayghodawatuniversity.ac.in/"
+    },
+    {
+      "name": "Sister Nivedita University (SNU)",
+      "website": "https://snuniv.ac.in/"
+    },
+    {
+      "name": "Southern Taiwan University of Science and Technology",
+      "website": "https://www.stust.edu.tw/"
+    },
+    {
+      "name": "California State University, East Bay",
+      "website": "http://www.csueastbay.edu/"
+    },
+    {
+      "name": "California State University, Fresno",
+      "website": "http://www.fresnostate.edu/"
+    },
+    {
+      "name": "California State University Long Beach",
+      "website": "http://www.csulb.edu/"
+    },
+    {
+      "name": "California State University, Los Angeles",
+      "website": "http://www.calstatela.edu/"
+    },
+    {
+      "name": "California State University, Northridge",
+      "website": "https://www.csun.edu/"
+    },
+    {
+      "name": "The Egyptian Chinese University ( ECU )",
+      "website": "http://www.ecu.edu.eg/"
+    },
+    {
+      "name": "German Jordanian University",
+      "website": "http://www.gju.edu.jo/"
+    },
+    {
+      "name": "Sivas Cumhuriyet Üniversitesi",
+      "website": "https://www.cumhuriyet.edu.tr/"
+    },
+    {
+      "name": "Süleyman Demirel University",
+      "website": "https://w3.sdu.edu.tr/"
+    },
+    {
+      "name": "Olabisi Onabanjo University",
+      "website": "http://www.oouagoiwoye.edu.ng/"
+    },
+    {
+      "name": "The Co-operative University of Kenya,",
+      "website": "http://cuk.ac.ke/"
+    },
+    {
+      "name": "Ateneo de Manila University",
+      "website": "https://www.ateneo.edu/"
+    },
+    {
+      "name": "Chonnam National University - Gwangju Campus",
+      "website": "https://www.jnu.ac.kr/jnumain.aspx"
+    },
+    {
+      "name": "HCMC University of Technology (HCMUT)",
+      "website": "http://www.hcmut.edu.vn/"
+    },
+    {
+      "name": "Incheon National University (INU), Songdo Campus",
+      "website": "https://www.inu.ac.kr/"
+    },
+    {
+      "name": "Jawaharlal Nehru University",
+      "website": "https://www.jnu.ac.in/"
+    },
+    {
+      "name": "KL University",
+      "website": "https://www.kluniversity.in/"
+    },
+    {
+      "name": "National Central University",
+      "website": "http://www.ncu.edu.tw/"
+    },
+    {
+      "name": "National Chi Nan University",
+      "website": "https://www.ncnu.edu.tw/"
+    },
+    {
+      "name": "Pukyong National University (PKNU) - Daeyeon Campus",
+      "website": "https://www.pknu.ac.kr/"
+    },
+    {
+      "name": "Sungshin Women’s University",
+      "website": "http://www.sungshin.ac.kr/"
+    },
+    {
+      "name": "AlBalqa Applied University",
+      "website": "https://www.bau.edu.jo/"
+    },
+    {
+      "name": "Georgian American University (GAU)",
+      "website": "http://gau.edu.ge/"
+    },
+    {
+      "name": "Çankırı karatekin university",
+      "website": "http://karatekin.edu.tr/"
+    },
+    {
+      "name": "Bamidele Olumilua University of Education, Science and Technology, Ikere-Ekiti",
+      "website": "https://bouesti.edu.ng/"
+    },
+    {
+      "name": "Ajeenkya DY Patil University",
+      "website": "https://adypu.edu.in/"
+    },
+    {
+      "name": "National Changhua University of Education Jin De Campus",
+      "website": "https://www.ncue.edu.tw/"
+    },
+    {
+      "name": "National Chengchi University",
+      "website": "https://www.nccu.edu.tw/app/home.php"
+    },
+    {
+      "name": "National Taichung University of Science and Technology",
+      "website": "http://www.nutc.edu.tw/bin/home.php"
+    },
+    {
+      "name": "Sookmyung Women's University",
+      "website": "http://www.sookmyung.ac.kr/"
+    },
+    {
+      "name": "Veer Surendra Sai University of Technology",
+      "website": "http://vssut.ac.in/"
+    },
+    {
+      "name": "Yokohama National University",
+      "website": "http://www.ynu.ac.jp/"
+    },
+    {
+      "name": "Eastern Washington University",
+      "website": "https://www.ewu.edu/"
+    },
+    {
+      "name": "Southern Methodist University",
+      "website": "http://www.smu.edu/"
+    },
+    {
+      "name": "Istanbul Technical University",
+      "website": "http://www.itu.edu.tr/"
+    },
+    {
+      "name": "Izmir Katip Çelebi University",
+      "website": "http://ikcu.edu.tr/"
+    },
+    {
+      "name": "Manisa Celal Bayar University",
+      "website": "https://www.mcbu.edu.tr/"
+    },
+    {
+      "name": "Igor Sikorsky Kyiv Polytechnic Institute",
+      "website": "https://kpi.ua/"
+    },
+    {
+      "name": "Takoradi Technical University",
+      "website": "https://ttu.edu.gh/"
+    },
+    {
+      "name": "C. V. Raman Global University",
+      "website": "http://www.cgu-odisha.ac.in/"
+    },
+    {
+      "name": "Cebu Technological University - Main Campus",
+      "website": "http://www.ctu.edu.ph/"
+    },
+    {
+      "name": "Chung Shan Medical University",
+      "website": "http://www.csmu.edu.tw/"
+    },
+    {
+      "name": "Kyungpook National University (KNU) - Daegu Campus",
+      "website": "https://www.knu.ac.kr/wbbs/wbbs/main/main.action"
+    },
+    {
+      "name": "National Kaohsiung University of Science and Technology First Campus",
+      "website": "http://www.nkust.edu.tw/"
+    },
+    {
+      "name": "National Tsing Hua University",
+      "website": "http://www.nthu.edu.tw/"
+    },
+    {
+      "name": "North-Eastern Hill University Meghalaya (NEHU)",
+      "website": "http://www.nehu.ac.in/"
+    },
+    {
+      "name": "Tokyo Metropolitan University",
+      "website": "https://www.tmu.ac.jp/"
+    },
+    {
+      "name": "Tunku Abdul Rahman University of Management and Technology (TAR UMT)",
+      "website": "http://www.tarc.edu.my/"
+    },
+    {
+      "name": "جامعة الدلتا التكنولوجية",
+      "website": "http://www.dtu.edu.eg/"
+    },
+    {
+      "name": "Egyptian E-Learning University",
+      "website": "http://www.eelu.edu.eg/"
+    },
+    {
+      "name": "Karadeniz Teknik Üniversitesi",
+      "website": "http://www.ktu.edu.tr/"
+    },
+    {
+      "name": "Mediterranean School of Business (MSB)",
+      "website": "http://www.msb.tn/"
+    },
+    {
+      "name": "Ateneo de Zamboanga University",
+      "website": "https://www.adzu.edu.ph/"
+    },
+    {
+      "name": "Delhi Technological University",
+      "website": "http://dtu.ac.in/"
+    },
+    {
+      "name": "Fatima Jinnah Women University - City Campus",
+      "website": "https://fjwu.edu.pk/"
+    },
+    {
+      "name": "Mohammad Ali Jinnah University",
+      "website": "http://www.jinnah.edu/"
+    },
+    {
+      "name": "National Cheng Kung University",
+      "website": "https://web.ncku.edu.tw/"
+    },
+    {
+      "name": "Toronto Metropolitan University",
+      "website": "https://www.torontomu.ca/"
+    },
+    {
+      "name": "Adnan Menderes University",
+      "website": "https://www.adu.edu.tr/"
+    },
+    {
+      "name": "Tekirdag Namik Kemal University Corlu Engineering Faculty",
+      "website": "http://cmf.nku.edu.tr/"
+    },
+    {
+      "name": "Beaconhouse National University (BNU)",
+      "website": "https://www.bnu.edu.pk/"
+    },
+    {
+      "name": "Chung Yuan Christian University",
+      "website": "https://www.cycu.edu.tw/"
+    },
+    {
+      "name": "National Chung Hsing University",
+      "website": "https://www.nchu.edu.tw/"
+    },
+    {
+      "name": "National Sun Yat-sen University",
+      "website": "https://www.nsysu.edu.tw/"
+    },
+    {
+      "name": "The George Washington University",
+      "website": "http://www.gwu.edu/"
+    },
+    {
+      "name": "Bandırma Onyedi Eylül University",
+      "website": "https://www.bandirma.edu.tr/"
+    },
+    {
+      "name": "Middle East Technical University",
+      "website": "http://www.metu.edu.tr/"
+    },
+    {
+      "name": "ODTÜ Kuzey Kıbrıs Kampüsü",
+      "website": "http://ncc.metu.edu.tr/tr"
+    },
+    {
+      "name": "Kampala International University",
+      "website": "https://www.kiu.ac.ug/"
+    },
+    {
+      "name": "International Islamic University Malaysia",
+      "website": "http://www.iium.edu.my/"
+    },
+    {
+      "name": "International Islamic University Malaysia",
+      "website": "http://www.iium.edu.my/"
+    },
+    {
+      "name": "Nanyang Technological University",
+      "website": "https://www.ntu.edu.sg/"
+    },
+    {
+      "name": "Dev Bhoomi Uttarakhand University (DBUU), Dehradun",
+      "website": "https://dbuu.ac.in/"
+    },
+    {
+      "name": "Information Technology University (ITU)",
+      "website": "https://itu.edu.pk/"
+    },
+    {
+      "name": "National Taiwan Normal University",
+      "website": "http://www.ntnu.edu.tw/"
+    },
+    {
+      "name": "Western Mindanao State University",
+      "website": "http://www.wmsu.edu.ph/"
+    },
+    {
+      "name": "Applied Science Private University",
+      "website": "http://www.asu.edu.jo/"
+    },
+    {
+      "name": "Bolu Abant Izzet Baysal University",
+      "website": "http://www.ibu.edu.tr/"
+    },
+    {
+      "name": "New Cairo Technological University",
+      "website": "http://nctu.edu.eg/"
+    },
+    {
+      "name": "The Egyptian E-learning University",
+      "website": "http://www.eelu.edu.eg/"
+    },
+    {
+      "name": "Zonguldak Bülent Ecevit Üniversitesi",
+      "website": "http://w3.beun.edu.tr/"
+    },
+    {
+      "name": "Bujumbura International University",
+      "website": "https://www.biu.bi/"
+    },
+    {
+      "name": "Maulana Abul Kalam Azad University of Technology, West Bengal",
+      "website": "https://makautwb.ac.in/"
+    },
+    {
+      "name": "Pandit Deendayal Energy University- PDEU (Formerly PDPU)",
+      "website": "http://www.pdpu.ac.in/"
+    },
+    {
+      "name": "Sindh Madressatul Islam University, City Campus, Karachi",
+      "website": "https://www.smiu.edu.pk/"
+    },
+    {
+      "name": "The Australian National University",
+      "website": "https://www.anu.edu.au/"
+    },
+    {
+      "name": "VNUHCM Central Library",
+      "website": "http://www.vnulib.edu.vn/"
+    },
+    {
+      "name": "Kazakh-British Technical University",
+      "website": "https://kbtu.edu.kz/ru/"
+    },
+    {
+      "name": "National and Kapodistrian University of Athens, Radiology & Medical Imaging Research Unit, 2nd Radiology Laboratory",
+      "website": "https://school-en.med.uoa.gr/school_of_medicine/departments_and_laboratories/"
+    },
+    {
+      "name": "Taras Shevchenko National University of Kyiv",
+      "website": "https://www.knu.ua/"
+    },
+    {
+      "name": "The John Paul II Catholic University of Lublin",
+      "website": "https://www.kul.pl/11.html"
+    },
+    {
+      "name": "Westminster International University in Tashkent",
+      "website": "http://wiut.uz/"
+    },
+    {
+      "name": "Harcourt Butler Technical University",
+      "website": "http://hbtu.ac.in/"
+    },
+    {
+      "name": "National Kaohsiung Normal University HePing Campus",
+      "website": "https://w3.nknu.edu.tw/zh/"
+    },
+    {
+      "name": "Bharati Vidyapeeth College of engineering",
+      "website": "https://bvcoe.bharatividyapeeth.edu/"
+    },
+    {
+      "name": "National Forensic Sciences University",
+      "website": "https://www.nfsu.ac.in/"
+    },
+    {
+      "name": "National Forensic Sciences University",
+      "website": "https://www.nfsu.ac.in/"
+    },
+    {
+      "name": "Shaheed Bhagat Singh State University (ਸ਼ਹੀਦ ਭਗਤ ਸਿੰਘ ਸਟੇਟ ਯੂਨੀਵਸਿਟੀ)",
+      "website": "http://www.sbsstc.ac.in/"
+    },
+    {
+      "name": "Visvesvaraya Technological University Regional Center Bengaluru",
+      "website": "https://vtu.ac.in/"
+    },
+    {
+      "name": "Imam Abdulrahman Bin Faisal University",
+      "website": "https://www.iau.edu.sa/ar"
+    },
+    {
+      "name": "Imam Abdulrahman Bin Faisal University",
+      "website": "https://www.iau.edu.sa/ar"
+    },
+    {
+      "name": "Chukwuemeka Odumegwu Ojukwu University",
+      "website": "http://coou.edu.ng/"
+    },
+    {
+      "name": "Chhatrapati Shivaji Maharaj University",
+      "website": "https://csmu.ac.in/"
+    },
+    {
+      "name": "California Polytechnic State University",
+      "website": "https://www.calpoly.edu/"
+    },
+    {
+      "name": "California State Polytechnic University, Pomona",
+      "website": "http://www.cpp.edu/"
+    },
+    {
+      "name": "Libyan International Medical University",
+      "website": "http://www.limu.edu.ly/"
+    },
+    {
+      "name": "National Yang Ming Chiao Tung University",
+      "website": "https://www.nycu.edu.tw/"
+    },
+    {
+      "name": "Swarrnim Startup & Innovation University",
+      "website": "http://swarrnim.edu.in/"
+    },
+    {
+      "name": "Veer Bahadur Singh Purvanchal University Jaunpur Uttar Pradesh",
+      "website": "http://www.vbspu.ac.in/"
+    },
+    {
+      "name": "Jawaharlal Nehru Technological University Hyderabad",
+      "website": "http://jntuh.ac.in/new/academic/contacts_us.html"
+    },
+    {
+      "name": "Turkish Aeronautical Association University",
+      "website": "https://www.thk.edu.tr/"
+    },
+    {
+      "name": "UTAMU | Uganda Technology And Management University",
+      "website": "http://www.utamu.ac.ug/"
+    },
+    {
+      "name": "Addis Ababa Science and Technology University",
+      "website": "http://www.aastu.edu.et/"
+    },
+    {
+      "name": "Maharishi Markandeshwar (Deemed to be University)",
+      "website": "https://www.mmumullana.org/"
+    },
+    {
+      "name": "University of Montreal",
+      "website": "https://www.umontreal.ca/"
+    },
+    {
+      "name": "Université du Québec en Abitibi-Témiscamingue",
+      "website": "https://www.uqat.ca/"
+    },
+    {
+      "name": "Chouaib Doukkali University",
+      "website": "http://www.ucd.ac.ma/"
+    },
+    {
+      "name": "University of Lomé/Université de Lomé",
+      "website": "http://www.univ-lome.tg/"
+    },
+    {
+      "name": "Airlangga University - Campus MERR (C)",
+      "website": "http://www.unair.ac.id/"
+    },
+    {
+      "name": "Universitas Brawijaya",
+      "website": "http://www.ub.ac.id"
+    },
+    {
+      "name": "Universitas Esa Unggul Kampus Bekasi",
+      "website": "https://www.esaunggul.ac.id/bekasi/"
+    },
+    {
+      "name": "Universitas Gadjah Mada",
+      "website": "https://ugm.ac.id/"
+    },
+    {
+      "name": "Universitas Gunadarma Kampus D",
+      "website": "http://gunadarma.ac.id/"
+    },
+    {
+      "name": "Hasanuddin University",
+      "website": "https://www.unhas.ac.id/"
+    },
+    {
+      "name": "Universitas Indonesia",
+      "website": "https://ui.ac.id/"
+    },
+    {
+      "name": "Universitas Islam Indonesia",
+      "website": "http://uii.ac.id/"
+    },
+    {
+      "name": "Jakarta State University",
+      "website": "http://www.unj.ac.id/"
+    },
+    {
+      "name": "Universitas Negeri Makassar Kampus Tidung",
+      "website": "https://unm.ac.id/"
+    },
+    {
+      "name": "Universitas Negeri Malang",
+      "website": "http://www.um.ac.id/"
+    },
+    {
+      "name": "State University of Surabaya - Campus 1",
+      "website": "http://www.unesa.ac.id/"
+    },
+    {
+      "name": "Pasundan University",
+      "website": "https://www.unpas.ac.id/"
+    },
+    {
+      "name": "UPN \"Veteran\" Yogyakarta",
+      "website": "http://upnyk.ac.id/"
+    },
+    {
+      "name": "Sriwijaya University - Indralaya Campus",
+      "website": "https://unsri.ac.id/"
+    },
+    {
+      "name": "Universitas Sumatera Utara",
+      "website": "http://usu.ac.id/"
+    },
+    {
+      "name": "Udayana University Campus Sudirman",
+      "website": "https://www.unud.ac.id/"
+    },
+    {
+      "name": "University of Malaya",
+      "website": "https://www.um.edu.my/"
+    },
+    {
+      "name": "Universiti Putra Malaysia",
+      "website": "http://www.upm.edu.my/"
+    },
+    {
+      "name": "Universiti Sains Malaysia",
+      "website": "https://www.usm.my/"
+    },
+    {
+      "name": "Universiti Teknologi Malaysia",
+      "website": "https://www.utm.my/"
+    },
+    {
+      "name": "European Universities in Egypt",
+      "website": "http://eue.edu.eg/"
+    },
+    {
+      "name": "Universiapolis - Université Internationale d'Agadir",
+      "website": "http://universiapolis.ma/"
+    },
+    {
+      "name": "Erzincan Binali Yıldırım Üniversitesi Sağlık Bilimleri Fakültesi",
+      "website": "http://sbf.erzincan.edu.tr/"
+    },
+    {
+      "name": "Universal College of Engineering Mumbai",
+      "website": "http://universalcollegeofengineering.edu.in/"
+    }
+  ]
+}
