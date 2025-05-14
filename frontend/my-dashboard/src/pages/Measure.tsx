@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import guidelineData from '../data/parsed_wsg_guidelines.json';
 import { useLocation } from 'react-router-dom';
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useToast } from "@/hooks/use-toast"; 
+
 import './Measure.css';
 import mockCaptureImage from '@/data/img_captured12.png';
 
@@ -33,6 +33,17 @@ interface MeasurementResult {
   globalAvgCarbon: number;
 }
 
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+
 const Measure: React.FC = () => {
   const location = useLocation();
   const [url, setUrl] = useState('');
@@ -41,28 +52,30 @@ const Measure: React.FC = () => {
   const [captureImage, setCaptureImage] = useState<string | null>(null);
   const [captureLoading, setCaptureLoading] = useState(false);
   const [captureError, setCaptureError] = useState<string | null>(null);
-  const { toast } = useToast();
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
 
-  useEffect(() => {
-    const state = location.state as { url?: string; result?: MeasurementResult } | null;
-    if (state?.url) {
-      setUrl(state.url);
-      if (state.result) {
-        setResult(state.result);
-        toast({
-          title: "측정 완료",
-          description: `탄소 등급: ${state.result.grade}`
-        });
-      }
-    }
-  }, [location.state, toast]);
 
-  const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUrl(e.target.value);
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
+    if (!url) {
+      console.error("URL을 입력해주세요.");
+      return;
+    }
+
+    // URL 유효성 검사
+    try {
+      const urlObject = new URL(url);
+      if (!urlObject.protocol.startsWith('http')) {
+        console.error("유효한 URL을 입력해주세요. (http:// 또는 https:// 로 시작해야 합니다)");
+        return;
+      }
+      setShowConfirmDialog(true);
+    } catch (error) {
+      console.error("유효한 URL 형식이 아닙니다.");
+    }
+  }, [url]);
+
+  const startMeasurement = useCallback(async () => {
     if (!url) return;
     
     setIsLoading(true);
@@ -71,8 +84,8 @@ const Measure: React.FC = () => {
       setCaptureError(null);
       setCaptureImage(mockCaptureImage);
       
-      // 1. URL 제출
-      const startResponse = await fetch('/api/start-measurement', {
+      // 1. 먼저 /api/start-analysis로 요청
+      const analysisStartResponse = await fetch('/api/start-analysis', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -81,76 +94,27 @@ const Measure: React.FC = () => {
         body: `url=${encodeURIComponent(url)}`
       });
 
-      const startResponseText = await startResponse.text();
-      if (!startResponse.ok) {
-        throw new Error('성능 측정을 시작하는데 실패했습니다');
-      } else if (startResponseText.includes('아직 측정된 데이터가 없습니다')) {
-        toast({
-          variant: "default",
-          title: "입력하신 URL이 맞습니까?",
-          description: (
-            <div className="flex flex-col gap-2">
-              <p>{url}</p>
-              <div className="flex gap-2">
-                <Button onClick={async () => {
-                  try {
-                    console.log('요청 URL:', '/api/start-measurement');
-                    console.log('요청 데이터:', url);
-                    
-                    const response = await fetch('/api/start-measurement', {
-                      method: 'POST',
-                      credentials: 'include',
-                      headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                      },
-                      body: `url=${encodeURIComponent(url)}`
-                    });
+      if (!analysisStartResponse.ok) {
+        if (analysisStartResponse.status === 404) {
+          // 2. DB에 데이터가 없으면 측정 시작
+          const measurementResponse = await fetch('/api/start-measurement', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `url=${encodeURIComponent(url)}`
+          });
 
-                    if (!response.ok) {
-                      const errorText = await response.text();
-                      throw new Error(errorText || '서버 오류가 발생했습니다.');
-                    }
-
-                    const result = await response.text();
-                    toast({
-                      description: result || '성능 측정이 시작되었습니다.'
-                    });
-                  } catch (error) {
-                    console.error('측정 시작 실패:', error);
-                    
-                    // Failed to fetch 오류는 서버 연결 불가를 의미
-                    const errorMessage = error instanceof Error && error.message === 'Failed to fetch'
-                      ? '백엔드 서버에 연결할 수 없습니다. 서버가 실행 중인지 확인해주세요.'
-                      : error instanceof Error ? error.message : '성능 측정을 시작하는데 실패했습니다.';
-                    
-                    toast({
-                      variant: "destructive",
-                      title: '에러 발생',
-                      description: errorMessage
-                    });
-                  }
-                }}>
-                  성능 측정하기
-                </Button>
-                <Button variant="outline" onClick={() => {
-                  // TODO: 결과 보기 구현 예정
-                  toast({
-                    variant: "default",
-                    title: "구현 예정",
-                    description: "결과 보기 기능이 추가될 예정입니다."
-                  });
-                }}>
-                  결과 보기
-                </Button>
-              </div>
-            </div>
-          ),
-          duration: 10000
-        });
-        return;
+          if (!measurementResponse.ok) {
+            throw new Error('성능 측정을 시작하는데 실패했습니다');
+          }
+        } else {
+          throw new Error('분석 시작에 실패했습니다');
+        }
       }
 
-      // 2. 분석 결과 가져오기
+      // 3. 분석 결과 요청
       const analysisResponse = await fetch('/api/carbon-analysis', {
         method: 'GET',
         credentials: 'include',
@@ -170,44 +134,70 @@ const Measure: React.FC = () => {
       const data = await analysisResponse.json();
       setResult(data);
       setCaptureLoading(false);
-
-      toast({
-        title: "측정 완료",
-        description: `탄소 등급: ${data.grade}`,
-      });
+      console.log(`측정 완료 - 탄소 등급: ${data.grade}`);
     } catch (error) {
-      setCaptureLoading(false);
-      setCaptureError('이미지 캡처 실패');
-      toast({
-        variant: "destructive",
-        title: "오류 발생",
-        description: "측정 중 오류가 발생했습니다. 다시 시도해주세요.",
-      });
+      console.error('Error:', error);
+      setCaptureError(error instanceof Error ? error.message : '오류가 발생했습니다');
+      console.error(error instanceof Error ? error.message : '측정 중 오류가 발생했습니다.');
     } finally {
       setIsLoading(false);
+      setCaptureLoading(false);
     }
+  }, [url]);
+
+  const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUrl(e.target.value);
   };
+
+  useEffect(() => {
+    const state = location.state as { url?: string; result?: MeasurementResult } | null;
+    if (state?.url) {
+      setUrl(state.url);
+      if (state.result) {
+        setResult(state.result);
+        console.log(`측정 완료 - 탄소 등급: ${state.result.grade}`);
+      } else {
+        // URL이 있고 결과가 없으면 자동으로 측정 시작
+        const fakeEvent = { preventDefault: () => {} } as React.FormEvent;
+        handleSubmit(fakeEvent);
+      }
+    }
+  }, [location.state, handleSubmit]);
 
   const handleShare = (platform: 'twitter' | 'facebook' | 'linkedin') => {
     // 실제 공유 기능 구현 필요
-    toast({
-      title: "공유하기",
-      description: `${platform}로 결과를 공유합니다.`,
-    });
+    console.log(`${platform}로 결과를 공유합니다.`);
   };
 
   return (
-    <div className="measure-container">
-      <h1 className="text-4xl font-bold text-center mb-10">웹사이트 탄소 배출량 측정</h1>
-      
-      {!result ? (
-        <div className="carbon-form-container">
-          <form onSubmit={handleSubmit} className="space-y-8">
-            <div className="space-y-2">
-              <h2 className="text-2xl font-semibold">웹사이트 URL 입력</h2>
-              <p className="text-white/70">
-                측정하고자 하는 웹사이트의 URL을 입력해주세요.
-              </p>
+    <div>
+      <AlertDialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>URL 확인</AlertDialogTitle>
+            <AlertDialogDescription>
+              입력하신 URL이 <span className="font-semibold">{url}</span> 맞습니까?
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>아니오</AlertDialogCancel>
+            <AlertDialogAction onClick={startMeasurement}>
+              예(측정하기)
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+      <div className="measure-container">
+        <h1 className="text-4xl font-bold text-center mb-10">웹사이트 탄소 배출량 측정</h1>
+        
+        {!result ? (
+          <div className="carbon-form-container">
+            <form onSubmit={handleSubmit} className="space-y-8">
+              <div className="space-y-2">
+                <h2 className="text-2xl font-semibold">웹사이트 URL 입력</h2>
+                <p className="text-white/70">
+                  측정하고자 하는 웹사이트의 URL을 입력해주세요.
+                </p>
             </div>
 
             <div className="flex space-x-2">
@@ -375,6 +365,7 @@ const Measure: React.FC = () => {
           </div>
         </div>
       )}
+      </div>
     </div>
   );
 };
