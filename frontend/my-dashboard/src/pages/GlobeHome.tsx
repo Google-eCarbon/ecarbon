@@ -1,13 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useToast } from "../hooks/use-toast";
-import { Button } from "../components/ui/button";
-import { useNavigate } from 'react-router-dom';
 import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
-
-import '../styles/GlobeHome.css';
 
 // 세계 지도 토폴로지 데이터 URL
 const geoUrl = "https://unpkg.com/world-atlas@2.0.2/countries-50m.json";
+import { useToast } from "../hooks/use-toast";
+import { useNavigate } from 'react-router-dom';
+import { Button } from "../components/ui/button";
+import { Input } from "../components/ui/input";
+
+import '../styles/GlobeHome.css';
 
 interface MousePosition {
   x: number;
@@ -80,14 +81,14 @@ const vulnerableCountryNames = vulnerableCountries.map(c => c.name);
 const GlobeHome = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
-  const [rotation, setRotation] = useState([0, 0, 0]);
-  const [cities, setCities] = useState([]);
+  const [rotation, setRotation] = useState<[number, number, number]>([0, 0, 0]);
+  const [cities, setCities] = useState<MarkerData[]>([]);
   const [error, setError] = useState<string>('');
   const [tooltip, setTooltip] = useState<TooltipData | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [url, setUrl] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedMarker, setSelectedMarker] = useState(null);
+
   const lastMouseRef = useRef({ x: 0, y: 0 });
   const globeRef = useRef<HTMLDivElement>(null);
 
@@ -155,114 +156,22 @@ const GlobeHome = () => {
   const handleMouseUp = () => {
     setIsDragging(false);
   };
-  const handleGlobeClick = () => {
-    setSelectedMarker(null);
-  };
   const handleUrlChange = (e) => setUrl(e.target.value);
 
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!url) return;
-
-    setIsLoading(true);
-    try {
-      // 1. URL 제출하여 분석 시작
-      const startResponse = await fetch('/api/start-analysis', {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: `url=${encodeURIComponent(url)}`
+    if (!url) {
+      toast({
+        variant: "destructive",
+        description: "URL을 입력해주세요."
       });
-
-      const startResponseText = await startResponse.text();
-      if (!startResponse.ok) {
-        throw new Error('성능 측정을 시작하는데 실패했습니다');
-      } else if (startResponseText.includes('아직 측정된 데이터가 없습니다')) {
-        toast({
-          variant: "default",
-          title: "입력하신 URL이 맞습니까?",
-          description: (
-            <div className="flex flex-col gap-2">
-              <p>{url}</p>
-              <div className="flex gap-2">
-                <Button onClick={async () => {
-                  try {
-                    const response = await fetch('/api/start-measurement', {
-                      method: 'POST',
-                      credentials: 'include',
-                      headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                      },
-                      body: `url=${encodeURIComponent(url)}`
-                    });
-
-                    if (!response.ok) {
-                      const errorText = await response.text();
-                      throw new Error(errorText);
-                    }
-
-                    const result = await response.text();
-                    toast({
-                      description: result
-                    });
-                  } catch (error) {
-                    console.error('측정 시작 실패:', error);
-                    toast({
-                      variant: "destructive",
-                      description: error instanceof Error ? error.message : '성능 측정을 시작하는데 실패했습니다.'
-                    });
-                  }
-                }}>
-                  성능 측정하기
-                </Button>
-                <Button variant="outline" onClick={() => {
-                  // TODO: 결과 보기 구현 예정
-                  toast({
-                    description: "결과 보기 기능이 추가될 예정입니다."
-                  });
-                }}>
-                  결과 보기
-                </Button>
-              </div>
-            </div>
-          ),
-          duration: 10000
-        });
-        return;
-      }
-
-      // 2. 분석 결과 가져오기
-      const analysisResponse = await fetch('/api/carbon-analysis', {
-        method: 'GET',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-
-      if (!analysisResponse.ok) {
-        throw new Error('분석 결과를 가져오는데 실패했습니다');
-      }
-
-      const result = await analysisResponse.json();
-
-      // 3. 측정 결과와 함께 Measure 페이지로 리디렉션
-      navigate('/measure', { 
-        state: { 
-          url,
-          result
-        } 
-      });
-    } catch (error) {
-      console.error('측정 실패:', error);
-      // 에러 발생 시에도 Measure 페이지로 이동하여 재시도할 수 있도록 함
-      navigate('/measure', { state: { url } });
-    } finally {
-      setIsLoading(false);
+      return;
     }
+
+    // Measure 페이지로 이동
+    navigate('/measure', { 
+      state: { url } 
+    });
   };
 
   return (
@@ -270,21 +179,49 @@ const GlobeHome = () => {
       <h1>Greenee 웹사이트의 지속가능성을 평가하세요</h1>
       <div className="home-content">
         <div className="split-container">
-          {error && (
-            <div className="error-message" style={{ color: 'red', marginBottom: '10px', textAlign: 'center' }}>
-              {error}
-            </div>
-          )}
+          <div className="measure-section">
+            <p className="measure-description">
+              웹사이트의 탄소 발자국을 측정하고 개선 방안을 확인하세요.
+            </p>
+            <form onSubmit={handleSubmit} className="url-form">
+              <Input
+                type="url"
+                value={url}
+                onChange={handleUrlChange}
+                placeholder="웹사이트 URL을 입력하세요"
+                className="url-input"
+                required
+              />
+              <Button 
+                type="submit" 
+                className="rounded-l-none bg-white text-green-700 hover:bg-white/90 hover:text-green-800"
+                disabled={isLoading}
+              >
+                {isLoading ? '측정 중...' : '분석 시작'}
+              </Button>
+              {isLoading && (
+                <div className="absolute left-1/2 transform -translate-x-1/2 mt-8">
+                  <div className="w-10 h-10 border-4 border-white/30 border-t-white rounded-full animate-spin mb-4" />
+                  <p className="text-white">측정 중입니다...</p>
+                </div>
+              )}
+            </form>
+          </div>
+
           <div
-            className="globe-container"
-            style={{ position: 'relative' }}
             ref={globeRef}
+            className="globe-container"
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}
-            onClick={handleGlobeClick}
+
           >
+            {error && (
+              <div className="error-message" style={{ color: 'red', marginBottom: '10px', textAlign: 'center' }}>
+                {error}
+              </div>
+            )}
             <ComposableMap
               projection="geoOrthographic"
               projectionConfig={{
@@ -351,34 +288,7 @@ const GlobeHome = () => {
                 ))}
             </ComposableMap>
           </div>
-          <div className="measure-section">
-              <p className="measure-description">
-                웹사이트의 탄소 발자국을 측정하고 개선 방안을 확인하세요.
-              </p>
-              <form onSubmit={handleSubmit} className="url-form">
-                <input
-                  type="url"
-                  value={url}
-                  onChange={handleUrlChange}
-                  placeholder="웹사이트 URL을 입력하세요"
-                  className="url-input"
-                  required
-                />
-                <button 
-                  type="submit" 
-                  className="rounded-l-none bg-white text-green-700 hover:bg-white/90 hover:text-green-800"
-                  disabled={isLoading}
-                >
-                  {isLoading ? '측정 중...' : '분석 시작'}
-                </button>
-                {isLoading && (
-                  <div className="absolute left-1/2 transform -translate-x-1/2 mt-8">
-                    <div className="w-10 h-10 border-4 border-white/30 border-t-white rounded-full animate-spin mb-4" />
-                    <p className="text-white">측정 중입니다...</p>
-                  </div>
-                )}
-              </form>
-          </div>
+
         </div>
       </div>
       {tooltip && (
