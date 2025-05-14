@@ -72,7 +72,7 @@ const Measure: React.FC = () => {
       setCaptureImage(mockCaptureImage);
       
       // 1. URL 제출
-      const startResponse = await fetch('/api/start-analysis', {
+      const startResponse = await fetch('/api/start-measurement', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -81,8 +81,73 @@ const Measure: React.FC = () => {
         body: `url=${encodeURIComponent(url)}`
       });
 
+      const startResponseText = await startResponse.text();
       if (!startResponse.ok) {
         throw new Error('성능 측정을 시작하는데 실패했습니다');
+      } else if (startResponseText.includes('아직 측정된 데이터가 없습니다')) {
+        toast({
+          variant: "default",
+          title: "입력하신 URL이 맞습니까?",
+          description: (
+            <div className="flex flex-col gap-2">
+              <p>{url}</p>
+              <div className="flex gap-2">
+                <Button onClick={async () => {
+                  try {
+                    console.log('요청 URL:', '/api/start-measurement');
+                    console.log('요청 데이터:', url);
+                    
+                    const response = await fetch('/api/start-measurement', {
+                      method: 'POST',
+                      credentials: 'include',
+                      headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                      },
+                      body: `url=${encodeURIComponent(url)}`
+                    });
+
+                    if (!response.ok) {
+                      const errorText = await response.text();
+                      throw new Error(errorText || '서버 오류가 발생했습니다.');
+                    }
+
+                    const result = await response.text();
+                    toast({
+                      description: result || '성능 측정이 시작되었습니다.'
+                    });
+                  } catch (error) {
+                    console.error('측정 시작 실패:', error);
+                    
+                    // Failed to fetch 오류는 서버 연결 불가를 의미
+                    const errorMessage = error instanceof Error && error.message === 'Failed to fetch'
+                      ? '백엔드 서버에 연결할 수 없습니다. 서버가 실행 중인지 확인해주세요.'
+                      : error instanceof Error ? error.message : '성능 측정을 시작하는데 실패했습니다.';
+                    
+                    toast({
+                      variant: "destructive",
+                      title: '에러 발생',
+                      description: errorMessage
+                    });
+                  }
+                }}>
+                  성능 측정하기
+                </Button>
+                <Button variant="outline" onClick={() => {
+                  // TODO: 결과 보기 구현 예정
+                  toast({
+                    variant: "default",
+                    title: "구현 예정",
+                    description: "결과 보기 기능이 추가될 예정입니다."
+                  });
+                }}>
+                  결과 보기
+                </Button>
+              </div>
+            </div>
+          ),
+          duration: 10000
+        });
+        return;
       }
 
       // 2. 분석 결과 가져오기
