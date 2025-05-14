@@ -21,8 +21,6 @@ import java.util.stream.Collectors;
 @Slf4j
 public class CarbonAnalysisService {
 
-    private final WeeklyMeasurementsRepository weeklyMeasurementsRepository;
-
     public Optional<CarbonAnalysisResponse> analyzeCarbonByUrl(WeeklyMeasurements measurement) {
 
         log.info(measurement.toString());

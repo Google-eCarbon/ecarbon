@@ -4,7 +4,7 @@ import com.ecarbon.gdsc.auth.dto.UserPageResponse;
 import com.ecarbon.gdsc.auth.dto.UserProfileResponse;
 import com.ecarbon.gdsc.auth.entity.User;
 import com.ecarbon.gdsc.auth.principal.CustomOAuth2User;
-import com.ecarbon.gdsc.auth.repository.UserRepository;
+import com.ecarbon.gdsc.auth.repository.FirebaseUserRepository;
 import com.ecarbon.gdsc.auth.service.UserPageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Optional;
+import java.util.concurrent.ExecutionException;
 
 @Slf4j
 @RestController
@@ -23,7 +23,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserController {
 
-    private final UserRepository userRepository;
+    private final FirebaseUserRepository firebaseUserRepository;
     private final UserPageService userPageService;
 
     @GetMapping("/me")
@@ -42,24 +42,30 @@ public class UserController {
         String email = customOAuth2User.getEmail();
         log.info("사용자 프로필 조회: {}, 이메일: {}", username, email);
 
-        // 이메일로 사용자 정보 조회 (이메일이 고유 식별자로 더 적합함)
-        Optional<User> userOptional = userRepository.findByEmail(email);
+        try {
+            // 이메일로 사용자 정보 조회
+            User user = firebaseUserRepository.findByEmail(email);
 
-        if (userOptional.isEmpty()) {
-            log.warn("사용자 정보를 찾을 수 없습니다. 이메일: {}", email);
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            if (user == null) {
+                // 사용자가 없으면 새로 생성
+                user = new User();
+                user.setEmail(email);
+                user.setName(username);
+                user = firebaseUserRepository.save(user);
+            }
+
+            // 사용자 프로필 응답 생성
+            UserProfileResponse response = UserProfileResponse.builder()
+                    .id(user.getId())
+                    .username(user.getName())
+                    .email(user.getEmail())
+                    .build();
+
+            return ResponseEntity.ok(response);
+        } catch (ExecutionException | InterruptedException e) {
+            log.error("Firebase 데이터 조회 중 오류 발생: {}", e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
-
-        User user = userOptional.get();
-
-        // 사용자 프로필 응답 생성 - MongoDB ObjectId를 문자열로 유지
-        UserProfileResponse response = UserProfileResponse.builder()
-                .id(user.getId()) // Long.parseLong 제거하고 문자열 그대로 사용
-                .username(user.getName())
-                .email(user.getEmail())
-                .build();
-
-        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/page")
@@ -76,7 +82,12 @@ public class UserController {
         String email = customOAuth2User.getEmail();
         log.info("사용자 페이지 데이터 요청: {}", email);
 
-        UserPageResponse response = userPageService.getUserPage(email);
-        return ResponseEntity.ok(response);
+        try {
+            UserPageResponse response = userPageService.getUserPage(email);
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            log.error("사용자 페이지 데이터 조회 중 오류 발생: {}", e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 }

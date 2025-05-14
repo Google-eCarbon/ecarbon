@@ -1,11 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
+
+// 세계 지도 토폴로지 데이터 URL
+const geoUrl = "https://unpkg.com/world-atlas@2.0.2/countries-50m.json";
+import { useToast } from "../hooks/use-toast";
+import { useNavigate } from 'react-router-dom';
+import { Button } from "../components/ui/button";
+import { Input } from "../components/ui/input";
 
 import '../styles/GlobeHome.css';
 
-// 세계 지도 토폴로지 데이터 URL
-const geoUrl = "https://unpkg.com/world-atlas@2.0.2/countries-110m.json";
 interface MousePosition {
   x: number;
   y: number;
@@ -36,7 +40,46 @@ interface TooltipData {
   position: { x: number; y: number };
 }
 
-const GlobeHome: React.FC = () => {
+const vulnerableCountries = [
+  { code: "KIR", name: "Kiribati" }, // 이거 표현 안 됨 X (섬이라서)
+  { code: "MDV", name: "Maldives" },  // X
+  { code: "TUV", name: "Tuvalu" }, // X
+  { code: "SDN", name: "Sudan" },
+  { code: "BGD", name: "Bangladesh" },
+  { code: "NER", name: "Niger" },
+  { code: "TCD", name: "Chad" },
+  { code: "CAF", name: "Central African Republic" }, // 표현 안 됨
+  { code: "PAK", name: "Pakistan" },
+  { code: "ITA", name: "Italy" },
+];
+const vulnerableCountries_exception_lat_lon =
+[
+  {
+    "country": "Kiribati",
+    "latitude": 1.87,
+    "longitude": -157.36
+  },
+  {
+    "country": "Maldives",
+    "latitude": 3.25,
+    "longitude": 73.00
+  },
+  {
+    "country": "Tuvalu",
+    "latitude": -8.15,
+    "longitude": 177.95
+  },
+  {
+    "country": "Central African Republic",
+    "latitude": 6.61,
+    "longitude": 20.94
+  },
+];
+const vulnerableCountryNames = vulnerableCountries.map(c => c.name);
+
+
+const GlobeHome = () => {
+  const { toast } = useToast();
   const navigate = useNavigate();
   const [rotation, setRotation] = useState<[number, number, number]>([0, 0, 0]);
   const [cities, setCities] = useState<MarkerData[]>([]);
@@ -45,7 +88,8 @@ const GlobeHome: React.FC = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [url, setUrl] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const lastMouseRef = useRef<MousePosition>({ x: 0, y: 0 });
+
+  const lastMouseRef = useRef({ x: 0, y: 0 });
   const globeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -101,73 +145,33 @@ const GlobeHome: React.FC = () => {
     lastMouseRef.current = { x: e.clientX, y: e.clientY };
   };
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handleMouseMove = (e) => {
     if (isDragging) {
       const dx = e.clientX - lastMouseRef.current.x;
       const dy = e.clientY - lastMouseRef.current.y;
-      
       setRotation(([x, y, z]) => [x + dx * 0.5, y - dy * 0.5, z * 0.5]);
       lastMouseRef.current = { x: e.clientX, y: e.clientY };
     }
   };
-
   const handleMouseUp = () => {
     setIsDragging(false);
   };
+  const handleUrlChange = (e) => setUrl(e.target.value);
 
-  const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUrl(e.target.value);
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!url) return;
-
-    setIsLoading(true);
-    try {
-      // 1. URL 제출하여 분석 시작
-      const startResponse = await fetch('/api/start-analysis', {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: `url=${encodeURIComponent(url)}`
+    if (!url) {
+      toast({
+        variant: "destructive",
+        description: "URL을 입력해주세요."
       });
-
-      if (!startResponse.ok) {
-        throw new Error('성능 측정을 시작하는데 실패했습니다');
-      }
-
-      // 2. 분석 결과 가져오기
-      const analysisResponse = await fetch('/api/carbon-analysis', {
-        method: 'GET',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-
-      if (!analysisResponse.ok) {
-        throw new Error('분석 결과를 가져오는데 실패했습니다');
-      }
-
-      const result = await analysisResponse.json();
-
-      // 3. 측정 결과와 함께 Measure 페이지로 리디렉션
-      navigate('/measure', { 
-        state: { 
-          url,
-          result
-        } 
-      });
-    } catch (error) {
-      console.error('측정 실패:', error);
-      // 에러 발생 시에도 Measure 페이지로 이동하여 재시도할 수 있도록 함
-      navigate('/measure', { state: { url } });
-    } finally {
-      setIsLoading(false);
+      return;
     }
+
+    // Measure 페이지로 이동
+    navigate('/measure', { 
+      state: { url } 
+    });
   };
 
   return (
@@ -175,12 +179,49 @@ const GlobeHome: React.FC = () => {
       <h1>Greenee 웹사이트의 지속가능성을 평가하세요</h1>
       <div className="home-content">
         <div className="split-container">
-          {error && (
-            <div className="error-message" style={{ color: 'red', marginBottom: '10px', textAlign: 'center' }}>
-              {error}
-            </div>
-          )}
-          <div ref={globeRef} className="globe-container" onMouseDown={handleMouseDown} onMouseMove={handleMouseMove} onMouseUp={handleMouseUp} onMouseLeave={handleMouseUp}>
+          <div className="measure-section">
+            <p className="measure-description">
+              웹사이트의 탄소 발자국을 측정하고 개선 방안을 확인하세요.
+            </p>
+            <form onSubmit={handleSubmit} className="url-form">
+              <Input
+                type="url"
+                value={url}
+                onChange={handleUrlChange}
+                placeholder="웹사이트 URL을 입력하세요"
+                className="url-input"
+                required
+              />
+              <Button 
+                type="submit" 
+                className="rounded-l-none bg-white text-green-700 hover:bg-white/90 hover:text-green-800"
+                disabled={isLoading}
+              >
+                {isLoading ? '측정 중...' : '분석 시작'}
+              </Button>
+              {isLoading && (
+                <div className="absolute left-1/2 transform -translate-x-1/2 mt-8">
+                  <div className="w-10 h-10 border-4 border-white/30 border-t-white rounded-full animate-spin mb-4" />
+                  <p className="text-white">측정 중입니다...</p>
+                </div>
+              )}
+            </form>
+          </div>
+
+          <div
+            ref={globeRef}
+            className="globe-container"
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+
+          >
+            {error && (
+              <div className="error-message" style={{ color: 'red', marginBottom: '10px', textAlign: 'center' }}>
+                {error}
+              </div>
+            )}
             <ComposableMap
               projection="geoOrthographic"
               projectionConfig={{
@@ -247,34 +288,7 @@ const GlobeHome: React.FC = () => {
                 ))}
             </ComposableMap>
           </div>
-          <div className="measure-section">
-              <p className="measure-description">
-                웹사이트의 탄소 발자국을 측정하고 개선 방안을 확인하세요.
-              </p>
-              <form onSubmit={handleSubmit} className="url-form">
-                <input
-                  type="url"
-                  value={url}
-                  onChange={handleUrlChange}
-                  placeholder="웹사이트 URL을 입력하세요"
-                  className="url-input"
-                  required
-                />
-                <button 
-                  type="submit" 
-                  className="rounded-l-none bg-white text-green-700 hover:bg-white/90 hover:text-green-800"
-                  disabled={isLoading}
-                >
-                  {isLoading ? '측정 중...' : '분석 시작'}
-                </button>
-                {isLoading && (
-                  <div className="absolute left-1/2 transform -translate-x-1/2 mt-8">
-                    <div className="w-10 h-10 border-4 border-white/30 border-t-white rounded-full animate-spin mb-4" />
-                    <p className="text-white">측정 중입니다...</p>
-                  </div>
-                )}
-              </form>
-          </div>
+
         </div>
       </div>
       {tooltip && (
