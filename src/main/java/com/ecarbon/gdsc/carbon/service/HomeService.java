@@ -1,7 +1,9 @@
 package com.ecarbon.gdsc.carbon.service;
 
+import com.ecarbon.gdsc.audits.entity.Measurements;
 import com.ecarbon.gdsc.carbon.entity.WeeklyMeasurements;
 import com.ecarbon.gdsc.carbon.repository.FirebaseWeeklyMeasurementRepository;
+import com.ecarbon.gdsc.carbon.util.DateUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -55,5 +57,27 @@ public class HomeService {
         }
 
         return normalizedUrls;
+    }
+
+    public WeeklyMeasurements convertToWeeklyMeasurements(Measurements measurements) {
+        return WeeklyMeasurements.builder()
+                .url(measurements.getUrl())
+                .measurementType(measurements.getMeasurementType())
+                .measuredAt(measurements.getMeasuredAt())
+                .weekStartDate(DateUtil.getWeeksMonday())
+                .totalByteWeight(measurements.getTotalByteWeight())
+                .canOptimizeCssBytes(measurements.getCanOptimizeCssBytes())
+                .canOptimizeJsBytes(measurements.getCanOptimizeJsBytes())
+                .modernImageFormatsBytes(measurements.getModernImageFormatsBytes())
+                .efficientAnimatedContent(measurements.getEfficientAnimatedContent())
+                .thirdPartySummaryWastedBytes(measurements.getThirdPartySummaryWastedBytes())
+                .duplicatedJavascript(measurements.getDuplicatedJavascript())
+                .totalUnusedBytesScript(measurements.getTotalUnusedBytesScript())
+                .totalResourceBytesScript(measurements.getTotalResourceBytesScript())
+                .kbWeight(measurements.getKbWeight())
+                .carbonEmission(measurements.getCarbonEmission())
+                .resourceSummaries(measurements.getResourceSummaries())
+                .networkRequests(measurements.getNetworkRequests())
+                .build();
     }
 }
