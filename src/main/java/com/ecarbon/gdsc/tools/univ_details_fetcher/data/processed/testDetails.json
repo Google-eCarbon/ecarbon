@@ -1,0 +1,74 @@
+[
+  {
+    "address_components": [
+      {
+        "long_name": "145",
+        "short_name": "145",
+        "types": [
+          "premise"
+        ]
+      },
+      {
+        "long_name": "Anam-ro",
+        "short_name": "Anam-ro",
+        "types": [
+          "sublocality_level_4",
+          "sublocality",
+          "political"
+        ]
+      },
+      {
+        "long_name": "Seongbuk District",
+        "short_name": "Seongbuk District",
+        "types": [
+          "sublocality_level_1",
+          "sublocality",
+          "political"
+        ]
+      },
+      {
+        "long_name": "Seoul",
+        "short_name": "Seoul",
+        "types": [
+          "administrative_area_level_1",
+          "political"
+        ]
+      },
+      {
+        "long_name": "South Korea",
+        "short_name": "KR",
+        "types": [
+          "country",
+          "political"
+        ]
+      },
+      {
+        "long_name": "136-701",
+        "short_name": "136-701",
+        "types": [
+          "postal_code"
+        ]
+      }
+    ],
+    "formatted_address": "145 Anam-ro, Seongbuk District, Seoul, South Korea",
+    "geometry": {
+      "location": {
+        "lat": 37.58938759999999,
+        "lng": 127.0324773
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 37.5907365802915,
+          "lng": 127.0338262802915
+        },
+        "southwest": {
+          "lat": 37.58803861970851,
+          "lng": 127.0311283197085
+        }
+      }
+    },
+    "name": "Korea University, Seoul Campus",
+    "place_id": "ChIJd3pwjby8fDURyV1XC6iKAxU",
+    "website": "https://www.korea.ac.kr/"
+  }
+]
