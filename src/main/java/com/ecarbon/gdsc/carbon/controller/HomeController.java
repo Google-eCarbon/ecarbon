@@ -60,11 +60,6 @@ public class HomeController {
         try {
 //            // 세션에서 사용자 정보 확인
 //            CustomOAuth2User oAuth2User = (CustomOAuth2User) session.getAttribute("user");
-//            if (oAuth2User == null) {
-//                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인이 필요합니다.");
-//            }
-
-            // Lighthouse 측정 시작
             Measurements data = lighthouseAuditService.startAudit(url);
             WeeklyMeasurements weeklyData = homePageService.convertToWeeklyMeasurements(data);
             session.setAttribute("userMeasurement", weeklyData);
@@ -89,24 +84,23 @@ public class HomeController {
                 return ResponseEntity.badRequest().body("웹사이트 URL이 필요합니다");
             }
 
-            try {
-                // DB에서 측정 데이터 조회
-                WeeklyMeasurements data = homePageService.getLatestMeasurementByUrl(url);
-                session.setAttribute("userMeasurement", data);
-                session.setAttribute("userUrl", data.getUrl());
-                return ResponseEntity.ok("측정 데이터가 존재합니다");
-
-            } catch (IllegalArgumentException e) {
-                // 데이터가 없는 경우 IllegalArgumentException 처리
-                log.info("측정 데이터 없음 - URL: {}", url);
-                return ResponseEntity.ok("아직 측정된 데이터가 없습니다");
+            // DB에서 데이터 확인
+            Optional<WeeklyMeasurements> existingData = homePageService.findByUrl(url);
+            
+            if (existingData.isPresent()) {
+                // 데이터가 있으면 세션에 저장
+                session.setAttribute("userMeasurement", existingData.get());
+                session.setAttribute("userUrl", url);
+                return ResponseEntity.ok("분석 시작 완료");
+            } else {
+                // 데이터가 없으면 404 반환
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("데이터가 없습니다");
             }
-
         } catch (Exception e) {
-            log.error("분석 중 오류 발생: {}", e.getMessage(), e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("분석 중 오류가 발생했습니다: " + e.getMessage());
+            log.error("분석 시작 중 오류 발생", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("분석 시작 중 오류가 발생했습니다.");
         }
+
     }
     
     @PostMapping("/api/save-measurement-to-user")
