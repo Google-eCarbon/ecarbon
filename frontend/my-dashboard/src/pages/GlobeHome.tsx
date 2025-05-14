@@ -1,11 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useToast } from "../hooks/use-toast";
+import { Button } from "../components/ui/button";
 import { useNavigate } from 'react-router-dom';
 import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
 
 import '../styles/GlobeHome.css';
 
 // 세계 지도 토폴로지 데이터 URL
-const geoUrl = "https://unpkg.com/world-atlas@2.0.2/countries-110m.json";
+const geoUrl = "https://unpkg.com/world-atlas@2.0.2/countries-50m.json";
+
 interface MousePosition {
   x: number;
   y: number;
@@ -36,16 +39,56 @@ interface TooltipData {
   position: { x: number; y: number };
 }
 
-const GlobeHome: React.FC = () => {
+const vulnerableCountries = [
+  { code: "KIR", name: "Kiribati" }, // 이거 표현 안 됨 X (섬이라서)
+  { code: "MDV", name: "Maldives" },  // X
+  { code: "TUV", name: "Tuvalu" }, // X
+  { code: "SDN", name: "Sudan" },
+  { code: "BGD", name: "Bangladesh" },
+  { code: "NER", name: "Niger" },
+  { code: "TCD", name: "Chad" },
+  { code: "CAF", name: "Central African Republic" }, // 표현 안 됨
+  { code: "PAK", name: "Pakistan" },
+  { code: "ITA", name: "Italy" },
+];
+const vulnerableCountries_exception_lat_lon =
+[
+  {
+    "country": "Kiribati",
+    "latitude": 1.87,
+    "longitude": -157.36
+  },
+  {
+    "country": "Maldives",
+    "latitude": 3.25,
+    "longitude": 73.00
+  },
+  {
+    "country": "Tuvalu",
+    "latitude": -8.15,
+    "longitude": 177.95
+  },
+  {
+    "country": "Central African Republic",
+    "latitude": 6.61,
+    "longitude": 20.94
+  },
+];
+const vulnerableCountryNames = vulnerableCountries.map(c => c.name);
+
+
+const GlobeHome = () => {
+  const { toast } = useToast();
   const navigate = useNavigate();
-  const [rotation, setRotation] = useState<[number, number, number]>([0, 0, 0]);
-  const [cities, setCities] = useState<MarkerData[]>([]);
+  const [rotation, setRotation] = useState([0, 0, 0]);
+  const [cities, setCities] = useState([]);
   const [error, setError] = useState<string>('');
   const [tooltip, setTooltip] = useState<TooltipData | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [url, setUrl] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const lastMouseRef = useRef<MousePosition>({ x: 0, y: 0 });
+  const [selectedMarker, setSelectedMarker] = useState(null);
+  const lastMouseRef = useRef({ x: 0, y: 0 });
   const globeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -101,23 +144,22 @@ const GlobeHome: React.FC = () => {
     lastMouseRef.current = { x: e.clientX, y: e.clientY };
   };
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handleMouseMove = (e) => {
     if (isDragging) {
       const dx = e.clientX - lastMouseRef.current.x;
       const dy = e.clientY - lastMouseRef.current.y;
-      
       setRotation(([x, y, z]) => [x + dx * 0.5, y - dy * 0.5, z * 0.5]);
       lastMouseRef.current = { x: e.clientX, y: e.clientY };
     }
   };
-
   const handleMouseUp = () => {
     setIsDragging(false);
   };
-
-  const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUrl(e.target.value);
+  const handleGlobeClick = () => {
+    setSelectedMarker(null);
   };
+  const handleUrlChange = (e) => setUrl(e.target.value);
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -135,8 +177,61 @@ const GlobeHome: React.FC = () => {
         body: `url=${encodeURIComponent(url)}`
       });
 
+      const startResponseText = await startResponse.text();
       if (!startResponse.ok) {
         throw new Error('성능 측정을 시작하는데 실패했습니다');
+      } else if (startResponseText.includes('아직 측정된 데이터가 없습니다')) {
+        toast({
+          variant: "default",
+          title: "입력하신 URL이 맞습니까?",
+          description: (
+            <div className="flex flex-col gap-2">
+              <p>{url}</p>
+              <div className="flex gap-2">
+                <Button onClick={async () => {
+                  try {
+                    const response = await fetch('/api/start-measurement', {
+                      method: 'POST',
+                      credentials: 'include',
+                      headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                      },
+                      body: `url=${encodeURIComponent(url)}`
+                    });
+
+                    if (!response.ok) {
+                      const errorText = await response.text();
+                      throw new Error(errorText);
+                    }
+
+                    const result = await response.text();
+                    toast({
+                      description: result
+                    });
+                  } catch (error) {
+                    console.error('측정 시작 실패:', error);
+                    toast({
+                      variant: "destructive",
+                      description: error instanceof Error ? error.message : '성능 측정을 시작하는데 실패했습니다.'
+                    });
+                  }
+                }}>
+                  성능 측정하기
+                </Button>
+                <Button variant="outline" onClick={() => {
+                  // TODO: 결과 보기 구현 예정
+                  toast({
+                    description: "결과 보기 기능이 추가될 예정입니다."
+                  });
+                }}>
+                  결과 보기
+                </Button>
+              </div>
+            </div>
+          ),
+          duration: 10000
+        });
+        return;
       }
 
       // 2. 분석 결과 가져오기
@@ -180,7 +275,16 @@ const GlobeHome: React.FC = () => {
               {error}
             </div>
           )}
-          <div ref={globeRef} className="globe-container" onMouseDown={handleMouseDown} onMouseMove={handleMouseMove} onMouseUp={handleMouseUp} onMouseLeave={handleMouseUp}>
+          <div
+            className="globe-container"
+            style={{ position: 'relative' }}
+            ref={globeRef}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+            onClick={handleGlobeClick}
+          >
             <ComposableMap
               projection="geoOrthographic"
               projectionConfig={{
