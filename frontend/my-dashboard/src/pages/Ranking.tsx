@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { format } from "date-fns";
-import { RefreshCw } from 'lucide-react';
 import './Ranking.css';
 
 interface RankingItem {
@@ -62,78 +61,29 @@ const Ranking: React.FC = () => {
     fetchRankings();
   }, []);
 
-  const getMedalEmoji = (rank: number): string => {
-    switch (rank) {
-      case 1: return '🥇';
-      case 2: return '🥈';
-      case 3: return '🥉';
-      default: return '';
-    }
-  };
+  return (
+    <div className="ranking-container">
+      <h1>Eco-Friendly Website Rankings</h1>
+      
+      <div className="ranking-description">
+        <p>Overall rankings based on website environmental sustainability assessment.</p>
+      </div>
 
-  const getGradeColor = (grade: string): string => {
-    switch (grade) {
-      case 'A+': return 'text-green-400';
-      case 'A': return 'text-green-500';
-      case 'B': return 'text-blue-500';
-      case 'C': return 'text-yellow-500';
-      case 'D': return 'text-orange-500';
-      case 'E': return 'text-red-400';
-      case 'F': return 'text-red-500';
-      default: return 'text-gray-500';
-    }
-  };
-
-  const handleFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setRankingType(e.target.value as RankingType);
-  };
-
-  const renderRankingTable = () => {
-    if (loading) {
-      return (
-        <div className="loading">
-          <RefreshCw className="animate-spin" />
-        </div>
-      );
-    }
-
-    if (error) {
-      return (
-        <div className="error-message">
-          <p>{error}</p>
-        </div>
-      );
-    }
-
-    if (!rankings[rankingType] || rankings[rankingType].length === 0) {
-      return (
-        <div className="no-data">
-          <p>데이터가 없습니다.</p>
-        </div>
-      );
-    }
-
-    return (
       <div className="ranking-table-container">
         <table className="ranking-table">
           <thead>
             <tr>
-              <th>순위</th>
-              <th>기관명</th>
-              <th>국가</th>
-              <th>탄소 배출량</th>
-              <th>등급</th>
+              <th>Rank</th>
+              <th>Institution</th>
+              <th>Country</th>
+              <th>Carbon Emissions (g)</th>
+              <th>Grade</th>
             </tr>
           </thead>
           <tbody>
             {rankings[rankingType].map((item) => (
               <tr key={item.rank}>
-                <td>
-                  <span className="rank-number">
-                    {getMedalEmoji(item.rank)}
-                    {item.rank}
-                  </span>
-                </td>
+                <td>{item.rank}</td>
                 <td>{item.placeName}</td>
                 <td>{item.country}</td>
                 <td>{item.carbonEmission.toFixed(2)}</td>
@@ -143,17 +93,6 @@ const Ranking: React.FC = () => {
           </tbody>
         </table>
       </div>
-    );
-  };
-
-  return (
-    <div className="ranking-container">
-      <h1>친환경 기업 순위</h1>
-      
-      <div className="ranking-description">
-        {rankingType === 'overall' && <p>모든 환경 지표를 종합한 기업별 순위입니다.</p>}
-        {rankingType === 'sustainability' && <p>지속가능성 및 환경 보호 활동을 기준으로 한 순위입니다.</p>}
-      </div>
       
       {lastUpdate && (
         <div className="last-update">
@@ -161,17 +100,14 @@ const Ranking: React.FC = () => {
         </div>
       )}
       
-      {renderRankingTable()}
-      
       <div className="ranking-info">
-        <h3>평가 기준</h3>
+        <h3>Assessment Criteria</h3>
         <p>
-          Greenee의 친환경 기업 평가는 에너지 사용, 물 사용, 폐기물 관리, 탄소 배출량 등 
-          다양한 환경 지표를 분석하여 산출됩니다. 모든 평가는 검증된 데이터를 기반으로 
-          공정하게 이루어집니다.
+          Greenee's eco-friendly website assessment is based on W3C's WSG guidelines
+          and website carbon footprint measurements.
         </p>
         <p>
-          더 자세한 평가 방법론은 <a href="#">여기</a>에서 확인하실 수 있습니다.
+          For more detailed methodology, click <a href="#">here</a>.
         </p>
       </div>
     </div>
