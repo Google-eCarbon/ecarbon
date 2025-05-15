@@ -10,11 +10,6 @@ import { Input } from "../components/ui/input";
 
 import '../styles/GlobeHome.css';
 
-interface MousePosition {
-  x: number;
-  y: number;
-}
-
 interface EmissionMapMarker {
   placeName: string;
   carbonEmission: number;
@@ -40,42 +35,40 @@ interface TooltipData {
   position: { x: number; y: number };
 }
 
-const vulnerableCountries = [
-  { code: "KIR", name: "Kiribati" }, // 이거 표현 안 됨 X (섬이라서)
-  { code: "MDV", name: "Maldives" },  // X
-  { code: "TUV", name: "Tuvalu" }, // X
-  { code: "SDN", name: "Sudan" },
-  { code: "BGD", name: "Bangladesh" },
-  { code: "NER", name: "Niger" },
-  { code: "TCD", name: "Chad" },
-  { code: "CAF", name: "Central African Republic" }, // 표현 안 됨
-  { code: "PAK", name: "Pakistan" },
-  { code: "ITA", name: "Italy" },
-];
-const vulnerableCountries_exception_lat_lon =
-[
+interface VulnerableCountry {
+  code: string;
+  name: string;
+}
+
+interface CountryLocation {
+  country: string;
+  latitude: number;
+  longitude: number;
+}
+
+const countryLocations: CountryLocation[] = [
   {
-    "country": "Kiribati",
-    "latitude": 1.87,
-    "longitude": -157.36
+    country: "Kiribati",
+    latitude: 1.87,
+    longitude: -157.36
   },
   {
-    "country": "Maldives",
-    "latitude": 3.25,
-    "longitude": 73.00
+    country: "Maldives",
+    latitude: 3.25,
+    longitude: 73.00
   },
   {
-    "country": "Tuvalu",
-    "latitude": -8.15,
-    "longitude": 177.95
+    country: "Tuvalu",
+    latitude: -8.15,
+    longitude: 177.95
   },
   {
-    "country": "Central African Republic",
-    "latitude": 6.61,
-    "longitude": 20.94
+    country: "Central African Republic",
+    latitude: 6.61,
+    longitude: 20.94
   },
 ];
-const vulnerableCountryNames = vulnerableCountries.map(c => c.name);
+
 
 
 const GlobeHome = () => {
@@ -113,15 +106,24 @@ const GlobeHome = () => {
             setError(data.error);
             setCities([]);
           } else {
+            // Add special country locations
+            const specialLocations = countryLocations.map(loc => ({
+              name: loc.country,
+              carbonEmission: 0,
+              coordinates: [loc.longitude, loc.latitude] as [number, number],
+              url: ''
+            }));
+
             // Transform the data to match the expected format
-            const transformedCities = data.emissionMapMarkers.map(marker => ({
+            const transformedMarkers = data.emissionMapMarkers.map(marker => ({
               name: marker.placeName,
               carbonEmission: marker.carbonEmission,
               coordinates: [marker.longitude, marker.latitude] as [number, number],
               url: marker.url
             }));
-            console.log('Received markers:', transformedCities);
-            setCities(transformedCities);
+            console.log('Received markers:', transformedMarkers);
+            // Combine special locations with regular markers
+            setCities([...specialLocations, ...transformedMarkers]);
           }
         } else if (response.status === 204) {
           console.log('No data available for the specified week');
