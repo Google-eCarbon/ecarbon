@@ -1,5 +1,16 @@
 # 0. 준비
 
+# Requirements 다운로드
+# .env 파일형식
+```
+# API 키
+GOOGLE_API_KEY=""
+GEMINI_API_KEY=""
+GOOGLE_CLOUD_PROJECT=""
+OPENAI_API_KEY = ""
+CHAT_GOOGLE_API_KEY = ""
+```
+
 - fast api run
 ```python
 uvicorn app.main:app --reload

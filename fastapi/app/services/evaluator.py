@@ -7,7 +7,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import Chroma
 from app.services.database import DatabaseManager
-
+import os
 class EvaluationResult(BaseModel):
     relevant_code: str = Field(description="The code snippet from the input that is relevant to the guideline")
     violation: str = Field(description="'Yes' if the code violates the guideline, 'No' if it doesn't")
@@ -78,7 +78,7 @@ Your response (in strict JSON format):"""
         llm = ChatGoogleGenerativeAI(
             model=model_name,
             temperature=0,
-            google_api_key="AIzaSyDBfptxKS2F2IuCZ2C8htra-c0bw1R5vog"
+            google_api_key=os.getenv("CHAT_GOOGLE_API_KEY")
         )
     
     # 체인 생성
