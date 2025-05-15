@@ -72,3 +72,15 @@ class DatabaseManager:
             'timestamp': test_data['created_at'],
             'evaluations': evaluations
         }
+        
+    def get_test_result_by_url(self, url: str) -> Optional[str]:
+        """URL로 가장 최근의 테스트 결과 ID를 조회합니다."""
+        docs = self.db.collection('test_results')\
+            .where('test_file', '==', url)\
+            .order_by('created_at', direction=firestore.Query.DESCENDING)\
+            .limit(1)\
+            .stream()
+        
+        for doc in docs:
+            return doc.id
+        return None

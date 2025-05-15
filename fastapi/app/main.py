@@ -9,6 +9,7 @@ from app.services.database import DatabaseManager
 from app.services.vector_db import VectorDBManager, initialize_vector_db
 from app.services.guideline_loader import InputGuidelineLoader
 from app.utils.get_html import get_html_file
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(
     title="Web Sustainability Guidelines Evaluation API",
@@ -19,7 +20,7 @@ app = FastAPI(
 # CORS 미들웨어 설정
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["http://localhost:3000", "*"],  # React 개발 서버와 모든 출처 허용
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -57,40 +58,74 @@ async def evaluate_website_endpoint(
 ):
     """웹사이트의 HTML 컨텐츠를 가이드라인과 비교하여 평가합니다."""
     try:
+        print(f"Received evaluation request for URL: {request.url}")
+        
+        # 1. 기존 결과 확인
+        url_str = str(request.url)
+        print(f"Checking existing results for URL: {url_str}")
+        existing_id = db.get_test_result_by_url(url_str)
+        
+        if existing_id:
+            print(f"Found existing evaluation: {existing_id}")
+            return {
+                "evaluation_id": existing_id,
+                "url": url_str,
+                "timestamp": datetime.now(),
+                "message": "Existing evaluation found. Use GET /wsg/evaluations/{evaluation_id} to check results."
+            }
+
+        # 2. 새로운 평가 시작
+        print("Starting new evaluation...")
         # HTML 컨텐츠 가져오기
-        html_content = get_html_file(str(request.url))
-        if not html_content:
-            raise HTTPException(status_code=400, detail="Failed to fetch HTML content")
+        try:
+            html_content = get_html_file(url_str)
+            if not html_content:
+                raise HTTPException(status_code=400, detail="Failed to fetch HTML content")
+            print(f"Successfully fetched HTML content for {url_str}")
+        except Exception as e:
+            print(f"Error fetching HTML: {str(e)}")
+            raise HTTPException(status_code=400, detail=f"Failed to fetch HTML content: {str(e)}")
 
         # 데이터베이스에 테스트 결과 생성
-        test_result_id = db.create_test_result(str(request.url), html_content)
+        try:
+            test_result_id = db.create_test_result(url_str, html_content)
+            print(f"Created test result with ID: {test_result_id}")
+        except Exception as e:
+            print(f"Database error: {str(e)}")
+            raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
 
         # 유사한 가이드라인 검색
-        similar_guidelines = vector_db.search_similar(
-            html_content,
-            k=2  # 상위 2개 가이드라인
-        )
+        try:
+            similar_guidelines = vector_db.search_similar(
+                html_content,
+                k=2  # 상위 1개 가이드라인
+            )
+            print(f"Found {len(similar_guidelines)} similar guidelines")
+        except Exception as e:
+            print(f"Vector search error: {str(e)}")
+            raise HTTPException(status_code=500, detail=f"Vector search error: {str(e)}")
 
         # 각 가이드라인에 대해 LLM 평가 수행
         for guideline in similar_guidelines:
-            # 각 백그라운드 태스크에서 새로운 DB 연결 생성
+            print(f"Adding evaluation task for guideline: {guideline['guideline_id']}")
             background_tasks.add_task(
                 evaluate_with_llm,
                 test_result_id=test_result_id,
                 html_content=html_content,
                 guideline_content=guideline["content"],
-                test_file_title=str(request.url),
+                test_file_title=url_str,
                 guideline_id=guideline["guideline_id"]
             )
 
         return {
             "evaluation_id": test_result_id,
-            "url": str(request.url),
+            "url": url_str,
             "timestamp": datetime.now(),
             "message": "Evaluation started. Use GET /evaluations/{evaluation_id} to check results."
         }
 
     except Exception as e:
+        print(f"Unexpected error in evaluate_website_endpoint: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/wsg/evaluations/{evaluation_id}")

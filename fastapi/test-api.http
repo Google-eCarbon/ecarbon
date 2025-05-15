@@ -1,17 +1,17 @@
 ### 웹사이트 평가 요청
-POST http://localhost:8000/evaluate/website
+POST http://localhost:8000/wsg/evaluate
 Content-Type: application/json
 
 {
-    "url": "https://section.blog.naver.com/BlogHome.naver?directoryNo=0&currentPage=1&groupId=0",
-    "similarity_threshold": 0.7
+    "url": "https://www.uqat.ca/",
+    "similarity_threshold": 0.72
 }
 
 ### 평가 결과 조회 (evaluation_id를 실제 ID로 변경하세요)
-GET http://localhost:8000/evaluations/1
+GET http://localhost:8000/wsg/evaluations/YaoJRvOthuLaaDByYWrD
 
 ### 유사 가이드라인 검색
-GET http://localhost:8000/guidelines/similar?html_content=<div class="container"><h1>Welcome</h1><p>This is a sustainable website.</p></div>&threshold=0.7&top_k=2
+GET http://localhost:8000/wsg/guidelines/similar?html_content=<div class="container"><h1>Welcome</h1><p>This is a sustainable website.</p></div>&threshold=0.7&top_k=2
 
 ### 벡터 DB 초기화 확인
-GET http://localhost:8000/guidelines/similar?html_content=test&top_k=1
+GET http://localhost:8000/wsg/guidelines/similar?html_content=test&top_k=1
