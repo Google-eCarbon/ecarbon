@@ -19,7 +19,7 @@ const AuthCallback = () => {
         const error = params.get('error');
 
         if (success) {
-          console.log('로그인 성공! 환영합니다!');
+          console.log('welcome to my page!');
 
           // 로딩 상태 해제
           setLoading(false);
@@ -29,7 +29,7 @@ const AuthCallback = () => {
             navigate('/');
           }, 1000);
         } else {
-          console.error('로그인 처리 중 오류가 발생했습니다:', error);
+          console.error('error occurred during login:', error);
           
           setLoading(false);
           
@@ -39,7 +39,7 @@ const AuthCallback = () => {
           }, 2000);
         }
       } catch (error) {
-        console.error('인증 처리 중 오류 발생:', error);
+        console.error('error occurred during authentication:', error);
         setLoading(false);
         
         // 홈페이지로 리디렉션 (2초 후)
@@ -56,8 +56,8 @@ const AuthCallback = () => {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-500 mb-4"></div>
-        <h2 className="text-xl font-semibold">로그인 처리 중...</h2>
-        <p className="text-gray-500 mt-2">잠시만 기다려주세요.</p>
+        <h2 className="text-xl font-semibold">processing login...</h2>
+        <p className="text-gray-500 mt-2">please wait a moment.</p>
       </div>
     );
   }
@@ -65,8 +65,8 @@ const AuthCallback = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
-        <h1 className="text-2xl font-bold mb-4">로그인 성공!</h1>
-        <p className="text-sm text-gray-500">환영 페이지로 이동합니다...</p>
+        <h1 className="text-2xl font-bold mb-4">welcome</h1>
+        <p className="text-sm text-gray-500">welcome</p>
       </div>
     </div>
   );

@@ -114,20 +114,7 @@ const Header: React.FC = () => {
           <Link to="/measure" onClick={() => setMenuActive(false)}>Measure</Link>
           <Link to="/ranking" onClick={() => setMenuActive(false)}>Rankings</Link>
           <Link to="/about" onClick={() => setMenuActive(false)}>About us</Link>
-          <span 
-            onClick={(e) => {
-              e.preventDefault();
-              if (!userInfo) {
-                alert('Login is required.');
-                return;
-              }
-              window.location.href = '/user';
-              setMenuActive(false);
-            }} 
-            style={{ cursor: 'pointer' }}
-          >
-            User Page
-          </span>
+          <Link to="/user" onClick={() => setMenuActive(false)}>User Page</Link>
         </nav>
         
         <div className="auth-buttons">
