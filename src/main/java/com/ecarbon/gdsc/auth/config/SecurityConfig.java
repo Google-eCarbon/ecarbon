@@ -30,7 +30,7 @@ public class SecurityConfig {
     private final JwtTokenProvider jwtTokenProvider;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     
-    @Value("${app.frontend.url:http://localhost:3030}")
+    @Value("${app.frontend.url:http://localhost:3000}")
     private String frontendUrl;
 
     @Bean
@@ -48,11 +48,11 @@ public class SecurityConfig {
                 )
 
                 .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/api/user/**").authenticated()
                         .requestMatchers("/",
                                 "/api/Home",
                                 "/api/**",
                                 "/api/auth/**",
+                                "/api/user/**",
                                 "/login",
                                 "/oauth2/**",
                                 "/oauth2/redirect",
@@ -62,6 +62,7 @@ public class SecurityConfig {
                                 "/about/**",
                                 "/ranking/**",
                                 "/measure/**",
+                                "/user/**",
                                 "/auth/**",
                                 "/auth/callback",
                                 "/auth/callback/**",

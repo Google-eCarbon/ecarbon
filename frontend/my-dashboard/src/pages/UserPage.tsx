@@ -5,6 +5,9 @@ import goldMedal from '../assets/gold_medal.png';
 import silverMedal from '../assets/silver_medal.png';
 import starMedal from '../assets/star_medal.png';
 
+// API URL을 환경 변수로 설정합니다
+const API_BASE_URL = import.meta.env.VITE_API_URL || '';
+
 interface DateReductionBytes {
   date: string;
   reduction_bytes: number;
@@ -48,6 +51,70 @@ interface UserData {
   measurements: Measurement[];
 }
 
+// 가짜 데이터 생성 함수
+const generateMockData = (): UserPageData => {
+  const today = new Date();
+  const mockReductionBytesGraph: DateReductionBytes[] = [];
+  const mockReductionCountGraph: DateReductionCount[] = [];
+  
+  // 최근 7일간의 가짜 데이터 생성
+  for (let i = 6; i >= 0; i--) {
+    const date = new Date(today);
+    date.setDate(date.getDate() - i);
+    const dateString = date.toISOString().split('T')[0];
+    
+    // 랜덤 데이터 생성
+    const reductionBytes = Math.floor(Math.random() * 500000) + 100000;
+    const reductionGrams = +(reductionBytes * 0.00000033).toFixed(2);
+    const count = Math.floor(Math.random() * 15) + 5;
+    
+    mockReductionBytesGraph.push({
+      date: dateString,
+      reduction_bytes: reductionBytes,
+      reduction_grams: reductionGrams
+    });
+    
+    mockReductionCountGraph.push({
+      date: dateString,
+      count: count
+    });
+  }
+  
+  // 총합 계산
+  const totalReductionBytes = mockReductionBytesGraph.reduce((sum, item) => sum + item.reduction_bytes, 0);
+  const totalReductionGrams = mockReductionBytesGraph.reduce((sum, item) => sum + item.reduction_grams, 0);
+  const totalReductionCount = mockReductionCountGraph.reduce((sum, item) => sum + item.count, 0);
+  
+  return {
+    reduction_bytes_graph: mockReductionBytesGraph,
+    reduction_count_graph: mockReductionCountGraph,
+    total_reduction_bytes: totalReductionBytes,
+    total_reduction_count: totalReductionCount,
+    total_reduction_grams: totalReductionGrams
+  };
+};
+
+// 가짜 사용자 정보
+const mockUserInfo: UserInfo = {
+  id: 'mock-user-id',
+  username: 'Guest User',
+  email: 'guest@example.com'
+};
+
+// 가짜 사용자 데이터
+const mockUserData: UserData = {
+  username: 'Guest User',
+  email: 'guest@example.com',
+  id: 'mock-user-id',
+  name: 'Guest User',
+  company: 'Demo Company',
+  measurements: [
+    { id: '1', date: '2025-05-15', score: 85, status: 'Completed' },
+    { id: '2', date: '2025-05-10', score: 92, status: 'Completed' },
+    { id: '3', date: '2025-05-05', score: 78, status: 'Completed' }
+  ]
+};
+
 const UserPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>('dashboard');
   const [userPageData, setUserPageData] = useState<UserPageData | null>(null);
@@ -62,11 +129,12 @@ const UserPage: React.FC = () => {
   });
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
-        const response = await fetch('/api/user/me', {
+        const response = await fetch(`${API_BASE_URL}/api/user/me`, {
           method: 'GET',
           credentials: 'include',
           headers: {
@@ -75,17 +143,18 @@ const UserPage: React.FC = () => {
         });
         
         if (!response.ok) {
-          const data = await response.json().catch(() => ({}));
-          alert(data.message || '로그인이 필요합니다.');
-          setUserInfo(null);
-          window.location.href = data.redirectUrl || '/';
+          console.log('로그인 정보가 없습니다. 가짜 데이터를 사용합니다.');
+          setUserInfo(mockUserInfo);
+          setUserData(mockUserData);
+          setIsLoggedIn(false);
           return;
         }
 
         const data = await response.json();
         setUserInfo(data);
+        setIsLoggedIn(true);
         
-        // 임시 데이터로 userData 설정
+        // 실제 사용자 데이터 설정
         setUserData({
           username: data.username || '',
           email: data.email || '',
@@ -100,9 +169,10 @@ const UserPage: React.FC = () => {
         });
       } catch (error) {
         console.error('사용자 정보 가져오기 오류:', error);
-        alert('로그인이 필요합니다.');
-        setUserInfo(null);
-        window.location.href = '/';
+        console.log('로그인 정보가 없습니다. 가짜 데이터를 사용합니다.');
+        setUserInfo(mockUserInfo);
+        setUserData(mockUserData);
+        setIsLoggedIn(false);
       }
     };
 
@@ -113,7 +183,16 @@ const UserPage: React.FC = () => {
     const fetchUserPageData = async () => {
       try {
         setLoading(true);
-        const response = await fetch('/api/user/page', {
+        
+        if (!isLoggedIn) {
+          // 로그인하지 않은 경우 가짜 데이터 사용
+          const mockData = generateMockData();
+          setUserPageData(mockData);
+          setLoading(false);
+          return;
+        }
+        
+        const response = await fetch(`${API_BASE_URL}/api/user/page`, {
           credentials: 'include'
         });
 
@@ -135,13 +214,17 @@ const UserPage: React.FC = () => {
       } catch (err) {
         console.error('사용자 페이지 데이터 로딩 오류:', err);
         setError(err instanceof Error ? err.message : '알 수 없는 오류가 발생했습니다');
+        
+        // API 요청 실패 시 가짜 데이터 사용
+        const mockData = generateMockData();
+        setUserPageData(mockData);
       } finally {
         setLoading(false);
       }
     };
 
     fetchUserPageData();
-  }, []);
+  }, [isLoggedIn]);
   
 
 

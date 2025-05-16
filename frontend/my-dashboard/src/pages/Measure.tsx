@@ -266,7 +266,7 @@ const Measure: React.FC = () => {
                   <span>{result.grade}</span>
                 </div>
                 <div className="score-details">
-                  <p className="score-rank">This website is in the top {result.cleanerThan}%</p>
+                  {/* <p className="score-rank">This website is in the top {result.cleanerThan}%</p> */}
                   <p className="score-emissions">{result.carbonEmission.toFixed(2)} CO₂/page gram</p>
                   <p className="score-size">{(result.kbWeight / 1024).toFixed(2)} MB</p>
                   <p className="score-comparison">전역 평균 ({result.globalAvgCarbon}g) 대비 {((result.carbonEmission - result.globalAvgCarbon) / result.globalAvgCarbon * 100).toFixed(1)}%</p>

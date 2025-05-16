@@ -8,6 +8,9 @@ import { useNavigate } from 'react-router-dom';
 
 import '../styles/GlobeHome.css';
 
+// API URL을 환경 변수로 설정합니다
+const API_BASE_URL = import.meta.env.VITE_API_URL || '';
+
 interface EmissionMapMarker {
   placeName: string;
   carbonEmission: number;
@@ -138,7 +141,7 @@ const GlobeHome = () => {
 
         console.log('Fetching data for week starting:', weekStartDate);
 
-        const response = await fetch(`/api/Home?weekStartDate=${weekStartDate}&placeCategory=UNIVERSITY`, {
+        const response = await fetch(`${API_BASE_URL}/api/Home`, {
           headers: {
             'Accept': 'application/json'
           },
