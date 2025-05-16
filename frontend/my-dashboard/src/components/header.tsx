@@ -12,6 +12,7 @@ interface UserInfo {
   id?: string;
   username?: string;
   email?: string;
+  level?: number;
 }
 
 const Header: React.FC = () => {  
@@ -36,7 +37,7 @@ const Header: React.FC = () => {
       }
       
       if (!response.ok) {
-        throw new Error('사용자 정보 가져오기 실패');
+        throw new Error('User info fetch failed');
       }
 
       const data = await response.json();
@@ -113,7 +114,20 @@ const Header: React.FC = () => {
           <Link to="/measure" onClick={() => setMenuActive(false)}>Measure</Link>
           <Link to="/ranking" onClick={() => setMenuActive(false)}>Rankings</Link>
           <Link to="/about" onClick={() => setMenuActive(false)}>About us</Link>
-          <Link to="/user" onClick={() => setMenuActive(false)}>User Page</Link>
+          <span 
+            onClick={(e) => {
+              e.preventDefault();
+              if (!userInfo) {
+                alert('Login is required.');
+                return;
+              }
+              window.location.href = '/user';
+              setMenuActive(false);
+            }} 
+            style={{ cursor: 'pointer' }}
+          >
+            User Page
+          </span>
         </nav>
         
         <div className="auth-buttons">
@@ -127,13 +141,13 @@ const Header: React.FC = () => {
           ) : userInfo ? (
             <div className="user-info">
               <div className="level-badge">
-                <span className="level-number">1</span>
+                <span className="level-number">{userInfo.level || 1}</span>
               </div>
-              <span className="user-name">{userInfo.username || '회원'}</span>
+              <span className="user-name">{userInfo.username || 'User'}</span>
               <button
                 onClick={handleLogout}
                 className="logout-btn"
-                title="로그아웃"
+                title="Logout"
               >
                 <LogOut className="w-4 h-4" />
               </button>

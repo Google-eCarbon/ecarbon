@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Card } from "@/components/ui/card";
 import './UserPage.css';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import goldMedal from '../assets/gold_medal.png';
@@ -34,30 +33,9 @@ interface UserInfo {
 }
 
 interface UserData {
-  name: string;
-  company: string;
+  username: string;
   email: string;
-  joinDate: string;
-  measurements: {
-    id: number;
-    date: string;
-    score: number;
-    status: string;
-  }[];
-  rankings: {
-    current: number;
-    previous: number;
-    industry: string;
-    industryRank: number;
-  };
-  contributionData: {
-    date: string;
-    co2: number;
-  }[];
-  reductionData: {
-    date: string;
-    co2: number;
-  }[];
+  id: string;
 }
 
 const UserPage: React.FC = () => {
@@ -78,20 +56,21 @@ const UserPage: React.FC = () => {
           }
         });
         
-        if (response.status === 401) {
-          setUserInfo(null);
-          return;
-        }
-        
         if (!response.ok) {
-          throw new Error('사용자 정보 가져오기 실패');
+          const data = await response.json().catch(() => ({}));
+          alert(data.message || '로그인이 필요합니다.');
+          setUserInfo(null);
+          window.location.href = data.redirectUrl || '/';
+          return;
         }
 
         const data = await response.json();
         setUserInfo(data);
       } catch (error) {
         console.error('사용자 정보 가져오기 오류:', error);
+        alert('로그인이 필요합니다.');
         setUserInfo(null);
+        window.location.href = '/';
       }
     };
 
@@ -132,30 +111,14 @@ const UserPage: React.FC = () => {
     fetchUserPageData();
   }, []);
   
-  // 실제 사용자 정보와 예시 데이터를 조합
-  const userData: UserData = {
-    name: userInfo?.username || '사용자',
-    email: userInfo?.email || 'email@example.com',
-    joinDate: '2025-05-10',
 
-  };
-
-  const handleTabChange = (tab: TabType) => {
-    setActiveTab(tab);
-  };
-
-  const handleProfileSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // 프로필 업데이트 로직 구현
-  };
 
   return (
     <div className="user-page-container">
         <div className="user-sidebar">
           <div className="user-profile">
             <div className="user-avatar"></div>
-            <h3>{userData.name}</h3>
-            <p>{userData.company}</p> 
+            <h3>{userInfo?.username || '사용자'}</h3> 
           </div>
 
           <div className="sidebar-menu">
@@ -226,7 +189,7 @@ const UserPage: React.FC = () => {
                           <Line
                             type="monotone"
                             dataKey="count"
-                            name="절감 건수"
+                            name="conversion count"
                             stroke="#4ecdc4"
                             strokeWidth={3}
                             dot={false}
@@ -243,7 +206,7 @@ const UserPage: React.FC = () => {
                   <div className="stats-info">
                     <div className="total-value">
                       <span className="label">Webp Conversions</span>
-                      <span className="value">{userPageData?.total_reduction_count.toFixed(2)} times</span>
+                      <span className="value">{Math.round(userPageData?.total_reduction_count || 0)} times</span>
                     </div>
                     <div className="rank-info">
                       <span className="label">Conversion Rank</span>
@@ -295,7 +258,7 @@ const UserPage: React.FC = () => {
                           <Line
                             type="monotone"
                             dataKey="reduction_grams"
-                            name="절감 CO₂"
+                            name="CO₂ Reduction"
                             stroke="#4ecdc4"
                             strokeWidth={3}
                             dot={false}
@@ -304,7 +267,7 @@ const UserPage: React.FC = () => {
                         </LineChart>
                       ) : (
                         <div className="flex h-full items-center justify-center">
-                          <p>데이터가 없습니다</p>
+                          <p>no data</p>
                         </div>
                       )}
                     </ResponsiveContainer>
@@ -395,7 +358,7 @@ const UserPage: React.FC = () => {
           </div>
         )}
 
-{activeTab === 'profile' && (
+        {activeTab === 'profile' && (
           <div className="profile-tab">
             <h2>Profile Settings</h2>
             

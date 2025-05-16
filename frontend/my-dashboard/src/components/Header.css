@@ -79,7 +79,7 @@ nav {
     transition: all 0.3s ease;
 }
 
-nav a {
+nav a, nav span {
     text-decoration: none;
     color: #ffffff;
     font-size: 1.1rem;
@@ -90,7 +90,7 @@ nav a {
     white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
 }
 
-nav a:after {
+nav a:after, nav span:after {
     content: '';
     position: absolute;
     width: 0;
@@ -101,11 +101,11 @@ nav a:after {
     transition: width 0.3s ease;
 }
 
-nav a:hover {
+nav a:hover, nav span:hover {
     color: #ffffff;
 }
 
-nav a:hover:after {
+nav a:hover:after, nav span:hover:after {
     width: 100%;
 }
 
