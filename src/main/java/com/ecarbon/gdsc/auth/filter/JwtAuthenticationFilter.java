@@ -72,8 +72,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         } catch (Exception e) {
             log.error("인증 처리 중 오류 발생: {}", e.getMessage());
         }
-        
-        log.info("✅ JwtAuthenticationFilter");
         filterChain.doFilter(request, response);
     }
 

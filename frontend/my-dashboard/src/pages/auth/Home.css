@@ -1,41 +1,26 @@
 .home-container {
   padding: 2rem;
   text-align: center;
-  background-color: #1E3320;
+  background-color: #004225;
 }
 .home-content {
-  max-width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0;
-  overflow-x: hidden;
-}
-input.url-input {
-  flex: 1;
-  padding: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1.1rem;
-  outline: none;
-  width: 100%;
-  min-width: 500px;
-  color: #000000 !important;
-  background-color: #ffffff !important;
-  -webkit-text-fill-color: #666666;
 }
 .split-container {
   display: flex;
-  flex-direction: column;
-  /* gap: 1.5rem; */
-  margin-top: 1rem;
-  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-left: -10rem;
 }
 .globe-container {
-  width: 1800px;
-  max-width: 2500px;
-  height: 1000px;
-  margin: 0 auto;
-  padding: 0;
-  overflow: visible;
+  flex: 1.5;
+  min-width: 1000px;
+  max-width: 1000px;
+  cursor: grab;
+  padding: 2rem;
 }
 .globe-container:active {
   cursor: grabbing;
@@ -95,22 +80,37 @@ input.url-input {
   gap: 1rem;
   margin-bottom: 1rem;
 }
-
+.url-input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
 .url-form {
   display: flex;
   gap: 1rem;
-  margin: 1rem auto;
+  margin-top: 2rem;
   width: 100%;
-  max-width: 1000px;
+  max-width: 800px;
 }
-
+.url-input {
+  flex: 1;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  outline: none;
+  width: 100%;
+  min-width: 500px;
+}
 .url-input:focus {
   border-color: #4A7C4D;
 }
 .measure-btn {
   padding: 0.75rem 1.5rem;
-  background-color: #7BAE7F;
-  color: white;
+  background-color: #57e760;
+  color: #4A7C4D;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -149,49 +149,24 @@ input.url-input {
   border: 1px solid #fff;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
 }
-
-
 .marker-info {
-  background-color: rgba(255, 255, 255, 0.98);
+  background-color: rgba(255, 255, 255, 0.95);
   padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
   text-align: left;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  max-width: 380px;
-  position: absolute;
-  right: 30px;
-  top: 84px;
-  z-index: 1001;
-  animation: slideIn 0.3s ease-out;
-  backdrop-filter: blur(10px);
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  margin-bottom: 2rem;
 }
 .marker-info-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 0.8rem;
-  color: #1E3320;
-  border-bottom: 2px solid #7BAE7F;
-  padding-bottom: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #333;
 }
 .marker-info-content {
-  margin: 1rem 0;
-  color: #4a4a4a;
-  line-height: 1.5;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: #666;
 }
 .marker-info-label {
   font-weight: bold;
@@ -206,83 +181,40 @@ input.url-input {
   margin-bottom: 0.5rem;
 }
 .marker-info-url {
-  color: #1E3320;
+  color: #21dbf3;
   text-decoration: none;
   display: block;
   margin-top: 8px;
   word-break: break-all;
-  padding: 8px;
-  background-color: rgba(123, 174, 127, 0.1);
-  border-radius: 4px;
-  font-size: 0.9rem;
-  transition: background-color 0.2s ease;
 }
-
 .marker-info-url:hover {
-  background-color: rgba(123, 174, 127, 0.2);
-  text-decoration: none;
   text-decoration: underline;
 }
 .marker-info-emission {
-  margin: 1.2rem 0;
-  padding: 0.8rem 1rem;
-  border-radius: 8px;
-  background-color: #7BAE7F;
-  color: white;
-  font-weight: 500;
-  font-size: 0.95rem;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  background-color: #8AB37E;
+  display: inline-block;
 }
 .marker-info-grade {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
-  margin-left: 0.5rem;
-  font-weight: 600;
-  font-size: 0.9rem;
-  margin-left: 0.8rem;
-  transition: all 0.2s ease;
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-weight: bold;
+  margin-left: 1rem;
 }
 .grade-high {
-  background-color: rgba(235, 80, 80, 0.2);
-  color: #d64242;
-  font-weight: 600;
+  background-color: #FFEBEE;
+  color: #eb5050;
 }
 .grade-medium {
-  background-color: rgba(225, 152, 78, 0.2);
-  color: #c77f35;
-  font-weight: 600;
+  background-color: #FFF3E0;
+  color: #e1984e;
 }
 .grade-low {
-  background-color: rgba(83, 183, 88, 0.2);
-  color: #2d8831;
-  font-weight: 600;
-}
-.tips-text { 
-  position: absolute;
-  bottom: -29px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
-  font-size: 0.95rem;
-  white-space: nowrap;
-  background-color: rgba(0, 0, 0, 0.2);
-  padding: 8px 16px;
-  border-radius: 20px;
-  backdrop-filter: blur(4px);
-}
-.measure-intro { 
-  margin:30px;
-}
-.grade-high:hover, .grade-medium:hover, .grade-low:hover {
-  filter: brightness(0.95);
+  background-color: #E8F5E9;
+  color: #53b758;
 }
 .measure-btn:disabled {
   background-color: #ccc;
@@ -307,8 +239,8 @@ input.url-input {
 }
 .globe-container {
   position: relative;
-  width: 57%;
-  height: 480px;
+  width: 50%;
+  height: 721px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -371,48 +303,4 @@ input.url-input {
 .detail-item p {
   color: #666;
   margin: 0;
-}
-
-.vulnerability-message {
-  position: absolute;
-  right: 30px;
-  top: 84px;
-  background-color: rgba(25, 118, 210, 0.98);
-  color: white;
-  padding: 20px;
-  border-radius: 16px;
-  font-size: 1rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-  z-index: 1000;
-  animation: slideIn 0.3s ease-out;
-  max-width: 380px;
-  text-align: left;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.vulnerability-message .country-name {
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin-bottom: 12px;
-  color: #fff;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.vulnerability-message .country-description {
-  line-height: 1.6;
-  margin-bottom: 16px;
-  font-size: 1.1rem;
-}
-
-.vulnerability-message .impact-note {
-  font-size: 0.95rem;
-  opacity: 0.9;
-  padding-top: 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translate(-50%, -10px); }
-  to { opacity: 1; transform: translate(-50%, 0); }
 }

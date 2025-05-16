@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -47,9 +48,23 @@ public class SecurityConfig {
                 )
 
                 .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/", "/user/me", "/api/**", "/login", "/oauth2/**", "/oauth2/redirect", "/css/**", "/js/**", "/images/**").permitAll()
+                        .requestMatchers("/api/user/**").authenticated()
+                        .requestMatchers("/",
+                                "/api/auth/**",
+                                "/login",
+                                "/oauth2/**",
+                                "/oauth2/redirect",
+                                "/css/**",
+                                "/js/**",
+                                "/images/**",
+                                "/api/start-analysis",
+                                "/api/start-measurement",
+                                "/api/ranking",
+                                "/api/carbon-savings//reduction-logs",
+                                "/api/carbon-analysis").permitAll()
                         .anyRequest().authenticated()
                 )
+
 
                 .oauth2Login((oauth2) -> oauth2
                         .userInfoEndpoint((userInfoEndpoint) -> userInfoEndpoint.userService(customOAuth2UserService))

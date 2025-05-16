@@ -3,6 +3,20 @@
   text-align: center;
   background-color: #1E3320;
 }
+
+.home-container h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.home-container h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
 .home-content {
   max-width: 100%;
   margin: 0 auto;

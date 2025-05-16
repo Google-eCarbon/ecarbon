@@ -5,8 +5,6 @@ import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps
 const geoUrl = "https://unpkg.com/world-atlas@2.0.2/countries-50m.json";
 import { useToast } from "../hooks/use-toast";
 import { useNavigate } from 'react-router-dom';
-import { Button } from "../components/ui/button";
-import { Input } from "../components/ui/input";
 
 import '../styles/GlobeHome.css';
 

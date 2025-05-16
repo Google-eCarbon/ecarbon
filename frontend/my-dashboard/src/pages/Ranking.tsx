@@ -87,7 +87,7 @@ const Ranking: React.FC = () => {
                 <td>{item.placeName}</td>
                 <td>{item.country}</td>
                 <td>{item.carbonEmission.toFixed(2)}</td>
-                <td className={`grade ${item.grade.toLowerCase().replace('+', '-plus')}`}>{item.grade}</td>
+                <td>{item.grade}</td>
               </tr>
             ))}
           </tbody>
@@ -96,7 +96,7 @@ const Ranking: React.FC = () => {
       
       {lastUpdate && (
         <div className="last-update">
-          마지막 업데이트: {format(new Date(lastUpdate), 'yyyy-MM-dd')}
+          updated at: {format(new Date(lastUpdate), 'yyyy-MM-dd')}
         </div>
       )}
       

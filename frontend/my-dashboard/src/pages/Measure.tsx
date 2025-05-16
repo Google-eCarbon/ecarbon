@@ -1,12 +1,9 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import guidelineData from '../data/parsed_wsg_guidelines.json';
 import { useLocation } from 'react-router-dom';
-
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-
 import './Measure.css';
-import mockCaptureImage from '@/data/img_captured12.png';
+import mockCaptureImage from '@/data/img_captured_upgraded.png';
+
 
 interface CarbonEquivalents {
   coffeeCups: number;
@@ -53,6 +50,10 @@ const Measure: React.FC = () => {
   const [captureLoading, setCaptureLoading] = useState(false);
   const [captureError, setCaptureError] = useState<string | null>(null);
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
+  const pageRef = useRef(null);
+  const [inefficientImages, setInefficientImages] = useState([]);
+
+
 
 
   const handleSubmit = useCallback((e: React.FormEvent) => {
@@ -170,130 +171,150 @@ const Measure: React.FC = () => {
   };
 
   return (
+    
     <div>
       <AlertDialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
-        <AlertDialogContent>
+        <AlertDialogContent className="max-w-2xl bg-[#1E3320] border border-white/20">
           <AlertDialogHeader>
-            <AlertDialogTitle>URL 확인</AlertDialogTitle>
-            <AlertDialogDescription>
-              입력하신 URL이 <span className="font-semibold">{url}</span> 맞습니까?
+            <AlertDialogTitle className="text-white text-2xl font-semibold text-center">
+              Confirm URL
+            </AlertDialogTitle>
+            <AlertDialogDescription className="space-y-4">
+              <p className="text-white/90 text-center text-lg">
+                Please confirm if this is the URL you want to measure:
+              </p>
+              <div className="p-3 bg-white/10 backdrop-blur-md rounded-xl border border-white/20">
+                <p className="font-mono text-sm break-all text-white/90">{url}</p>
+              </div>
             </AlertDialogDescription>
           </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>아니오</AlertDialogCancel>
-            <AlertDialogAction onClick={startMeasurement}>
-              예(측정하기)
+          <AlertDialogFooter className="flex gap-3">
+            <AlertDialogCancel className="flex-1 bg-white/10 text-white hover:bg-white/20 border-white/20">
+              Cancel
+            </AlertDialogCancel>
+            <AlertDialogAction 
+              onClick={startMeasurement}
+              className="flex-1 bg-green-600 text-white hover:bg-green-700 border-0"
+            >
+              Start Measurement
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+
+
       <div className="measure-container">
-        <h1 className="text-4xl font-bold text-center mb-10">웹사이트 탄소 배출량 측정</h1>
+      <h1>Website Carbon Emission Measurement</h1>
         
         {!result ? (
           <div className="carbon-form-container">
-            <form onSubmit={handleSubmit} className="space-y-8">
-              <div className="space-y-2">
-                <h2 className="text-2xl font-semibold">웹사이트 URL 입력</h2>
-                <p className="text-white/70">
-                  측정하고자 하는 웹사이트의 URL을 입력해주세요.
-                </p>
-            </div>
+            <p className="measure-description">
+              Enter a website URL to measure its carbon emissions.
+              Take the first step towards creating an eco-friendly web.
+            </p>
 
-            <div className="flex space-x-2">
-              <Input
-                type="url"
-                value={url}
-                onChange={handleUrlChange}
-                placeholder="https://greenee.co.kr"
-                className="flex-1 bg-white/10 border-white/20 text-white placeholder:text-white/50"
-                required
-              />
-              <Button
-                type="submit"
-                disabled={isLoading}
-                className="bg-white text-green-700 hover:bg-white/90"
-              >
-                측정하기
-              </Button>
-            </div>
+            <form onSubmit={handleSubmit} className="carbon-form">
+              <div className="url-input-container">
+                <input
+                  type="url"
+                  value={url}
+                  onChange={handleUrlChange}
+                  placeholder="https://greenee.co.kr"
+                  className="url-input"
+                  required
+                />
+                <button 
+                  type="submit"
+                  disabled={isLoading}
+                  className="measure-btn"
+                >
+                  {isLoading ? 'Measuring...' : 'Measure'}
+                </button>
+              </div>
+
 
             {isLoading && (
-              <div className="flex flex-col items-center justify-center space-y-4 mt-8">
-                <div className="w-10 h-10 border-4 border-white/30 border-t-white rounded-full animate-spin mb-4" />
-                <p>측정 중입니다. 잠시만 기다려 주세요...</p>
+              <div className="loading-indicator">
+                <div className="spinner"/>
+                <p>Measuring... Please wait a moment...</p>
               </div>
             )}
           </form>
         </div>
       ) : (
-        <div className="result-container bg-white/10 p-8 rounded-xl">
-          <div className="flex justify-between items-center mb-8">
-            <h2 className="text-2xl font-semibold">{result.url} 측정 결과</h2>
-            <Button
+        <div className="result-container">
+          <div className="result-header">
+            <h2>Results for {result.url}</h2>
+            <button
               onClick={() => setResult(null)}
-              variant="outline"
-              className="border-white text-white hover:bg-white hover:text-green-700"
+              className="measure-again-btn"
             >
-              다시 측정하기
-            </Button>
+              Measure Again
+            </button>
           </div>
 
           <div className="result-score-container">
             <div className="carbon-score">
               <div className="score-info">
-                <div className="score-circle">
+                <div className={`score-circle grade-${result.grade.replace('+', '-plus')}`}>
                   <span>{result.grade}</span>
                 </div>
                 <div className="score-details">
+                  <p className="score-rank">This website is in the top {result.cleanerThan}%</p>
                   <p className="score-emissions">{result.carbonEmission.toFixed(2)} CO₂/page gram</p>
-                  <p className="score-size">총 {(result.kbWeight / 1024).toFixed(2)} MB</p>
+                  <p className="score-size">{(result.kbWeight / 1024).toFixed(2)} MB</p>
                   <p className="score-comparison">전역 평균 ({result.globalAvgCarbon}g) 대비 {((result.carbonEmission - result.globalAvgCarbon) / result.globalAvgCarbon * 100).toFixed(1)}%</p>
                 </div>
               </div>
             </div>
+            {/* <ul>
+              {result.tips.map((tip, index) => (
+                <li key={index}>{tip}</li>
+              ))}
+            </ul> */}
+
           </div>
 
-          <div className="carbon-equivalents mt-8">
-            <h3 className="text-xl font-semibold mb-2">탄소 배출량 환산</h3>
-            <p className="text-sm opacity-70 mb-4">이 페이지의 탄소 배출량은 다음과 같습니다</p>
+          <div className="carbon-equivalents">
+            <h3 style={{ fontWeight: 'bold', marginTop: '2rem' }}>Annual Carbon Emission Equivalents</h3>
+            <p className="subtitle">Based on 10,000 monthly visitors</p>
             
             <div className="metrics-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginTop: '1rem' }}>
               <div className="metric-card" style={{ padding: '1rem', background: 'white', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
                 <p style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>☕</p>
-                <p style={{ fontWeight: 'medium' }}>커피 {result.carbonEquivalents?.coffeeCups?.toLocaleString() ?? '-'}잔</p>
+                <p style={{ fontWeight: 'medium' }}>{result.carbonEquivalents?.coffeeCups?.toLocaleString() ?? '-'} cups of coffee</p>
               </div>
               
               <div className="metric-card" style={{ padding: '1rem', background: 'white', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
                 <p style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🚗</p>
-                <p style={{ fontWeight: 'medium' }}>전기차 {result.carbonEquivalents?.evKm?.toLocaleString() ?? '-'}km</p>
+                <p style={{ fontWeight: 'medium' }}>{result.carbonEquivalents?.carDistance?.toLocaleString() ?? '-'}km by electric car</p>
               </div>
               
               <div className="metric-card" style={{ padding: '1rem', background: 'white', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
                 <p style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>📱</p>
-                <p style={{ fontWeight: 'medium' }}>휴대폰 {result.carbonEquivalents?.phoneCharges?.toLocaleString() ?? '-'}회 충전</p>
+                <p style={{ fontWeight: 'medium' }}>{result.carbonEquivalents?.phoneCharges?.toLocaleString() ?? '-'} phone charges</p>
               </div>
               
               <div className="metric-card" style={{ padding: '1rem', background: 'white', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
                 <p style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🌲</p>
-                <p style={{ fontWeight: 'medium' }}>나무 {result.carbonEquivalents?.trees?.toLocaleString() ?? '-'}그루</p>
+                <p style={{ fontWeight: 'medium' }}>{result.carbonEquivalents?.trees?.toLocaleString() ?? '-'} trees</p>
               </div>
             </div>
             
-            <p style={{ marginTop: '1rem', textAlign: 'center', fontSize: '0.875rem', color: '#666' }}>
-              ※ 하루 10,000명 방문 기준, 1년 동안 절감할 수 있는 탄소량입니다.
+            <p style={{ marginTop: '1rem', textAlign: 'center', fontSize: '0.875rem', color: 'white' }}>
+              * Carbon savings potential based on 10,000 daily visitors over one year.
             </p>
           </div>
 
-          <div className="guidelines-checklist mt-8">
-            <h3 className="text-2xl font-semibold mb-6">지속 가능한 웹 가이드라인</h3>
+          <div className="guidelines-checklist">
+            <h3 style={{ marginBottom: '1.5rem', fontSize: '1.5rem' }}>W3C's WSG(Web Sustainability Guidelines) Audit Result</h3>
             
             <div className="guidelines-table">
               <div className="table-header">
-                <span>카테고리</span>
-                <span>가이드라인</span>
-                <span>준수여부</span>
-                <span>중요도</span>
+                <span>Category</span>
+                <span>Guideline</span>
+                <span>Compliance</span>
+                <span>Importance</span>
                 <span></span>
               </div>
               
@@ -301,23 +322,33 @@ const Measure: React.FC = () => {
                 <div key={index} className={`table-row ${index >= 5 ? 'blurred' : ''}`}>
                   <span className="category">{item.categoryName}</span>
                   <span className="guideline">{item.guideline}</span>
-                  <span className="compliance">
-                    <span className={`compliance-icon ${Math.random() > 0.5 ? 'pass' : 'fail'}`}>
-                      {Math.random() > 0.5 ? '✔' : '✖'}
-                    </span>
-                  </span>
+                  <div className="compliance">
+                    {(() => {
+                      const isPass = Math.random() > 0.5;
+                      return (
+                        <span className={`compliance-icon ${isPass ? 'pass' : 'fail'}`}>
+                          {isPass ? '✔' : '✖'}
+                        </span>
+                      );
+                    })()}
+                  </div>
                   <span className="importance">
                     {Array(3).fill(0).map((_, i) => (
                       <span key={i} className={`importance-dot ${i < Math.floor(Math.random() * 3 + 1) ? 'active' : ''}`}>⬤</span>
                     ))}
                   </span>
-                  <button className="view-more-btn">더보기</button>
+                  <button className="view-more-btn">View More</button>
                 </div>
               ))}
+              {guidelineData.length > 5 && (
+                <div className="premium-overlay">
+                  <span>5 guidelines analyzed for carbon reduction. Request more analysis if needed.</span>
+                </div>
+              )}
             </div>
           </div>
 
-          <div className="text-center">
+          {/* <div className="text-center">
             <p className="mb-4">이 결과를 공유하고 웹사이트를 개선하세요!</p>
             <div className="flex justify-center gap-4">
               <Button
@@ -339,29 +370,53 @@ const Measure: React.FC = () => {
                 LinkedIn
               </Button>
             </div>
+          </div> */}
+
+          <div className="capture-result">
+            <h3 style={{ marginBottom: '1.5rem', fontSize: '1.5rem' }}>Website Image Analysis</h3>
+            <p style={{ marginBottom: '1.5rem', color: 'rgba(255, 255, 255, 0.8)' }}>Detection of non-optimized images that can be improved for better sustainability</p>            
+            {captureLoading && <div className="loading-indicator">Capturing image...</div>}
+            {captureError && <div className="error-message">Capture error: {captureError}</div>}
+            {captureImage && (
+              <div className="capture-image-container">
+                <img src={captureImage} alt="Captured website" />
+              </div>
+            )}
           </div>
 
-          <div className="capture-result mt-8">
-            <h3 className="text-2xl font-semibold mb-4">웹사이트 이미지 분석 결과</h3>
-            {captureLoading && (
-              <div className="loading-indicator flex items-center justify-center">
-                <div className="w-10 h-10 border-4 border-white/30 border-t-white rounded-full animate-spin mr-3" />
-                <p>이미지 캡처 중...</p>
+          <div className="software-intro">
+            <div className="intro-header">
+              <h3>Greenee - Web Image Optimizer (UseWebp)</h3>
+              <p>Reduce carbon emissions with our intelligent image optimization solution</p>
+            </div>
+            
+            <div className="intro-features">
+              <div className="feature-card">
+                <span className="feature-icon">🌱</span>
+                <h4>Carbon Reduction</h4>
+                <p>Average 3g CO₂ reduction per 5-minute browsing session</p>
               </div>
-            )}
-            {captureError && (
-              <div className="error-message text-red-500 p-4 rounded bg-red-100/10">
-                캡처 오류: {captureError}
+              
+              <div className="feature-card">
+                <span className="feature-icon">📊</span>
+                <h4>Carbon Reduction</h4>
+                <p>Average 3g CO₂ reduction per 5-minute browsing session</p>
               </div>
-            )}
-            {captureImage && (
-              <div className="capture-image-container bg-white/10 p-4 rounded-lg">
-                <img src={captureImage} alt="캡처된 웹사이트" className="w-full max-w-3xl mx-auto rounded-lg shadow-lg" />
-                <p className="capture-description mt-4 text-center text-sm text-white/80">
-                  붉은색 테두리로 표시된 부분이 이미지 요소입니다.
-                </p>
+
+              <div className="feature-card">
+                <span className="feature-icon">📊</span>
+                <h4>Carbon Reduction</h4>
+                <p>Average 3g CO₂ reduction per 5-minute browsing session</p>
               </div>
-            )}
+            </div>
+
+            <div className="intro-cta">
+              <button className="download-btn">
+                <span className="btn-icon">⬇️</span>
+                Download UseWebp
+              </button>
+              <p className="cta-subtext">Join our community of eco-conscious web users</p>
+            </div>
           </div>
         </div>
       )}
