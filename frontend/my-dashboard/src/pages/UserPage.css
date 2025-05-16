@@ -1,18 +1,25 @@
 .user-page-container {
-  padding-top: 80px;
+  padding-top: 0px;
   display: flex;
   min-height: 100vh;
-  background-color: #448166;
+  background-color: #1E3320;
   color: white;
+  position: relative;
 }
 
 .user-sidebar {
   width: 250px;
-  background-color: #004225;
+  background-color: #475E49;
   padding: 30px 0;
   position: fixed;
-  height: calc(100vh - 80px);
+  top: 80px;
+  bottom: 0;
   overflow-y: auto;
+  z-index: 100;
+  margin-top: -1px;
+  border-radius: 0 50px 0 0;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 }
 
 .user-profile {
@@ -78,6 +85,55 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+/* 메달 섹션 스타일 */
+.medals-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-top: 21px;
+  margin-bottom: 40px;
+  padding: 25px;
+  background-color: #374938;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.medal-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.medal-item:hover {
+  transform: translateY(-5px);
+}
+
+.medal-image {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 15px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.medal-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.medal-desc {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.4;
+}
+
 /* 대시보드 탭 스타일 */
 .dashboard-cards {
   display: grid;
@@ -95,12 +151,14 @@
 }
 
 .graph-card {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: #374938;
   color: white;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   padding: 25px;
-  border-radius: 10px;
-  transition: transform 0.3s ease;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 }
 
 /* 그래프 텍스트 스타일 - 흰색으로 통일 */
@@ -125,12 +183,17 @@
 }
 
 .stats-card {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: #374938;
   color: white;
-  padding: 15px;
-  border-radius: 10px;
-  text-align: center;
-  transition: transform 0.3s ease;
+  padding: 25px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 400px;
 }
 
 .stats-card:hover {
@@ -138,19 +201,78 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.stats-value {
-  font-size: 2rem;
+.stats-info {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 12px 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 10px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.total-value {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.total-value .label {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.total-value .value {
+  font-size: 1.8rem;
   font-weight: bold;
-  margin: 8px 0;
-  color: #6dd47e;
+  color: white;
+}
+
+.rank-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.rank-info .label {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.rank-value {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #4DB6AC;
+}
+
+.rank-suffix {
+  font-size: 1rem;
+  margin-left: 2px;
+}
+
+.total-users {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-left: 5px;
+}
+
+.chart-section {
+  flex-grow: 1;
+  width: 100%;
+  min-height: 200px;
 }
 
 /* 카드 내부 구조 스타일 */
 .stats-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  margin-bottom: 25px;
 }
 
 .stats-data, .stats-rank {
@@ -165,24 +287,27 @@
 
 /* 기여량 카드 스타일 */
 .contribution-card .stats-value {
-  color: #6dd47e;
+  color: #81C784;
   font-size: 1.7rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* 절감량 카드 스타일 */
 .reduction-card .stats-value {
-  color: #4ecdc4;
+  color: #4DB6AC;
   font-size: 1.7rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* 순위 표시 스타일 */
 .rank-value {
-  color: white;
-  font-size: 1.7rem;
+  color: #4DB6AC;
+  font-size: 1.8rem;
   font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 5px;
 }
 
 .rank-suffix {
@@ -193,11 +318,11 @@
 }
 
 .stats-card h3 {
-  font-size: 1.1rem;
-  margin-bottom: 8px;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
   text-align: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  padding-bottom: 8px;
+  color: white;
+  font-weight: 500;
 }
 
 .stats-card p {
@@ -245,9 +370,12 @@
 }
 
 .recent-activities {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: #374938;
   padding: 25px;
-  border-radius: 10px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  margin-bottom: 25px;
 }
 
 .recent-activities h3 {
@@ -409,6 +537,25 @@
   .graph-container, .stats-summary {
     grid-template-columns: 1fr;
   }
+
+  .medals-section {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .medal-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .medal-title {
+    font-size: 1.1rem;
+  }
+
+  .medal-desc {
+    font-size: 0.85rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -428,9 +575,28 @@
   .graph-container {
     grid-template-columns: 1fr;
   }
+
+  .medals-section {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
 }
 
 @media (max-width: 576px) {
+  .medals-section {
+    grid-template-columns: 1fr;
+    padding: 15px;
+  }
+
+  .medal-item {
+    padding: 15px;
+  }
+
+  .medal-image {
+    width: 90px;
+    height: 90px;
+  }
+
   .user-page-container {
     flex-direction: column;
   }
