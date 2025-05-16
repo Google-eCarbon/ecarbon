@@ -20,25 +20,25 @@ public class AdminDashboardController {
 
     private final AdminDashboardService dashboardService;
 
-    @GetMapping("/carbon-avg/country")
-    public ResponseEntity<CountryCarbonAvgResponse> getCountryCarbonAverages(
-            @RequestParam String weekStartDate,
-            @RequestParam(defaultValue = "UNIVERSITY") PlaceCategory placeCategory
-    ) {
-
-        return dashboardService.getCountryCarbonAverages(weekStartDate, placeCategory)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
-    @GetMapping("/carbon-avg/city")
-    public ResponseEntity<CityCarbonAvgResponse> getCityCarbonAverages(
-            @RequestParam String weekStartDate,
-            @RequestParam(defaultValue = "UNIVERSITY") PlaceCategory placeCategory
-    ) {
-
-        return dashboardService.getCityCarbonAverages(weekStartDate, placeCategory)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
-    }
+//    @GetMapping("/carbon-avg/country")
+//    public ResponseEntity<CountryCarbonAvgResponse> getCountryCarbonAverages(
+//            @RequestParam String weekStartDate,
+//            @RequestParam(defaultValue = "UNIVERSITY") PlaceCategory placeCategory
+//    ) {
+//
+//        return dashboardService.getCountryCarbonAverages(weekStartDate, placeCategory)
+//                .map(ResponseEntity::ok)
+//                .orElseGet(() -> ResponseEntity.notFound().build());
+//    }
+//
+//    @GetMapping("/carbon-avg/city")
+//    public ResponseEntity<CityCarbonAvgResponse> getCityCarbonAverages(
+//            @RequestParam String weekStartDate,
+//            @RequestParam(defaultValue = "UNIVERSITY") PlaceCategory placeCategory
+//    ) {
+//
+//        return dashboardService.getCityCarbonAverages(weekStartDate, placeCategory)
+//                .map(ResponseEntity::ok)
+//                .orElseGet(() -> ResponseEntity.notFound().build());
+//    }
 }
