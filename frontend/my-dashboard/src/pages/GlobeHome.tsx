@@ -5,8 +5,6 @@ import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps
 const geoUrl = "https://unpkg.com/world-atlas@2.0.2/countries-50m.json";
 import { useToast } from "../hooks/use-toast";
 import { useNavigate } from 'react-router-dom';
-import { Button } from "../components/ui/button";
-import { Input } from "../components/ui/input";
 
 import '../styles/GlobeHome.css';
 
@@ -46,6 +44,39 @@ interface CountryLocation {
   longitude: number;
 }
 
+const vulnerableCountries = [
+  { 
+    code: "SDN", 
+    name: "Sudan",
+    description: "Sudan faces severe droughts and desertification, threatening food security and water resources. Rising temperatures intensify these challenges, affecting millions of people."
+  },
+  { 
+    code: "BGD", 
+    name: "Bangladesh",
+    description: "Bangladesh is highly susceptible to flooding and cyclones. Sea level rise threatens coastal areas, impacting agriculture and forcing climate migration."
+  },
+  { 
+    code: "NER", 
+    name: "Niger",
+    description: "Niger struggles with extreme heat and drought. The Sahel region's expanding desertification severely impacts agriculture and livestock farming."
+  },
+  { 
+    code: "TCD", 
+    name: "Chad",
+    description: "Chad's Lake Chad is shrinking dramatically due to climate change, affecting millions who depend on it for livelihood and sustenance."
+  },
+  { 
+    code: "PAK", 
+    name: "Pakistan",
+    description: "Pakistan experiences intense flooding and heat waves. Glacier melting in the north and coastal threats in the south pose significant risks."
+  },
+  { 
+    code: "ITA", 
+    name: "Italy",
+    description: "Italy faces rising sea levels threatening Venice and coastal regions. Increasing heat waves and droughts affect agriculture and tourism."
+  },
+];
+
 const countryLocations: CountryLocation[] = [
   {
     country: "Kiribati",
@@ -75,12 +106,14 @@ const GlobeHome = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const [rotation, setRotation] = useState<[number, number, number]>([0, 0, 0]);
+  const [mapScale, setMapScale] = useState(120);
   const [cities, setCities] = useState<MarkerData[]>([]);
   const [error, setError] = useState<string>('');
-  const [tooltip, setTooltip] = useState<TooltipData | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [url, setUrl] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [hoveredMarker, setHoveredMarker] = useState(null);
+  const [hoveredVulnerableCountry, setHoveredVulnerableCountry] = useState(null);
 
   const lastMouseRef = useRef({ x: 0, y: 0 });
   const globeRef = useRef<HTMLDivElement>(null);
@@ -142,22 +175,20 @@ const GlobeHome = () => {
     fetchMapMarkers();
   }, []);
 
-  const handleMouseDown = (e: React.MouseEvent) => {
-    setIsDragging(true);
-    lastMouseRef.current = { x: e.clientX, y: e.clientY };
-  };
-
-  const handleMouseMove = (e) => {
-    if (isDragging) {
-      const dx = e.clientX - lastMouseRef.current.x;
-      const dy = e.clientY - lastMouseRef.current.y;
-      setRotation(([x, y, z]) => [x + dx * 0.5, y - dy * 0.5, z * 0.5]);
-      lastMouseRef.current = { x: e.clientX, y: e.clientY };
-    }
-  };
+  const handleMouseDown = () => setIsDragging(false);
+  const handleMouseMove = () => {};
   const handleMouseUp = () => {
     setIsDragging(false);
   };
+
+  const handleZoomIn = () => {
+    setMapScale(prev => Math.min(prev * 1.2, 300));
+  };
+
+  const handleZoomOut = () => {
+    setMapScale(prev => Math.max(prev * 0.8, 80));
+  };
+
   const handleUrlChange = (e) => setUrl(e.target.value);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -178,142 +209,272 @@ const GlobeHome = () => {
 
   return (
     <div className="home-container">
-      <h1>Greenee 웹사이트의 지속가능성을 평가하세요</h1>
+      <h1>Evaluate the Sustainability of Your Website with Greenee</h1>
       <div className="home-content">
         <div className="split-container">
-          <div className="measure-section">
-            <p className="measure-description">
-              웹사이트의 탄소 발자국을 측정하고 개선 방안을 확인하세요.
-            </p>
-            <form onSubmit={handleSubmit} className="url-form">
-              <Input
-                type="url"
-                value={url}
-                onChange={handleUrlChange}
-                placeholder="웹사이트 URL을 입력하세요"
-                className="url-input"
-                required
-              />
-              <Button 
-                type="submit" 
-                className="rounded-l-none bg-white text-green-700 hover:bg-white/90 hover:text-green-800"
-                disabled={isLoading}
-              >
-                {isLoading ? '측정 중...' : '분석 시작'}
-              </Button>
-              {isLoading && (
-                <div className="absolute left-1/2 transform -translate-x-1/2 mt-8">
-                  <div className="w-10 h-10 border-4 border-white/30 border-t-white rounded-full animate-spin mb-4" />
-                  <p className="text-white">측정 중입니다...</p>
-                </div>
-              )}
-            </form>
+        <div className="measure-intro">
+            <div>
+              <h2>Measure Website Carbon Emissions</h2>
+              <p className="measure-description">
+                Enter a website URL to measure its carbon emissions.
+                <p></p>
+                Take the first step towards creating an eco-friendly web.
+              </p>
+              <form onSubmit={handleSubmit} className="url-form">
+                <input
+                  type="url"
+                  className="url-input"
+                  placeholder="https://google.com"
+                  value={url}
+                  onChange={handleUrlChange}
+                  required
+                />
+                <button type="submit" className="measure-btn">
+                  Measure
+                </button>
+              </form>
+            </div>
           </div>
+        </div>
 
-          <div
-            ref={globeRef}
-            className="globe-container"
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseUp}
+        <div
+          ref={globeRef}
+          className="globe-container"
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
 
+        >
+          {error && (
+            <div className="error-message" style={{ color: 'red', marginBottom: '10px', textAlign: 'center' }}>
+              {error}
+            </div>
+          )}
+          <ComposableMap
+            projection="geoMercator"
+            projectionConfig={{
+              scale: 150,
+              center: [0, 35],
+            }}
+            style={{
+              background: "#1E3320",
+              clipPath: "inset(15% 0 0 0)"
+            }}
           >
-            {error && (
-              <div className="error-message" style={{ color: 'red', marginBottom: '10px', textAlign: 'center' }}>
-                {error}
-              </div>
-            )}
-            <ComposableMap
-              projection="geoOrthographic"
-              projectionConfig={{
-                scale: 250,
-                rotate: rotation,
-              }}
-            >
+              
               <Geographies geography={geoUrl}>
                 {({ geographies }) =>
-                  geographies.map((geo) => (
+                  geographies.map((geo) => {
+                    const name = geo.properties.name;
+                    const isVulnerable = vulnerableCountries.some(c => c.name === name);
+                    return (
                     <Geography
-                      key={geo.rsmKey}
-                      geography={geo}
+                    key={geo.rsmKey}
+                    geography={geo}
+                    onMouseEnter={() => {
+                      const name = geo.properties.name;
+                      const country = vulnerableCountries.find(c => c.name === name);
+                      if (country) {
+                        console.log(`:흰색_확인_표시: Vulnerable Country: ${name}`);
+                        setHoveredVulnerableCountry(country);
+                        }
+                      }}
+                      onMouseLeave={() => setHoveredVulnerableCountry(null)}
                       fill="#1B1B1B"
-                      stroke="#ffffff"
+                      stroke="#1E3320"
                       strokeWidth={0.5}
                       style={{
                         default: {
-                          fill: "#ffffff",
-                          opacity: 0.1
+                          fill: isVulnerable ? '#729ed0' : '#F0FADA',
+                          opacity: 0.9
                         },
                         hover: {
-                          fill: "#1B1B1B",
-                          opacity: 0.2
+                          fill: isVulnerable ? '#1976D2' : '#BDBDBD',
+                          opacity: 1
                         },
                         pressed: {
-                          fill: "#1B1B1B",
-                          opacity: 0.2
+                          fill: isVulnerable ? '#1565C0' : '#9E9E9E',
+                          opacity: 1
                         }
                       }}
                     />
-                  ))
-                }
-              </Geographies>
-              {cities
-                .filter((city) => {
-                  const [longitude] = city.coordinates;
-                  const [rotateX] = rotation;
-                  const relativeLongitude = (longitude + rotateX + 180) % 360 - 180;
-                  return Math.abs(relativeLongitude) <= 90; // 앞면(±90도 이내)의 마커만 표시
+                  );
                 })
-                .map((city, index) => (
-                  <Marker key={index} coordinates={city.coordinates}>
-                    <g 
+              }
+              </Geographies>
+              {countryLocations
+                .map((country, index) => (
+                  <Marker key={`vulnerable-${index}`} coordinates={[country.longitude, country.latitude]}>
+                    <g
                       style={{ cursor: 'pointer' }}
-                      onClick={() => window.open(city.url, '_blank')}
-                      onMouseEnter={(e: React.MouseEvent) => {
-                        const rect = (e.target as SVGElement).getBoundingClientRect();
-                        setTooltip({
-                          content: `${city.name}\n탄소 배출량: ${city.carbonEmission.toFixed(2)}g CO2\n${city.url}`,
-                          position: { x: rect.left, y: rect.top - 10 }
-                        });
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        // setSelectedMarker({
+                        //   name: country.country,
+                        //   type: '취약 국가',
+                        // });
                       }}
-                      onMouseLeave={() => setTooltip(null)}
+                      onMouseEnter={(e) => {
+                        setHoveredMarker({ name: country.country });
+                        // setTooltipPos({ x: e.clientX, y: e.clientY });
+                      }}
+                      onMouseLeave={() => setHoveredMarker(null)}
                     >
-                      <circle 
-                        r={4} 
-                        fill={city.carbonEmission < 2 ? '#34d399' : city.carbonEmission < 3 ? '#10b981' : '#ef4444'}
+                      <circle
+                        r={6}
+                        fill="#729ed0"
                         stroke="#fff"
-                        strokeWidth={1}
+                        strokeWidth={2}
+                        style={{
+                          transition: 'all 0.2s ease',
+                          transform: hoveredMarker?.name === country.country ? 'scale(1.3)' : 'scale(1)',
+                          cursor: 'pointer'
+                        }}
                       />
                     </g>
                   </Marker>
                 ))}
+              {cities.map((city, index) => {
+                  const isHighCarbon = city.carbonEmission > 3;
+                  const shouldShow = !hoveredVulnerableCountry || (hoveredVulnerableCountry && isHighCarbon);
+                  const getMarkerColor = (emission: number) => {
+                    if (emission <= 1.5) return '#4CAF50'; // 초록색
+                    if (emission <= 2.5) return '#FFC107'; // 노란색
+                    return '#FF5252'; // 빨간색
+                  };
+                  return (
+                    <Marker key={index} coordinates={city.coordinates}>
+                    <g
+                      style={{ cursor: 'pointer' }}
+                      onMouseEnter={(e) => {
+                        setHoveredMarker({
+                          name: city.name,
+                          type: '웹사이트',
+                          carbonEmission: city.carbonEmission,
+                          url: city.url
+                        });
+                      }}
+                      onMouseLeave={() => setHoveredMarker(null)}
+                    >
+                      <circle
+                        r={4}
+                        fill={getMarkerColor(city.carbonEmission)}
+                        stroke="#fff"
+                        strokeWidth={2}
+                        style={{
+                          transition: 'all 0.3s ease',
+                          transform: hoveredMarker?.url === city.url ? 'scale(1.3)' : 'scale(1)',
+                          cursor: 'pointer',
+                          opacity: shouldShow ? 1 : 0,
+                          filter: hoveredVulnerableCountry && isHighCarbon ? 'drop-shadow(0 0 8px rgba(255, 82, 82, 0.8))' : 'none'
+                        }}
+                      />
+                    </g>
+                  </Marker>
+                  );
+            })}
             </ComposableMap>
+            <div className="tips-text">
+              💡 Tip: Drag the globe to explore Google Solution Challenge Participation University's Carbon Footprints
+            </div>
+            {/* 마커 정보 표시 영역 */}
+            {/* 마커 색상 설명 범례 */}
+            <div className="legend-container">
+              <div className="legend-title">Marker Color Guide</div>
+              <div className="legend-item">
+                <div className="legend-marker" style={{ backgroundColor: '#2196F3' }} />
+                <span>Climate Vulnerable Countries</span>
+              </div>
+              <div className="legend-item">
+                <div className="legend-marker" style={{ backgroundColor: '#FF5252' }} />
+                <span>High Carbon Websites</span>
+              </div>
+              <div className="legend-item">
+                <div className="legend-marker" style={{ backgroundColor: '#FFD740' }} />
+                <span>Medium Carbon Websites</span>
+              </div>
+              <div className="legend-item">
+                <div className="legend-marker" style={{ backgroundColor: '#4CAF50' }} />
+                <span>Low Carbon Websites</span>
+              </div>
+            </div>
           </div>
-
         </div>
+          <div className="challenge-info">
+              <h3>Do you think digital technology is environmentally friendly?</h3>
+              <p>
+                In reality, the digital sector emits <strong>1.6 billion tons</strong> of greenhouse gases annually, accounting for <strong>5% of total emissions</strong>.
+                Sustainability is <strong>no longer a choice, but a necessity</strong> for the web industry.
+              </p>
+              <p>
+                Greenee provides a <strong>comprehensive assessment</strong> of website sustainability, based on the <strong>W3C's Web Sustainability Guidelines</strong>, 
+                that goes beyond simple carbon emission measurement.
+              </p>
+              <p>
+                The <strong>blue markers</strong> on the map indicate countries most vulnerable to climate change.
+                Check how your website affects these vulnerable regions and join the journey to create a more <strong>sustainable digital future</strong>.
+              </p>
+            </div>
+          {hoveredMarker && (
+            <div className="marker-info">
+              <div className="marker-info-title">
+                {hoveredMarker.type === '웹사이트' ? 'Website Information' : 'Vulnerable Country'}
+              </div>
+              <div className="marker-info-content">
+                <div>
+                  <span className="marker-info-label">Name</span>
+                  <span className="marker-info-value">{hoveredMarker.name}</span>
+                </div>
+                
+                {hoveredMarker.type === '웹사이트' && (
+                  <>
+                    <div className="marker-info-emission">
+                      <span>Carbon Emissions: {hoveredMarker.carbonEmission}g CO2</span>
+                      <span className="marker-info-grade">
+                        {hoveredMarker.carbonEmission > 3 ? (
+                          <span className="grade-high">High Impact</span>
+                        ) : hoveredMarker.carbonEmission > 1 ? (
+                          <span className="grade-medium">Medium Impact</span>
+                        ) : (
+                          <span className="grade-low">Low Impact</span>
+                        )}
+                      </span>
+                    </div>
+                    
+                    <div>
+                      <span className="marker-info-label">Website URL</span>
+                      <a
+                        href={hoveredMarker.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="marker-info-url"
+                      >
+                        {hoveredMarker.url}
+                      </a>
+                    </div>
+                  </>
+                )}
+                
+                {hoveredMarker.type === '취약 국가' && (
+                  <div className="vulnerability-info">
+                    This country is particularly vulnerable to climate change impacts.
+                    Digital sustainability efforts can help reduce environmental stress
+                    on vulnerable regions.
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+          {hoveredVulnerableCountry && (
+            <div className="vulnerability-message">
+              <div className="country-name">{hoveredVulnerableCountry.name}</div>
+              <div className="country-description">{hoveredVulnerableCountry.description}</div>
+              <div className="impact-note">High-carbon websites contribute to global emissions affecting vulnerable regions like this.</div>
+            </div>
+          )}
       </div>
-      {tooltip && (
-        <div 
-          style={{
-            position: 'fixed',
-            left: `${tooltip.position.x}px`,
-            top: `${tooltip.position.y}px`,
-            transform: 'translateY(-100%)',
-            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-            color: 'white',
-            padding: '8px 12px',
-            borderRadius: '4px',
-            fontSize: '14px',
-            pointerEvents: 'none',
-            zIndex: 1000,
-            whiteSpace: 'pre-line'
-          }}
-        >
-          {tooltip.content}
-        </div>
-      )}
-    </div>
+      
   );
 };
 
