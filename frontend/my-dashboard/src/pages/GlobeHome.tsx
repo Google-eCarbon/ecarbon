@@ -26,16 +26,23 @@ interface MarkerData {
   carbonEmission: number;
   coordinates: [number, number];
   url: string;
+  type: '웹사이트' | '취약 국가';
 }
 
-interface TooltipData {
-  content: string;
-  position: { x: number; y: number };
-}
+// interface TooltipData {
+//   content: string;
+//   position: { x: number; y: number };
+// }
+
+// interface VulnerableCountry {
+//   code: string;
+//   name: string;
+// }
 
 interface VulnerableCountry {
   code: string;
   name: string;
+  description: string;
 }
 
 interface CountryLocation {
@@ -105,17 +112,17 @@ const countryLocations: CountryLocation[] = [
 const GlobeHome = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
-  const [rotation, setRotation] = useState<[number, number, number]>([0, 0, 0]);
-  const [mapScale, setMapScale] = useState(120);
+  // const [rotation, setRotation] = useState<[number, number, number]>([0, 0, 0]);
+  // const [mapScale, setMapScale] = useState(120);
   const [cities, setCities] = useState<MarkerData[]>([]);
   const [error, setError] = useState<string>('');
-  const [isDragging, setIsDragging] = useState(false);
-  const [url, setUrl] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [hoveredMarker, setHoveredMarker] = useState(null);
-  const [hoveredVulnerableCountry, setHoveredVulnerableCountry] = useState(null);
 
-  const lastMouseRef = useRef({ x: 0, y: 0 });
+  const [url, setUrl] = useState('');
+  // const [isLoading, setIsLoading] = useState(false);
+  const [hoveredMarker, setHoveredMarker] = useState<MarkerData | null>(null);
+  const [hoveredVulnerableCountry, setHoveredVulnerableCountry] = useState<VulnerableCountry | null>(null);
+
+  // const lastMouseRef = useRef({ x: 0, y: 0 });
   const globeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -144,7 +151,8 @@ const GlobeHome = () => {
               name: loc.country,
               carbonEmission: 0,
               coordinates: [loc.longitude, loc.latitude] as [number, number],
-              url: ''
+              url: '',
+              type: '취약 국가' as const
             }));
 
             // Transform the data to match the expected format
@@ -152,7 +160,8 @@ const GlobeHome = () => {
               name: marker.placeName,
               carbonEmission: marker.carbonEmission,
               coordinates: [marker.longitude, marker.latitude] as [number, number],
-              url: marker.url
+              url: marker.url,
+              type: '웹사이트' as const
             }));
             console.log('Received markers:', transformedMarkers);
             // Combine special locations with regular markers
@@ -175,21 +184,21 @@ const GlobeHome = () => {
     fetchMapMarkers();
   }, []);
 
-  const handleMouseDown = () => setIsDragging(false);
+  const handleMouseDown = () => {
+    // setIsDragging(false);
+  };
   const handleMouseMove = () => {};
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
 
-  const handleZoomIn = () => {
-    setMapScale(prev => Math.min(prev * 1.2, 300));
-  };
 
-  const handleZoomOut = () => {
-    setMapScale(prev => Math.max(prev * 0.8, 80));
-  };
+  // const handleZoomIn = () => {
+  //   setMapScale(prev => Math.min(prev * 1.2, 300));
+  // };
 
-  const handleUrlChange = (e) => setUrl(e.target.value);
+  // const handleZoomOut = () => {
+  //   setMapScale(prev => Math.max(prev * 0.8, 80));
+  // };
+
+  const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => setUrl(e.target.value);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -242,8 +251,6 @@ const GlobeHome = () => {
           className="globe-container"
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseUp}
 
         >
           {error && (
@@ -315,9 +322,14 @@ const GlobeHome = () => {
                         //   type: '취약 국가',
                         // });
                       }}
-                      onMouseEnter={(e) => {
-                        setHoveredMarker({ name: country.country });
-                        // setTooltipPos({ x: e.clientX, y: e.clientY });
+                      onMouseEnter={() => {
+                        setHoveredMarker({
+                          name: country.country,
+                          coordinates: [country.longitude, country.latitude],
+                          carbonEmission: 0,
+                          url: '',
+                          type: '취약 국가'
+                        });
                       }}
                       onMouseLeave={() => setHoveredMarker(null)}
                     >
@@ -347,12 +359,13 @@ const GlobeHome = () => {
                     <Marker key={index} coordinates={city.coordinates}>
                     <g
                       style={{ cursor: 'pointer' }}
-                      onMouseEnter={(e) => {
+                      onMouseEnter={() => {
                         setHoveredMarker({
                           name: city.name,
                           type: '웹사이트',
                           carbonEmission: city.carbonEmission,
-                          url: city.url
+                          url: city.url,
+                          coordinates: city.coordinates
                         });
                       }}
                       onMouseLeave={() => setHoveredMarker(null)}

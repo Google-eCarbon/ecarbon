@@ -23,7 +23,9 @@ const Ranking: React.FC = () => {
     overall: [],
     sustainability: []
   });
-  const [rankingType, setRankingType] = useState<RankingType>('overall');
+  const [rankingType, 
+    // setRankingType
+  ] = useState<RankingType>('overall');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [lastUpdate, setLastUpdate] = useState<string | null>(null);
@@ -37,7 +39,7 @@ const Ranking: React.FC = () => {
         
         if (!res.ok) {
           if (res.status === 204) {
-            setRankings([]);
+            setRankings({ overall: [], sustainability: [] });
             setLastUpdate(null);
             return;
           }
@@ -61,10 +63,25 @@ const Ranking: React.FC = () => {
     fetchRankings();
   }, []);
 
+  if (loading) {
+    return (
+      <div className="ranking-container">
+        <p>Loading rankings...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="ranking-container">
+        <p className="error-message">{error}</p>
+      </div>
+    );
+  }
+
   return (
     <div className="ranking-container">
-      <h1>Eco-Friendly Website Rankings</h1>
-      
+      <h2>Carbon Emission Rankings</h2>
       <div className="ranking-description">
         <p>Overall rankings based on website environmental sustainability assessment.</p>
       </div>

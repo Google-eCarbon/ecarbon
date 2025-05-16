@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { User, LogOut } from 'lucide-react';
+import { LogOut } from 'lucide-react';
 import './Header.css';
 
 

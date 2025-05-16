@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 
@@ -29,7 +29,6 @@ const AuthCallback = () => {
             navigate('/');
           }, 1000);
         } else {
-          // 오류 메시지 표시 (한 번만)
           console.error('로그인 처리 중 오류가 발생했습니다:', error);
           
           setLoading(false);
@@ -42,14 +41,6 @@ const AuthCallback = () => {
       } catch (error) {
         console.error('인증 처리 중 오류 발생:', error);
         setLoading(false);
-        
-        // 오류 메시지 표시 (한 번만)
-        if (!toastShownRef.current) {
-          toast.error('로그인 처리 중 오류가 발생했습니다.', {
-            description: '다시 시도해주세요.',
-          });
-          toastShownRef.current = true; // 토스트 표시 완료 표시
-        }
         
         // 홈페이지로 리디렉션 (2초 후)
         setTimeout(() => {
