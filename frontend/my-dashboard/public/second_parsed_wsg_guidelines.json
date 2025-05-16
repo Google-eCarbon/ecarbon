@@ -1,0 +1,554 @@
+[
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "1",
+    "guideline": "Display any variables that have a negative impact on your project"
+  },
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "2",
+    "guideline": "Understand visitor requirements or constraints, resolving barriers to access"
+  },
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "3",
+    "guideline": "Understand the impact of non-visitors"
+  },
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "4",
+    "guideline": "Consider sustainability throughout the ideation process"
+  },
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "5",
+    "guideline": "Brainstorm ways to resolve any stakeholder issues"
+  },
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "6",
+    "guideline": "Minimize non-essential content, interactivity, or journeys"
+  },
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "7",
+    "guideline": "Use decorative design with care"
+  },
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "8",
+    "guideline": "Ensure that navigation and way-finding are well-structured"
+  },
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "9",
+    "guideline": "Be attentive rather than distracting"
+  },
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "10",
+    "guideline": "Use established design patterns and appropriate components"
+  },
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "11",
+    "guideline": "Avoid being manipulative or deceptive"
+  },
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "12",
+    "guideline": "Enable others to understand and reuse your deliverables"
+  },
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "13",
+    "guideline": "Use a design system to prioritize interface consistency"
+  },
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "14",
+    "guideline": "Write with purpose, in an accessible, easy-to-understand format"
+  },
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "15",
+    "guideline": "All images must be optimized for sustainability"
+  },
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "16",
+    "guideline": "All audio or video must be optimized for sustainability"
+  },
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "17",
+    "guideline": "Animation must be proportionate and easy to control"
+  },
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "18",
+    "guideline": "Web typography must be highly optimized and appropriate"
+  },
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "19",
+    "guideline": "Suitable alternatives to any provided format must be offered"
+  },
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "20",
+    "guideline": "Provide accessible, usable, minimal web forms"
+  },
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "21",
+    "guideline": "Consider the impact of visitors using non-visual browsers"
+  },
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "22",
+    "guideline": "Provide useful notifications to improve the visitor's journey"
+  },
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "23",
+    "guideline": "Reduce the impact of downloadable or physical documents"
+  },
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "24",
+    "guideline": "Policies and processes must exist to get stakeholders invested"
+  },
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "25",
+    "guideline": "Audit and test for bugs or issues that require resolving"
+  },
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "26",
+    "guideline": "Measure and test for performance"
+  },
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "27",
+    "guideline": "Ensure features provide maximum value for their impact"
+  },
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "28",
+    "guideline": "Verify that real-world users can successfully use your work"
+  },
+  {
+    "categoryId": "2",
+    "categoryName": "User Experience Design",
+    "guidelineId": "29",
+    "guideline": "Check for compatibility or platform-specific issues"
+  },
+  {
+    "categoryId": "3",
+    "categoryName": "Web Development",
+    "guidelineId": "1",
+    "guideline": "Set goals based on potential impact considerations"
+  },
+  {
+    "categoryId": "3",
+    "categoryName": "Web Development",
+    "guidelineId": "2",
+    "guideline": "Remove unnecessary or redundant information"
+  },
+  {
+    "categoryId": "3",
+    "categoryName": "Web Development",
+    "guidelineId": "3",
+    "guideline": "Modularize bandwidth-heavy components within projects"
+  },
+  {
+    "categoryId": "3",
+    "categoryName": "Web Development",
+    "guidelineId": "4",
+    "guideline": "Tree shaking should be used to remove unnecessary code"
+  },
+  {
+    "categoryId": "3",
+    "categoryName": "Web Development",
+    "guidelineId": "5",
+    "guideline": "Redundancy and duplication in code should be avoided"
+  },
+  {
+    "categoryId": "3",
+    "categoryName": "Web Development",
+    "guidelineId": "6",
+    "guideline": "Third-party services should be assessed as first parties"
+  },
+  {
+    "categoryId": "3",
+    "categoryName": "Web Development",
+    "guidelineId": "7",
+    "guideline": "Code must follow good semantic practices"
+  },
+  {
+    "categoryId": "3",
+    "categoryName": "Web Development",
+    "guidelineId": "8",
+    "guideline": "Render blocking should be resolved"
+  },
+  {
+    "categoryId": "3",
+    "categoryName": "Web Development",
+    "guidelineId": "9",
+    "guideline": "Information to help understand the usefulness of a page should exist"
+  },
+  {
+    "categoryId": "3",
+    "categoryName": "Web Development",
+    "guidelineId": "10",
+    "guideline": "Forms must validate for errors, accounting for tooling requirements"
+  },
+  {
+    "categoryId": "3",
+    "categoryName": "Web Development",
+    "guidelineId": "11",
+    "guideline": "Metadata is structured for machine readability"
+  },
+  {
+    "categoryId": "3",
+    "categoryName": "Web Development",
+    "guidelineId": "12",
+    "guideline": "Sustainable CSS user preference media queries are used"
+  },
+  {
+    "categoryId": "3",
+    "categoryName": "Web Development",
+    "guidelineId": "13",
+    "guideline": "Layouts work across devices and requirements"
+  },
+  {
+    "categoryId": "3",
+    "categoryName": "Web Development",
+    "guidelineId": "14",
+    "guideline": "Use beneficial JavaScript and its APIs"
+  },
+  {
+    "categoryId": "3",
+    "categoryName": "Web Development",
+    "guidelineId": "15",
+    "guideline": "Ensure that your scripts are secure"
+  },
+  {
+    "categoryId": "3",
+    "categoryName": "Web Development",
+    "guidelineId": "16",
+    "guideline": "Dependencies are appropriately used and maintained"
+  },
+  {
+    "categoryId": "3",
+    "categoryName": "Web Development",
+    "guidelineId": "17",
+    "guideline": "Include expected and beneficial files"
+  },
+  {
+    "categoryId": "3",
+    "categoryName": "Web Development",
+    "guidelineId": "18",
+    "guideline": "Avoid using deprecated, proprietary, or outdated code"
+  },
+  {
+    "categoryId": "3",
+    "categoryName": "Web Development",
+    "guidelineId": "19",
+    "guideline": "Use the most efficient solution to implement your service"
+  },
+  {
+    "categoryId": "3",
+    "categoryName": "Web Development",
+    "guidelineId": "20",
+    "guideline": "Use the latest stable language version"
+  },
+  {
+    "categoryId": "3",
+    "categoryName": "Web Development",
+    "guidelineId": "21",
+    "guideline": "Take advantage of native features and functionality"
+  },
+  {
+    "categoryId": "3",
+    "categoryName": "Web Development",
+    "guidelineId": "22",
+    "guideline": "Run fewer, simpler queries as possible"
+  },
+  {
+    "categoryId": "4",
+    "categoryName": "Hosting, Infrastructure And Systems",
+    "guidelineId": "1",
+    "guideline": "Choose a sustainable hosting provider"
+  },
+  {
+    "categoryId": "4",
+    "categoryName": "Hosting, Infrastructure And Systems",
+    "guidelineId": "2",
+    "guideline": "Optimize caching with offline access supported"
+  },
+  {
+    "categoryId": "4",
+    "categoryName": "Hosting, Infrastructure And Systems",
+    "guidelineId": "3",
+    "guideline": "Compress files where it is beneficial"
+  },
+  {
+    "categoryId": "4",
+    "categoryName": "Hosting, Infrastructure And Systems",
+    "guidelineId": "4",
+    "guideline": "Setup necessary error pages and redirection links"
+  },
+  {
+    "categoryId": "4",
+    "categoryName": "Hosting, Infrastructure And Systems",
+    "guidelineId": "5",
+    "guideline": "Unless required, avoid utilizing unnecessary environments"
+  },
+  {
+    "categoryId": "4",
+    "categoryName": "Hosting, Infrastructure And Systems",
+    "guidelineId": "6",
+    "guideline": "Allow automation but ensure it is tightly regulated"
+  },
+  {
+    "categoryId": "4",
+    "categoryName": "Hosting, Infrastructure And Systems",
+    "guidelineId": "7",
+    "guideline": "Define the frequency of data refreshes"
+  },
+  {
+    "categoryId": "4",
+    "categoryName": "Hosting, Infrastructure And Systems",
+    "guidelineId": "8",
+    "guideline": "Backup critical data at routine intervals"
+  },
+  {
+    "categoryId": "4",
+    "categoryName": "Hosting, Infrastructure And Systems",
+    "guidelineId": "9",
+    "guideline": "Consider the impact and requirements of processing information"
+  },
+  {
+    "categoryId": "4",
+    "categoryName": "Hosting, Infrastructure And Systems",
+    "guidelineId": "10",
+    "guideline": "CDN use must be proportionate and sustainable"
+  },
+  {
+    "categoryId": "4",
+    "categoryName": "Hosting, Infrastructure And Systems",
+    "guidelineId": "11",
+    "guideline": "Infrastructure decisions must meet business requirements"
+  },
+  {
+    "categoryId": "4",
+    "categoryName": "Hosting, Infrastructure And Systems",
+    "guidelineId": "12",
+    "guideline": "Store data according to the needs of your users"
+  },
+  {
+    "categoryId": "5",
+    "categoryName": "Business Strategy And Product Management",
+    "guidelineId": "1",
+    "guideline": "Have an ethical and sustainable product strategy"
+  },
+  {
+    "categoryId": "5",
+    "categoryName": "Business Strategy And Product Management",
+    "guidelineId": "2",
+    "guideline": "Assign a sustainability representative"
+  },
+  {
+    "categoryId": "5",
+    "categoryName": "Business Strategy And Product Management",
+    "guidelineId": "3",
+    "guideline": "Inform, raise awareness, and train for sustainability"
+  },
+  {
+    "categoryId": "5",
+    "categoryName": "Business Strategy And Product Management",
+    "guidelineId": "4",
+    "guideline": "Communicate the ecological impact of user choices"
+  },
+  {
+    "categoryId": "5",
+    "categoryName": "Business Strategy And Product Management",
+    "guidelineId": "5",
+    "guideline": "Estimate a product or service's environmental impact"
+  },
+  {
+    "categoryId": "5",
+    "categoryName": "Business Strategy And Product Management",
+    "guidelineId": "6",
+    "guideline": "Define clear organizational sustainability goals and metrics"
+  },
+  {
+    "categoryId": "5",
+    "categoryName": "Business Strategy And Product Management",
+    "guidelineId": "7",
+    "guideline": "Verify your efforts using established third-party business certifications"
+  },
+  {
+    "categoryId": "5",
+    "categoryName": "Business Strategy And Product Management",
+    "guidelineId": "8",
+    "guideline": "Implement sustainability onboarding guidelines"
+  },
+  {
+    "categoryId": "5",
+    "categoryName": "Business Strategy And Product Management",
+    "guidelineId": "9",
+    "guideline": "Support mandatory disclosures and reporting"
+  },
+  {
+    "categoryId": "5",
+    "categoryName": "Business Strategy And Product Management",
+    "guidelineId": "10",
+    "guideline": "Create one or more impact business models"
+  },
+  {
+    "categoryId": "5",
+    "categoryName": "Business Strategy And Product Management",
+    "guidelineId": "11",
+    "guideline": "Follow a product management and maintenance strategy"
+  },
+  {
+    "categoryId": "5",
+    "categoryName": "Business Strategy And Product Management",
+    "guidelineId": "12",
+    "guideline": "Implement continuous improvement procedures"
+  },
+  {
+    "categoryId": "5",
+    "categoryName": "Business Strategy And Product Management",
+    "guidelineId": "13",
+    "guideline": "Document future updates and evolutions"
+  },
+  {
+    "categoryId": "5",
+    "categoryName": "Business Strategy And Product Management",
+    "guidelineId": "14",
+    "guideline": "Establish if a digital product or service is necessary"
+  },
+  {
+    "categoryId": "5",
+    "categoryName": "Business Strategy And Product Management",
+    "guidelineId": "15",
+    "guideline": "Conduct a full life-cycle assessment"
+  },
+  {
+    "categoryId": "5",
+    "categoryName": "Business Strategy And Product Management",
+    "guidelineId": "16",
+    "guideline": "Provide a supplier standards of practice"
+  },
+  {
+    "categoryId": "5",
+    "categoryName": "Business Strategy And Product Management",
+    "guidelineId": "17",
+    "guideline": "Share any economic benefits"
+  },
+  {
+    "categoryId": "5",
+    "categoryName": "Business Strategy And Product Management",
+    "guidelineId": "18",
+    "guideline": "Share decision-making power with appropriate stakeholders"
+  },
+  {
+    "categoryId": "5",
+    "categoryName": "Business Strategy And Product Management",
+    "guidelineId": "19",
+    "guideline": "Use Justice, Equity, Diversity, Inclusion (JEDI) practices"
+  },
+  {
+    "categoryId": "5",
+    "categoryName": "Business Strategy And Product Management",
+    "guidelineId": "20",
+    "guideline": "Promote responsible data practices"
+  },
+  {
+    "categoryId": "5",
+    "categoryName": "Business Strategy And Product Management",
+    "guidelineId": "21",
+    "guideline": "Implement appropriate data management procedures"
+  },
+  {
+    "categoryId": "5",
+    "categoryName": "Business Strategy And Product Management",
+    "guidelineId": "22",
+    "guideline": "Promote and implement responsible emerging technology practices"
+  },
+  {
+    "categoryId": "5",
+    "categoryName": "Business Strategy And Product Management",
+    "guidelineId": "23",
+    "guideline": "Include responsible financial policies"
+  },
+  {
+    "categoryId": "5",
+    "categoryName": "Business Strategy And Product Management",
+    "guidelineId": "24",
+    "guideline": "Include organizational philanthropy policies"
+  },
+  {
+    "categoryId": "5",
+    "categoryName": "Business Strategy And Product Management",
+    "guidelineId": "25",
+    "guideline": "Plan for a digital product or service's care and end-of-life"
+  },
+  {
+    "categoryId": "5",
+    "categoryName": "Business Strategy And Product Management",
+    "guidelineId": "26",
+    "guideline": "Include e-waste, right-to-repair, and recycling policies"
+  },
+  {
+    "categoryId": "5",
+    "categoryName": "Business Strategy And Product Management",
+    "guidelineId": "27",
+    "guideline": "Define performance and environmental budgets"
+  },
+  {
+    "categoryId": "5",
+    "categoryName": "Business Strategy And Product Management",
+    "guidelineId": "28",
+    "guideline": "Use open source where possible"
+  },
+  {
+    "categoryId": "5",
+    "categoryName": "Business Strategy And Product Management",
+    "guidelineId": "29",
+    "guideline": "Create a business continuity and disaster recovery plan"
+  }
+]
