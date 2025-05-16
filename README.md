@@ -34,8 +34,8 @@ The digital carbon footprint is a growing environmental concern, with websites c
 ### Backend
 - FastAPI
 - Java Spring Boot
-- PostgreSQL
-- Redis
+- JWT Authentication
+- OAuth2.0
 
 ### Infrastructure
 - Google Cloud Platform
@@ -69,7 +69,7 @@ cd backend/spring
 
 3. Frontend setup:
 ```bash
-cd frontend
+cd frontend/my-dashboard
 npm install
 npm run dev
 ```
