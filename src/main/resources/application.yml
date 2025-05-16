@@ -15,6 +15,10 @@ spring:
               - email
               - profile
 
+  web:
+    resources:
+      static-locations: classpath:/static/
+
 app:
   frontend:
-    url: http://localhost:3000
+    url: http://localhost:8080

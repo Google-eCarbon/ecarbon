@@ -31,8 +31,8 @@ public class RedirectController {
         // 세션에서 JWT 토큰 가져오기
         String token = (String) request.getSession().getAttribute("JWT_TOKEN");
         
-        // 프론트엔드 URL로 리디렉션 (carbon-analysis 페이지)
-        String redirectUrl = frontendUrl + "/carbon-analysis";
+        // 프론트엔드 URL로 리디렉션 (홈 페이지)
+        String redirectUrl = frontendUrl + "/";
         
         if (token != null && !token.isEmpty()) {
             // 토큰 정보를 URL 인코딩하여 전달

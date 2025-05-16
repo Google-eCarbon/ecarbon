@@ -138,7 +138,12 @@ const GlobeHome = () => {
 
         console.log('Fetching data for week starting:', weekStartDate);
 
-        const response = await fetch(`http://localhost:8080/?weekStartDate=${weekStartDate}&placeCategory=UNIVERSITY`);
+        const response = await fetch(`/api/Home?weekStartDate=${weekStartDate}&placeCategory=UNIVERSITY`, {
+          headers: {
+            'Accept': 'application/json'
+          },
+          credentials: 'include'
+        });
 
         if (response.ok) {
           const data: GlobeHomeResponse = await response.json();

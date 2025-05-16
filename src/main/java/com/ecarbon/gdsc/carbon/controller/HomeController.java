@@ -13,6 +13,7 @@ import com.ecarbon.gdsc.carbon.util.DateUtil;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -25,8 +26,8 @@ import com.ecarbon.gdsc.audits.lighthouse.LighthouseAuditService;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/")
 @Slf4j
+@Order(2)
 public class HomeController {
 
     private final HomeService homePageService;
@@ -34,7 +35,7 @@ public class HomeController {
     private final FirebaseUserRepository firebaseUserRepository;
     private final LighthouseAuditService lighthouseAuditService;
 
-    @GetMapping
+    @GetMapping("/api/Home")
     public ResponseEntity<GlobeHomeResponse> getMapMarker(
             @RequestParam(required = false) String weekStartDate,
             @RequestParam(defaultValue = "UNIVERSITY") PlaceCategory placeCategory){
@@ -57,14 +58,24 @@ public class HomeController {
 
     @PostMapping("/api/start-measurement")
     public ResponseEntity<String> startMeasurement(@RequestParam String url, HttpSession session) {
+        log.info("성능 측정 시작 - URL: {}, 세션 ID: {}", url, session.getId());
         try {
 //            // 세션에서 사용자 정보 확인
 //            CustomOAuth2User oAuth2User = (CustomOAuth2User) session.getAttribute("user");
+            log.info("라이트하우스 감사 시작: {}", url);
             Measurements data = lighthouseAuditService.startAudit(url);
+            log.info("감사 완료, 주간 측정 데이터로 변환");
             WeeklyMeasurements weeklyData = homePageService.convertToWeeklyMeasurements(data);
+            
+            // 세션에 데이터 저장
             session.setAttribute("userMeasurement", weeklyData);
             session.setAttribute("userUrl", url);
-            log.info(weeklyData.toString());
+            
+            // 세션 저장 확인
+            WeeklyMeasurements checkData = (WeeklyMeasurements) session.getAttribute("userMeasurement");
+            log.info("세션에 데이터 저장 확인: {}", (checkData != null));
+            log.info("주간 측정 데이터: {}", weeklyData);
+            
             return ResponseEntity.ok("성능 측정이 완료");
 
         } catch (Exception e) {
