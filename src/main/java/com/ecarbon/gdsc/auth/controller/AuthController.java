@@ -32,7 +32,7 @@ public class AuthController {
 
     private final UserRepository userRepository;
 
-    @Value("${app.frontend.url:http://localhost:3000}")
+    @Value("${app.frontend.url:http://localhost:8080}")
     private String frontendUrl;
 
     private static final String JWT_SESSION_KEY = "jwt_token";

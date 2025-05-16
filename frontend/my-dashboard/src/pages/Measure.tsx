@@ -126,7 +126,7 @@ const Measure: React.FC = () => {
         method: 'GET',
         credentials: 'include',
         headers: {
-          'Content-Type': 'application/json'
+          'Accept': 'application/json'
         }
       });
 

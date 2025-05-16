@@ -105,9 +105,13 @@
 //     try {
 //       // 1. 분석 시작 요청
 //       try {
-//         const startRes = await fetch(`/api/start-analysis?url=${encodeURIComponent(url)}`, { 
+//         const startRes = await fetch(`/api/start-analysis`, { 
 //           method: 'POST',
-//           credentials: 'include'
+//           credentials: 'include',
+//           headers: {
+//             'Content-Type': 'application/json'
+//           },
+//           body: JSON.stringify({ url: encodeURIComponent(url) })
 //         });
         
 //         if (!startRes.ok) {

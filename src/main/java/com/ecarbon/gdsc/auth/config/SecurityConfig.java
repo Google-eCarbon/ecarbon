@@ -50,6 +50,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests((auth) -> auth
                         .requestMatchers("/api/user/**").authenticated()
                         .requestMatchers("/",
+                                "/api/Home",
+                                "/api/**",
                                 "/api/auth/**",
                                 "/login",
                                 "/oauth2/**",
@@ -57,12 +59,19 @@ public class SecurityConfig {
                                 "/css/**",
                                 "/js/**",
                                 "/images/**",
-                                "/api/start-analysis",
-                                "/api/start-measurement",
-                                "/api/ranking",
-                                "/api/carbon-savings//reduction-logs",
-                                "/api/carbon-analysis").permitAll()
-                        .anyRequest().authenticated()
+                                "/about/**",
+                                "/ranking/**",
+                                "/measure/**",
+                                "/auth/**",
+                                "/auth/callback",
+                                "/auth/callback/**",
+                                "/static/**",
+                                "/assets/**",
+                                "/api/carbon-analysis/**",
+                                "/api/start-analysis/**",
+                                "/api/start-measurement/**"
+                                ).permitAll()
+                        .anyRequest().permitAll()
                 )
 
 

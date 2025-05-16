@@ -24,19 +24,31 @@ public class CarbonAnalysisController {
 
     @GetMapping
     public ResponseEntity<CarbonAnalysisResponse> getCarbonData(HttpSession session, HttpServletResponse response) {
-
+        log.info("세션 ID: {}", session.getId());
+        log.info("세션 속성들: {}", session.getAttributeNames().hasMoreElements());
+        
         WeeklyMeasurements measurement = (WeeklyMeasurements) session.getAttribute("userMeasurement");
-
+        log.info("userMeasurement 존재 여부: {}", (measurement != null));
+        
         if (measurement == null) {
+            log.warn("세션에 userMeasurement가 없습니다. 홈으로 리디렉션합니다.");
             return ResponseEntity.status(HttpStatus.FOUND)
                 .header("Location", "/").build();
         }
 
         try {
+            log.info("측정된 URL: {}", measurement.getUrl());
             return service.analyzeCarbonByUrl(measurement)
-                    .map(ResponseEntity::ok)
-                    .orElseGet(() -> ResponseEntity.notFound().build());
+                    .map(result -> {
+                        log.info("분석 결과 성공: {}", result);
+                        return ResponseEntity.ok(result);
+                    })
+                    .orElseGet(() -> {
+                        log.warn("분석 결과를 찾을 수 없습니다.");
+                        return ResponseEntity.notFound().build();
+                    });
         } catch (Exception e) {
+            log.error("탄소 분석 중 오류 발생", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
