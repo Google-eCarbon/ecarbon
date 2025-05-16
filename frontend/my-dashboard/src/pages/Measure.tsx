@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import guidelineData from '../data/parsed_wsg_guidelines.json';
 import { useLocation } from 'react-router-dom';
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import './Measure.css';
-import mockCaptureImage from '@/data/img_captured12.png';
+import mockCaptureImage from '@/data/img_captured_upgraded.png';
 
 
 interface CarbonEquivalents {
@@ -173,19 +171,32 @@ const Measure: React.FC = () => {
   };
 
   return (
+    
     <div>
       <AlertDialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
-        <AlertDialogContent>
+        <AlertDialogContent className="max-w-2xl bg-[#1E3320] border border-white/20">
           <AlertDialogHeader>
-            <AlertDialogTitle>URL 확인</AlertDialogTitle>
-            <AlertDialogDescription>
-              입력하신 URL이 <span className="font-semibold">{url}</span> 맞습니까?
+            <AlertDialogTitle className="text-white text-2xl font-semibold text-center">
+              Confirm URL
+            </AlertDialogTitle>
+            <AlertDialogDescription className="space-y-4">
+              <p className="text-white/90 text-center text-lg">
+                Please confirm if this is the URL you want to measure:
+              </p>
+              <div className="p-3 bg-white/10 backdrop-blur-md rounded-xl border border-white/20">
+                <p className="font-mono text-sm break-all text-white/90">{url}</p>
+              </div>
             </AlertDialogDescription>
           </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>아니오</AlertDialogCancel>
-            <AlertDialogAction onClick={startMeasurement}>
-              예(측정하기)
+          <AlertDialogFooter className="flex gap-3">
+            <AlertDialogCancel className="flex-1 bg-white/10 text-white hover:bg-white/20 border-white/20">
+              Cancel
+            </AlertDialogCancel>
+            <AlertDialogAction 
+              onClick={startMeasurement}
+              className="flex-1 bg-green-600 text-white hover:bg-green-700 border-0"
+            >
+              Start Measurement
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
