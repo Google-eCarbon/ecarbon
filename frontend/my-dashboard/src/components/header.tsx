@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from "@/components/ui/button";
 import { User, LogOut } from 'lucide-react';
 import './Header.css';
 
@@ -111,36 +110,38 @@ const Header: React.FC = () => {
         </div>
         
         <nav className={menuActive ? 'active' : ''}>
-          <Link to="/measure" onClick={() => setMenuActive(false)}>측정하기</Link>
-          <Link to="/ranking" onClick={() => setMenuActive(false)}>순위보기</Link>
+          <Link to="/measure" onClick={() => setMenuActive(false)}>Measure</Link>
+          <Link to="/ranking" onClick={() => setMenuActive(false)}>Rankings</Link>
           <Link to="/about" onClick={() => setMenuActive(false)}>About us</Link>
-          <Link to="/user"onClick={() => setMenuActive(false)}>User Page</Link>
+          <Link to="/user" onClick={() => setMenuActive(false)}>User Page</Link>
         </nav>
         
         <div className="auth-buttons">
           {loading ? (
             <div className="text-white/70 flex items-center gap-2">
-              <User className="w-4 h-4" />
-              로딩 중...
+              <div className="level-badge">
+                <span className="level-number">...</span>
+              </div>
+              <span className="user-name">Loading...</span>
             </div>
           ) : userInfo ? (
-            <div className="flex items-center gap-6">
-              <div className="text-white flex items-center gap-2">
-                <User className="w-4 h-4" />
-                {userInfo.username || '회원'}
+            <div className="user-info">
+              <div className="level-badge">
+                <span className="level-number">1</span>
               </div>
+              <span className="user-name">{userInfo.username || '회원'}</span>
               <button
                 onClick={handleLogout}
-                className="text-white/70 hover:text-red-400 flex items-center gap-2 transition-colors"
+                className="logout-btn"
+                title="로그아웃"
               >
                 <LogOut className="w-4 h-4" />
-                로그아웃
               </button>
             </div>
           ) : (
-            <button onClick={handleLogin} className="login-btn">
-              <User className="w-4 h-4" /> 로그인
-            </button>
+            <>
+              <button onClick={handleLogin} className="login-btn">Login</button>
+            </>
           )}
         </div>
     </header>
