@@ -112,13 +112,13 @@ https://github.com/dongkyu20/img2webp_proxy
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
 
 ### Commit Convention
-- feat: New feature
-- fix: Bug fix
-- docs: Documentation
-- style: Formatting
-- refactor: Code restructuring
-- test: Testing
-- chore: Maintenance
+- **feat**: New feature
+- **fix**: Bug fix
+- **docs**: Documentation
+- **style**: Formatting
+- **refactor**: Code restructuring
+- **test**: Testing
+- **chore**: Maintenance
 
 ## 📜 License
 
