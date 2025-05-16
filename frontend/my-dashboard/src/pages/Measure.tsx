@@ -1,4 +1,9 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  // useRef 
+  } from 'react';
 import guidelineData from '../data/parsed_wsg_guidelines.json';
 import { useLocation } from 'react-router-dom';
 import './Measure.css';
@@ -28,6 +33,7 @@ interface MeasurementResult {
   kbWeight: number;
   grade: string;
   globalAvgCarbon: number;
+  cleanerThan: number;
 }
 
 import {
@@ -50,8 +56,8 @@ const Measure: React.FC = () => {
   const [captureLoading, setCaptureLoading] = useState(false);
   const [captureError, setCaptureError] = useState<string | null>(null);
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
-  const pageRef = useRef(null);
-  const [inefficientImages, setInefficientImages] = useState([]);
+  // const pageRef = useRef(null);
+  // const [inefficientImages, setInefficientImages] = useState([]);
 
 
 
@@ -165,10 +171,10 @@ const Measure: React.FC = () => {
     }
   }, [location.state, handleSubmit]);
 
-  const handleShare = (platform: 'twitter' | 'facebook' | 'linkedin') => {
-    // 실제 공유 기능 구현 필요
-    console.log(`${platform}로 결과를 공유합니다.`);
-  };
+  // const handleShare = (platform: 'twitter' | 'facebook' | 'linkedin') => {
+  //   // 실제 공유 기능 구현 필요
+  //   console.log(`${platform}로 결과를 공유합니다.`);
+  // };
 
   return (
     
@@ -287,7 +293,7 @@ const Measure: React.FC = () => {
               
               <div className="metric-card" style={{ padding: '1rem', background: 'white', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
                 <p style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🚗</p>
-                <p style={{ fontWeight: 'medium' }}>{result.carbonEquivalents?.carDistance?.toLocaleString() ?? '-'}km by electric car</p>
+                <p style={{ fontWeight: 'medium' }}>{result.carbonEquivalents?.evKm?.toLocaleString() ?? '-'}km by electric car</p>
               </div>
               
               <div className="metric-card" style={{ padding: '1rem', background: 'white', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>

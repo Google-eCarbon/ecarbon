@@ -32,16 +32,34 @@ interface UserInfo {
   email?: string;
 }
 
+interface Measurement {
+  id: string;
+  date: string;
+  score: number;
+  status: string;
+}
+
 interface UserData {
   username: string;
   email: string;
   id: string;
+  name: string;
+  company: string;
+  measurements: Measurement[];
 }
 
 const UserPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>('dashboard');
   const [userPageData, setUserPageData] = useState<UserPageData | null>(null);
   const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
+  const [userData, setUserData] = useState<UserData>({  
+    username: '',
+    email: '',
+    id: '',
+    name: '',
+    company: '',
+    measurements: []
+  });
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -66,6 +84,20 @@ const UserPage: React.FC = () => {
 
         const data = await response.json();
         setUserInfo(data);
+        
+        // 임시 데이터로 userData 설정
+        setUserData({
+          username: data.username || '',
+          email: data.email || '',
+          id: data.id || '',
+          name: data.username || '',
+          company: 'My Company',
+          measurements: [
+            { id: '1', date: '2025-05-15', score: 85, status: 'Completed' },
+            { id: '2', date: '2025-05-10', score: 92, status: 'Completed' },
+            { id: '3', date: '2025-05-05', score: 78, status: 'Completed' }
+          ]
+        });
       } catch (error) {
         console.error('사용자 정보 가져오기 오류:', error);
         alert('로그인이 필요합니다.');
